@@ -1,0 +1,24 @@
+version: 1.0.{build}
+branches:
+  only:
+  - prod
+skip_tags: true
+max_jobs: 1
+clone_script:
+- ps: >-
+    cd D:\wwwroot\tools.ffxiv.cn
+
+    ls
+
+    git pull
+build: off
+test: off
+deploy: off
+notifications:
+- provider: Email
+  to:
+  - oyyz@vip.qq.com
+  - 404375155@qq.com
+  on_build_success: true
+  on_build_failure: true
+  on_build_status_changed: false

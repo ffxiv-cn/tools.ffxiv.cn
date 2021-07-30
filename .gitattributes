@@ -1,0 +1,13 @@
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto eol=crlf
+
+*.html text
+*.js text
+*.txt text
+*.csv text
+*.css text
+*.md text
+
+# Denote all files that are truly binary and should not be modified.
+*.png binary
+*.jpg binary
