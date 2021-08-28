@@ -44,7 +44,9 @@ function music() {
                     infolist[i] = "";
                 }
                 for (var i = 1; i < csvList.length; i++) {
-                    infolist[csvList[i][4]] += '<li><a id="' + i + '" class=" " onclick="musicexplain(this,' + i + ')" target="_blank"><p>' + ('000' + csvList[i][3]).slice(-3) + '-' + csvList[i][1] + '</p></a></li>';
+                    csvList[i][1].length>=17 
+                    ? infolist[csvList[i][4]] += '<li><a id="' + i + '" class=" " onclick="musicexplain(this,' + i + ')" target="_blank"><marquee direction="left" onmouseover="this.start()" onmouseout="this.stop()"><p>' + ('000' + csvList[i][3]).slice(-3) + '-' + csvList[i][1] + '</p></marquee></a></li>'
+                    : infolist[csvList[i][4]] += '<li><a id="' + i + '" class=" " onclick="musicexplain(this,' + i + ')" target="_blank"><p>' + ('000' + csvList[i][3]).slice(-3) + '-' + csvList[i][1] + '</p></a></li>';
                     infonum[csvList[i][4]]++;
                 }
                 Page.setTotalPageNums();
