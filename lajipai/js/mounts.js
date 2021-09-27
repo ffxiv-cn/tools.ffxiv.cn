@@ -38,11 +38,11 @@ function mounts() {
                 csvList = $.csv()(data);
                 for (var i = 1; i < csvList.length; i++) {
                     if (i % 100 == 1) {
-                        insert = '<li><a id="' + i + '" class="btn" onclick="mountexplain(this,' + i + ')" target="_blank"><img src="image/chongwuzuoqi-ui/' + csvList[i][1] + '.png" onload="image(this)">';
+                        insert = '<li><a id="' + csvList[i][1].slice(3,6).replace(/\b(0+)/gi,"") + '" class="btn" onclick="mountexplain(this,' + i + ')" target="_blank"><img src="image/chongwuzuoqi-ui/' + csvList[i][1] + '.png" onload="image(this)">';
                         csvList[i][8] == "0" ? insert += '<div class="bd"></div></a></li>' : insert += '<div class="bd"><img src="image/logo/lv' + csvList[i][8] + '.png"></div></a></li>';
                     }
                     else {
-                        insert += '<li><a id="' + i + '" class="btn" onclick="mountexplain(this,' + i + ')" target="_blank"><img src="image/chongwuzuoqi-ui/' + csvList[i][1] + '.png" onload="image(this)">';
+                        insert += '<li><a id="' + csvList[i][1].slice(3,6).replace(/\b(0+)/gi,"") + '" class="btn" onclick="mountexplain(this,' + i + ')" target="_blank"><img src="image/chongwuzuoqi-ui/' + csvList[i][1] + '.png" onload="image(this)">';
                         csvList[i][8] == "0" ? insert += '<div class="bd"></div></a></li>' : insert += '<div class="bd"><img src="image/logo/lv' + csvList[i][8] + '.png"></div></a></li>';
                     }
                     if (i % 100 == 0) { infolist[i / 100] = insert; }
@@ -54,6 +54,7 @@ function mounts() {
                 Page.allContent("null");
                 var info = $.cookie("mountssaveData");
                 var info2 = window.localStorage.getItem('mountssaveData');
+                var info3 = window.localStorage.getItem('p&msaveData');
                 var countData = 0;
                 //无数据时制作空的cookie
                 if (info !== undefined) {
@@ -67,17 +68,25 @@ function mounts() {
                     info2 = JSON.stringify(info);
                     window.localStorage.setItem('mountssaveData', JSON.stringify(saveArray));
                 }
+                if (info3 == undefined) {
+                    var saveArray = [];
+                    for (var i = 1; i < 1000; i++) { saveArray.push(0); }                    
+                    window.localStorage.setItem('p&msaveData', JSON.stringify(saveArray));
+                }
                 //给saveArray赋值
-                if (info2 !== undefined) {
-                    var saveArray = JSON.parse(info2);
+                if (info3 !== undefined) {
+                    var saveArray = JSON.parse(info3);
                     //统计已获得数目
-                    for (var i = 0; i < csvList.length; i++) {
+                    //新方法
+                    for (var i = 0; i < 400; i++) {
+                    //旧方法
+                    //for (var i = 0; i < csvList.length; i++) {
                         if (saveArray[i] == '1') {
                             countData++;
                         };
                     };
                     //刷新计数统计的数据
-                    $('#pagenum').find('li').find('p').eq(1).text("/" + saveArray.length);
+                    $('#pagenum').find('li').find('p').eq(1).text("/" + (csvList.length-1));
                 }
                 $('#pagenum').find('li').find('b').eq(0).text(countData);
             }
@@ -133,14 +142,25 @@ function mounts() {
             //            $('a.btn:first').click();
             //            $('a.btn:first').find('.bd').addClass('Selected');
             //保存クッキーの展開
-            if (window.localStorage.getItem('mountssaveData')) {
-                var saveArray = JSON.parse(window.localStorage.getItem('mountssaveData'));
-                var countData = $('#mounts').find('li').find('a').length;
+            //新方法的判断
+            if (window.localStorage.getItem("p&msaveData")) {
+                //旧方法的判断
+            //if (window.localStorage.getItem('mountssaveData')) {
+                //新方法按编号来存的数组
+                var saveArray = JSON.parse(window.localStorage.getItem('p&msaveData'));
+                //旧方法按顺序来存的数组
+                //var saveArray = JSON.parse(window.localStorage.getItem('mountssaveData'));
+                //var countData = $('#mounts').find('li').find('a').length;
                 for (var i = 1; i < saveArray.length + 1; i++) {
-                    if (saveArray[i - 1] == '1') {
-                        //遍历全元素按id对特定id的元素进行变化
-                        $('#mounts').find('li').find('a').filter('#' + i + '').addClass('completed');
-                    };
+                    //新方法按编号来
+                    if(saveArray[i]=="1"){
+                        $('#'+i+'').addClass('completed')
+                    }
+                    //旧方法按顺序来
+                    // if (saveArray[i - 1] == '1') {
+                    //     //遍历全元素按id对特定id的元素进行变化
+                    //     $('#mounts').find('li').find('a').filter('#' + i + '').addClass('completed');
+                    // };
                 };
             }
         }
@@ -171,14 +191,17 @@ function mountexplain(obj, i) {
 
     });
     //点击时变更状态
-    var saveArray = JSON.parse(window.localStorage.getItem('mountssaveData'));
-    if ($(obj).hasClass('completed')) { $(obj).removeClass('completed'); saveArray[i - 1] = 0; }
-    else { $(obj).addClass('completed'); saveArray[i - 1] = 1; }
+    var num = $(obj).attr('id');
+    var saveArray = JSON.parse(window.localStorage.getItem('p&msaveData'));
+    //var saveArray = JSON.parse(window.localStorage.getItem('mountssaveData'));
+    if ($(obj).hasClass('completed')) { $(obj).removeClass('completed'); saveArray[num] = 0; }
+    else { $(obj).addClass('completed'); saveArray[num] = 1; }
     //$.cookie("mountssaveData", saveArray, { expires: 365, path: "/" });
-    window.localStorage.setItem('mountssaveData', JSON.stringify(saveArray))
+    window.localStorage.setItem('p&msaveData', JSON.stringify(saveArray))
+    //window.localStorage.setItem('mountssaveData', JSON.stringify(saveArray))
     //统计已获得数目
     var countData = 0;
-    for (var n = 0; n < saveArray.length; n++) {
+    for (var n = 0; n < 400; n++) {
         if (saveArray[n] == '1') { countData++; };
     };
     //更新计数统计
