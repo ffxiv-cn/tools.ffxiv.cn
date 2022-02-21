@@ -55,22 +55,20 @@ function pets() {
                 Page.arr = csvList.length - 1;
                 Page.setTotalPageNums();
                 Page.setClickPageNum();
+<<<<<<< Updated upstream
                 Page.allContent("null");
                 var info = $.cookie("petssaveData");
                 var info2 = window.localStorage.getItem('petssaveData');
+=======
+                Page.allContent("null");                
+>>>>>>> Stashed changes
                 var info3 = window.localStorage.getItem('p&msaveData');
                 var countData = 0;
-                //无数据时制作空的cookie
-                if (info !== undefined) {
-                    info2 = JSON.stringify(info);
-                    window.localStorage.setItem('petssaveData', info2);
-                    $.removeCookie("petssaveData")
-                }
-                if (info2 == undefined) {
+                //无数据时制作空的cookie                
+                if (info3 == undefined) {
                     var saveArray = [];
-                    for (var i = 1; i < csvList.length; i++) { saveArray.push(0); }
-                    info2 = JSON.stringify(info);
-                    window.localStorage.setItem('petssaveData', JSON.stringify(saveArray));
+                    for (var i = 1; i < 1000; i++) { saveArray.push(0); }                    
+                    window.localStorage.setItem('p&msaveData', JSON.stringify(saveArray));
                 }
                 if (info3 == undefined) {
                     var saveArray = [];
@@ -82,9 +80,13 @@ function pets() {
                     var saveArray = JSON.parse(info3);
                     //统计已获得数目
                     //新方法
+<<<<<<< Updated upstream
                     for (var i = 400; i < 1000; i++) {
                     //旧方法
                     //for (var i = 0; i < csvList.length; i++) {
+=======
+                    for (var i = 400; i < 1000; i++) {                    
+>>>>>>> Stashed changes
                         if (saveArray[i] == '1') {
                             countData++;
                         };
@@ -148,6 +150,7 @@ function pets() {
             //保存クッキーの展開
 
             //新方法的判断
+<<<<<<< Updated upstream
             if (window.localStorage.getItem("p&msaveData")) {
             //旧方法的判断    
             //if (window.localStorage.getItem("petssaveData")) {
@@ -157,16 +160,26 @@ function pets() {
                 //var saveArray = JSON.parse(window.localStorage.getItem('petssaveData'));
 
                 // var countData = $('#pets').find('li').find('a').length;
+=======
+            if (window.localStorage.getItem("p&msaveData")) {            
+                //新方法按编号来存的数组
+                var saveArray = JSON.parse(window.localStorage.getItem('p&msaveData'));                
+
+>>>>>>> Stashed changes
                 for (var i = 1; i < saveArray.length + 1; i++) {
                     //新方法按编号来
                     if(saveArray[i]=="1"){
                         $('#'+i+'').addClass('completed')
+<<<<<<< Updated upstream
                     }
                     //旧方法按顺序来
                     // if (saveArray[i - 1] == '1') {
                     //     //遍历全元素按id对特定id的元素进行变化
                     //     $('#pets').find('li').find('a').filter('#' + i + '').addClass('completed');
                     // };
+=======
+                    }                    
+>>>>>>> Stashed changes
                 };
             }
         }
@@ -199,12 +212,18 @@ function petexplain(obj, i) {
     //点击时变更状态
     var num = $(obj).attr('id');
     var saveArray = JSON.parse(window.localStorage.getItem('p&msaveData'));
+<<<<<<< Updated upstream
     //var saveArray = JSON.parse(window.localStorage.getItem('petssaveData'));
     if ($(obj).hasClass('completed')) { $(obj).removeClass('completed'); saveArray[num] = 0; }
     else { $(obj).addClass('completed'); saveArray[num] = 1; }
     //$.cookie("petssaveData", saveArray, { expires: 365, path: "/" });
     window.localStorage.setItem('p&msaveData', JSON.stringify(saveArray))
     //window.localStorage.setItem('petssaveData', JSON.stringify(saveArray))
+=======
+    if ($(obj).hasClass('completed')) { $(obj).removeClass('completed'); saveArray[num] = 0; }
+    else { $(obj).addClass('completed'); saveArray[num] = 1; }
+    window.localStorage.setItem('p&msaveData', JSON.stringify(saveArray))
+>>>>>>> Stashed changes
     //统计已获得数目
     var countData = 0;
     for (var n = 400; n < 1000; n++) {
@@ -213,18 +232,45 @@ function petexplain(obj, i) {
     //更新计数统计
     $('#pagenum').find('li').find('b').eq(0).text(countData);
 }
-//保存cookie
-function petssaveData() {
-    var countcheck = $('#pets').find('li').find('a').length;
-    var saveArray = [];
-    for (var i = 0; i < countcheck; i++) {
-        //            var id = ('000' + (i + 1)).slice(-3);
-        if ($('#pets').find('li').find('a').eq(i).hasClass('completed')) {
-            saveArray.push(1);
-        } else {
-            saveArray.push(0);
+function localStorageDownload()
+{
+    function exportRaw(name, data) 
+    {
+        var urlObject = window.URL || window.webkitURL || window;
+        var export_blob = new Blob([data]);
+        var save_link = document.createElementNS("http://www.w3.org/1999/xhtml", "a")
+        save_link.href = urlObject.createObjectURL(export_blob);
+        save_link.download = name;
+        var ev = document.createEvent("MouseEvents");
+        ev.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+        save_link.dispatchEvent(ev);
+        window.URL.revokeObjectURL(save_link.href);
+    }
+    var saveArray = JSON.parse(window.localStorage.getItem('p&msaveData'));
+    exportRaw('Pet&MountData.txt',saveArray);
+    //alert("1");
+}
+function localStorageInput()
+{
+    let file = event.target.files[0];
+    if (file != undefined && file.name == "Pet&MountData.txt")
+    {
+        let file_reader = new FileReader();
+        file_reader.onload = () => {
+            let fc = file_reader.result;
+            console.log(fc); // 打印文件文本内容
+            window.localStorage.setItem('p&msaveData', '['+fc+']');
+            pets();
+            alert("导入完成");
         };
+<<<<<<< Updated upstream
     };
     //$.cookie("petssaveData", saveArray, { expires: 365, path: "/" });    
     window.localStorage.setItem('petssaveData', JSON.stringify(saveArray));
 }
+=======
+        file_reader.readAsText(file, 'UTF-8');
+    }
+    else{alert("请确认文件");}
+}
+>>>>>>> Stashed changes
