@@ -27,18 +27,9 @@ function dungeons() {
             success: function (data) {
 
                 csvList = $.csv()(data);
-                infolist[21] = "";
-                infolist[31] = "";
-                infolist[41] = "";
-                infolist[51] = "";
-                infolist[22] = "";
-                infolist[32] = "";
-                infolist[42] = "";
-                infolist[52] = "";
-                infolist[23] = "";
-                infolist[33] = "";
-                infolist[43] = "";
-                infolist[53] = "";
+                for (var i=20;i<100;i++){
+                    infolist[i]="";
+                }
                 for (var i = 1; i < csvList.length; i++) {
                     var num = csvList[i][9] + csvList[i][10];
                     infolist[num] += '<li><a class="btn" onclick="dungeonsexplain(this,' + i + ')" target="_blank"><p>' + csvList[i][2] + '</p></a></li>';
@@ -65,7 +56,7 @@ function dungeons() {
             insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/5.0.jpg);margin-right: 20px;" class="off"><p style="top: 55px;position: relative;">4.0<p><div class="bd"></div></a>';
             insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/4.0.jpg);margin-right: 20px;" class="off"><p style="top: 55px;position: relative;">4.0<p><div class="bd"></div></a>';
             insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/3.0.jpg);margin-right: 20px;" class="off"><p style="top: 55px;position: relative;">3.0<p><div class="bd"></div></a>';
-            insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/2.0.jpg);margin-right: 20px;" class="off"><p style="top: 55px;position: relative;">2.0<p><div class="bd"></div></a>';
+            insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/2.0.jpg);margin-right: 20px;margin-left: 10px;margin-top: 20px;" class="off"><p style="top: 55px;position: relative;">2.0<p><div class="bd"></div></a>';
             $("#pagenum").append(insert);
             Page.setClickPageNum();
         },
