@@ -101,7 +101,8 @@ function pets() {
                 div.appendChild(a);
             }
             $('#pagenum').append(
-                '<li style="position: relative;padding-right: 30px;float: right;"><p style="float: left;">统计：</p><b style="float: left;color: #f80;">999</b><p style="float: left;">/1000</p></li>'
+                '<li style="position: relative;padding-right: 30px;float: right;"><p style="float: left;">统计：</p><b style="float: left;color: #f80;">999</b><p style="float: left;">/1000</p></li>',
+                '<li style="position: relative;float: right;height: 20px;padding-right: 10px;"><a style="height: 20px;top: -5px;" onclick="localStorageDownload()"><img style="width: 20px;" src="image/导出.png"></a><span style="position: relative;display: inline-block;overflow: hidden;"><span><img style="height: 20px;" src="image/导入.png"></span><input type="file" id="file" accept=".txt" style="position: absolute;right: 0px;top: 0px;" onchange="localStorageInput()" "></input></span></li>'
             );
             Page.setClickPageNum();
         },
@@ -112,7 +113,7 @@ function pets() {
             var divx = document.getElementById('pagenum');
             var a = divx.children;
             var len = a.length;
-            for (var i = 0; i < len; i++) {
+            for (var i = 0; i < len-2; i++) {
                 a[i].onclick = function () {
                     for (var i = 0; i < len; i++) { a[i].className = "off"; }
                     this.className = "on";
@@ -215,7 +216,7 @@ function localStorageInput()
             window.localStorage.setItem('p&msaveData', '['+fc+']');
             pets();
             alert("导入完成");
-        };    
+        };
     file_reader.readAsText(file, 'UTF-8');
     }
     else{alert("请确认文件");}
