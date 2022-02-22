@@ -52,7 +52,7 @@ function niaojiaexplain(num) {
             csvList = $.csv()(data);
             csvList[num][6] == "" ? insert += '' : insert += '<p style="font-size: 13px;">位置：' + csvList[num][4] + '</p>';
             csvList[num][6] == "" ? insert += '' : insert += '<p style="font-size: 13px;">Npc：' + csvList[num][5] + '</p>';
-            insert += '<p style="font-size: 13px;">介绍：' + csvList[num][2] + '</p>';
+            insert += '<p style="font-size: 13px;word-break: break-word;white-space: break-spaces;width: 400px;">介绍：' + csvList[num][2] + '</p>';
             csvList[num][6] == "" ? insert += '' : insert += '<iframe src="https://www.ffxiv.cn/assets/map/index.html?' + csvList[num][6] + '" style="width: 380px;height: 300px;"></iframe>'; ;
             $(target).append(insert);
         }
