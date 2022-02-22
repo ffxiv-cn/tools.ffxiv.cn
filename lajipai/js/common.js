@@ -11,7 +11,7 @@ $(function () {
     );
     $('#buttom').append(
         '本网页上的会社名・道具名・系统名等均为各公司的注册商标。<br>'
-        , 'Copyright 2016-2020 FFXIV.CN&FFSUSU.COM & 黄芪 & 垫小引 All rights reserved.<br>'
+        , 'Copyright 2016-2022 FFXIV.CN&FFSUSU.COM & 黄芪 & 垫小引 All rights reserved.<br>'
         , 'FINAL FANTASY XIV 2010 - 2022 SQUARE ENIX CO., LTD. All Rights Reserved.<br>'
     );
 });
