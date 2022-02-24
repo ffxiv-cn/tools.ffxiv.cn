@@ -54,33 +54,21 @@ function mounts() {
                 Page.allContent("null");
                 var info = $.cookie("mountssaveData");
                 var info2 = window.localStorage.getItem('mountssaveData');
+                Page.allContent("null");
                 var info3 = window.localStorage.getItem('p&msaveData');
                 var countData = 0;
-                //无数据时制作空的cookie
-                if (info !== undefined) {
-                    info2 = JSON.stringify(info);
-                    window.localStorage.setItem('mountssaveData', info2);
-                    $.removeCookie("mountssaveData")
-                }
-                if (info2 == undefined) {
-                    var saveArray = [];
-                    for (var i = 1; i < csvList.length; i++) { saveArray.push(0); }
-                    info2 = JSON.stringify(info);
-                    window.localStorage.setItem('mountssaveData', JSON.stringify(saveArray));
-                }
+                //无数据时制作空的cookie                
                 if (info3 == undefined) {
                     var saveArray = [];
                     for (var i = 1; i < 1000; i++) { saveArray.push(0); }                    
                     window.localStorage.setItem('p&msaveData', JSON.stringify(saveArray));
-                }
+                }               
                 //给saveArray赋值
                 if (info3 !== undefined) {
                     var saveArray = JSON.parse(info3);
                     //统计已获得数目
                     //新方法
-                    for (var i = 0; i < 400; i++) {
-                    //旧方法
-                    //for (var i = 0; i < csvList.length; i++) {
+                    for (var i = 0; i < 400; i++) {                    
                         if (saveArray[i] == '1') {
                             countData++;
                         };
@@ -142,25 +130,15 @@ function mounts() {
             //            $('a.btn:first').click();
             //            $('a.btn:first').find('.bd').addClass('Selected');
             //保存クッキーの展開
-            //新方法的判断
-            if (window.localStorage.getItem("p&msaveData")) {
-                //旧方法的判断
-            //if (window.localStorage.getItem('mountssaveData')) {
+            //新方法的判断            
+            if (window.localStorage.getItem("p&msaveData")) {                
                 //新方法按编号来存的数组
                 var saveArray = JSON.parse(window.localStorage.getItem('p&msaveData'));
-                //旧方法按顺序来存的数组
-                //var saveArray = JSON.parse(window.localStorage.getItem('mountssaveData'));
-                //var countData = $('#mounts').find('li').find('a').length;
                 for (var i = 1; i < saveArray.length + 1; i++) {
                     //新方法按编号来
                     if(saveArray[i]=="1"){
                         $('#'+i+'').addClass('completed')
-                    }
-                    //旧方法按顺序来
-                    // if (saveArray[i - 1] == '1') {
-                    //     //遍历全元素按id对特定id的元素进行变化
-                    //     $('#mounts').find('li').find('a').filter('#' + i + '').addClass('completed');
-                    // };
+                    } 
                 };
             }
         }
@@ -192,13 +170,10 @@ function mountexplain(obj, i) {
     });
     //点击时变更状态
     var num = $(obj).attr('id');
-    var saveArray = JSON.parse(window.localStorage.getItem('p&msaveData'));
-    //var saveArray = JSON.parse(window.localStorage.getItem('mountssaveData'));
+    var saveArray = JSON.parse(window.localStorage.getItem('p&msaveData'));    
     if ($(obj).hasClass('completed')) { $(obj).removeClass('completed'); saveArray[num] = 0; }
-    else { $(obj).addClass('completed'); saveArray[num] = 1; }
-    //$.cookie("mountssaveData", saveArray, { expires: 365, path: "/" });
+    else { $(obj).addClass('completed'); saveArray[num] = 1; }    
     window.localStorage.setItem('p&msaveData', JSON.stringify(saveArray))
-    //window.localStorage.setItem('mountssaveData', JSON.stringify(saveArray))
     //统计已获得数目
     var countData = 0;
     for (var n = 0; n < 400; n++) {
