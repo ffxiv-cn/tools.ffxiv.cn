@@ -27,6 +27,15 @@ function pets() {
             dataType: 'text',
             success: function (data) {
                 $('#page_explain').append(data);
+                $('#page_explain').append(
+                    '<li><div class="switch-box is-info"></div></li>'
+                );
+                $('div.switch-box').append(
+                    '<label for="info" class="switch-box-label" style="margin-right: 15px;">查看</label>',
+                    '<input id="info" class="switch-box-input" type="checkbox"/>',
+                    '<label for="info" class="switch-box-slider"></label>',
+                    '<label for="info" class="switch-box-label">勾选</label>'
+                );
             }
         });
         var csvList;
@@ -149,9 +158,26 @@ function pets() {
     };
 }
 function petexplain(obj, i) {
-    var csvList;
+    var info=document.getElementById("info").checked;
+    if(info==true){
+        //点击时变更状态
+    var num = $(obj).attr('id');
+    var saveArray = JSON.parse(window.localStorage.getItem('p&msaveData'));    
+    if ($(obj).hasClass('completed')) { $(obj).removeClass('completed'); saveArray[num] = 0; }
+    else { $(obj).addClass('completed'); saveArray[num] = 1; }
+    window.localStorage.setItem('p&msaveData', JSON.stringify(saveArray))    
+    //统计已获得数目
+    var countData = 0;
+    for (var n = 400; n < 1000; n++) {
+        if (saveArray[n] == '1') { countData++; };
+    };
+    //更新计数统计
+    $('#pagenum').find('li').find('b').eq(0).text(countData);
+    }
+    else{
+        var csvList;
     var insert = '';
-    var target = '#page_item_right';    
+    var target = '#page_item_right';
     $('a.btn').click(function () {
         $('a.btn').find('.bd').removeClass('Selected');
         $(this).find('.bd').addClass('Selected');
@@ -172,52 +198,5 @@ function petexplain(obj, i) {
         }
 
     });
-    //点击时变更状态
-    var num = $(obj).attr('id');
-    var saveArray = JSON.parse(window.localStorage.getItem('p&msaveData'));    
-    if ($(obj).hasClass('completed')) { $(obj).removeClass('completed'); saveArray[num] = 0; }
-    else { $(obj).addClass('completed'); saveArray[num] = 1; }
-    window.localStorage.setItem('p&msaveData', JSON.stringify(saveArray))    
-    //统计已获得数目
-    var countData = 0;
-    for (var n = 400; n < 1000; n++) {
-        if (saveArray[n] == '1') { countData++; };
-    };
-    //更新计数统计
-    $('#pagenum').find('li').find('b').eq(0).text(countData);
-}
-function localStorageDownload()
-{
-    function exportRaw(name, data) 
-    {
-        var urlObject = window.URL || window.webkitURL || window;
-        var export_blob = new Blob([data]);
-        var save_link = document.createElementNS("http://www.w3.org/1999/xhtml", "a")
-        save_link.href = urlObject.createObjectURL(export_blob);
-        save_link.download = name;
-        var ev = document.createEvent("MouseEvents");
-        ev.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-        save_link.dispatchEvent(ev);
-        window.URL.revokeObjectURL(save_link.href);
-    }
-    var saveArray = JSON.parse(window.localStorage.getItem('p&msaveData'));
-    exportRaw('Pet&MountData.txt',saveArray);
-    //alert("1");
-}
-function localStorageInput()
-{
-    let file = event.target.files[0];
-    if (file != undefined && file.name == "Pet&MountData.txt")
-    {
-        let file_reader = new FileReader();
-        file_reader.onload = () => {
-            let fc = file_reader.result;
-            console.log(fc); // 打印文件文本内容
-            window.localStorage.setItem('p&msaveData', '['+fc+']');
-            pets();
-            alert("导入完成");
-        };
-    file_reader.readAsText(file, 'UTF-8');
-    }
-    else{alert("请确认文件");}
+    }        
 }
