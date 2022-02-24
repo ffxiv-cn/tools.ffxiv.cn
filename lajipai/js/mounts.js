@@ -27,6 +27,15 @@ function mounts() {
             dataType: 'text',
             success: function (data) {
                 $('#page_explain').append(data);
+                $('#page_explain').append(
+                    '<li><div class="switch-box is-info"></div></li>'
+                );
+                $('div.switch-box').append(
+                    '<label for="info" class="switch-box-label" style="margin-right: 15px;">查看</label>',
+                    '<input id="info" class="switch-box-input" type="checkbox"/>',
+                    '<label for="info" class="switch-box-slider"></label>',
+                    '<label for="info" class="switch-box-label">勾选</label>'
+                );
             }
         });
         var csvList;
@@ -145,6 +154,23 @@ function mounts() {
     };
 }
 function mountexplain(obj, i) {
+    var info=document.getElementById("info").checked;
+    if(info==true){
+    //点击时变更状态
+    var num = $(obj).attr('id');
+    var saveArray = JSON.parse(window.localStorage.getItem('p&msaveData'));    
+    if ($(obj).hasClass('completed')) { $(obj).removeClass('completed'); saveArray[num] = 0; }
+    else { $(obj).addClass('completed'); saveArray[num] = 1; }    
+    window.localStorage.setItem('p&msaveData', JSON.stringify(saveArray))
+    //统计已获得数目
+    var countData = 0;
+    for (var n = 0; n < 400; n++) {
+        if (saveArray[n] == '1') { countData++; };
+    };
+    //更新计数统计
+    $('#pagenum').find('li').find('b').eq(0).text(countData);
+    }
+    else{
     var csvList;
     var insert = '';
     var target = '#page_item_right';
@@ -168,31 +194,6 @@ function mountexplain(obj, i) {
         }
 
     });
-    //点击时变更状态
-    var num = $(obj).attr('id');
-    var saveArray = JSON.parse(window.localStorage.getItem('p&msaveData'));    
-    if ($(obj).hasClass('completed')) { $(obj).removeClass('completed'); saveArray[num] = 0; }
-    else { $(obj).addClass('completed'); saveArray[num] = 1; }    
-    window.localStorage.setItem('p&msaveData', JSON.stringify(saveArray))
-    //统计已获得数目
-    var countData = 0;
-    for (var n = 0; n < 400; n++) {
-        if (saveArray[n] == '1') { countData++; };
-    };
-    //更新计数统计
-    $('#pagenum').find('li').find('b').eq(0).text(countData);
-}
-//保存cookie
-function mountssaveData() {
-    var countcheck = $('#mounts').find('li').find('a').length;
-    var saveArray = [];
-    for (var i = 0; i < countcheck; i++) {
-        //            var id = ('000' + (i + 1)).slice(-3);
-        if ($('#mounts').find('li').find('a').eq(i).hasClass('completed')) {
-            saveArray.push(1);
-        } else {
-            saveArray.push(0);
-        };
-    };
-    $.cookie("mountssaveData", saveArray, { expires: 365, path: "/" });
+    }
+    
 }

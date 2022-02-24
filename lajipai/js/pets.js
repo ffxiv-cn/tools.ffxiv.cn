@@ -160,7 +160,7 @@ function pets() {
 function petexplain(obj, i) {
     var info=document.getElementById("info").checked;
     if(info==true){
-        //点击时变更状态
+    //点击时变更状态
     var num = $(obj).attr('id');
     var saveArray = JSON.parse(window.localStorage.getItem('p&msaveData'));    
     if ($(obj).hasClass('completed')) { $(obj).removeClass('completed'); saveArray[num] = 0; }
@@ -175,7 +175,7 @@ function petexplain(obj, i) {
     $('#pagenum').find('li').find('b').eq(0).text(countData);
     }
     else{
-        var csvList;
+    var csvList;
     var insert = '';
     var target = '#page_item_right';
     $('a.btn').click(function () {

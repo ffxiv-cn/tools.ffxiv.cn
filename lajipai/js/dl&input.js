@@ -33,3 +33,18 @@ function localStorageInput()
     }
     else{alert("请确认文件");}
 }
+//目前不用但暂且保留一个备份
+//保存cookie
+function mountssaveData() {
+    var countcheck = $('#mounts').find('li').find('a').length;
+    var saveArray = [];
+    for (var i = 0; i < countcheck; i++) {
+        //            var id = ('000' + (i + 1)).slice(-3);
+        if ($('#mounts').find('li').find('a').eq(i).hasClass('completed')) {
+            saveArray.push(1);
+        } else {
+            saveArray.push(0);
+        };
+    };
+    $.cookie("mountssaveData", saveArray, { expires: 365, path: "/" });
+}
