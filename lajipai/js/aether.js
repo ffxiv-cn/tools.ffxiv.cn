@@ -48,6 +48,7 @@ function aether() {
                 infolist[1] = "";
                 infolist[2] = "";
                 infolist[3] = "";
+                infolist[4] = "";
                 for (i = 1; i < 7; i++) {
                     infolist[1] += '<li><a class="btn" onclick="aetherexplain(this,' + i + ')" target="_blank"><img src="image/aether/' + i + '.png"><div style="background-image: url("");" class="bd"></div></a></li>';
                 }
@@ -56,7 +57,10 @@ function aether() {
                 }
                 for (i = 13; i < 19; i++) {
                     infolist[3] += '<li><a class="btn" onclick="aetherexplain(this,' + i + ')" target="_blank"><img src="image/aether/' + i + '.png"><div style="background-image: url("");" class="bd"></div></a></li>';
-                }                
+                }
+                for (i = 19; i < 25; i++) {
+                    infolist[4] += '<li><a class="btn" onclick="aetherexplain(this,' + i + ')" target="_blank"><img src="image/aether/' + i + '.png"><div style="background-image: url("");" class="bd"></div></a></li>';
+                }
                 Page.setTotalPageNums();
                 Page.setClickPageNum();
                 Page.allContent("null");
@@ -73,6 +77,7 @@ function aether() {
             insert += '<a style="float:left;width:50px;" class="off">3.0</a>';
             insert += '<a style="float:left;width:50px;" class="off">4.0</a>';
             insert += '<a style="float:left;width:50px;" class="off">5.0</a>';
+            insert += '<a style="float:left;width:50px;" class="off">6.0</a>';
             $("#pagenum").append(insert);
             Page.setClickPageNum();
         },
@@ -94,13 +99,14 @@ function aether() {
         allContent: function (divb) {
             var target = '#aether';
             if ("null" == divb) {
-                divb = document.getElementById('pagenum').children[2];
+                divb = document.getElementById('pagenum').children[3];
                 divb.className = "on";
             }
             var pg = this.getClickPageNum(divb); // 1 2 3
             if (pg == "3.0") { pg = "1"; }
             else if (pg == "4.0") { pg = "2"; }
             else if (pg == "5.0") { pg = "3"; }
+            else if (pg == "6.0") { pg = "4"; }
             $("#aether").empty();
             $(target).empty();
             $(target).append(infolist[pg]);
@@ -125,9 +131,11 @@ function aetherexplain(obj, i) {
             csvList = $.csv()(data);
             csvList[i][0] == "" ? insert += '<p style="font-size: 19px;">全部由主线触发</p>' : insert += '<img onclick="bigger(this)" style="float:left;width:340px;"src="image/aether/' + csvList[i][0] + '.jpeg" onerror=this.style="display:none;">';
             insert += '<ul style="top:0px;">';
-            for (var n = 1; n < 11; n++) {
-                insert += '<div style="float:left;width:100px;height:70px;text-align:center;"><img onclick="bigger(this)" style="width:80px;"src="image/aether/' + csvList[i][0] + n + '.jpeg" onerror=this.style="display:none;">';
+            if (csvList[i][0] != ""){
+                for (var n = 1; n < 11; n++) {
+                insert += '<div style="float:left;width:100px;height:70px;text-align:center;"><img onclick="bigger(this)" style="width:80px;"src="image/aether/' + csvList[i][0] + n + '.jpg" onerror=this.style="display:none;">';
                 csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
+                }
             }
             insert += '</ul><ul>';
             csvList[i][12] == "" ? insert += '' : insert += '<img style="float:left;width:20px;"src="image/logo/061419.tex.png"><p style="font-size: 15px;">' + csvList[i][12] + '</p>';
