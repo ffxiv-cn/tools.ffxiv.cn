@@ -107,7 +107,8 @@ function mounts() {
                 div.appendChild(a);
             }
             $('#pagenum').append(
-                '<li style="position: relative;padding-right: 30px;float: right;"><p style="float: left;">统计：</p><b style="float: left;color: #f80;">999</b><p style="float: left;">/1000</p></li>'
+                '<li style="position: relative;padding-right: 30px;float: right;"><p style="float: left;">统计：</p><b style="float: left;color: #f80;">999</b><p style="float: left;">/1000</p></li>',
+                '<li style="position: relative;float: right;height: 20px;padding-right: 10px;"><a style="height: 20px;top: -5px;" onclick="localStorageDownload()"><img style="width: 20px;" src="image/导出.png"></a><span style="position: relative;display: inline-block;overflow: hidden;"><span><img style="height: 20px;" src="image/导入.png"></span><input type="file" id="file" accept=".txt" style="position: absolute;right: 0px;top: 0px;" onchange="localStorageInput(mounts)" "></input></span></li>'
             );
             Page.setClickPageNum();
         },

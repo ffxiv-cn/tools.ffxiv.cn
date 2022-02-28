@@ -16,7 +16,7 @@ function localStorageDownload()
     exportRaw('Pet&MountData.txt',saveArray);
     //alert("1");
 }
-function localStorageInput()
+function localStorageInput(i)
 {
     let file = event.target.files[0];
     if (file != undefined && file.name == "Pet&MountData.txt")
@@ -26,7 +26,8 @@ function localStorageInput()
             let fc = file_reader.result;
             console.log(fc); // 打印文件文本内容
             window.localStorage.setItem('p&msaveData', '['+fc+']');
-            pets();
+            back();
+            i();
             alert("导入完成");
         };
     file_reader.readAsText(file, 'UTF-8');

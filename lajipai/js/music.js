@@ -20,13 +20,19 @@ function music() {
         $('#page').append(
         '<ul id="page_itemtop"></ul>'
         , '<ul id="page_explain"></ul>'
-        , '<ul id="page_check" style="width: 1000px;"><li style="position: absolute;padding-left: 30px;padding-top: 45px;"><p style="float: left;">统计：</p><b style="float: left;color: #f80;">999</b><p style="float: left;">/1000</p></li><div id="typenum" class="typenum"></div></ul>'
+        , '<ul id="page_check" style="width: 1000px;"><li style="position: absolute;margin-top: 21px;margin-left: 126px;"><div class="switch-box is-info"></div></li><li style="position: absolute;margin-left: 30px;margin-top: 45px;"><p style="float: left;">统计：</p><b style="float: left;color: #f80;">999</b><p style="float: left;">/1000</p></li><div id="typenum" class="typenum"></div></ul>'
         , '<ul id="page_item"><li id="page_item_left"><ul style="top:0px;" id="music"></ul></li><li id="page_item_right"><ul id="musicplayer"></ul></li></ul>'
         );
         $('#page_itemtop').append(
         '<li class="back"><a onclick="back()"><img src="image/返回.png"></a></li>'
         , '<li><a><img src="image/乐谱.png"><div></div></a><p>乐谱</p></li>'
-    );
+        );
+        $('div.switch-box').append(
+            '<label for="info" class="switch-box-label" style="margin-right: 15px;">查看</label>',
+            '<input id="info" class="switch-box-input" type="checkbox"/>',
+            '<label for="info" class="switch-box-slider"></label>',
+            '<label for="info" class="switch-box-label">勾选</label>'
+        );
         $.ajax({
             url: './txt/music.txt?ver=' + window._ver,
             dataType: 'text',
@@ -82,16 +88,16 @@ function music() {
         //每页内容数目    
         setTotalPageNums: function () {
             var insert = '';
-            insert += '<a style="float:left;background-position: -144px -600px;" class="off">1<div class="bd"><p style="width: 55px;">区域场景I</p></div></a>';
-            insert += '<a style="float:left;background-position: -144px -600px;" class="off">2<div class="bd"><p style="width: 55px;">区域场景II</p></div></a>';
-            insert += '<a style="float:left;background-position: -212px -600px;" class="off">3<div class="bd"><p>迷宫挑战</p></div></a>';
-            insert += '<a style="float:left;background-position: -280px -600px;" class="off">4<div class="bd"><p>讨伐歼灭</p></div></a>';
-            insert += '<a style="float:left;background-position: -348px -600px;" class="off">5<div class="bd"><p style="width: 55px;">大型任务I</p></div></a>';
-            insert += '<a style="float:left;background-position: -348px -600px;" class="off">6<div class="bd"><p style="width: 55px;">大型任务II</p></div></a>';
-            insert += '<a style="float:left;background-position: -76px -600px;" class="off">7<div class="bd"><p>环境音</p></div></a>';
-            insert += '<a style="float:left;background-position: -416px -600px;" class="off">8<div class="bd"><p>其他</p></div></a>';
-            insert += '<a style="float:left;background-position: -484px -600px;" class="off">9<div class="bd"><p>季节活动</p></div></a>';
-            insert += '<a style="float:left;background-position: -552px -600px;" class="off">10<div class="bd"><p>商城购买</p></div></a>';
+            insert += '<a style="float:left;background: url(./image/music/082022.png) -6px -6px no-repeat;" class="off">1<div class="bd"><p style="width: 55px;">区域场景I</p></div></a>';
+            insert += '<a style="float:left;background: url(./image/music/082023.png) -6px -6px no-repeat;" class="off">2<div class="bd"><p style="width: 55px;">区域场景II</p></div></a>';
+            insert += '<a style="float:left;background: url(./image/music/082024.png) -6px -6px no-repeat;" class="off">3<div class="bd"><p>迷宫挑战</p></div></a>';
+            insert += '<a style="float:left;background: url(./image/music/082027.png) -6px -6px no-repeat;" class="off">4<div class="bd"><p>讨伐歼灭</p></div></a>';
+            insert += '<a style="float:left;background: url(./image/music/082025.png) -6px -6px no-repeat;" class="off">5<div class="bd"><p style="width: 55px;">大型任务I</p></div></a>';
+            insert += '<a style="float:left;background: url(./image/music/082026.png) -6px -6px no-repeat;" class="off">6<div class="bd"><p style="width: 55px;">大型任务II</p></div></a>';
+            insert += '<a style="float:left;background: url(./image/music/082028.png) -6px -6px no-repeat;" class="off">7<div class="bd"><p>环境音</p></div></a>';
+            insert += '<a style="float:left;background: url(./image/music/082029.png) -6px -6px no-repeat;" class="off">8<div class="bd"><p>其他</p></div></a>';
+            insert += '<a style="float:left;background: url(./image/music/082031.png) -6px -6px no-repeat;" class="off">9<div class="bd"><p>季节活动</p></div></a>';
+            insert += '<a style="float:left;background: url(./image/music/082021.png) -6px -6px no-repeat;" class="off">10<div class="bd"><p>商城购买</p></div></a>';
             $("#typenum").append(insert);
             Page.setClickPageNum();
         },
@@ -127,13 +133,7 @@ function music() {
             //保存クッキーの展開
             if ($.cookie("musicsaveData")) {
                 var saveArray = $.cookie("musicsaveData");
-                var countData = $('#music').find('li').find('a').length;
-                //                for (var i = 0; i < countData; i++) {
-                //                    if (saveArray[i + pgnum] == '1') {
-                //                        //按顺序对顺序编号的元素进行变化
-                //                        $('#music').find('li').find('a').eq(i).addClass('completed');                        
-                //                    };
-                //                };
+                var countData = $('#music').find('li').find('a').length;                
                 for (var i = 1; i < saveArray.length + 1; i++) {
                     if (saveArray[i - 1] == '1') {
                         //遍历全元素按id对特定id的元素进行变化
@@ -148,6 +148,24 @@ function music() {
 }
 
 function musicexplain(obj, i) {
+    var info=document.getElementById("info").checked;
+    if(info==true){
+    //点击时变更状态
+    var saveArray = $.cookie("musicsaveData");
+    if ($(obj).hasClass('completed')) { $(obj).removeClass('completed'); saveArray[i - 1] = 0; }
+    else { $(obj).addClass('completed'); saveArray[i - 1] = 1; }
+    $.cookie("musicsaveData", saveArray, { expires: 365, path: "/" });
+    //统计已获得数目
+    var countData = 0;
+    for (var n = 0; n < saveArray.length; n++) {
+        if (saveArray[n] == '1') {
+            countData++;
+        };
+    };
+    //更新计数统计
+    $('#page_check').find('li').find('b').eq(0).text(countData);
+    }
+    else{
     var csvList;
     var insert = '';
     var target = '#musicplayer';
@@ -165,20 +183,7 @@ function musicexplain(obj, i) {
         }
 
     });
-    //点击时变更状态
-    var saveArray = $.cookie("musicsaveData");
-    if ($(obj).hasClass('completed')) { $(obj).removeClass('completed'); saveArray[i - 1] = 0; }
-    else { $(obj).addClass('completed'); saveArray[i - 1] = 1; }
-    $.cookie("musicsaveData", saveArray, { expires: 365, path: "/" });
-    //统计已获得数目
-    var countData = 0;
-    for (var n = 0; n < saveArray.length; n++) {
-        if (saveArray[n] == '1') {
-            countData++;
-        };
-    };
-    //更新计数统计
-    $('#page_check').find('li').find('b').eq(0).text(countData);
+    }
 }
 //保存cookie
 function musicsaveData() {
