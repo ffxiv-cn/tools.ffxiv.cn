@@ -15,7 +15,7 @@ function dungeons() {
         $("#page").empty();
         $('#page').append(
         '<ul id="page_itemtop"></ul>'
-        , '<ul id="page_check" style="height:100px;"><div id="pagenum" class="pagenum" style="width: 900px;"></div></ul>'
+        , '<ul id="page_check" style="height:100px;"><div id="pagenum" class="pagenum" style="width: 900px;margin-left: 45px;"></div></ul>'
         , '<ul id="page_item"><li id="page_item_left" style="min-height: 560px;width: 500px;border-right: 1px solid rgba(42,42,41,1);box-shadow: 1px 1px 0px rgba(67,67,67,1);"><ul style="width: 500px;top:0px;text-align: center;" id="dungeonstype"></ul><ul style="width: 500px;top:0px;padding-top: 20px;" id="music"></ul></li><li id="page_item_right" style="width: 450px;"></li></ul>'
         );
         $('#page_itemtop').append(
@@ -52,11 +52,11 @@ function dungeons() {
         //每页内容数目    
         setTotalPageNums: function () {
             var insert = '';
-            insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/6.0.jpg);margin-right: 20px;margin-left: 10px;" class="off"><p style="top: 55px;position: relative;">6.0<p><div class="bd"></div></a>';
-            insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/5.0.jpg);margin-right: 20px;" class="off"><p style="top: 55px;position: relative;">4.0<p><div class="bd"></div></a>';
+            insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/6.0.jpg);margin-right: 20px;margin-left: 20px;" class="off"><p style="top: 55px;position: relative;">6.0<p><div class="bd"></div></a>';
+            insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/5.0.jpg);margin-right: 20px;" class="off"><p style="top: 55px;position: relative;">5.0<p><div class="bd"></div></a>';
             insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/4.0.jpg);margin-right: 20px;" class="off"><p style="top: 55px;position: relative;">4.0<p><div class="bd"></div></a>';
             insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/3.0.jpg);margin-right: 20px;" class="off"><p style="top: 55px;position: relative;">3.0<p><div class="bd"></div></a>';
-            insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/2.0.jpg);margin-right: 20px;margin-left: 10px;margin-top: 20px;" class="off"><p style="top: 55px;position: relative;">2.0<p><div class="bd"></div></a>';
+            insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/2.0.jpg);margin-right: 20px;margin-left: 20px;margin-top: 20px;" class="off"><p style="top: 55px;position: relative;">2.0<p><div class="bd"></div></a>';
             $("#pagenum").append(insert);
             Page.setClickPageNum();
         },
