@@ -27,6 +27,7 @@ function dig() {
                 infolist[1] = "";
                 infolist[2] = "";
                 infolist[3] = "";
+                infolist[4] = "";
                 for (i = 1; i < 7; i++) {
                     infolist[1] += '<li><a class="btn" onclick="digexplain(this,' + i + ')" target="_blank"><img src="image/aether/' + (i + 6) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
                 }
@@ -35,6 +36,12 @@ function dig() {
                 }
                 for (i = 1; i < 7; i++) {
                     infolist[3] += '<li><a class="btn" onclick="digexplain(this,' + i + ')" target="_blank"><img src="image/aether/' + (i + 12) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
+                }
+                for (i = 1; i < 5; i++) {
+                    infolist[4] += '<li><a class="btn" onclick="digexplain(this,' + i + ')" target="_blank"><img src="image/aether/' + (i + 18) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
+                }
+                for (i = 5; i < 6; i++) {
+                    infolist[4] += '<li><a class="btn" onclick="digexplain(this,' + i + ')" target="_blank"><img src="image/aether/' + (i + 19) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
                 }
                 Page.setTotalPageNums();
                 Page.setClickPageNum();
@@ -48,6 +55,8 @@ function dig() {
         //每页内容数目   
         setTotalPageNums: function () {
             var insert = '';
+            insert += '<a style="float:left;width:100px;" class="off">高鼻羚羊革</a>';
+            insert += '<a style="float:left;width:100px;" class="off">金毗罗鳄革</a>';
             insert += '<a style="float:left;width:100px;" class="off">缠尾蛟革</a>';
             insert += '<a style="float:left;width:100px;" class="off">绿飘龙革</a>';
             insert += '<a style="float:left;width:100px;" class="off">深层绿图</a>';
@@ -83,6 +92,8 @@ function dig() {
             else if (pg == "深层绿图") { pg = "2"; }
             else if (pg == "缠尾蛟革") { pg = "3"; }
             else if (pg == "绿飘龙革") { pg = "3"; }
+            else if (pg == "高鼻羚羊革") { pg = "4"; }
+            else if (pg == "金毗罗鳄革") { pg = "4"; }
             $("#page_item li").empty();
             $(target).empty();
             $(target).append(infolist[pg]);

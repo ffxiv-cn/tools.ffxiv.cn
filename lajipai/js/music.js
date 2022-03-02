@@ -49,11 +49,23 @@ function music() {
                 for (var i = 1; i < 11; i++) {
                     infolist[i] = "";
                 }
+                var music = [];
+                for(var i=1;i<11;i++){
+                    music[i]=[];
+                    for(var n=1;n<100;n++){
+                        music[i][n]="";
+                    }
+                }
                 for (var i = 1; i < csvList.length; i++) {
                     csvList[i][1].length>=17
-                    ? infolist[csvList[i][4]] += '<li><a id="' + i + '" class=" " onclick="musicexplain(this,' + i + ')" target="_blank"><p class="loop">' + ('000' + csvList[i][3]).slice(-3) + '-' + csvList[i][1] + '</p></a></li>'
-                    : infolist[csvList[i][4]] += '<li><a id="' + i + '" class=" " onclick="musicexplain(this,' + i + ')" target="_blank"><p>' + ('000' + csvList[i][3]).slice(-3) + '-' + csvList[i][1] + '</p></a></li>';
+                    ? music[csvList[i][4]][csvList[i][3]] += '<li><a id="' + i + '" class=" " onclick="musicexplain(this,' + i + ')" target="_blank"><p class="loop">' + ('000' + csvList[i][3]).slice(-3) + '-' + csvList[i][1] + '</p></a></li>'
+                    : music[csvList[i][4]][csvList[i][3]] += '<li><a id="' + i + '" class=" " onclick="musicexplain(this,' + i + ')" target="_blank"><p>' + ('000' + csvList[i][3]).slice(-3) + '-' + csvList[i][1] + '</p></a></li>';
                     infonum[csvList[i][4]]++;
+                }
+                for(var i=1;i<11;i++){                    
+                    for(var n=1;n<100;n++){
+                        music[i][n]!=""?infolist[i]+=music[i][n]:infolist[i]=infolist[i];
+                    }
                 }
                 Page.setTotalPageNums();
                 Page.setClickPageNum();
