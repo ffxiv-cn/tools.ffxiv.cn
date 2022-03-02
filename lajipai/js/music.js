@@ -57,8 +57,9 @@ function music() {
                     }
                 }
                 for (var i = 1; i < csvList.length; i++) {
-                    csvList[i][1].length>=17
-                    ? music[csvList[i][4]][csvList[i][3]] += '<li><a id="' + i + '" class=" " onclick="musicexplain(this,' + i + ')" target="_blank"><p class="loop">' + ('000' + csvList[i][3]).slice(-3) + '-' + csvList[i][1] + '</p></a></li>'
+                    csvList[i][1].length>=17 
+                    //? music[csvList[i][4]][csvList[i][3]] += '<li><a id="' + i + '" class=" " onclick="musicexplain(this,' + i + ')" target="_blank"><p class="loop" style="">' +('000' + csvList[i][3]).slice(-3) + '-'+ csvList[i][1] + '</p></a></li>'                   
+                    ? music[csvList[i][4]][csvList[i][3]] += '<li><a id="' + i + '" class=" " onclick="musicexplain(this,' + i + ')" target="_blank"><p style="width: unset;">'+('000' + csvList[i][3]).slice(-3) + '-'+'</p><div style="background: unset;"><p class="loop" style="">' + csvList[i][1] + '</p></div></a></li>'
                     : music[csvList[i][4]][csvList[i][3]] += '<li><a id="' + i + '" class=" " onclick="musicexplain(this,' + i + ')" target="_blank"><p>' + ('000' + csvList[i][3]).slice(-3) + '-' + csvList[i][1] + '</p></a></li>';
                     infonum[csvList[i][4]]++;
                 }
