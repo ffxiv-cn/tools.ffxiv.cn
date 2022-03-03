@@ -101,14 +101,14 @@ function fateshopexplain(num) {
     else if (num==6){name="黑风海";}
     else if (num==7){name="水晶都";}
     else if (num==8){name="游末邦";}
-    else if (num==9){name="雷克兰德";}
-    else if (num==10){name="雷克兰德";}
-    else if (num==11){name="雷克兰德";}
-    else if (num==12){name="雷克兰德";}
-    else if (num==13){name="雷克兰德";}
-    else if (num==14){name="雷克兰德";}
-    else if (num==15){name="雷克兰德";}
-    else if (num==16){name="雷克兰德";}
+    else if (num==9){name="迷津";}
+    else if (num==10){name="萨维奈岛";}
+    else if (num==11){name="加雷马";}
+    else if (num==12){name="叹息海";}
+    else if (num==13){name="厄尔庇斯";}
+    else if (num==14){name="天外天核";}
+    else if (num==15){name="旧萨雷安";}
+    else if (num==16){name="拉札罕";}
     var csvList;
     var insert1 = '';
     var insert2 = '<ul style="top:0px;"><li style="width:250px;">物品</li><li style="width:100px;">等级</li><li style="width:100px;">货币</li></ul>';
