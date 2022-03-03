@@ -106,7 +106,7 @@ function fateshopexplain(num) {
     else if (num==11){name="加雷马";}
     else if (num==12){name="叹息海";}
     else if (num==13){name="厄尔庇斯";}
-    else if (num==14){name="天外天核";}
+    else if (num==14){name="天外天垓";}
     else if (num==15){name="旧萨雷安";}
     else if (num==16){name="拉札罕";}
     var csvList;
