@@ -65,7 +65,7 @@ function aether() {
                 $("#page_item_right").append(insert2);
             }
         });
-        open("page");
+        Windowsopen("page");
     });
     //分页
     var Page = {

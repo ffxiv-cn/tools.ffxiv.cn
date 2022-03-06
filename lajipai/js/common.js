@@ -77,10 +77,10 @@ function load() {
 function image(obj) {
     $(obj).css('animation', 'fadeInDown 0.5s ease forwards');
 }
-function open(name) {
+function Windowsopen(name) {
     $('#' + name).css('animation', 'zoomIn 0.5s ease forwards');
 }
-function close(name) {
+function Windowsclose(name) {
     $('#' + name).css('animation', 'disappear 0.5s ease forwards');
     $('#' + name).empty();
 }

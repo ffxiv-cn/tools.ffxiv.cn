@@ -31,7 +31,7 @@ function checklist() {
         });
         $('#page_explain2').append('<li><strong><span style="color:#DD7907;">※请注意可能会存在剧透的情况，介意慎用</span></strong></li>');
         checklistload("checklist4.5");
-        open("page");
+        Windowsopen("page");
     });
 }
 function checklistload(patch) {

@@ -33,7 +33,7 @@ function niaojia() {
                 $('#page_item_left ul').append(insert);
             }
         });
-        open("page");
+        Windowsopen("page");
     });    
 }
 function niaojiaexplain(num) {

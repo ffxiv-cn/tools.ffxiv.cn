@@ -94,7 +94,7 @@ function back() {
         $("#left").css("left", 0);
         $(".top_left").css("left", 0);
     }
-    open("left");
-    open("right");
+    Windowsopen("left");
+    Windowsopen("right");
     load();
 }

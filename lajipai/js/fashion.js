@@ -69,7 +69,7 @@ function fashion() {
                 Page.allContent("null");
             }
         });
-        open("page");
+        Windowsopen("page");
     });
     //分页
     var Page = {

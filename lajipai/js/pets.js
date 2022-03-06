@@ -91,7 +91,7 @@ function pets() {
                 $('#pagenum').find('li').find('b').eq(0).text(countData);
             }
         });
-        open("page");
+        Windowsopen("page");
     });
     //分页
     var Page = {

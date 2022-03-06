@@ -93,7 +93,7 @@ function music() {
                 $('#page_check').find('li').find('p').eq(1).text("/" + saveArray.length);
             }
         });
-        open("page");
+        Windowsopen("page");
     });
 
     //分页
