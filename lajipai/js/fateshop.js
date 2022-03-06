@@ -131,7 +131,7 @@ function fateshopexplain(num) {
                     $(target1).append(insert1);
                 }
                 if (csvList[i][0] == name && csvList[i][2] == "") {
-                    insert2 += '<ul style="top:0px;"><li style="width:250px;">' + csvList[i][1] + '</li><li style="width:100px;">' + csvList[i][4] + '</li><li style="width:100px;"><img alt="" src="image/logo/065071.tex.png" style="width: 20px; height: 20px;opacity: 1;vertical-align: middle;" />' + csvList[i][3] + '</li></ul>';
+                    insert2 += '<ul style="top:0px;"><li style="width:250px;"><span data-ck-item-name>' + csvList[i][1] + '</span></li><li style="width:100px;">' + csvList[i][4] + '</li><li style="width:100px;"><img alt="" src="image/logo/065071.tex.png" style="width: 20px; height: 20px;opacity: 1;vertical-align: middle;" />' + csvList[i][3] + '</li></ul>';
                 }
             }
             $(target2).empty();
