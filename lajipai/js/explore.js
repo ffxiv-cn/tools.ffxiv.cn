@@ -37,7 +37,7 @@ function explore() {
 
                 csvList = $.csv()(data);
                 for (var i = 1; i < csvList.length; i++) {
-                    if (i == 81 || i == 143 || i == 205)
+                    if (i == 81 || i == 143 || i == 205||i == 250)
                     { insert = '<li><a class="btn" onclick="exploreexplain(this,' + i + ')" target="_blank"><img src="image/explore/' + csvList[i][0] + '.png" onload="image(this)"><div class="bd"></div></a></li>'; }
                     else { insert += '<li><a class="btn" onclick="exploreexplain(this,' + i + ')" target="_blank"><img src="image/explore/' + csvList[i][0] + '.png" onload="image(this)"><div class="bd"></div></a></li>'; }
                     if (i == 80)
@@ -48,6 +48,8 @@ function explore() {
                     { infolist[3] = insert; }
                     else if (i == 249)
                     { infolist[4] = insert; }
+                    else if (i == 295)
+                    { infolist[5] = insert; }
                 }
                 Page.arr = csvList.length - 1;
                 Page.setTotalPageNums();
@@ -64,7 +66,7 @@ function explore() {
         arr: null,
         setTotalPageNums: function () {
             var pp = Page.defaultPerPageNum;
-            var pnums = 4;
+            var pnums = 5;
             var div = document.getElementById('pagenum');
             div.innerHTML = "";
             for (var i = 0; i < pnums; i++) {

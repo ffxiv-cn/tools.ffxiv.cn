@@ -29,19 +29,19 @@ function dig() {
                 infolist[3] = "";
                 infolist[4] = "";
                 for (i = 1; i < 7; i++) {
-                    infolist[1] += '<li><a class="btn" onclick="digexplain(this,' + i + ')" target="_blank"><img src="image/aether/' + (i + 6) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
+                    infolist[1] += '<li><a class="btn" onclick="digexplain(this,' + i + ')" target="_blank"><img src="image/dig/' + (i + 6) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
                 }
                 for (i = 1; i < 5; i++) {
-                    infolist[2] += '<li><a class="btn" onclick="digexplain(this,' + i + ')" target="_blank"><img src="image/aether/' + (i + 8) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
+                    infolist[2] += '<li><a class="btn" onclick="digexplain(this,' + i + ')" target="_blank"><img src="image/dig/' + (i + 8) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
                 }
                 for (i = 1; i < 7; i++) {
-                    infolist[3] += '<li><a class="btn" onclick="digexplain(this,' + i + ')" target="_blank"><img src="image/aether/' + (i + 12) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
+                    infolist[3] += '<li><a class="btn" onclick="digexplain(this,' + i + ')" target="_blank"><img src="image/dig/' + (i + 12) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
                 }
                 for (i = 1; i < 5; i++) {
-                    infolist[4] += '<li><a class="btn" onclick="digexplain(this,' + i + ')" target="_blank"><img src="image/aether/' + (i + 18) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
+                    infolist[4] += '<li><a class="btn" onclick="digexplain(this,' + i + ')" target="_blank"><img src="image/dig/' + (i + 18) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
                 }
                 for (i = 5; i < 6; i++) {
-                    infolist[4] += '<li><a class="btn" onclick="digexplain(this,' + i + ')" target="_blank"><img src="image/aether/' + (i + 19) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
+                    infolist[4] += '<li><a class="btn" onclick="digexplain(this,' + i + ')" target="_blank"><img src="image/dig/' + (i + 19) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
                 }
                 Page.setTotalPageNums();
                 Page.setClickPageNum();
