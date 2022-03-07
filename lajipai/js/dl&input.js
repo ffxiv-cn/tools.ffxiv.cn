@@ -49,3 +49,22 @@ function mountssaveData() {
     };
     $.cookie("mountssaveData", saveArray, { expires: 365, path: "/" });
 }
+//判断文件是否存在
+function suffix(path){
+    var fix;
+    for (i=1;i<4;i++)
+    {
+        if(i==1){fix='.jpeg';}
+        else if(i==2){fix='.jpg';}
+        else if(i==3){fix='.png';}
+        $.ajax({
+            url: path+ fix,
+            async: false,
+            type:'HEAD',
+            error: function() { flag =  ""; },
+            success: function() { flag =  path+fix; }
+        });
+        if(flag!= ""){break;}
+    } 
+    return flag;
+}    
