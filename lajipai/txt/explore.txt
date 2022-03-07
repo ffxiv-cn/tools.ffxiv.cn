@@ -11,4 +11,6 @@
 开通<strong><span style="color:#ff8c00;">4.0</span></strong>探索笔记内容<br />
 需要到神拳痕，完成Lv60主线<strong>「康拉德的决定」</strong>后，找到NPC「乌尔格艾恩哈特」神拳痕(X:10.5Y:13.1)，对话完毕就可以了，不需要做任务<br />
 开通<strong><span style="color:#ff8c00;">5.0</span></strong>探索笔记内容<br />
-需要到水晶都，完成Lv70主线<strong>「奔走在诺弗兰特的人们」</strong>后，找到NPC「埃拉斯」水晶都(X:9.5Y:9.7)，对话完毕就可以了，不需要做任务
+需要到水晶都，完成Lv70主线<strong>「奔走在诺弗兰特的人们」</strong>后，找到NPC「埃拉斯」水晶都(X:9.5Y:9.7)，对话完毕就可以了，不需要做任务<br />
+开通<strong><span style="color:#ff8c00;">6.0</span></strong>探索笔记内容<br />
+需要到旧萨雷安，完成Lv80主线<strong>「扬帆远航」</strong>后，找到NPC「芭蓓丝·艾恩哈特」旧萨雷安(X:13.4Y:16.9)，对话完毕就可以了，不需要做任务
