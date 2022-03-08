@@ -126,7 +126,7 @@ function exploreexplain(obj, i) {
             insert += '<img onclick="bigger(this)" style="float:right;width:112px;height:63px;" src='+suffix('image/explore/' + csvList[i][16])+' onload="image(this)">';
             insert += '<img onclick="bigger(this)" style="margin-right: 10px;float:right;width:112px;height:63px;right:10px;" src='+suffix('image/explore/' + csvList[i][15])+' onload="image(this)"></p>';
             insert += '<img style="float:left;width:40px;height:40px;opacity:1;" src='+suffix('image/action/' + csvList[i][13])+'>' + '<p style="font-size: 13px;">' + csvList[i][11] + '</p>' + '<p style="font-size: 13px;"><font color="#ff912f">' + csvList[i][12] + '</font></p>';
-            $(target).append(insert);            
+            $(target).append(insert);
         }
     });    
 }
