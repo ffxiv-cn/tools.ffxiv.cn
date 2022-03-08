@@ -11,28 +11,28 @@ $(function () {
     );
     $('#buttom').append(
         '本网页上的会社名・道具名・系统名等均为各公司的注册商标。<br>'
-        , 'Copyright 2016-2020 FFXIV.CN&FFSUSU.COM & 黄芪 & 垫小引 All rights reserved.<br>'
-        , 'FINAL FANTASY XIV 2010 - 2020 SQUARE ENIX CO., LTD. All Rights Reserved.<br>'
+        , 'Copyright 2016-2022 FFXIV.CN&FFSUSU.COM & 黄芪 & 垫小引 All rights reserved.<br>'
+        , 'FINAL FANTASY XIV 2010 - 2022 SQUARE ENIX CO., LTD. All Rights Reserved.<br>'
     );
 });
 
 function load() {
     $('#item').append(
-        '<li style="margin-right: 500px;"><a onclick="aether()"><img src="image/风脉.png"><div></div></a><p>风脉</p></li>'
+        '<li style="margin-right: 500px;"><a onclick="aether()"><img src="image/风脉.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>风脉</p></li>'
         , '<li><a onclick="pets()"><img style="animation-delay:0.6s;" src="image/宠物.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>宠物一览</p></li>'
         , '<li style="margin-right: 400px;"><a onclick="mounts()"><img style="animation-delay:0.7s;" src="image/坐骑.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>坐骑一览</p></li>'
         , '<li><a onclick="music()"><img style="animation-delay:0.7s;" src="image/乐谱.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>乐谱</p></li>'
-        , '<li><a onclick="emote()"><img style="animation-delay:0.8s;" src="image/表情一览.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>表情一览</p></li>'
+        , '<li><a onclick="emote()"><img style="animation-delay:0.8s;" src="image/表情一览.png"><div></div></a><p>表情一览</p></li>'
         , '<li style="margin-right: 300px;"><a onclick="fashion()"><img style="animation-delay:0.9s;" src="image/时尚配件.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>时尚配件</p></li>'
         , '<li><a onclick="niaojia()"><img style="animation-delay:0.8s;" src="image/鸟甲.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>鸟甲一览</p></li>'
-        , '<li><a onclick="fateshop()"><img style="animation-delay:0.9s;" src="image/危命商人.png"><div></div></a><p>危命商人</p></li>'
+        , '<li><a onclick="fateshop()"><img style="animation-delay:0.9s;" src="image/危命商人.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>危命商人</p></li>'
         , '<li><a onclick="dungeons()"><img style="animation-delay:1.0s;" src="image/副本开启.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>副本开启</p></li>'
-        , '<li style="margin-right: 200px;"><a onclick="jobtask()"><img style="animation-delay:1.1s;" src="image/职业任务.png"><div></div></a><p>职业任务</p></li>'
+        , '<li style="margin-right: 200px;"><a onclick="jobtask()"><img style="animation-delay:1.1s;" src="image/职业任务.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>职业任务</p></li>'
       //   , '<li><a onclick="bluemagic()"><img style="animation-delay:0.9s;" src="image/青魔.png"><div></div></a><p>青魔法书</p></li>'
         , '<li><a onclick="dye()"><img style="animation-delay:0.8s;" src="image/染料一览.png"><div></div></a><p>染料一览</p></li>'
-        , '<li><a onclick="dig()"><img style="animation-delay:0.9s;" src="image/藏宝图.png"><div></div></a><p>藏宝图</p></li>'
-        , '<li><a onclick="hunt()"><img style="animation-delay:1.0s;" src="image/狩猎.png"><div></div></a><p>狩猎</p></li>'
-        , '<li><a onclick="explore()"><img style="animation-delay:1.1s;" src="image/探索笔记.png"><div></div></a><p>探索笔记</p></li>'
+        , '<li><a onclick="dig()"><img style="animation-delay:0.9s;" src="image/藏宝图.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>藏宝图</p></li>'
+        , '<li><a onclick="hunt()"><img style="animation-delay:1.0s;" src="image/狩猎.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>狩猎</p></li>'
+        , '<li><a onclick="explore()"><img style="animation-delay:1.1s;" src="image/探索笔记.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>探索笔记</p></li>'
         , '<li style="margin-right: 100px;"><a><img style="animation-delay:1.2s;filter: grayscale(100%)" src="image/蛮族兑换.png"><div></div></a><p>蛮族兑换</p></li>'
         // , '<li style="width: 600px;height:20px;"><p style="text-align:center">以下广告来自谷歌推荐。<a style="width: auto;height:auto;" href="https://www.ffxiv.cn/detail/article/534" target="_blank">广告屏蔽方法与说明♂(←点击)</a></p></li>'
         // , '<li style="width: auto;height:auto;"><ins class="adsbygoogle"        style="display:block;min-height: 280px;min-width: 600px;"        data-ad-client="ca-pub-7347679321798304"        data-ad-slot="8881145961"        data-ad-format="auto"        data-full-width-responsive="true"></ins></li>'
@@ -77,10 +77,10 @@ function load() {
 function image(obj) {
     $(obj).css('animation', 'fadeInDown 0.5s ease forwards');
 }
-function open(name) {
+function Windowsopen(name) {
     $('#' + name).css('animation', 'zoomIn 0.5s ease forwards');
 }
-function close(name) {
+function Windowsclose(name) {
     $('#' + name).css('animation', 'disappear 0.5s ease forwards');
     $('#' + name).empty();
 }

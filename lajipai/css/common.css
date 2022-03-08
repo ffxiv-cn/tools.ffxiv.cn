@@ -452,12 +452,41 @@ not supported by any browser */
 {
     float: left;
     width: 230px;
-    height:16px;
+    height:16px;    
 }
 #music li a:hover 
 {
     border-radius: 15px 0px 0px 15px;    
     background: linear-gradient(to right, #000000 , rgba(0, 0, 0, 0));
+}
+#music li .loop
+{
+    position: absolute;
+    margin-left: 0px;
+    white-space: nowrap;
+    width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#music li .loop:hover
+{
+    animation: loop 3s 0s alternate ease-in-out;
+    animation-iteration-count: infinite;
+}
+#music li a div {
+    width: 180px;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    height: 16.8px;    
+    margin-left: 45.5px;
+    overflow: hidden;
+}
+#music li a div:hover
+{
+    border-radius: unset;
+    outline: none;
+    box-shadow: unset;
 }
 #music li a.completed 
 {
@@ -474,7 +503,7 @@ not supported by any browser */
     float: left;
     margin-left: 20px;
     margin-top: 0px;
-    margin-bottom: 0px;
+    margin-bottom: 0px;    
 }
 #musicplayer
 {
@@ -707,4 +736,8 @@ not supported by any browser */
 @keyframes appear {
     0% { opacity: 0;}    
     100% { opacity: 1;}
+}
+@keyframes loop {
+    0% { transform: translateX(0%);width: auto;}
+    100%{ transform: translateX(-30%);width: auto;}
 }

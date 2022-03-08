@@ -37,7 +37,7 @@ function explore() {
 
                 csvList = $.csv()(data);
                 for (var i = 1; i < csvList.length; i++) {
-                    if (i == 81 || i == 143 || i == 205)
+                    if (i == 81 || i == 143 || i == 205||i == 250)
                     { insert = '<li><a class="btn" onclick="exploreexplain(this,' + i + ')" target="_blank"><img src="image/explore/' + csvList[i][0] + '.png" onload="image(this)"><div class="bd"></div></a></li>'; }
                     else { insert += '<li><a class="btn" onclick="exploreexplain(this,' + i + ')" target="_blank"><img src="image/explore/' + csvList[i][0] + '.png" onload="image(this)"><div class="bd"></div></a></li>'; }
                     if (i == 80)
@@ -48,6 +48,8 @@ function explore() {
                     { infolist[3] = insert; }
                     else if (i == 249)
                     { infolist[4] = insert; }
+                    else if (i == 295)
+                    { infolist[5] = insert; }
                 }
                 Page.arr = csvList.length - 1;
                 Page.setTotalPageNums();
@@ -55,7 +57,7 @@ function explore() {
                 Page.allContent("null");
             }
         });
-        open("page");
+        Windowsopen("page");
     });
     //分页
     var Page = {
@@ -64,7 +66,7 @@ function explore() {
         arr: null,
         setTotalPageNums: function () {
             var pp = Page.defaultPerPageNum;
-            var pnums = 4;
+            var pnums = 5;
             var div = document.getElementById('pagenum');
             div.innerHTML = "";
             for (var i = 0; i < pnums; i++) {
@@ -115,17 +117,16 @@ function exploreexplain(obj, i) {
         url: './csv/explore.csv?' + window._ver,
         success: function (data) {
 
-            csvList = $.csv()(data);
-            insert += '<img style="float:left;width:410px;height:266px;padding: 20px 0px 0px 0px;" src=image/explore/' + csvList[i][1] + '.png onload="image(this)">';
+            csvList = $.csv()(data);            
+            insert += '<img style="float:left;width:410px;height:266px;padding: 20px 0px 0px 0px;" src='+suffix('image/explore/' + csvList[i][1])+' onload="image(this)">';
             insert += '<p style="font-size: 19px;">' + csvList[i][4] + ('000' + csvList[i][2]).slice(-3) + csvList[i][3] + '</p>';
             insert += '<p style="font-size: 11px;">' + csvList[i][14] + '</p>';
             insert += '<p style="font-size: 13px;padding:8px 0 0 0;">' + csvList[i][5] + '(X<font color="#ff912f">' + csvList[i][6] + '</font>,Y<font color="#ff912f">' + csvList[i][7] + '</font>)</p>';
             csvList[i][10] == "" ? insert += '<p style="font-size: 13px;">特殊要求：无</p>' : insert += '<p style="font-size: 13px;">' + csvList[i][10] + '<img style="width:32px;height:32px;margin: 0px 0px -10px 0;opacity:1;" src=image/weather/' + csvList[i][9] + '.png onerror=this.style.display="none"><font color="#ff912f">' + csvList[i][8] + '</font></p>';
-            insert += '<img onclick="bigger(this)" style="float:right;width:112px;height:63px;" src=image/explore/' + csvList[i][16] + '.jpeg onload="image(this)" onerror=this.src="image/explore/' + csvList[i][16] + '.jpg">';
-            insert += '<img onclick="bigger(this)" style="position: relative;float:right;width:112px;height:63px;right:10px;" src=image/explore/' + csvList[i][15] + '.jpeg onload="image(this)"  onerror=this.src="image/explore/' + csvList[i][15] + '.jpg"></p>';
-            insert += '<img style="float:left;width:40px;height:40px;opacity:1;" src=image/action/' + csvList[i][13] + '.png>' + '<p style="font-size: 13px;">' + csvList[i][11] + '</p>' + '<p style="font-size: 13px;"><font color="#ff912f">' + csvList[i][12] + '</font></p>';
-            $(target).append(insert);
+            insert += '<img onclick="bigger(this)" style="float:right;width:112px;height:63px;" src='+suffix('image/explore/' + csvList[i][16])+' onload="image(this)">';
+            insert += '<img onclick="bigger(this)" style="margin-right: 10px;float:right;width:112px;height:63px;right:10px;" src='+suffix('image/explore/' + csvList[i][15])+' onload="image(this)"></p>';
+            insert += '<img style="float:left;width:40px;height:40px;opacity:1;" src='+suffix('image/action/' + csvList[i][13])+'>' + '<p style="font-size: 13px;">' + csvList[i][11] + '</p>' + '<p style="font-size: 13px;"><font color="#ff912f">' + csvList[i][12] + '</font></p>';
+            $(target).append(insert);            
         }
-
-    });
+    });    
 }

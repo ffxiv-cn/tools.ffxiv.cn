@@ -32,7 +32,7 @@ function dye() {
         insert += '<a style="float:left;background-position-x: -350px;" class="off">8</a>';
         $("#typenum").append(insert);
         page();
-        open("page");
+        Windowsopen("page");
     });
 }
 function page() {

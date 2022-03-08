@@ -27,6 +27,15 @@ function fashion() {
             dataType: 'text',
             success: function (data) {
                 $('#page_explain').append(data);
+                /* $('#page_explain').append(
+                    '<li><div class="switch-box is-info"></div></li>'
+                );
+                $('div.switch-box').append(
+                    '<label for="info" class="switch-box-label" style="margin-right: 15px;">查看</label>',
+                    '<input id="info" class="switch-box-input" type="checkbox"/>',
+                    '<label for="info" class="switch-box-slider"></label>',
+                    '<label for="info" class="switch-box-label">勾选</label>'
+                ); */
             }
         });
         var csvList;
@@ -60,7 +69,7 @@ function fashion() {
                 Page.allContent("null");
             }
         });
-        open("page");
+        Windowsopen("page");
     });
     //分页
     var Page = {

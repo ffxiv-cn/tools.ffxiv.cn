@@ -46,14 +46,17 @@ function jobtask() {
                 Page.allContent("null");
             }
         });
-        open("page");
+        Windowsopen("page");
     });
     //分页
     var Page = {
         //每页内容数目    
         setTotalPageNums: function () {
             var insert = '';            
-            for (var i = 1; i < 5; i++) {
+            for (var i = 1; i < 4; i++) {
+                insert += '<a style="float:left;" class="off"><img src="image/jobtask/job/9' + i + '.png" onload="image(this)">9' + i + '<div class="bd"></div></a>';
+            }
+            for (var i = 5; i > 3; i--) {
                 insert += '<a style="float:left;" class="off"><img src="image/jobtask/job/9' + i + '.png" onload="image(this)">9' + i + '<div class="bd"></div></a>';
             }
             $("#typenum_1").append(insert);
@@ -61,12 +64,16 @@ function jobtask() {
             for (var i = 1; i < 5; i++) {
                 insert += '<a style="float:left;" class="off"><img src="image/jobtask/job/1' + i + '.png" onload="image(this)">1' + i + '<div class="bd"></div></a>';
             }
-            for (var i = 1; i < 4; i++) {
+            for (var i = 1; i < 5; i++) {
                 insert += '<a style="float:left;" class="off"><img src="image/jobtask/job/2' + i + '.png" onload="image(this)">2' + i + '<div class="bd"></div></a>';
             }
             $("#typenum_2").append(insert);
             insert = '';
-            for (var i = 1; i < 11; i++) {
+            for (var i = 1; i < 5; i++) {
+                insert += '<a style="float:left;" class="off"><img src="image/jobtask/job/3' + i + '.png" onload="image(this)">3' + i + '<div class="bd"></div></a>';
+            }
+                insert += '<a style="float:left;" class="off"><img src="image/jobtask/job/40.png" onload="image(this)">40<div class="bd"></div></a>';
+            for (var i = 5; i < 10; i++) {
                 insert += '<a style="float:left;" class="off"><img src="image/jobtask/job/3' + i + '.png" onload="image(this)">3' + i + '<div class="bd"></div></a>';
             }
             $("#typenum_3").append(insert);

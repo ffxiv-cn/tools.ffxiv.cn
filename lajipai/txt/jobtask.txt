@@ -2,7 +2,5 @@
 因<strong>1-30</strong>任务皆在各职业公会处接取，所以<strong>1-30</strong>不做任务引导<br />
 因<strong>60-70</strong>的职业任务是由NPC提供材料做任务道具，所以也不会有缴纳物品提供<br />
 <br />
-<strong><span style="color:#ff8c00;">5.0职能任务</span></strong>分四个职业的职能任务，分别为坦克、治疗、物理、法系；分为70/72/74/76/78/80级接取<br />
-<br />
-<strong><span style="color:#ff8c00;">5.0职业任务</span></strong>各职业只有一个80级的职业任务<br />
-<strong>前置条件：</strong>完成所属80级职能任务、完成4.0版本70级的职业任务、完成主线漆黑之逆焰
+<strong><span style="color:#ff8c00;">5.0职能任务</span></strong>分四个职能的任务，分别为坦克、治疗、物理、法系；分为70/72/74/76/78/80级接取<br />
+<strong><span style="color:#ff8c00;">6.0职能任务</span></strong>分五个职能的任务，分别为坦克、治疗、近战、远敏、法系；分为85/86/87/88/89/90级接取<br />

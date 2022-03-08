@@ -27,6 +27,15 @@ function mounts() {
             dataType: 'text',
             success: function (data) {
                 $('#page_explain').append(data);
+                $('#page_explain').append(
+                    '<li><div class="switch-box is-info"></div></li>'
+                );
+                $('div.switch-box').append(
+                    '<label for="info" class="switch-box-label" style="margin-right: 15px;">查看</label>',
+                    '<input id="info" class="switch-box-input" type="checkbox"/>',
+                    '<label for="info" class="switch-box-slider"></label>',
+                    '<label for="info" class="switch-box-label">勾选</label>'
+                );
             }
         });
         var csvList;
@@ -54,33 +63,21 @@ function mounts() {
                 Page.allContent("null");
                 var info = $.cookie("mountssaveData");
                 var info2 = window.localStorage.getItem('mountssaveData');
+                Page.allContent("null");
                 var info3 = window.localStorage.getItem('p&msaveData');
                 var countData = 0;
-                //无数据时制作空的cookie
-                if (info !== undefined) {
-                    info2 = JSON.stringify(info);
-                    window.localStorage.setItem('mountssaveData', info2);
-                    $.removeCookie("mountssaveData")
-                }
-                if (info2 == undefined) {
-                    var saveArray = [];
-                    for (var i = 1; i < csvList.length; i++) { saveArray.push(0); }
-                    info2 = JSON.stringify(info);
-                    window.localStorage.setItem('mountssaveData', JSON.stringify(saveArray));
-                }
+                //无数据时制作空的cookie                
                 if (info3 == undefined) {
                     var saveArray = [];
                     for (var i = 1; i < 1000; i++) { saveArray.push(0); }                    
                     window.localStorage.setItem('p&msaveData', JSON.stringify(saveArray));
-                }
+                }               
                 //给saveArray赋值
                 if (info3 !== undefined) {
                     var saveArray = JSON.parse(info3);
                     //统计已获得数目
                     //新方法
-                    for (var i = 0; i < 400; i++) {
-                    //旧方法
-                    //for (var i = 0; i < csvList.length; i++) {
+                    for (var i = 0; i < 400; i++) {                    
                         if (saveArray[i] == '1') {
                             countData++;
                         };
@@ -91,7 +88,7 @@ function mounts() {
                 $('#pagenum').find('li').find('b').eq(0).text(countData);
             }
         });
-        open("page");
+        Windowsopen("page");
     });
     //分页
     var Page = {
@@ -110,7 +107,8 @@ function mounts() {
                 div.appendChild(a);
             }
             $('#pagenum').append(
-                '<li style="position: relative;padding-right: 30px;float: right;"><p style="float: left;">统计：</p><b style="float: left;color: #f80;">999</b><p style="float: left;">/1000</p></li>'
+                '<li style="position: relative;padding-right: 30px;float: right;"><p style="float: left;">统计：</p><b style="float: left;color: #f80;">999</b><p style="float: left;">/1000</p></li>',
+                '<li style="position: relative;float: right;height: 20px;padding-right: 10px;"><a style="height: 20px;top: -5px;" onclick="localStorageDownload()"><img style="width: 20px;" src="image/导出.png"></a><span style="position: relative;display: inline-block;overflow: hidden;"><span><img style="height: 20px;" src="image/导入.png"></span><input type="file" id="file" accept=".txt" style="position: absolute;right: 0px;top: 0px;" onchange="localStorageInput(mounts)" "></input></span></li>'
             );
             Page.setClickPageNum();
         },
@@ -142,31 +140,38 @@ function mounts() {
             //            $('a.btn:first').click();
             //            $('a.btn:first').find('.bd').addClass('Selected');
             //保存クッキーの展開
-            //新方法的判断
-            if (window.localStorage.getItem("p&msaveData")) {
-                //旧方法的判断
-            //if (window.localStorage.getItem('mountssaveData')) {
+            //新方法的判断            
+            if (window.localStorage.getItem("p&msaveData")) {                
                 //新方法按编号来存的数组
                 var saveArray = JSON.parse(window.localStorage.getItem('p&msaveData'));
-                //旧方法按顺序来存的数组
-                //var saveArray = JSON.parse(window.localStorage.getItem('mountssaveData'));
-                //var countData = $('#mounts').find('li').find('a').length;
                 for (var i = 1; i < saveArray.length + 1; i++) {
                     //新方法按编号来
                     if(saveArray[i]=="1"){
                         $('#'+i+'').addClass('completed')
-                    }
-                    //旧方法按顺序来
-                    // if (saveArray[i - 1] == '1') {
-                    //     //遍历全元素按id对特定id的元素进行变化
-                    //     $('#mounts').find('li').find('a').filter('#' + i + '').addClass('completed');
-                    // };
+                    } 
                 };
             }
         }
     };
 }
 function mountexplain(obj, i) {
+    var info=document.getElementById("info").checked;
+    if(info==true){
+    //点击时变更状态
+    var num = $(obj).attr('id');
+    var saveArray = JSON.parse(window.localStorage.getItem('p&msaveData'));    
+    if ($(obj).hasClass('completed')) { $(obj).removeClass('completed'); saveArray[num] = 0; }
+    else { $(obj).addClass('completed'); saveArray[num] = 1; }    
+    window.localStorage.setItem('p&msaveData', JSON.stringify(saveArray))
+    //统计已获得数目
+    var countData = 0;
+    for (var n = 0; n < 400; n++) {
+        if (saveArray[n] == '1') { countData++; };
+    };
+    //更新计数统计
+    $('#pagenum').find('li').find('b').eq(0).text(countData);
+    }
+    else{
     var csvList;
     var insert = '';
     var target = '#page_item_right';
@@ -190,34 +195,6 @@ function mountexplain(obj, i) {
         }
 
     });
-    //点击时变更状态
-    var num = $(obj).attr('id');
-    var saveArray = JSON.parse(window.localStorage.getItem('p&msaveData'));
-    //var saveArray = JSON.parse(window.localStorage.getItem('mountssaveData'));
-    if ($(obj).hasClass('completed')) { $(obj).removeClass('completed'); saveArray[num] = 0; }
-    else { $(obj).addClass('completed'); saveArray[num] = 1; }
-    //$.cookie("mountssaveData", saveArray, { expires: 365, path: "/" });
-    window.localStorage.setItem('p&msaveData', JSON.stringify(saveArray))
-    //window.localStorage.setItem('mountssaveData', JSON.stringify(saveArray))
-    //统计已获得数目
-    var countData = 0;
-    for (var n = 0; n < 400; n++) {
-        if (saveArray[n] == '1') { countData++; };
-    };
-    //更新计数统计
-    $('#pagenum').find('li').find('b').eq(0).text(countData);
-}
-//保存cookie
-function mountssaveData() {
-    var countcheck = $('#mounts').find('li').find('a').length;
-    var saveArray = [];
-    for (var i = 0; i < countcheck; i++) {
-        //            var id = ('000' + (i + 1)).slice(-3);
-        if ($('#mounts').find('li').find('a').eq(i).hasClass('completed')) {
-            saveArray.push(1);
-        } else {
-            saveArray.push(0);
-        };
-    };
-    $.cookie("mountssaveData", saveArray, { expires: 365, path: "/" });
+    }
+    
 }

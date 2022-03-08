@@ -15,7 +15,7 @@ function dungeons() {
         $("#page").empty();
         $('#page').append(
         '<ul id="page_itemtop"></ul>'
-        , '<ul id="page_check" style="height:100px;"><div id="pagenum" class="pagenum" style="width: 900px;"></div></ul>'
+        , '<ul id="page_check" style="height:100px;"><div id="pagenum" class="pagenum" style="width: 900px;margin-left: 45px;"></div></ul>'
         , '<ul id="page_item"><li id="page_item_left" style="min-height: 560px;width: 500px;border-right: 1px solid rgba(42,42,41,1);box-shadow: 1px 1px 0px rgba(67,67,67,1);"><ul style="width: 500px;top:0px;text-align: center;" id="dungeonstype"></ul><ul style="width: 500px;top:0px;padding-top: 20px;" id="music"></ul></li><li id="page_item_right" style="width: 450px;"></li></ul>'
         );
         $('#page_itemtop').append(
@@ -27,18 +27,9 @@ function dungeons() {
             success: function (data) {
 
                 csvList = $.csv()(data);
-                infolist[21] = "";
-                infolist[31] = "";
-                infolist[41] = "";
-                infolist[51] = "";
-                infolist[22] = "";
-                infolist[32] = "";
-                infolist[42] = "";
-                infolist[52] = "";
-                infolist[23] = "";
-                infolist[33] = "";
-                infolist[43] = "";
-                infolist[53] = "";
+                for (var i=20;i<100;i++){
+                    infolist[i]="";
+                }
                 for (var i = 1; i < csvList.length; i++) {
                     var num = csvList[i][9] + csvList[i][10];
                     infolist[num] += '<li><a class="btn" onclick="dungeonsexplain(this,' + i + ')" target="_blank"><p>' + csvList[i][2] + '</p></a></li>';
@@ -53,7 +44,7 @@ function dungeons() {
                 Page.allContent("null");
             }
         });
-        open("page");
+        Windowsopen("page");
     });
 
     //分页
@@ -61,10 +52,11 @@ function dungeons() {
         //每页内容数目    
         setTotalPageNums: function () {
             var insert = '';
-            insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/5.0.jpg);margin-right: 20px;margin-left: 10px;" class="off"><p style="top: 55px;position: relative;">5.0<p><div class="bd"></div></a>';
+            insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/6.0.jpg);margin-right: 20px;margin-left: 20px;" class="off"><p style="top: 55px;position: relative;">6.0<p><div class="bd"></div></a>';
+            insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/5.0.jpg);margin-right: 20px;" class="off"><p style="top: 55px;position: relative;">5.0<p><div class="bd"></div></a>';
             insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/4.0.jpg);margin-right: 20px;" class="off"><p style="top: 55px;position: relative;">4.0<p><div class="bd"></div></a>';
             insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/3.0.jpg);margin-right: 20px;" class="off"><p style="top: 55px;position: relative;">3.0<p><div class="bd"></div></a>';
-            insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/2.0.jpg);margin-right: 20px;" class="off"><p style="top: 55px;position: relative;">2.0<p><div class="bd"></div></a>';
+            insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/2.0.jpg);margin-right: 20px;margin-left: 20px;margin-top: 20px;" class="off"><p style="top: 55px;position: relative;">2.0<p><div class="bd"></div></a>';
             $("#pagenum").append(insert);
             Page.setClickPageNum();
         },
@@ -90,7 +82,8 @@ function dungeons() {
                 divb.className = "on";
             }
             var pg = $('#pagenum a.on').text(); // 1 2 3
-            if (pg == "5.0") { pg = "5"; }
+            if (pg == "6.0") { pg = "6"; }
+            else if (pg == "5.0") { pg = "5"; }
             else if (pg == "4.0") { pg = "4"; }
             else if (pg == "3.0") { pg = "3"; }
             else if (pg == "2.0") { pg = "2"; }
@@ -102,7 +95,8 @@ function dungeons() {
     dungeons = function (i) {
         var target = '#music';
         var pg = $('#pagenum a.on').text();
-        if (pg == "5.0") { pg = "5"; }
+        if (pg == "6.0") { pg = "6"; }
+        else if (pg == "5.0") { pg = "5"; }
         else if (pg == "4.0") { pg = "4"; }
         else if (pg == "3.0") { pg = "3"; }
         else if (pg == "2.0") { pg = "2"; }
