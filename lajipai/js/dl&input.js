@@ -59,7 +59,7 @@ function suffix(path){
         else if(i==3){fix='.png';}
         $.ajax({
             url: path+ fix,
-            async: true,
+            async: false,
             type:'HEAD',
             error: function() { flag =  ""; },
             success: function() { flag =  path+fix; }
