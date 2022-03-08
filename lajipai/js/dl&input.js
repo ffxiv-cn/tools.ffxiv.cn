@@ -67,4 +67,4 @@ function suffix(path){
         if(flag!= ""){break;}
     } 
     return flag;
-}    
+} 
