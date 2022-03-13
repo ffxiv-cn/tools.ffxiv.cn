@@ -61,8 +61,6 @@ function mounts() {
                 Page.setTotalPageNums();
                 Page.setClickPageNum();
                 Page.allContent("null");
-                var info = $.cookie("mountssaveData");
-                var info2 = window.localStorage.getItem('mountssaveData');
                 Page.allContent("null");
                 var info3 = window.localStorage.getItem('p&msaveData');
                 var countData = 0;

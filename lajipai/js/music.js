@@ -71,23 +71,21 @@ function music() {
                 Page.setTotalPageNums();
                 Page.setClickPageNum();
                 Page.allContent("null");
-                var info = $.cookie("musicsaveData");
+                var info = window.localStorage.getItem('musicsaveData');
                 var countData = 0;
                 //无数据时制作空的cookie
-                if ($.cookie("musicsaveData") == undefined) {
+                if (info == undefined) {
                     var saveArray = [];
                     for (var i = 1; i < csvList.length; i++) { saveArray.push(0); }
-                    $.cookie("musicsaveData", saveArray, { expires: 365, path: "/" });
+                    window.localStorage.setItem('musicsaveData', JSON.stringify(saveArray));
                 }
                 //统计已获得数目
-                if ($.cookie("musicsaveData")) {
-                    var saveArray = $.cookie("musicsaveData");
-                    for (var i = 0; i < csvList.length; i++) {
-                        if (saveArray[i] == '1') {
-                            countData++;
-                        };
+                var saveArray =  JSON.parse(info);
+                for (var i = 0; i < csvList.length; i++) {
+                    if (saveArray[i] == '1') {
+                        countData++;
                     };
-                }
+                };
                 //刷新计数统计的数据
                 $('#page_check').find('li').find('b').eq(0).text(countData);
                 $('#page_check').find('li').find('p').eq(1).text("/" + saveArray.length);
@@ -143,10 +141,10 @@ function music() {
             for (var i = 0; i < pg; i++) {
                 pgnum = pgnum + infonum[i];
             }
+            var info = window.localStorage.getItem('musicsaveData');
             //保存クッキーの展開
-            if ($.cookie("musicsaveData")) {
-                var saveArray = $.cookie("musicsaveData");
-                var countData = $('#music').find('li').find('a').length;                
+            if (info !== undefined) {
+                var saveArray = JSON.parse(info);
                 for (var i = 1; i < saveArray.length + 1; i++) {
                     if (saveArray[i - 1] == '1') {
                         //遍历全元素按id对特定id的元素进行变化
@@ -164,10 +162,11 @@ function musicexplain(obj, i) {
     var info=document.getElementById("info").checked;
     if(info==true){
     //点击时变更状态
-    var saveArray = $.cookie("musicsaveData");
+    var info2 = window.localStorage.getItem('musicsaveData');
+    var saveArray = JSON.parse(info2);
     if ($(obj).hasClass('completed')) { $(obj).removeClass('completed'); saveArray[i - 1] = 0; }
     else { $(obj).addClass('completed'); saveArray[i - 1] = 1; }
-    $.cookie("musicsaveData", saveArray, { expires: 365, path: "/" });
+    window.localStorage.setItem('musicsaveData', JSON.stringify(saveArray));
     //统计已获得数目
     var countData = 0;
     for (var n = 0; n < saveArray.length; n++) {
@@ -210,5 +209,5 @@ function musicsaveData() {
             saveArray.push(0);
         };
     };
-    $.cookie("musicsaveData", saveArray, { expires: 365, path: "/" });
+    window.localStorage.setItem('musicsaveData', JSON.stringify(saveArray));
 }
