@@ -87,8 +87,9 @@ function music() {
                     };
                 };
                 //刷新计数统计的数据
+                var tnum = csvList.length-1;
                 $('#page_check').find('li').find('b').eq(0).text(countData);
-                $('#page_check').find('li').find('p').eq(1).text("/" + saveArray.length);
+                $('#page_check').find('li').find('p').eq(1).text("/" + tnum);
             }
         });
         Windowsopen("page");
