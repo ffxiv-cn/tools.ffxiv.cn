@@ -108,8 +108,8 @@ function music() {
             insert += '<a style="float:left;background: url(./image/music/082026.png) -6px -6px no-repeat;" class="off">6<div class="bd"><p style="width: 55px;">大型任务II</p></div></a>';
             insert += '<a style="float:left;background: url(./image/music/082028.png) -6px -6px no-repeat;" class="off">7<div class="bd"><p>环境音</p></div></a>';
             insert += '<a style="float:left;background: url(./image/music/082029.png) -6px -6px no-repeat;" class="off">8<div class="bd"><p>其他</p></div></a>';
-            insert += '<a style="float:left;background: url(./image/music/082031.png) -6px -6px no-repeat;" class="off">9<div class="bd"><p>季节活动</p></div></a>';
-            insert += '<a style="float:left;background: url(./image/music/082021.png) -6px -6px no-repeat;" class="off">10<div class="bd"><p>商城购买</p></div></a>';
+            insert += '<a style="float:left;background: url(./image/music/082030.png) -6px -6px no-repeat;" class="off">9<div class="bd"><p>季节活动</p></div></a>';
+            insert += '<a style="float:left;background: url(./image/music/082031.png) -6px -6px no-repeat;" class="off">10<div class="bd"><p>商城购买</p></div></a>';
             $("#typenum").append(insert);
             Page.setClickPageNum();
         },
