@@ -29,7 +29,7 @@ function aether() {
         insert2 += '<p class="explain-main"><span style="color:#ff0000;">Q：什么是风脉？</span></p>';
         insert2 += '<p class="explain-main">A：风脉是野外地图飞行的必要条件之一</p>';
         insert2 += '<p class="explain-main">10个分布在该地图各个角落的[风脉泉]</p>';
-        insert2 += '<p class="explain-main">　　-3.0~5.0地图只有5个[风脉泉]</p>';
+        insert2 += '<p class="explain-main">　　-3.0~5.0地图只有4个[风脉泉]</p>';
         insert2 += '<p class="explain-main">4个完成该地图指定的支线任务送的[风脉泉]</p>';
         insert2 += '<p class="explain-main">1个指定主线任务送的[风脉泉]</p>';
         insert2 += '<p class="explain-main">完成以上累积15个[风脉泉]就可以飞该张图了</p>';
