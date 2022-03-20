@@ -129,8 +129,14 @@ function aetherexplain(obj, i) {
             csvList = $.csv()(data);
             csvList[i][0] == "" ? insert += '<p style="font-size: 19px;">全部由主线触发</p>' : insert += '<img onclick="bigger(this)" style="float:left;width:340px;"src="image/aether/' + csvList[i][0] + '.jpeg" onerror=this.style="display:none;">';
             insert += '<ul style="top:0px;">';
-            if (csvList[i][0] != ""){
+            if (csvList[i][0] != ""&&i>=19){
                 for (var n = 1; n < 11; n++) {
+                insert += '<div style="float:left;width:100px;height:70px;text-align:center;"><img onclick="bigger(this)" style="width:80px;"src="image/aether/' + csvList[i][0] + n + '.jpg" onerror=this.style="display:none;">';
+                csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
+                }
+            }
+            else if(csvList[i][0] != ""&&i<19){
+                for (var n = 1; n < 5; n++) {
                 insert += '<div style="float:left;width:100px;height:70px;text-align:center;"><img onclick="bigger(this)" style="width:80px;"src="image/aether/' + csvList[i][0] + n + '.jpg" onerror=this.style="display:none;">';
                 csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
                 }
