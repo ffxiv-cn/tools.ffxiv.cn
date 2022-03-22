@@ -58,11 +58,13 @@
       if(mountssaveData !== undefined){
         window.localStorage.setItem('p&msaveData', JSON.stringify(mountssaveData));
         $.cookie("mountssaveData","",{ expires:0 });
+        $.cookie("mountssaveData","",{ expires:0, path: '/' });
       }
       var musicsaveData = $.cookie("musicsaveData");
       if(musicsaveData !== undefined){
         window.localStorage.setItem('musicsaveData', JSON.stringify(musicsaveData));
         $.cookie("musicsaveData","",{ expires:0 });
+        $.cookie("musicsaveData","",{ expires:0, path: '/'});
       }
     }
     moveCookieToLocalStorage();
