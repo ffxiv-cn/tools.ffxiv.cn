@@ -55,8 +55,8 @@ function dig() {
         //每页内容数目   
         setTotalPageNums: function () {
             var insert = '';
-            insert += '<a style="float:left;width:100px;" class="off">高鼻羚羊革</a>';
             insert += '<a style="float:left;width:100px;" class="off">金毗罗鳄革</a>';
+            insert += '<a style="float:left;width:100px;" class="off">高鼻羚羊革</a>';
             insert += '<a style="float:left;width:100px;" class="off">缠尾蛟革</a>';
             insert += '<a style="float:left;width:100px;" class="off">绿飘龙革</a>';
             insert += '<a style="float:left;width:100px;" class="off">深层绿图</a>';
