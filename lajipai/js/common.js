@@ -5,7 +5,7 @@ $(function () {
     // html生成
     $('#top').append(
         '<a class="top_left" href="./index.html" onfocus="this.blur();">素素辣鸡排</a>&nbsp;&nbsp;&nbsp;&nbsp;'
-        , '<a class="top_right" href="http://v6.ffxiv.xin" target="_blank" onfocus="this.blur();">配方计算器</a>'
+        , '<a class="top_right" href="https://5p.nbbjack.com" target="_blank" onfocus="this.blur();">配方计算器</a>'
         , '<a class="top_right" href="https://caiji.ffxiv.cn/" target="_blank" onfocus="this.blur();">采集时钟</a>'
         , '<a class="top_right" href="https://www.ffxiv.cn" target="_blank" onfocus="this.blur();">攻略站</a>'
     );
