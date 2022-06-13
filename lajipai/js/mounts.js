@@ -65,13 +65,14 @@ function mounts() {
                 var info3 = window.localStorage.getItem('p&msaveData');
                 var countData = 0;
                 //无数据时制作空的cookie                
-                if (info3 == undefined) {
+                if (info3 == null) {
                     var saveArray = [];
                     for (var i = 1; i < 1000; i++) { saveArray.push(0); }                    
                     window.localStorage.setItem('p&msaveData', JSON.stringify(saveArray));
+                    info3 = '"'+saveArray+'"';
                 }               
                 //给saveArray赋值
-                if (info3 !== undefined) {
+                if (info3 !== null) {
                     var saveArray = JSON.parse(info3);
                     //统计已获得数目
                     //新方法
