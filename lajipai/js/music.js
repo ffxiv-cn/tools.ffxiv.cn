@@ -74,10 +74,11 @@ function music() {
                 var info = window.localStorage.getItem('musicsaveData');
                 var countData = 0;
                 //无数据时制作空的cookie
-                if (info == undefined) {
+                if (info == null) {
                     var saveArray = [];
                     for (var i = 1; i < csvList.length; i++) { saveArray.push(0); }
                     window.localStorage.setItem('musicsaveData', JSON.stringify(saveArray));
+                    info = '"'+saveArray+'"';
                 }
                 //统计已获得数目
                 var saveArray =  JSON.parse(info);
@@ -144,7 +145,7 @@ function music() {
             }
             var info = window.localStorage.getItem('musicsaveData');
             //保存クッキーの展開
-            if (info !== undefined) {
+            if (info !== null) {
                 var saveArray = JSON.parse(info);
                 for (var i = 1; i < saveArray.length + 1; i++) {
                     if (saveArray[i - 1] == '1') {
