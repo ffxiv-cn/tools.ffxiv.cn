@@ -1,1 +1,1 @@
-<li><img src="image/logo/lv1.png"><p>为国服当前版本实装</p></li><li><img src="image/logo/lv2.png"><p>为国际服已实装</p></li><li><img src="image/logo/lv3.png"><p>为国际服即将实装</p></li>
+<li><img src="image/logo/lv1.png"><p>为国服当前版本实装</p></li><li><img src="image/logo/lv2.png"><p>为国际服已实装</p></li><li><img src="image/logo/lv3.png"><p>为国际服未实装</p></li>
