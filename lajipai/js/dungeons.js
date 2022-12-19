@@ -38,6 +38,7 @@ function dungeons() {
                 '<li><a style="float:left;width:32px;height: 32px;background-image: url(image/dungeons/迷宫挑战.png);margin-right: 20px;margin-left: 10px;" onclick="dungeons(1)" class="on"><div class="bd"></div></a></li>'
                 , '<li><a style="float:left;width:32px;height: 32px;background-image: url(image/dungeons/讨伐歼灭战.png);margin-right: 20px;" onclick="dungeons(2)" class="off"><div class="bd"></div></a></li>'
                 , '<li><a style="float:left;width:32px;height: 32px;background-image: url(image/dungeons/大型任务.png);margin-right: 20px;" onclick="dungeons(3)" class="off"><div class="bd"></div></a></li>'
+                , '<li><a style="float:left;width:32px;height: 32px;background-image: url(image/dungeons/特殊副本探索.png);margin-right: 20px;" onclick="dungeons(4)" class="off"><div class="bd"></div></a></li>'
                 );
                 Page.setTotalPageNums();
                 Page.setClickPageNum();
@@ -100,6 +101,8 @@ function dungeons() {
         else if (pg == "4.0") { pg = "4"; }
         else if (pg == "3.0") { pg = "3"; }
         else if (pg == "2.0") { pg = "2"; }
+        if(pg == "6"){$("#dungeonstype li:nth-child(4)").css("display", "inline-block");}
+        else{$("#dungeonstype li:nth-child(4)").css("display", "none");}
         var num = pg + i;
         var sel = i - 1;
         $('#dungeonstype a:not(' + sel + ')').removeClass();
