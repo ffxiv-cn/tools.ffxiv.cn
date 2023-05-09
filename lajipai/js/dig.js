@@ -14,7 +14,7 @@ function dig() {
     $("#page").empty();
     $('#page').append(
     '<ul id="page_itemtop"></ul>'
-    , '<ul id="page_check" style="height:200px;"><div style="padding-left:50px;" id="pagenum"></div><ul style="padding-left: 20px;top:0px;" id="aether"></ul></ul>'
+    , '<ul id="page_check" style="height:200px;"><div style="padding-left:50px;padding-top: 10px;" id="pagenum"></div><ul style="padding-left: 20px;padding-top: 10px;top:0px;" id="aether"></ul></ul>'
     , '<ul id="page_item" style="min-height:560px;"><li style="padding-right: 160px; padding-left: 160px;position: relative;"></li></ul>'
     );
     $('#page_itemtop').append(
