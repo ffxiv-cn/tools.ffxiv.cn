@@ -104,15 +104,15 @@ function music() {
             insert += '<a style="float:left;background: url(./image/music/082022.png) -6px -6px no-repeat;" class="off">1<div class="bd"><p style="width: 55px;">区域场景I</p></div></a>';
             insert += '<a style="float:left;background: url(./image/music/082023.png) -6px -6px no-repeat;" class="off">2<div class="bd"><p style="width: 55px;">区域场景II</p></div></a>';
             insert += '<a style="float:left;background: url(./image/music/082024.png) -6px -6px no-repeat;" class="off">3<div class="bd"><p>迷宫挑战I</p></div></a>';
-            insert += '<a style="float:left;background: url(./image/music/082033.png) -6px -6px no-repeat;" class="off">3<div class="bd"><p>迷宫挑战II</p></div></a>';
-            insert += '<a style="float:left;background: url(./image/music/082027.png) -6px -6px no-repeat;" class="off">4<div class="bd"><p>讨伐歼灭</p></div></a>';
-            insert += '<a style="float:left;background: url(./image/music/082025.png) -6px -6px no-repeat;" class="off">5<div class="bd"><p style="width: 55px;">大型任务I</p></div></a>';
-            insert += '<a style="float:left;background: url(./image/music/082026.png) -6px -6px no-repeat;" class="off">6<div class="bd"><p style="width: 55px;">大型任务II</p></div></a>';
-            insert += '<a style="float:left;background: url(./image/music/082028.png) -6px -6px no-repeat;" class="off">7<div class="bd"><p>环境音</p></div></a>';
-            insert += '<a style="float:left;background: url(./image/music/082036.png) -6px -6px no-repeat;" class="off">7<div class="bd"><p>任务相关</p></div></a>';
-            insert += '<a style="float:left;background: url(./image/music/082029.png) -6px -6px no-repeat;" class="off">8<div class="bd"><p>其他</p></div></a>';
-            insert += '<a style="float:left;background: url(./image/music/082030.png) -6px -6px no-repeat;" class="off">9<div class="bd"><p>季节活动</p></div></a>';
-            insert += '<a style="float:left;background: url(./image/music/082031.png) -6px -6px no-repeat;" class="off">10<div class="bd"><p>商城购买</p></div></a>';
+            insert += '<a style="float:left;background: url(./image/music/082033.png) -6px -6px no-repeat;" class="off">4<div class="bd"><p>迷宫挑战II</p></div></a>';
+            insert += '<a style="float:left;background: url(./image/music/082027.png) -6px -6px no-repeat;" class="off">5<div class="bd"><p>讨伐歼灭</p></div></a>';
+            insert += '<a style="float:left;background: url(./image/music/082025.png) -6px -6px no-repeat;" class="off">6<div class="bd"><p style="width: 55px;">大型任务I</p></div></a>';
+            insert += '<a style="float:left;background: url(./image/music/082026.png) -6px -6px no-repeat;" class="off">7<div class="bd"><p style="width: 55px;">大型任务II</p></div></a>';
+            insert += '<a style="float:left;background: url(./image/music/082028.png) -6px -6px no-repeat;" class="off">8<div class="bd"><p>环境音</p></div></a>';
+            insert += '<a style="float:left;background: url(./image/music/082036.png) -6px -6px no-repeat;" class="off">9<div class="bd"><p>任务相关</p></div></a>';
+            insert += '<a style="float:left;background: url(./image/music/082029.png) -6px -6px no-repeat;" class="off">10<div class="bd"><p>其他</p></div></a>';
+            insert += '<a style="float:left;background: url(./image/music/082030.png) -6px -6px no-repeat;" class="off">11<div class="bd"><p>季节活动</p></div></a>';
+            insert += '<a style="float:left;background: url(./image/music/082031.png) -6px -6px no-repeat;" class="off">12<div class="bd"><p>商城购买</p></div></a>';
             $("#typenum").append(insert);
             Page.setClickPageNum();
         },
