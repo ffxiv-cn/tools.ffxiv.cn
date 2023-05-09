@@ -30,7 +30,7 @@ function load() {
         , '<li style="margin-right: 200px;"><a onclick="jobtask()"><img style="animation-delay:1.1s;" src="image/职业任务.png"><div></div></a><p>职业任务</p></li>'
       //   , '<li><a onclick="bluemagic()"><img style="animation-delay:0.9s;" src="image/青魔.png"><div></div></a><p>青魔法书</p></li>'
         , '<li><a onclick="dye()"><img style="animation-delay:0.8s;" src="image/染料一览.png"><div></div></a><p>染料一览</p></li>'
-        , '<li><a onclick="dig()"><img style="animation-delay:0.9s;" src="image/藏宝图.png"><div></div></a><p>藏宝图</p></li>'
+        , '<li><a onclick="dig()"><img style="animation-delay:0.9s;" src="image/藏宝图.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>藏宝图</p></li>'
         , '<li><a onclick="hunt()"><img style="animation-delay:1.0s;" src="image/狩猎.png"><div></div></a><p>狩猎</p></li>'
         , '<li><a onclick="explore()"><img style="animation-delay:1.1s;" src="image/探索笔记.png"><div></div></a><p>探索笔记</p></li>'
         , '<li style="margin-right: 100px;"><a><img style="animation-delay:1.2s;filter: grayscale(100%)" src="image/蛮族兑换.png"><div></div></a><p>蛮族兑换</p></li>'
