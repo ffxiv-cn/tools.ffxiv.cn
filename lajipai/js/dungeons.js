@@ -54,11 +54,11 @@ function dungeons() {
         setTotalPageNums: function () {
             var insert = '';
             insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/7.0.jpg);margin-right: 20px;margin-left: 20px;" class="off"><p style="top: 55px;position: relative;">7.0<p><div class="bd"></div></a>';
-            insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/6.0.jpg);margin-right: 20px;margin-left: 20px;" class="off"><p style="top: 55px;position: relative;">6.0<p><div class="bd"></div></a>';
+            insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/6.0.jpg);margin-right: 20px;" class="off"><p style="top: 55px;position: relative;">6.0<p><div class="bd"></div></a>';
             insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/5.0.jpg);margin-right: 20px;" class="off"><p style="top: 55px;position: relative;">5.0<p><div class="bd"></div></a>';
             insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/4.0.jpg);margin-right: 20px;" class="off"><p style="top: 55px;position: relative;">4.0<p><div class="bd"></div></a>';
-            insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/3.0.jpg);margin-right: 20px;" class="off"><p style="top: 55px;position: relative;">3.0<p><div class="bd"></div></a>';
-            insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/2.0.jpg);margin-right: 20px;margin-left: 20px;margin-top: 20px;" class="off"><p style="top: 55px;position: relative;">2.0<p><div class="bd"></div></a>';
+            insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/3.0.jpg);margin-right: 20px;margin-left: 20px;margin-top: 20px;" class="off"><p style="top: 55px;position: relative;">3.0<p><div class="bd"></div></a>';
+            insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/2.0.jpg);margin-right: 20px;margin-top: 20px;" class="off"><p style="top: 55px;position: relative;">2.0<p><div class="bd"></div></a>';
             $("#pagenum").append(insert);
             Page.setClickPageNum();
         },
