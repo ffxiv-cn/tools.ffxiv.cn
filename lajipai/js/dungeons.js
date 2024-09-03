@@ -53,6 +53,7 @@ function dungeons() {
         //每页内容数目    
         setTotalPageNums: function () {
             var insert = '';
+            insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/7.0.jpg);margin-right: 20px;margin-left: 20px;" class="off"><p style="top: 55px;position: relative;">7.0<p><div class="bd"></div></a>';
             insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/6.0.jpg);margin-right: 20px;margin-left: 20px;" class="off"><p style="top: 55px;position: relative;">6.0<p><div class="bd"></div></a>';
             insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/5.0.jpg);margin-right: 20px;" class="off"><p style="top: 55px;position: relative;">5.0<p><div class="bd"></div></a>';
             insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/4.0.jpg);margin-right: 20px;" class="off"><p style="top: 55px;position: relative;">4.0<p><div class="bd"></div></a>';
@@ -83,7 +84,8 @@ function dungeons() {
                 divb.className = "on";
             }
             var pg = $('#pagenum a.on').text(); // 1 2 3
-            if (pg == "6.0") { pg = "6"; }
+            if (pg == "7.0") { pg = "7"; }
+            else if (pg == "6.0") { pg = "6"; }
             else if (pg == "5.0") { pg = "5"; }
             else if (pg == "4.0") { pg = "4"; }
             else if (pg == "3.0") { pg = "3"; }
@@ -96,7 +98,8 @@ function dungeons() {
     dungeons = function (i) {
         var target = '#music';
         var pg = $('#pagenum a.on').text();
-        if (pg == "6.0") { pg = "6"; }
+        if (pg == "7.0") { pg = "7"; }
+        else if (pg == "6.0") { pg = "6"; }
         else if (pg == "5.0") { pg = "5"; }
         else if (pg == "4.0") { pg = "4"; }
         else if (pg == "3.0") { pg = "3"; }
