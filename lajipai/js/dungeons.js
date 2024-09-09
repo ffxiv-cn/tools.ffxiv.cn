@@ -20,7 +20,7 @@ function dungeons() {
         );
         $('#page_itemtop').append(
         '<li class="back"><a onclick="back()"><img src="image/返回.png"></a></li>'
-        , '<li style="width: 150px;"><a><img src="image/副本开启.png"><div></div></a><p>副本开启</p></li>'
+        , '<li style="width: 160px;"><a><img src="image/副本开启.png"><div></div></a><p>副本开启</p></li>'
     );
         $.ajax({
             url: './csv/dungeons.csv?' + window._ver,
@@ -35,10 +35,10 @@ function dungeons() {
                     infolist[num] += '<li><a class="btn" onclick="dungeonsexplain(this,' + i + ')" target="_blank"><p>' + csvList[i][2] + '</p></a></li>';
                 }
                 $('#dungeonstype').append(
-                '<li><a style="float:left;width:32px;height: 32px;background-image: url(image/dungeons/迷宫挑战.png);margin-right: 20px;margin-left: 10px;" onclick="dungeons(1)" class="on"><div class="bd"></div></a></li>'
-                , '<li><a style="float:left;width:32px;height: 32px;background-image: url(image/dungeons/讨伐歼灭战.png);margin-right: 20px;" onclick="dungeons(2)" class="off"><div class="bd"></div></a></li>'
-                , '<li><a style="float:left;width:32px;height: 32px;background-image: url(image/dungeons/大型任务.png);margin-right: 20px;" onclick="dungeons(3)" class="off"><div class="bd"></div></a></li>'
-                , '<li><a style="float:left;width:32px;height: 32px;background-image: url(image/dungeons/特殊副本探索.png);margin-right: 20px;" onclick="dungeons(4)" class="off"><div class="bd"></div></a></li>'
+                '<li><a style="float:left;width:32px;height: 32px;background-image: url(image/dungeons/迷宫挑战.png);margin-right: 20px;margin-left: 10px;" onclick="dungeonsitem(1)" class="on"><div class="bd"></div></a></li>'
+                , '<li><a style="float:left;width:32px;height: 32px;background-image: url(image/dungeons/讨伐歼灭战.png);margin-right: 20px;" onclick="dungeonsitem(2)" class="off"><div class="bd"></div></a></li>'
+                , '<li><a style="float:left;width:32px;height: 32px;background-image: url(image/dungeons/大型任务.png);margin-right: 20px;" onclick="dungeonsitem(3)" class="off"><div class="bd"></div></a></li>'
+                , '<li><a style="float:left;width:32px;height: 32px;background-image: url(image/dungeons/特殊副本探索.png);margin-right: 20px;" onclick="dungeonsitem(4)" class="off"><div class="bd"></div></a></li>'
                 );
                 Page.setTotalPageNums();
                 Page.setClickPageNum();
@@ -77,25 +77,17 @@ function dungeons() {
                 };
             }
         },
-        allContent: function (divb) {
-            var target = '#music';
+        allContent: function (divb) {            
             if ("null" == divb) {
                 divb = document.getElementById('pagenum').children[0];
                 divb.className = "on";
-            }
-            var pg = $('#pagenum a.on').text(); // 1 2 3
-            if (pg == "7.0") { pg = "7"; }
-            else if (pg == "6.0") { pg = "6"; }
-            else if (pg == "5.0") { pg = "5"; }
-            else if (pg == "4.0") { pg = "4"; }
-            else if (pg == "3.0") { pg = "3"; }
-            else if (pg == "2.0") { pg = "2"; }
-            dungeons(1);
+            }            
+            dungeonsitem(1);
             //        $('a.btn:first').click();
             //        $('a.btn:first').find('.bd').addClass('Selected');
         }
     };
-    dungeons = function (i) {
+    dungeonsitem = function (i) {
         var target = '#music';
         var pg = $('#pagenum a.on').text();
         if (pg == "7.0") { pg = "7"; }
