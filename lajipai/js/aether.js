@@ -105,6 +105,7 @@ function aether() {
             else if (pg == "4.0") { pg = "2"; }
             else if (pg == "5.0") { pg = "3"; }
             else if (pg == "6.0") { pg = "4"; }
+            else if (pg == "7.0") { pg = "5"; }
             $("#aether").empty();
             $(target).empty();
             $(target).append(infolist[pg]);
