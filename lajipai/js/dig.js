@@ -5,22 +5,22 @@ function dig() {
         $('#left').remove();
         $('#right').remove();
         $('#main').append(
-        '<div id="page" style="opacity: 0;"></div>'
-    );
-    if (document.documentElement.clientWidth - 1009 > 0) {
-        $("#page").css("left", (document.documentElement.clientWidth - 1009) / 2);
-    }
-    else { $("#page").css("left", 0); }
-    $("#page").empty();
-    $('#page').append(
-    '<ul id="page_itemtop"></ul>'
-    , '<ul id="page_check" style="height:200px;"><div style="padding-left:50px;padding-top: 10px;" id="pagenum"></div><ul style="padding-left: 20px;padding-top: 10px;top:0px;" id="aether"></ul></ul>'
-    , '<ul id="page_item" style="min-height:560px;"><li style="padding-right: 160px; padding-left: 160px;position: relative;"></li></ul>'
-    );
-    $('#page_itemtop').append(
-    '<li class="back"><a onclick="back()"><img src="image/返回.png"></a></li>'
-    , '<li style="width: 140px;"><a><img src="image/藏宝图.png"><div></div></a><p>藏宝图</p></li>'
-);
+            '<div id="page" style="opacity: 0;"></div>'
+        );
+        if (document.documentElement.clientWidth - 1009 > 0) {
+            $("#page").css("left", (document.documentElement.clientWidth - 1009) / 2);
+        }
+        else { $("#page").css("left", 0); }
+        $("#page").empty();
+        $('#page').append(
+            '<ul id="page_itemtop"></ul>'
+            , '<ul id="page_check" style="height:200px;"><div style="padding-left:50px;padding-top: 10px;" id="pagenum"></div><ul style="padding-left: 20px;padding-top: 10px;top:0px;" id="aether"></ul></ul>'
+            , '<ul id="page_item" style="min-height:560px;"><li style="padding-right: 160px; padding-left: 160px;position: relative;"></li></ul>'
+        );
+        $('#page_itemtop').append(
+            '<li class="back"><a onclick="back()"><img src="image/返回.png"></a></li>'
+            , '<li style="width: 140px;"><a><img src="image/藏宝图.png"><div></div></a><p>藏宝图</p></li>'
+        );
         $.ajax({
             url: './csv/瞪羚革.csv?' + window._ver,
             success: function (data) {
@@ -29,6 +29,7 @@ function dig() {
                 infolist[3] = "";
                 infolist[4] = "";
                 infolist[5] = "";
+                infolist[6] = "";
                 for (i = 1; i < 7; i++) {
                     infolist[1] += '<li><a class="btn" onclick="digexplain(this,' + i + ')" target="_blank"><img src="image/dig/' + (i + 6) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
                 }
@@ -45,6 +46,9 @@ function dig() {
                     infolist[4] += '<li><a class="btn" onclick="digexplain(this,' + i + ')" target="_blank"><img src="image/dig/' + (i + 19) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
                 }
                 infolist[5] += '<li><a class="btn" onclick="digexplain(this,1)" target="_blank"><img src="image/dig/23.png"><div style="background-image: url(""); class="bd"></div></a></li>';
+                for (i = 1; i < 6; i++) {
+                    infolist[6] += '<li><a class="btn" onclick="digexplain2(this,' + i + ')" target="_blank"><img src="image/dig/' + (i + 24) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
+                }
                 Page.setTotalPageNums();
                 Page.setClickPageNum();
                 Page.allContent("null");
@@ -88,7 +92,7 @@ function dig() {
         allContent: function (divb) {
             var target = '#aether';
             if ("null" == divb) {
-                divb = document.getElementById('pagenum').children[1];
+                divb = document.getElementById('pagenum').children[0];
                 divb.className = "on";
             }
             var pg = this.getClickPageNum(divb); // 1 2 3
@@ -125,11 +129,39 @@ function digexplain(obj, i) {
         success: function (data) {
 
             csvList = $.csv()(data);
+
             insert += '<img onclick="bigger(this)" style="float:left;width:390px;"src="image/dig/' + pgn + '/' + csvList[i][0] + '.jpeg" onerror=this.style="display:none;">';
             for (var n = 1; n <= csvList[i][1]; n++) {
                 insert += '<div style="float:left;width:130px;height:110px;text-align:center;"><img onclick="bigger(this)" style="width:110px;"src="image/dig/' + pgn + '/' + csvList[i][0] + n + '.jpeg" onerror=this.style="display:none;">';
                 csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
             }
+
+            $(target).append(insert);
+        }
+
+    });
+}
+function digexplain2(obj, i) {
+    var csvList;
+    var pgn = $('a.on').text();
+    var insert = '';
+    var target = '#page_item li';
+    $('a.btn').click(function () {
+        $('a.btn').find('.bd').removeClass('Selected');
+        $(this).find('.bd').addClass('Selected');
+    });
+    $("#page_item li").empty();
+    $.ajax({
+        url: './csv/' + pgn + '.csv?' + window._ver,
+        success: function (data) {
+
+            csvList = $.csv()(data);
+            insert += '<img onclick="bigger(this)" style="float:left;width:390px;"src="image/dig/' + pgn + '/' + csvList[i][0] + '.jpg" onerror=this.style="display:none;">';
+            for (var n = 1; n <= csvList[i][1]; n++) {
+                insert += '<div style="float:left;width:130px;height:110px;text-align:center;"><img onclick="bigger(this)" style="width:110px;"src="image/dig/' + pgn + '/' + csvList[i][0] + n + '.jpg" onerror=this.style="display:none;">';
+                csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
+            }
+
             $(target).append(insert);
         }
 
