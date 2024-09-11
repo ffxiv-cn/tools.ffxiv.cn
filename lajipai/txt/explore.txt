@@ -1,20 +1,11 @@
 <strong><span style="color:#ff8c00;">探索笔记内容会涉及透剧，如会造成困扰请勿使用</span></strong><br />
 另外请注意2.0系列的探索笔记是不会像3.0和4.0在点上有光圈显示，所以一定请注意，「到达了探索笔记的目的地！」有这个提示的才是真的2.0探索笔记的点！<br />
-感谢<span style="color:#ff8c00;">C2</span>整理的2.0笔记的实地图<br />
-感谢<span style="color:#ff8c00;">神意之地-aemera</span>整理的4.1笔记的实地图<br />
+感谢<span style="color:#ff8c00;">C2</span>整理的2.0笔记的实地图、感谢<span style="color:#ff8c00;">神意之地-aemera</span>整理的4.1笔记的实地图<br />
 部分风景图转载于<strong><ahref="http://weibo.com/ttarticle/p/show?id=2309404154742690447645"target="_blank"><spanstyle="color:#ff8c00;">NGE</span></a></strong><br />
 <br />
-开通<strong><span style="color:#ff8c00;">2.0</span></strong>探索笔记内容<br />
-到格里达尼亚新街，完成Lv20前置任务<strong>「被遗忘的探索笔记」</strong><br />
-开通<strong><span style="color:#ff8c00;">3.0</span></strong>探索笔记内容<br />
-需要到龙堡参天高地，找任务<strong>「苍穹下的风景」</strong>，对话完毕就可以了<br />
-开通<strong><span style="color:#ff8c00;">4.0</span></strong>探索笔记内容<br />
-需要到神拳痕，找任务<strong>「红莲中的风景」</strong>，对话完毕就可以了<br />
-开通<strong><span style="color:#ff8c00;">5.0</span></strong>探索笔记内容<br />
-需要到水晶都，找任务<strong>「黑暗中的风景」</strong>，对话完毕就可以了<br />
-开通<strong><span style="color:#ff8c00;">6.0</span></strong>探索笔记内容<br />
-需要到旧萨雷安，找任务<strong>「晓月的探索笔记」</strong>，对话完毕就可以了<br />
-开通<strong><span style="color:#ff8c00;">7.0</span></strong>探索笔记内容<br />
-需要到图莱尤拉，找任务<strong>「黄金探索笔记」</strong>，对话完毕就可以了<br />
-后续到九号解决方案，找任务<strong>「黄金探索笔记与新的条目」</strong>对话完毕就可以了
-
+开通<strong><span style="color:#ff8c00;">2.0</span></strong>探索笔记：到<span style="color:#ff8c00;">「格里达尼亚新街」</span>，完成Lv20前置任务「被遗忘的探索笔记」<br />
+开通<strong><span style="color:#ff8c00;">3.0</span></strong>探索笔记：需要到达<span style="color:#ff8c00;">「龙堡参天高地」</span>找任务「苍穹下的风景」</strong>对话即可<br />
+开通<strong><span style="color:#ff8c00;">4.0</span></strong>探索笔记：需要到达<span style="color:#ff8c00;">「神拳痕」</span>找任务「红莲中的风景」</strong>对话即可<br />
+开通<strong><span style="color:#ff8c00;">5.0</span></strong>探索笔记：需要到达<span style="color:#ff8c00;">「水晶都」</span>找任务「黑暗中的风景」</strong>对话即可<br />
+开通<strong><span style="color:#ff8c00;">6.0</span></strong>探索笔记：需要到达<span style="color:#ff8c00;">「旧萨雷安」</span>找任务「晓月下的风景」</strong>对话即可<br />
+开通<strong><span style="color:#ff8c00;">7.0</span></strong>探索笔记：需要到达<span style="color:#ff8c00;">「图莱尤拉」</span>找任务「黄金色的风景」</strong>对话即可，后续到达<span style="color:#ff8c00;">「九号解决方案」</span>找任务「黄金色的风景与新的记录」对话即可
