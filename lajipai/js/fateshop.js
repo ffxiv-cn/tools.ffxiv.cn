@@ -25,13 +25,17 @@ function fateshop() {
             url: './csv/危命商人.csv?' + window._ver,
             success: function (data) {
                 infolist[1] = "";
-                infolist[2] = "";                
+                infolist[2] = "";
+                infolist[3] = "";
                 for (i = 1; i < 9; i++) {
                     infolist[1] += '<li style="width:226px;"><a class="btn" onclick="fateshopexplain(' + i + ')" target="_blank"><img src="image/fate/' + i + '.png"><div style="background-image: url("");" class="bd"></div></a></li>';
                 }
                 for (i = 9; i < 17; i++) {
                     infolist[2] += '<li style="width:226px;"><a class="btn" onclick="fateshopexplain(' + i + ')" target="_blank"><img src="image/fate/' + i + '.png"><div style="background-image: url("");" class="bd"></div></a></li>';
-                }                
+                }
+                for (i = 17; i < 25; i++) {
+                    infolist[3] += '<li style="width:226px;"><a class="btn" onclick="fateshopexplain(' + i + ')" target="_blank"><img src="image/fate/' + i + '.png"><div style="background-image: url("");" class="bd"></div></a></li>';
+                }
                 Page.setTotalPageNums();
                 Page.setClickPageNum();
                 Page.allContent("null");
@@ -43,9 +47,10 @@ function fateshop() {
     var Page = {
         //每页内容数目    
         setTotalPageNums: function () {
-            var insert = '';            
-            insert += '<a style="float:left;width:50px;" class="off">5.0</a>';
+            var insert = '';
+            insert += '<a style="float:left;width:50px;" class="off">7.0</a>';
             insert += '<a style="float:left;width:50px;" class="off">6.0</a>';
+            insert += '<a style="float:left;width:50px;" class="off">5.0</a>';            
             /* insert += '<a style="width:150px;" class="off">雷克兰德</a>';
             insert += '<a style="width:150px;" class="off">安穆·艾兰</a>';
             insert += '<a style="width:150px;" class="off">伊尔美格</a>';
@@ -75,12 +80,13 @@ function fateshop() {
         allContent: function (divb) {
             var target = '#aether';
             if ("null" == divb) {
-                divb = document.getElementById('pagenum').children[1];
+                divb = document.getElementById('pagenum').children[0];
                 divb.className = "on";
             }
             var pg = this.getClickPageNum(divb); // 1 2 3
             if (pg == "5.0") { pg = "1"; }            
             else if (pg == "6.0") { pg = "2"; }
+            else if (pg == "7.0") { pg = "3"; }
             $("#aether").empty();
             $(target).empty();
             $(target).append(infolist[pg]);
@@ -109,6 +115,14 @@ function fateshopexplain(num) {
     else if (num==14){name="天外天垓";}
     else if (num==15){name="旧萨雷安";}
     else if (num==16){name="拉札罕";}
+    else if (num==17){name="奥阔帕恰山";}
+    else if (num==18){name="克扎玛乌卡湿地";}
+    else if (num==19){name="亚克特尔树海";}
+    else if (num==20){name="夏劳尼荒野";}
+    else if (num==21){name="遗产之地";}
+    else if (num==22){name="活着的记忆";}
+    else if (num==23){name="图莱尤拉";}
+    else if (num==24){name="九号解决方案";}
     var csvList;
     var insert1 = '';
     var insert2 = '<ul style="top:0px;"><li style="width:250px;">物品</li><li style="width:100px;">等级</li><li style="width:100px;">货币</li></ul>';
