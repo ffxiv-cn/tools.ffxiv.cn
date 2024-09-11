@@ -92,8 +92,8 @@ function fateshop() {
             $(target).append(infolist[pg]);
             $("#fateshop").empty();
             $("#fateitem").empty();
-            /* $('a.btn:first').click();
-            $('a.btn:first').find('.bd').addClass('Selected'); */
+            $('a.btn:first').click();
+            $('a.btn:first').find('.bd').addClass('Selected');
         }
     };
 }
