@@ -4,3 +4,4 @@
 <br />
 <strong><span style="color:#ff8c00;">5.0职能任务</span></strong>分四个职能的任务，分别为坦克、治疗、物理、法系；分为70/72/74/76/78/80级接取<br />
 <strong><span style="color:#ff8c00;">6.0职能任务</span></strong>分五个职能的任务，分别为坦克、治疗、近战、远敏、法系；分为85/86/87/88/89/90级接取<br />
+<strong><span style="color:#ff8c00;">7.0职能任务</span></strong>分五个职能的任务，分别为坦克、治疗、近战、远敏、法系；分为90/92/94/96/98/100级接取<br />
