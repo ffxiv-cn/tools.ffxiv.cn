@@ -72,8 +72,13 @@ function jobtask() {
             for (var i = 1; i < 5; i++) {
                 insert += '<a style="float:left;" class="off"><img src="image/jobtask/job/3' + i + '.png" onload="image(this)">3' + i + '<div class="bd"></div></a>';
             }
-                insert += '<a style="float:left;" class="off"><img src="image/jobtask/job/40.png" onload="image(this)">40<div class="bd"></div></a>';
+            for (var i = 11; i < 13; i++) {
+                insert += '<a style="float:left;" class="off"><img src="image/jobtask/job/3' + i + '.png" onload="image(this)">3' + i + '<div class="bd"></div></a>';
+            }
             for (var i = 5; i < 11; i++) {
+                insert += '<a style="float:left;" class="off"><img src="image/jobtask/job/3' + i + '.png" onload="image(this)">3' + i + '<div class="bd"></div></a>';
+            }
+            for (var i = 13; i < 14; i++) {
                 insert += '<a style="float:left;" class="off"><img src="image/jobtask/job/3' + i + '.png" onload="image(this)">3' + i + '<div class="bd"></div></a>';
             }
             $("#typenum_3").append(insert);
