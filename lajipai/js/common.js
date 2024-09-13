@@ -27,7 +27,7 @@ function load() {
         , '<li><a onclick="music()"><img style="animation-delay:0.8s;" src="image/乐谱.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>乐谱</p></li>'
         , '<li ><a onclick="fashion()"><img style="animation-delay:0.9s;" src="image/时尚配件.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>时尚配件</p></li>'
         , '<li><a onclick="dig()"><img style="animation-delay:1.0s;" src="image/藏宝图.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>藏宝图</p></li>'
-        , '<li style="margin-right: 200px;"><a onclick="newdig()"><img style="animation-delay:1.1s;" src="image/藏宝图.png"><div><p class="buff" style="color: white;">New!!</p></div></a><p>宝图路线规划</p></li>'
+        , '<li style="margin-right: 200px;"><a onclick="newdig()"><img style="animation-delay:1.1s;" src="image/Routing.png"><div><p class="buff" style="color: white;">New!!</p></div></a><p>宝图路线规划</p></li>'
         , '<li><a onclick="niaojia()"><img style="animation-delay:0.9s;" src="image/鸟甲.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>鸟甲一览</p></li>'
         , '<li><a onclick="fateshop()"><img style="animation-delay:1.0s;" src="image/危命商人.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>危命商人</p></li>'
         , '<li><a onclick="hunt()"><img style="animation-delay:1.1s;" src="image/狩猎.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>狩猎</p></li>'
