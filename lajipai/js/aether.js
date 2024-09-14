@@ -58,7 +58,7 @@ function aether() {
                     infolist[3] += '<li><a class="btn" onclick="aetherexplain(this,' + i + ')" target="_blank"><img src="image/aether/' + i + '.png"><div style="background-image: url("");" class="bd"></div></a></li>';
                 }
                 for (i = 19; i < 25; i++) {
-                    infolist[4] += '<li><a class="btn" onclick="aetherexplain(this,' + i + ')" target="_blank"><img src="image/aether/' + i + '.png"><div style="background-image: url("");" class="bd"></div></a></li>';
+                    infolist[4] += '<li><a class="btn" onclick="aetherexplain3(this,' + i + ')" target="_blank"><img src="image/aether/' + i + '.png"><div style="background-image: url("");" class="bd"></div></a></li>';
                 }
                 for (i = 25; i < 31; i++) {
                     infolist[5] += '<li><a class="btn" onclick="aetherexplain2(this,' + i + ')" target="_blank"><img src="image/aether/' + i + '.png"><div style="background-image: url("");" class="bd"></div></a></li>';
@@ -114,8 +114,8 @@ function aether() {
             $("#aether").empty();
             $(target).empty();
             $(target).append(infolist[pg]);
-            //            $('a.btn:first').click();
-            //            $('a.btn:first').find('.bd').addClass('Selected');
+            $('a.btn:first').click();
+            $('a.btn:first').find('.bd').addClass('Selected');
         }
     };
 }
@@ -135,13 +135,13 @@ function aetherexplain(obj, i) {
             csvList = $.csv()(data);
             csvList[i][0] == "" ? insert += '<p style="font-size: 19px;">全部由主线触发</p>' : insert += '<img onclick="bigger(this)" style="float:left;width:340px;"src="image/aether/' + csvList[i][0] + '.jpeg" onerror=this.style="display:none;">';
             insert += '<ul style="top:0px;">';
-            if (csvList[i][0] != "" && i >= 19) {
+            if (csvList[i][0] != "" && i >= 25) {
                 for (var n = 1; n < 11; n++) {
                     insert += '<div style="float:left;width:100px;height:70px;text-align:center;"><img onclick="bigger(this)" style="width:80px;"src="image/aether/' + csvList[i][0] + n + '.jpg" onerror=this.style="display:none;">';
                     csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
                 }
             }
-            else if (csvList[i][0] != "" && i < 19) {
+            else if (csvList[i][0] != "" && i < 25) {
                 for (var n = 1; n < 5; n++) {
                     insert += '<div style="float:left;width:100px;height:70px;text-align:center;"><img onclick="bigger(this)" style="width:80px;"src="image/aether/' + csvList[i][0] + n + '.jpg" onerror=this.style="display:none;">';
                     csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
@@ -176,6 +176,44 @@ function aetherexplain2(obj, i) {
             for (var n = 1; n < 11; n++) {
                 insert += '<div style="float:left;width:100px;height:70px;text-align:center;"><img onclick="bigger(this)" style="width:80px;"src="image/aether/' + csvList[i][0] + n + '.jpg" onerror=this.style="display:none;">';
                 csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
+            }
+            insert += '</ul><ul>';
+            csvList[i][12] == "" ? insert += '' : insert += '<img style="float:left;width:20px;"src="image/logo/061419.tex.png"><p style="font-size: 15px;">' + csvList[i][12] + '</p>';
+            csvList[i][13] == "" ? insert += '' : insert += '<img style="float:left;width:20px;"src="image/logo/061419.tex.png"><p style="font-size: 15px;">' + csvList[i][13] + '</p>';
+            csvList[i][14] == "" ? insert += '' : insert += '<img style="float:left;width:20px;"src="image/logo/061419.tex.png"><p style="font-size: 15px;">' + csvList[i][14] + '</p>';
+            csvList[i][15] == "" ? insert += '' : insert += '<img style="float:left;width:20px;"src="image/logo/061419.tex.png"><p style="font-size: 15px;">' + csvList[i][15] + '</p>';
+            insert += '</ul>';
+            $('#page_item_left').append(insert);
+        }
+
+    });
+}
+function aetherexplain3(obj, i) {
+    var csvList;
+    var insert = '';
+    $('a.btn').click(function () {
+        $('a.btn').find('.bd').removeClass('Selected');
+        $(this).find('.bd').addClass('Selected');
+    });
+    $("#page_item_left").empty();
+    $.ajax({
+        url: './csv/aether.csv?' + window._ver,
+        success: function (data) {
+
+            csvList = $.csv()(data);
+            csvList[i][0] == "" ? insert += '<p style="font-size: 19px;">全部由主线触发</p>' : insert += '<img onclick="bigger(this)" style="float:left;width:340px;"src="image/aether/' + csvList[i][0] + '.jpg" onerror=this.style="display:none;">';
+            insert += '<ul style="top:0px;">';
+            if (csvList[i][0] != "" && i >= 25) {
+                for (var n = 1; n < 11; n++) {
+                    insert += '<div style="float:left;width:100px;height:70px;text-align:center;"><img onclick="bigger(this)" style="width:80px;"src="image/aether/' + csvList[i][0] + n + '.jpg" onerror=this.style="display:none;">';
+                    csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
+                }
+            }
+            else if (csvList[i][0] != "" && i < 25) {
+                for (var n = 1; n < 5; n++) {
+                    insert += '<div style="float:left;width:100px;height:70px;text-align:center;"><img onclick="bigger(this)" style="width:80px;"src="image/aether/' + csvList[i][0] + n + '.jpg" onerror=this.style="display:none;">';
+                    csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
+                }
             }
             insert += '</ul><ul>';
             csvList[i][12] == "" ? insert += '' : insert += '<img style="float:left;width:20px;"src="image/logo/061419.tex.png"><p style="font-size: 15px;">' + csvList[i][12] + '</p>';
