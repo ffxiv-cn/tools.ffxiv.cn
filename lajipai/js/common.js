@@ -18,7 +18,8 @@ $(function () {
 
 function load() {
     $('#item').append(
-        '<li style="margin-right: 500px;"><a onclick="check()"><img src="image/更新速览.png"><div><p class="buff" style="color: white;">New!!</p></div></a><p>更新速览</p></li>'
+        //<li style="margin-right: 500px;"><a onclick="check()"><img src="image/更新速览.png"><div><p class="buff" style="color: white;">New!!</p></div></a><p>更新速览</p></li>'
+        '<li style="margin-right: 500px;"><a onclick="check()"><img style="filter: grayscale(100%)" src="image/000033.tex.png"><div><p class="buff" style="color: white;">New!!</p></div></a><p>有待开发</p></li>'
         , '<li><a onclick="aether()"><img style="animation-delay:0.6s;" src="image/风脉.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>风脉</p></li>'
         , '<li style="margin-right: 400px;"><a onclick="explore()"><img style="animation-delay:0.7s;" src="image/探索笔记.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>探索笔记</p></li>'
         , '<li><a onclick="pets()"><img style="animation-delay:0.7s;" src="image/宠物.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>宠物一览</p></li>'
@@ -27,7 +28,8 @@ function load() {
         , '<li><a onclick="music()"><img style="animation-delay:0.8s;" src="image/乐谱.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>乐谱</p></li>'
         , '<li ><a onclick="fashion()"><img style="animation-delay:0.9s;" src="image/时尚配件.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>时尚配件</p></li>'
         , '<li><a onclick="dig()"><img style="animation-delay:1.0s;" src="image/藏宝图.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>藏宝图</p></li>'
-        , '<li style="margin-right: 200px;"><a onclick="newdig()"><img style="animation-delay:1.1s;" src="image/Routing.png"><div><p class="buff" style="color: white;">New!!</p></div></a><p>宝图路线规划</p></li>'
+        //        , '<li style="margin-right: 200px;"><a onclick="newdig()"><img style="animation-delay:1.1s;" src="image/Routing.png"><div><p class="buff" style="color: white;">New!!</p></div></a><p>宝图路线规划</p></li>'
+        , '<li style="margin-right: 200px;"><a onclick="newdig()"><img style="animation-delay:1.1s;filter: grayscale(100%)" src="image/000033.tex.png"><div><p class="buff" style="color: white;">New!!</p></div></a><p>有待开发</p></li>'
         , '<li><a onclick="niaojia()"><img style="animation-delay:0.9s;" src="image/鸟甲.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>鸟甲一览</p></li>'
         , '<li><a onclick="fateshop()"><img style="animation-delay:1.0s;" src="image/危命商人.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>危命商人</p></li>'
         , '<li><a onclick="hunt()"><img style="animation-delay:1.1s;" src="image/狩猎.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>狩猎</p></li>'
