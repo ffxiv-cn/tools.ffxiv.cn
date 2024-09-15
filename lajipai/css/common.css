@@ -784,6 +784,7 @@ not supported by any browser */
     top: 0px;
     padding-top: 10px;
     padding-left: 10px;
+    margin-left: 20px;
 }
 
 #page_item ul.level234 {
@@ -806,10 +807,11 @@ not supported by any browser */
 .level234 {
     width: 770px;
 }
+.level234 img{
+    height: 25px;
+}
 
-.level2,
-.level3,
-.level4 {
+.level2,.level3,.level4,.level5 {
     display: flex;
     align-items: stretch;
     padding: 2px 0px;
@@ -821,7 +823,8 @@ not supported by any browser */
 }
 
 .level2 div,
-.level3 div {
+.level3 div,
+.level4 div {
     display: flex;
     flex-direction: column;
 }
@@ -833,7 +836,7 @@ not supported by any browser */
     border-style: solid none none solid;
     margin-left: 8px;
 }
-.mark3b,.mark4b{
+.mark3b,.mark4b,.mark5b{
     border: 2px solid #FFD700;
     width: 30px;
     height: 0px;    
@@ -841,19 +844,22 @@ not supported by any browser */
     border-style: solid none none solid;
     margin-right: 8px;
 }
-.level3,.level4{
+.level3,.level4,.level5{
     border: 2px solid #FFD700;
     border-style: none none none solid;
 }
 .level2 div .level3:first-child,
 .level2 div .level3:last-child,
 .level2 div .level3 div .level4:first-child,
-.level2 div .level3 div .level4:last-child{
+.level2 div .level3 div .level4:last-child,
+.level2 div .level3 div .level4 div .level5:first-child,
+.level2 div .level3 div .level4 div .level5:last-child{
     border-style: none;
 }
 
 .level2 div .level3:first-child .mark3b,
-.level2 div .level3 div .level4:first-child .mark4b{
+.level2 div .level3 div .level4:first-child .mark4b,
+.level2 div .level3 div .level4 div .level5:first-child .mark5b{
     height: calc(50% + 4px);
     position: relative;
     top: calc(50% - 4px);
@@ -862,14 +868,16 @@ not supported by any browser */
     border-radius: 8px 0px 0px 0px;
 }
 .level2 div .level3:last-child .mark3b,
-.level2 div .level3 div .level4:last-child .mark4b{
+.level2 div .level3 div .level4:last-child .mark4b,
+.level2 div .level3 div .level4 div .level5:last-child .mark5b{
     height: calc(50% + 4px);
     margin-top: -2px;
     border-style: none none solid solid;
     border-radius: 0px 0px 0px 8px;
 }
 .level2 div .level3:only-child .mark3b,
-.level2 div .level3 div .level4:only-child .mark4b{    
+.level2 div .level3 div .level4:only-child .mark4b,
+.level2 div .level3 div .level4 div .level5:only-child .mark5b{    
     height: 0px;
     top: 0px;    
     margin: auto 0;
