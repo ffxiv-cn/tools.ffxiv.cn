@@ -856,7 +856,8 @@ not supported by any browser */
 .level2 div .level3 div .level4:first-child .mark4b{
     height: calc(50% + 4px);
     position: relative;
-    top: calc(50% - 6px);        
+    top: calc(50% - 4px);
+    margin-top: 2px;
     border-style: solid none none solid;
     border-radius: 8px 0px 0px 0px;
 }
