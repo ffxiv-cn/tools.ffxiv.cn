@@ -22,7 +22,7 @@ function bigger(obj) {
 }
 function bigmap(str) {
     $("#bigger").empty();
-    var insert1 = '<iframe src="https://www.ffxiv.cn/assets/map/index.html?' + str + '" style="width: 380px;height: 300px;"></iframe>';
+    var insert1 = '<iframe src="https://www.ffxiv.cn/assets/map/index.html?' + str + '" style="width: 570px;height: 450px;"></iframe>';
     $("#bigger").append(insert1);
     $("#overlay").fadeIn();    
     var t = window.innerWidth

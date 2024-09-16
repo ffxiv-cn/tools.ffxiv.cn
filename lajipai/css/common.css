@@ -791,6 +791,7 @@ not supported by any browser */
     width: calc(100% - 120px);
     top: 0px;
     padding-top: 10px;
+    left: 55px;
 }
 
 .level1 p,
@@ -804,12 +805,9 @@ not supported by any browser */
     width: 100px;
     margin: 2px 0px;
 }
-
-.level234 {
-    width: 770px;
-}
 .level234 img{
     height: 25px;
+    align-self: center;
 }
 
 .level2,.level3,.level4,.level5 {
@@ -850,6 +848,11 @@ not supported by any browser */
 .level3,.level4,.level5{
     border: 2px solid #FFD700;
     border-style: none none none solid;
+}
+.sel .marka,
+.sel .mark3b,.sel .mark4b,.sel .mark5b,
+.sel .level3,.sel .level4,.sel .level5{
+    border-color: #778899;
 }
 .level2 div .level3:first-child,
 .level2 div .level3:last-child,

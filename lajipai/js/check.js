@@ -40,7 +40,7 @@ function check() {
         setTotalPageNums: function () {
             var insert = '';
             insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/7.0.jpg);margin-right: 20px;margin-left: 20px;" class="off" onclick="checkver(this,7)"><div class="bd"></div></a>';
-            $("#pagenum").append(insert);            
+            $("#pagenum").append(insert);
             $("#pagenum a:first").click();
             Page.setClickPageNum();
         },
@@ -108,32 +108,40 @@ function checkinfo(obj) {
                     $('#page_item .level1').append("<li><p>" + csvList[i][1] + "</p></li>");
                 }
                 else if (csvList[i][0] == 2) {
-                    $('#page_item .level234').append("<li class='level2'><p style=''>" + csvList[i][1] + "</p><b class='marka'></b><div></div></li>");
+                    $('#page_item .level234').append("<li class='level2 nosel'><p style=''>" + csvList[i][1] + "</p><b class='marka'></b><div></div></li>");
                 }
                 else if ((csvList[i][0] == 3 && i == csvList.length - 1) || (csvList[i][0] == 3 && csvList[i + 1][0] != 4)) {
-                    insert = "<li class='level3'><b class='mark3b'></b><img src='image/check/" + csvList[i][2] + "' onerror=this.style='display:none;'>";
+                    insert = "<li class='level3'><b class='mark3b'></b><img onerror=this.style='display:none;'>";
                     insert += "<p>" + csvList[i][1] + "</p></li>";
                     $('#page_item .level234 .level2:last div:first').append(insert);
                 }
                 else if (csvList[i][0] == 3) {
-                    insert = "<li class='level3'><b class='mark3b'></b><img src='image/check/" + csvList[i][2] + "' onerror=this.style='display:none;'>";
+                    insert = "<li class='level3'><b class='mark3b'></b><img onerror=this.style='display:none;'>";
                     insert += "<p>" + csvList[i][1] + "</p><b class='marka'></b><div></div></li>";
                     $('#page_item .level234 .level2:last div:first').append(insert);
                 }
                 else if ((csvList[i][0] == 4 && i == csvList.length - 1) || (csvList[i][0] == 4 && csvList[i + 1][0] != 5)) {
-                    insert = "<li class='level4'><b class='mark4b'></b><img src='image/check/" + csvList[i][2] + "' onerror=this.style='display:none;'>";
-                    csvList[i][4] != "" ? insert += "<span data-ck-item-name>" + csvList[i][4] + "</span>" : insert += "<p>" + csvList[i][1] + "</p></li>";
+                    insert = "<li class='level4'><b class='mark4b'></b><img onerror=this.style='display:none;'>";
+                    csvList[i][4] != "" ? insert += "<span data-ck-item-name='" + csvList[i][4] + "'>" + csvList[i][1] + "</span>" : insert += "<p>" + csvList[i][1] + "</p></li>";
                     $('#page_item .level234 .level3:last div:first').append(insert);
                 }
                 else if (csvList[i][0] == 4) {
-                    insert = "<li class='level4'><b class='mark4b'></b><img src='image/check/" + csvList[i][2] + "' onerror=this.style='display:none;'>";
+                    insert = "<li class='level4'><b class='mark4b'></b><img onerror=this.style='display:none;'>";
                     insert += "<p>" + csvList[i][1] + "</p><b class='marka'></b><div></div></li>";
                     $('#page_item .level234 .level3:last div:first').append(insert);
                 }
                 else if (csvList[i][0] == 5) {
-                    insert = "<li class='level5'><b class='mark5b'></b><img src='image/check/" + csvList[i][2] + "' onerror=this.style='display:none;'>";
+                    insert = "<li class='level5'><b class='mark5b'></b><img onerror=this.style='display:none;'>";
                     csvList[i][4] != "" ? insert += "<span data-ck-item-name='" + csvList[i][4] + "'>" + csvList[i][1] + "</span>" : insert += "<p>" + csvList[i][1] + "</p></li>";
                     $('#page_item .level234 .level4:last div:first').append(insert);
+                }
+                if (csvList[i][2] != "") {
+                    $('#page_item .level234 img:last').attr("src", "image/check/" + csvList[i][2]);
+                }
+                if (csvList[i][2] == "" && csvList[i][0] != 2) {
+                    $('#page_item .level234 img:last').attr("src", "image/check/未选中.png");
+                    $('#page_item .level234 img:last').bind('click', function () { checksel(this) });
+                    $('#page_item .level234 img:last').parent().addClass("nosel");
                 }
                 if (csvList[i][3] != "") {
                     $('#page_item .level234 p:last').addClass(csvList[i][3]);
@@ -144,4 +152,39 @@ function checkinfo(obj) {
             }
         }
     });
+}
+function checksel(obj) {
+    if ($(obj).parent().hasClass("nosel")) {
+        $(obj).parent().removeClass("nosel");
+        $(obj).parent().addClass("sel");
+        $(obj).attr("src", "image/check/选中.png");
+        if ($(obj).parent().parent().children(".nosel").length > 0) { }
+        else {
+            $(obj).parent().parent().parent().removeClass("nosel");
+            $(obj).parent().parent().parent().addClass("sel");
+            if ($(obj).parent().parent().parent().has("img")) {
+                $(obj).parent().parent().parent().children("img").attr("src", "image/check/选中.png");
+            }
+        }
+        if ($(obj).parent().children("div").children(".nosel").length > 0) {
+            $(obj).parent().children("div").children(".nosel").children("img").attr("src", "image/check/选中.png");
+            $(obj).parent().children("div").children(".nosel").addClass("sel");
+            $(obj).parent().children("div").children(".nosel").removeClass("nosel");
+        }
+    }
+    else if ($(obj).parent().hasClass("sel")) {
+        $(obj).parent().removeClass("sel");
+        $(obj).parent().addClass("nosel");
+        $(obj).attr("src", "image/check/未选中.png");
+        if ($(obj).parent().parent().parent().hasClass("sel")) {
+            $(obj).parent().parent().parent().removeClass("sel");
+            $(obj).parent().parent().parent().addClass("nosel");
+            $(obj).parent().parent().parent().children("img").attr("src", "image/check/未选中.png");
+        }
+        if ($(obj).parent().children("div").children(".sel").length > 0) {
+            $(obj).parent().children("div").children(".sel").children("img").attr("src", "image/check/未选中.png");
+            $(obj).parent().children("div").children(".sel").addClass("nosel");
+            $(obj).parent().children("div").children(".sel").removeClass("sel");
+        }
+    }
 }
