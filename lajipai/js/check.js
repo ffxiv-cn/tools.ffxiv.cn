@@ -17,8 +17,9 @@ function check() {
             '<ul id="page_itemtop"></ul>'
             , '<ul id="page_explain" style="height:100px;"><div id="pagenum" class="pagenum" style="width: 900px;"></div></ul>'
             , '<ul id="page_check" style="height:50px;"><div id="vernum" class="vernum" style="width: 900px;margin-left: 45px;"></div></ul>'
-            , '<ul id="page_item" style="height: 540px;display: flex;overflow: hidden;"></ul>'
+            , '<ul id="page_item" style="min-height: 540px;display: flex;overflow: hidden;"></ul>'
         );
+        $('#page_item').css("height", document.documentElement.clientHeight - 400);
         $('#page_itemtop').append(
             '<li class="back"><a onclick="back()"><img src="image/返回.png"></a></li>'
             , '<li style="width: 160px;"><a><img src="image/更新速览.png"><div></div></a><p>更新速览</p></li>'
@@ -104,7 +105,7 @@ function checkinfo(obj) {
                     $('#page_item .level1').append("<li><p>" + csvList[i][1] + "</p></li>");
                 }
                 else if (csvList[i][0] == 2) {
-                    $('#page_item .level234').append("<li class='level2'><p style='width:60px;'>" + csvList[i][1] + "</p><b class='marka'></b><div></div></li>");
+                    $('#page_item .level234').append("<li class='level2'><p style=''>" + csvList[i][1] + "</p><b class='marka'></b><div></div></li>");
                 }
                 else if (csvList[i][0] == 3 && csvList[i + 1][0] == 4) {
                     insert = "<li class='level3'><b class='mark3b'></b><img src='image/check/" + csvList[i][2] + "' onerror=this.style='display:none;'>";
@@ -123,12 +124,12 @@ function checkinfo(obj) {
                 }
                 else if (csvList[i][0] == 4) {
                     insert = "<li class='level4'><b class='mark4b'></b><img src='image/check/" + csvList[i][2] + "' onerror=this.style='display:none;'>";
-                    insert += "<p>" + csvList[i][1] + "</p></li>";
+                    csvList[i][4] != "" ? insert += "<span data-ck-item-name>" + csvList[i][4] + "</span>" : insert += "<p>" + csvList[i][1] + "</p></li>";
                     $('#page_item .level234 .level3:last div:first').append(insert);
                 }
                 else if (csvList[i][0] == 5) {
                     insert = "<li class='level5'><b class='mark5b'></b><img src='image/check/" + csvList[i][2] + "' onerror=this.style='display:none;'>";
-                    insert += "<p>" + csvList[i][1] + "</p></li>";
+                    csvList[i][4] != "" ? insert += "<span data-ck-item-name>" + csvList[i][4] + "</span>" : insert += "<p>" + csvList[i][1] + "</p></li>";
                     $('#page_item .level234 .level4:last div:first').append(insert);
                 }
                 if (csvList[i][3] != "") {
