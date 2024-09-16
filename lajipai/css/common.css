@@ -362,7 +362,7 @@ not supported by any browser */
 #typenum a {
     position: relative;
     width: 50px;
-    height: 50px;    
+    height: 50px;
     cursor: pointer;
     color: rgba(0, 0, 0, 0);
     top: 10px;
@@ -788,35 +788,39 @@ not supported by any browser */
 }
 
 #page_item ul.level234 {
-    width: calc(100% - 120px);
     top: 0px;
     padding-top: 10px;
-    left: 55px;
+    margin: 0px auto;
 }
 
 .level1 p,
 .level234 p,
-.level234 span{
+.level234 span {
     font-size: 19px;
-    align-self: center;    
+    align-self: center;
 }
 
 .level1 li {
     width: 100px;
     margin: 2px 0px;
 }
-.level234 img{
+
+.level234 img {
     height: 25px;
     align-self: center;
 }
 
-.level2,.level3,.level4,.level5 {
+.level2,
+.level3,
+.level4,
+.level5 {
     display: flex;
     align-items: stretch;
     padding: 2px 0px;
 }
 
-.level2 p,.level2 span {
+.level2 p,
+.level2 span {
     flex-shrink: 0;
     height: 28px;
 }
@@ -827,45 +831,68 @@ not supported by any browser */
     display: flex;
     flex-direction: column;
 }
-.marka{
+
+.marka {
     border: 2px solid #FFD700;
     width: 30px;
-    height: 0px;    
+    height: 0px;
     margin: auto 0;
     border-style: solid none none solid;
     margin-left: 8px;
     position: relative;
     left: 1px;
 }
-.mark3b,.mark4b,.mark5b{
+
+.mark3b,
+.mark4b,
+.mark5b {
     border: 2px solid #FFD700;
     width: 28px;
-    height: 0px;    
+    height: 0px;
     margin: auto 0;
     border-style: solid none none solid;
-    margin-right: 8px;    
+    margin-right: 8px;
 }
-.level3,.level4,.level5{
+
+.level3,
+.level4,
+.level5 {
     border: 2px solid #FFD700;
     border-style: none none none solid;
 }
+
+.zuobiao p {
+    text-decoration: underline;
+    color: rgb(102 155 255);
+}
+
 .sel .marka,
-.sel .mark3b,.sel .mark4b,.sel .mark5b,
-.sel .level3,.sel .level4,.sel .level5{
+.sel .mark3b,
+.sel .mark4b,
+.sel .mark5b,
+.sel .level3,
+.sel .level4,
+.sel .level5 {
     border-color: #778899;
 }
+
+.sel p,
+.sel span {
+    color: #778899;
+}
+
 .level2 div .level3:first-child,
 .level2 div .level3:last-child,
 .level2 div .level3 div .level4:first-child,
 .level2 div .level3 div .level4:last-child,
 .level2 div .level3 div .level4 div .level5:first-child,
-.level2 div .level3 div .level4 div .level5:last-child{    
+.level2 div .level3 div .level4 div .level5:last-child {
     border-style: none;
 }
 
 .level2 div .level3:first-child .mark3b,
 .level2 div .level3 div .level4:first-child .mark4b,
-.level2 div .level3 div .level4 div .level5:first-child .mark5b{
+.level2 div .level3 div .level4 div .level5:first-child .mark5b {
     height: calc(50% + 4px);
     width: 30px;
     position: relative;
@@ -874,20 +901,22 @@ not supported by any browser */
     border-style: solid none none solid;
     border-radius: 8px 0px 0px 0px;
 }
+
 .level2 div .level3:last-child .mark3b,
 .level2 div .level3 div .level4:last-child .mark4b,
-.level2 div .level3 div .level4 div .level5:last-child .mark5b{
+.level2 div .level3 div .level4 div .level5:last-child .mark5b {
     height: calc(50% + 4px);
     width: 30px;
     margin-top: -2px;
     border-style: none none solid solid;
     border-radius: 0px 0px 0px 8px;
 }
+
 .level2 div .level3:only-child .mark3b,
 .level2 div .level3 div .level4:only-child .mark4b,
-.level2 div .level3 div .level4 div .level5:only-child .mark5b{    
+.level2 div .level3 div .level4 div .level5:only-child .mark5b {
     height: 0px;
-    top: 0px;    
+    top: 0px;
     margin: auto 0;
     border-style: solid none none solid;
     margin-right: 8px;
