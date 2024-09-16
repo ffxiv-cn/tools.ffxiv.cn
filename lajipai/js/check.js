@@ -123,7 +123,9 @@ function checkinfo(obj) {
                 }
                 else if ((csvList[i][0] == 4 && i == csvList.length - 1) || (csvList[i][0] == 4 && csvList[i + 1][0] != 5)) {
                     insert = "<li class='level4'><b class='mark4b'></b><img onerror=this.style='display:none;'>";
-                    csvList[i][4] != "" ? insert += "<span data-ck-item-name='" + csvList[i][4] + "'>" + csvList[i][1] + "</span>" : insert += "<p>" + csvList[i][1] + "</p></li>";
+                    if(csvList[i][4] != ""){insert += "<span data-ck-item-name='" + csvList[i][4] + "'>" + csvList[i][1] + "</span>";}
+                    else if(csvList[i][5] != ""){insert += "<a href="+csvList[i][5]+" target='_blank'>"+csvList[i][1]+"</a>";}
+                    else{insert += "<p>" + csvList[i][1] + "</p></li>";}
                     $('#page_item .level234 .level3:last div:first').append(insert);
                 }
                 else if (csvList[i][0] == 4) {
@@ -133,7 +135,9 @@ function checkinfo(obj) {
                 }
                 else if (csvList[i][0] == 5) {
                     insert = "<li class='level5'><b class='mark5b'></b><img onerror=this.style='display:none;'>";
-                    csvList[i][4] != "" ? insert += "<span data-ck-item-name='" + csvList[i][4] + "'>" + csvList[i][1] + "</span>" : insert += "<p>" + csvList[i][1] + "</p></li>";
+                    if(csvList[i][4] != ""){insert += "<span data-ck-item-name='" + csvList[i][4] + "'>" + csvList[i][1] + "</span>";}
+                    else if(csvList[i][5] != ""){insert += "<a href="+csvList[i][5]+">"+csvList[i][1]+"</a>";}
+                    else{insert += "<p>" + csvList[i][1] + "</p></li>";}
                     $('#page_item .level234 .level4:last div:first').append(insert);
                 }
                 if (csvList[i][2] != "") {
@@ -149,7 +153,7 @@ function checkinfo(obj) {
                     $('#page_item .level234 p:last').addClass(csvList[i][3]);
                     $('#page_item .level234 p:last').parent().addClass("zuobiao");
                     $('#page_item .level234 p:last').bind('click', function () { bigmap(this.className) });
-                }
+                } 
             }
         }
     });

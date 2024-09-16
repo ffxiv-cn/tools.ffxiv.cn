@@ -791,12 +791,13 @@ not supported by any browser */
     top: 0px;
     padding: 0px 170px;
     padding-top: 40px;
-    /* margin: 0px auto; */    
+    /* margin: 0px auto; */
 }
 
 .level1 p,
 .level234 p,
-.level234 span {
+.level234 span,
+.level234 a {
     font-size: 15px;
     align-self: center;
 }
@@ -822,7 +823,8 @@ not supported by any browser */
 }
 
 .level2 p,
-.level2 span {
+.level2 span,
+.level2 a {
     flex-shrink: 0;
     height: 20px;
 }
@@ -863,7 +865,7 @@ not supported by any browser */
     border-style: none none none solid;
 }
 
-.zuobiao p {
+.zuobiao p,.level2 a {
     text-decoration: underline;
     color: rgb(102 155 255);
 }
@@ -879,7 +881,8 @@ not supported by any browser */
 }
 
 .sel p,
-.sel span {
+.sel span,
+.sel a {
     color: #778899;
 }
 
