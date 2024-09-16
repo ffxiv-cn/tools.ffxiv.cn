@@ -790,7 +790,9 @@ not supported by any browser */
 #page_item ul.level234 {
     top: 0px;
     padding-top: 10px;
-    margin: 0px auto;
+    /* margin: 0px auto; */
+    width: 100%;
+    padding: revert;
 }
 
 .level1 p,

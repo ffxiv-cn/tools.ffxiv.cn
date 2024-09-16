@@ -142,8 +142,8 @@ function checkinfo(obj) {
                 if (csvList[i][2] == "" && csvList[i][0] != 2 && csvList[i][0] != 1) {
                     $('#page_item .level234 img:last').attr("src", "image/check/未选中.png");
                     $('#page_item .level234 img:last').bind('click', function () { checksel(this) });
-                    $('#page_item .level234 p:last').bind('click', function () { checkselp(this) });
-                    $('#page_item .level234 img:last').parent().addClass("nosel");                    
+                    csvList[i][4] == ""?$('#page_item .level234 p:last').bind('click', function () { checkselp(this) }):"";
+                    $('#page_item .level234 img:last').parent().addClass("nosel");
                 }
                 if (csvList[i][3] != "") {
                     $('#page_item .level234 p:last').addClass(csvList[i][3]);
@@ -153,6 +153,9 @@ function checkinfo(obj) {
             }
         }
     });
+}
+function checkselp(obj) {
+    checksel($(obj).parent().children("img"));
 }
 function checksel(obj) {
     if ($(obj).parent().hasClass("nosel")) {
@@ -189,7 +192,4 @@ function checksel(obj) {
             $(obj).parent().find(".sel").removeClass("sel");
         }
     }
-}
-function checkselp(obj) {
-    checksel($(obj).parent().children("img"));
 }
