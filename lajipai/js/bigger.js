@@ -3,56 +3,60 @@ function bigger(obj) {
     $("#overlay").fadeIn();
     var img = new Image();
     img.src = obj.src;
-    var t = window.innerWidth
-          , e = window.innerHeight
-          , s = img.width
-          , n = img.height
-          , o = t > s ? (t - s) / 2 : 0
-          , i = e > n ? (e - n) / 2 : 0;
-    $("#bigger").css({
-        left: o + "px"
-    }),
-    $("#bigger").css({
-        top: i + "px"
-    });
-    $("#bigger").css("background-size", "auto");
-    if (t < s || e < n) {
-        $("#bigger").css("background-size", "contain");
+
+    img.onload = function () {
+        var t = window.innerWidth,
+            e = window.innerHeight,
+            s = img.width,
+            n = img.height,
+            o = t > s ? (t - s) / 2 : 0,
+            i = e > n ? (e - n) / 2 : 0;
+
+        $("#bigger").css({
+            left: o + "px"
+        }),
+            $("#bigger").css({
+                top: i + "px"
+            });
+        $("#bigger").css("background-size", "auto");
+        if (t < s || e < n) {
+            $("#bigger").css("background-size", "contain");
+        }
     }
 }
 function bigmap(str) {
     $("#bigger").empty();
     var insert1 = '<iframe src="https://www.ffxiv.cn/assets/map/index.html?' + str + '" style="width: 570px;height: 450px;"></iframe>';
     $("#bigger").append(insert1);
-    $("#overlay").fadeIn();    
+    $("#overlay").fadeIn();
     var t = window.innerWidth
-          , e = window.innerHeight
-          , s = 380
-          , n = 300
-          , o = t > s ? (t - s) / 2 : 0
-          , i = e > n ? (e - n) / 2 : 0;
+        , e = window.innerHeight
+        , s = 380
+        , n = 300
+        , o = t > s ? (t - s) / 2 : 0
+        , i = e > n ? (e - n) / 2 : 0;
     $("#bigger").css({
         left: o + "px"
     }),
-    $("#bigger").css({
-        top: i + "px"
-    });    
+        $("#bigger").css({
+            top: i + "px"
+        });
 }
 $(window).resize(function () {
     var img = new Image();
     //img.src = $("#bigger").css("background-image").split("\"")[1];
     var t = window.innerWidth
-          , e = window.innerHeight
-          , s = img.width
-          , n = img.height
-          , o = t > s ? (t - s) / 2 : 0
-          , i = e > n ? (e - n) / 2 : 0;
+        , e = window.innerHeight
+        , s = img.width
+        , n = img.height
+        , o = t > s ? (t - s) / 2 : 0
+        , i = e > n ? (e - n) / 2 : 0;
     $("#bigger").css({
         left: o + "px"
     }),
-    $("#bigger").css({
-        top: i + "px"
-    });
+        $("#bigger").css({
+            top: i + "px"
+        });
     $("#bigger").css("background-size", "auto");
     if (t < s || e < n) {
         $("#bigger").css("background-size", "contain");

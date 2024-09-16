@@ -789,7 +789,7 @@ not supported by any browser */
 
 #page_item ul.level234 {
     top: 0px;
-    padding: 0px 102px;
+    padding: 0px 170px;
     padding-top: 40px;
     /* margin: 0px auto; */    
 }
@@ -797,7 +797,7 @@ not supported by any browser */
 .level1 p,
 .level234 p,
 .level234 span {
-    font-size: 19px;
+    font-size: 15px;
     align-self: center;
 }
 
@@ -807,8 +807,9 @@ not supported by any browser */
 }
 
 .level234 img {
-    height: 25px;
+    height: 20px;
     align-self: center;
+    margin-right: 4px;
 }
 
 .level2,
@@ -823,7 +824,7 @@ not supported by any browser */
 .level2 p,
 .level2 span {
     flex-shrink: 0;
-    height: 25px;
+    height: 20px;
 }
 
 .level2 div,
@@ -839,7 +840,7 @@ not supported by any browser */
     height: 0px;
     margin: auto 0;
     border-style: solid none none solid;
-    margin-left: 8px;
+    margin-left: 4px;
     position: relative;
     left: 1px;
 }
@@ -852,7 +853,7 @@ not supported by any browser */
     height: 0px;
     margin: auto 0;
     border-style: solid none none solid;
-    margin-right: 8px;
+    margin-right: 4px;
 }
 
 .level3,
@@ -920,7 +921,7 @@ not supported by any browser */
     top: 0px;
     margin: auto 0;
     border-style: solid none none solid;
-    margin-right: 8px;
+    margin-right: 4px;
 }
 
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
