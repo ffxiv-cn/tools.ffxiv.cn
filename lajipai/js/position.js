@@ -62,6 +62,9 @@ $(window).resize(function(){
         $(".top_left").css("left", 0);        
     }
     //当浏览器页面发生改变时，DIV随着页面的改变居中。
+    if($("#page_itemtop").children("li:last-child").children("p").text()=="更新速览"){
+        $('#page_item').css("height", document.documentElement.clientHeight - 400);
+    }
 });
 function back() {
     $('#page').remove();    

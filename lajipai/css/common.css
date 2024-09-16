@@ -789,9 +789,9 @@ not supported by any browser */
 
 #page_item ul.level234 {
     top: 0px;
-    padding-top: 10px;
-    /* margin: 0px auto; */
-    padding: 0px 102px    
+    padding: 0px 102px;
+    padding-top: 40px;
+    /* margin: 0px auto; */    
 }
 
 .level1 p,
@@ -823,7 +823,7 @@ not supported by any browser */
 .level2 p,
 .level2 span {
     flex-shrink: 0;
-    height: 28px;
+    height: 25px;
 }
 
 .level2 div,
