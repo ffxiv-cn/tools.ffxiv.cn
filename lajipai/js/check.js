@@ -39,28 +39,25 @@ function check() {
         //每页内容数目    
         setTotalPageNums: function () {
             var insert = '';
-            insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/7.0.jpg);margin-right: 20px;margin-left: 20px;" class="off" onclick="checkvar(this,7)"><div class="bd"></div></a>';
-            $("#pagenum").append(insert);
-            insert = '';
-            insert += '<a style="float:left;width:50px;" class="off" onclick="checkinfo(this)">7.0</a>'
-            $('#vernum').append(insert);
-            $("#vernum a:first").click();
+            insert += '<a style="float:left;width:200px;height: 54px;background-image: url(image/dungeons/7.0.jpg);margin-right: 20px;margin-left: 20px;" class="off" onclick="checkver(this,7)"><div class="bd"></div></a>';
+            $("#pagenum").append(insert);            
+            $("#pagenum a:first").click();
             Page.setClickPageNum();
         },
         getClickPageNum: function (diva) {
             return parseFloat(diva.innerHTML);
         },
         setClickPageNum: function () {
-            var divx = document.getElementById('pagenum');
-            var a = divx.children;
-            var len = a.length;
-            for (var i = 0; i < len; i++) {
-                a[i].onclick = function () {
-                    for (var i = 0; i < len; i++) { a[i].className = "off"; }
-                    this.className = "on";
-                    Page.allContent(this);
-                };
-            }
+            // var divx = document.getElementById('pagenum');
+            // var a = divx.children;
+            // var len = a.length;
+            // for (var i = 0; i < len; i++) {
+            //     a[i].onclick = function () {
+            //         for (var i = 0; i < len; i++) { a[i].className = "off"; }
+            //         this.className = "on";                    
+            //     };
+            // }
+            Page.allContent(this);
         },
         allContent: function (divb) {
             if ("null" == divb) {
@@ -79,10 +76,16 @@ function checkver(obj, i) {
     $(obj).addClass('on');
     var insert = '';
     if (i == 7) {
-        insert += '<a style="float:left;width:50px;" class="off" onclick="checkinfo(this)">7.0</a>'
+        insert += '<a style="float:left;width:50px;" class="off" onclick="checkinfo(this)">7.0</a>';
+        insert += '<a style="float:left;width:50px;" class="off" onclick="">7.1</a>';
+        insert += '<a style="float:left;width:50px;" class="off" onclick="">7.2</a>';
+        insert += '<a style="float:left;width:50px;" class="off" onclick="">7.3</a>';
+        insert += '<a style="float:left;width:50px;" class="off" onclick="">7.4</a>';
+        insert += '<a style="float:left;width:50px;" class="off" onclick="">7.5</a>';
     }
     $('#vernum').empty();
     $('#vernum').append(insert);
+    $("#vernum a:first").click();
 }
 function checkinfo(obj) {
     $("#vernum a").removeClass();
@@ -107,29 +110,29 @@ function checkinfo(obj) {
                 else if (csvList[i][0] == 2) {
                     $('#page_item .level234').append("<li class='level2'><p style=''>" + csvList[i][1] + "</p><b class='marka'></b><div></div></li>");
                 }
-                else if (csvList[i][0] == 3 && csvList[i + 1][0] == 4) {
-                    insert = "<li class='level3'><b class='mark3b'></b><img src='image/check/" + csvList[i][2] + "' onerror=this.style='display:none;'>";
-                    insert += "<p>" + csvList[i][1] + "</p><b class='marka'></b><div></div></li>";
-                    $('#page_item .level234 .level2:last div:first').append(insert);
-                }
-                else if (csvList[i][0] == 3) {
+                else if ((csvList[i][0] == 3 && i == csvList.length - 1) || (csvList[i][0] == 3 && csvList[i + 1][0] != 4)) {
                     insert = "<li class='level3'><b class='mark3b'></b><img src='image/check/" + csvList[i][2] + "' onerror=this.style='display:none;'>";
                     insert += "<p>" + csvList[i][1] + "</p></li>";
                     $('#page_item .level234 .level2:last div:first').append(insert);
                 }
-                else if (csvList[i][0] == 4 && csvList[i + 1][0] == 5) {
-                    insert = "<li class='level4'><b class='mark4b'></b><img src='image/check/" + csvList[i][2] + "' onerror=this.style='display:none;'>";
+                else if (csvList[i][0] == 3) {
+                    insert = "<li class='level3'><b class='mark3b'></b><img src='image/check/" + csvList[i][2] + "' onerror=this.style='display:none;'>";
                     insert += "<p>" + csvList[i][1] + "</p><b class='marka'></b><div></div></li>";
+                    $('#page_item .level234 .level2:last div:first').append(insert);
+                }
+                else if ((csvList[i][0] == 4 && i == csvList.length - 1) || (csvList[i][0] == 4 && csvList[i + 1][0] != 5)) {
+                    insert = "<li class='level4'><b class='mark4b'></b><img src='image/check/" + csvList[i][2] + "' onerror=this.style='display:none;'>";
+                    csvList[i][4] != "" ? insert += "<span data-ck-item-name>" + csvList[i][4] + "</span>" : insert += "<p>" + csvList[i][1] + "</p></li>";
                     $('#page_item .level234 .level3:last div:first').append(insert);
                 }
                 else if (csvList[i][0] == 4) {
                     insert = "<li class='level4'><b class='mark4b'></b><img src='image/check/" + csvList[i][2] + "' onerror=this.style='display:none;'>";
-                    csvList[i][4] != "" ? insert += "<span data-ck-item-name>" + csvList[i][4] + "</span>" : insert += "<p>" + csvList[i][1] + "</p></li>";
+                    insert += "<p>" + csvList[i][1] + "</p><b class='marka'></b><div></div></li>";
                     $('#page_item .level234 .level3:last div:first').append(insert);
                 }
                 else if (csvList[i][0] == 5) {
                     insert = "<li class='level5'><b class='mark5b'></b><img src='image/check/" + csvList[i][2] + "' onerror=this.style='display:none;'>";
-                    csvList[i][4] != "" ? insert += "<span data-ck-item-name>" + csvList[i][4] + "</span>" : insert += "<p>" + csvList[i][1] + "</p></li>";
+                    csvList[i][4] != "" ? insert += "<span data-ck-item-name='" + csvList[i][4] + "'>" + csvList[i][1] + "</span>" : insert += "<p>" + csvList[i][1] + "</p></li>";
                     $('#page_item .level234 .level4:last div:first').append(insert);
                 }
                 if (csvList[i][3] != "") {
