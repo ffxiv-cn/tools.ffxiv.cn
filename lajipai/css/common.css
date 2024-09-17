@@ -788,10 +788,7 @@ not supported by any browser */
 }
 
 #page_item ul.level234 {
-    top: 0px;
-    padding: 0px 170px;
-    padding-top: 40px;
-    /* margin: 0px auto; */
+    top: 0px;    
 }
 
 .level1 p,

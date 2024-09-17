@@ -155,7 +155,10 @@ function checkinfo(obj) {
                     $('#page_item .level234 p:last').parent().addClass("zuobiao");
                     $('#page_item .level234 p:last').bind('click', function () { bigmap(this.className) });
                 }
-            }
+            }            
+            var w = $('#page_item .level234').width();
+            $('#page_item .level234').css("padding", "0px "+(993-w)/2+ "px");
+            $('#page_item .level234').css("padding-top", "40px");
             checkloadData();
         }
     });    
