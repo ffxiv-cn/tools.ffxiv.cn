@@ -26,13 +26,14 @@ function bigger(obj) {
 }
 function bigmap(str) {
     $("#bigger").empty();
+    $("#bigger").css("background-image", "url(' ')");
     var insert1 = '<iframe src="https://www.ffxiv.cn/assets/map/index.html?' + str + '" style="width: 570px;height: 450px;"></iframe>';
     $("#bigger").append(insert1);
     $("#overlay").fadeIn();
     var t = window.innerWidth
         , e = window.innerHeight
-        , s = 380
-        , n = 300
+        , s = 570
+        , n = 450
         , o = t > s ? (t - s) / 2 : 0
         , i = e > n ? (e - n) / 2 : 0;
     $("#bigger").css({
