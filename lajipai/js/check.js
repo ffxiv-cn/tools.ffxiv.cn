@@ -31,7 +31,7 @@ function check() {
                 Page.setClickPageNum();
                 Page.allContent("null");
             }
-        });
+        });        
         Windowsopen("page");
     });
     //分页
@@ -85,7 +85,7 @@ function checkver(obj, i) {
     }
     $('#vernum').empty();
     $('#vernum').append(insert);
-    $("#vernum a:first").click();
+    $("#vernum a:first").click();    
 }
 function checkinfo(obj) {
     $("#vernum a").removeClass();
@@ -109,7 +109,7 @@ function checkinfo(obj) {
                     $('#page_item .level1').append("<li><p>" + csvList[i][1] + "</p></li>");
                 }
                 else */ if (csvList[i][0] == 2) {
-                    $('#page_item .level234').append("<li class='level2 nosel'><p style=''>" + csvList[i][1] + "</p><b class='marka'></b><div></div></li>");
+                    $('#page_item .level234').append("<li class='level2 mc nosel'><p style=''>" + csvList[i][1] + "</p><b class='marka'></b><div></div></li>");
                 }
                 else if ((csvList[i][0] == 3 && i == csvList.length - 1) || (csvList[i][0] == 3 && csvList[i + 1][0] != 4)) {
                     insert = "<li class='level3'><b class='mark3b'></b><img onerror=this.style='display:none;'>";
@@ -123,9 +123,9 @@ function checkinfo(obj) {
                 }
                 else if ((csvList[i][0] == 4 && i == csvList.length - 1) || (csvList[i][0] == 4 && csvList[i + 1][0] != 5)) {
                     insert = "<li class='level4'><b class='mark4b'></b><img onerror=this.style='display:none;'>";
-                    if(csvList[i][4] != ""){insert += "<span data-ck-item-name='" + csvList[i][4] + "'>" + csvList[i][1] + "</span>";}
-                    else if(csvList[i][5] != ""){insert += "<a href="+csvList[i][5]+" target='_blank'>"+csvList[i][1]+"</a>";}
-                    else{insert += "<p>" + csvList[i][1] + "</p></li>";}
+                    if (csvList[i][4] != "") { insert += "<span data-ck-item-name='" + csvList[i][4] + "'>" + csvList[i][1] + "</span>"; }
+                    else if (csvList[i][5] != "") { insert += "<a href=" + csvList[i][5] + " target='_blank' onfocus='this.blur();'>" + csvList[i][1] + "</a>"; }
+                    else { insert += "<p>" + csvList[i][1] + "</p></li>"; }
                     $('#page_item .level234 .level3:last div:first').append(insert);
                 }
                 else if (csvList[i][0] == 4) {
@@ -135,9 +135,9 @@ function checkinfo(obj) {
                 }
                 else if (csvList[i][0] == 5) {
                     insert = "<li class='level5'><b class='mark5b'></b><img onerror=this.style='display:none;'>";
-                    if(csvList[i][4] != ""){insert += "<span data-ck-item-name='" + csvList[i][4] + "'>" + csvList[i][1] + "</span>";}
-                    else if(csvList[i][5] != ""){insert += "<a href="+csvList[i][5]+">"+csvList[i][1]+"</a>";}
-                    else{insert += "<p>" + csvList[i][1] + "</p></li>";}
+                    if (csvList[i][4] != "") { insert += "<span data-ck-item-name='" + csvList[i][4] + "'>" + csvList[i][1] + "</span>"; }
+                    else if (csvList[i][5] != "") { insert += "<a href=" + csvList[i][5] + " target='_blank' onfocus='this.blur();'>" + csvList[i][1] + "</a>"; }
+                    else { insert += "<p>" + csvList[i][1] + "</p></li>"; }
                     $('#page_item .level234 .level4:last div:first').append(insert);
                 }
                 if (csvList[i][2] != "") {
@@ -146,17 +146,19 @@ function checkinfo(obj) {
                 if (csvList[i][2] == "" && csvList[i][0] != 2 && csvList[i][0] != 1) {
                     $('#page_item .level234 img:last').attr("src", "image/check/未选中.png");
                     $('#page_item .level234 img:last').bind('click', function () { checksel(this) });
-                    csvList[i][4] == ""?$('#page_item .level234 p:last').bind('click', function () { checkselp(this) }):"";
+                    csvList[i][4] == "" ? $('#page_item .level234 p:last').bind('click', function () { checkselp(this) }) : "";
                     $('#page_item .level234 img:last').parent().addClass("nosel");
+                    $('#page_item .level234 img:last').parent().addClass("mc");
                 }
                 if (csvList[i][3] != "") {
                     $('#page_item .level234 p:last').addClass(csvList[i][3]);
                     $('#page_item .level234 p:last').parent().addClass("zuobiao");
                     $('#page_item .level234 p:last').bind('click', function () { bigmap(this.className) });
-                } 
+                }
             }
+            checkloadData();
         }
-    });
+    });    
 }
 function checkselp(obj) {
     checksel($(obj).parent().children("img"));
@@ -165,7 +167,7 @@ function checksel(obj) {
     if ($(obj).parent().hasClass("nosel")) {
         $(obj).parent().removeClass("nosel");
         $(obj).parent().addClass("sel");
-        $(obj).attr("src", "image/check/选中.png");        
+        $(obj).attr("src", "image/check/选中.png");
         var level = $(obj).parents(".nosel").length;
         for (var i = 0; i < level; i++) {
             // alert($(obj).parents(".nosel:eq(0)").attr("class"));
@@ -195,5 +197,37 @@ function checksel(obj) {
             $(obj).parent().find(".sel").addClass("nosel");
             $(obj).parent().find(".sel").removeClass("sel");
         }
+    }
+    checksaveData();
+}
+//保存cookie
+function checksaveData() {
+    var countcheck = $('.level234').find('.mc').length;
+    var saveArray = [];
+    for (var i = 0; i < countcheck; i++) {
+        //            var id = ('000' + (i + 1)).slice(-3);
+        if ($('.level234').find('.mc').eq(i).hasClass('sel')) {
+            saveArray.push(1);
+        } else {
+            saveArray.push(0);
+        };
+    };
+    var ver = $('.vernum a.on').text();
+    window.localStorage.setItem('check' + ver + 'saveData', JSON.stringify(saveArray));
+}
+function checkloadData() {
+    var ver = $('.vernum a.on').text();
+    var info = window.localStorage.getItem('check' + ver + 'saveData');
+    //保存クッキーの展開
+    if (info !== null) {
+        var saveArray = JSON.parse(info);
+        for (var i = 1; i < saveArray.length + 1; i++) {
+            if (saveArray[i - 1] == '1') {
+                //遍历全元素按id对特定id的元素进行变化
+                $('.level234').find('.mc').eq(i-1).removeClass("nosel");
+                $('.level234').find('.mc').eq(i-1).addClass("sel");
+                $('.level234').find('.mc').eq(i-1).children("img").attr("src", "image/check/选中.png");
+            };
+        };
     }
 }
