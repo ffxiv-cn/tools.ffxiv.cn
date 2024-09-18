@@ -1,1 +1,1 @@
-<li><img src="image/logo/lv1.png"><p>为国服当前版本实装</p></li><li><img src="image/logo/lv2.png"><p>为未来版本即将实装</p></li><li><img src="image/logo/lv3.png"><p>为未知</p></li>
+开通<strong><span style="color:#ff8c00;">2.0</span></strong>探索笔记：到<span style="color:#ff8c00;">「格里达尼亚新街」</span>，完成Lv20前置任务「被遗忘的探索笔记」<br />
