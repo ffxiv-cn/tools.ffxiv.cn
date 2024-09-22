@@ -296,13 +296,13 @@ function digsavetxt(arr) {
         if (sarr[i] == "") {
             n++;
         }
-        else {            
+        else {
             sarr2[i - n] = sarr[i];
-            if (sarr[i][0] == "") { sarr2[i-n][0] = "光之战士" + (i+1); }
+            if (sarr[i][0] == "") { sarr2[i - n][0] = "光之战士" + (i + 1); }
         }
     }
     for (var i = 0; i < arr.length; i++) {
-        str += "/p " + (i+1) + "." + sarr2[arr[i]][0] + " " + sarr2[arr[i]][1] + " (" + sarr2[arr[i]][3].slice(0, -1) + "." + sarr2[arr[i]][3].slice(-1) + ", " + sarr2[arr[i]][4].slice(0, -1) + "." + sarr2[arr[i]][4].slice(-1) + ")\n"
+        str += "/p " + (i + 1) + "." + sarr2[arr[i]][0] + " " + sarr2[arr[i]][1] + " (" + sarr2[arr[i]][3].slice(0, -1) + "." + sarr2[arr[i]][3].slice(-1) + ", " + sarr2[arr[i]][4].slice(0, -1) + "." + sarr2[arr[i]][4].slice(-1) + ")\n"
     };
     window.localStorage.setItem('digsavetxt', JSON.stringify(str));
 }
