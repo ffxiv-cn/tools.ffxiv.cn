@@ -131,6 +131,7 @@ function digcheck(i) {
         $('#dig_text').append(
             '<li><textarea style="height:400px;"></textarea></li>'
         );
+        digloadtxt();
     }
 }
 function digzuobiao(obj) {
@@ -280,6 +281,31 @@ function digsaveData(arr) {
     };
     window.localStorage.setItem('digsaveData', JSON.stringify(saveArray));
 }
+function digsavetxt(arr) {
+    //读取已存记录
+    var info = window.localStorage.getItem('digsaveData');
+    var saveArray = JSON.parse(info);
+    var sarr = [];
+    var sarr2 = [];
+    for (var i = 0; i < saveArray.length; i++) {
+        sarr[i] = saveArray[i].split(",");
+    }
+    var str = ""
+    var n = 0;
+    for (var i = 0; i < 8; i++) {
+        if (sarr[i] == "") {
+            n++;
+        }
+        else {            
+            sarr2[i - n] = sarr[i];
+            if (sarr[i][0] == "") { sarr2[i-n][0] = "光之战士" + (i+1); }
+        }
+    }
+    for (var i = 0; i < arr.length; i++) {
+        str += "/p " + (i+1) + "." + sarr2[arr[i]][0] + " " + sarr2[arr[i]][1] + " (" + sarr2[arr[i]][3].slice(0, -1) + "." + sarr2[arr[i]][3].slice(-1) + ", " + sarr2[arr[i]][4].slice(0, -1) + "." + sarr2[arr[i]][4].slice(-1) + ")\n"
+    };
+    window.localStorage.setItem('digsavetxt', JSON.stringify(str));
+}
 function digsavename() {
     //读取已存记录
     var info = window.localStorage.getItem('digsaveData');
@@ -315,6 +341,12 @@ function digloadData() {
             $('#dig_text li').eq(i).children('a.zuobiao').text(str[1] + str[2]);
         };
     };
+}
+function digloadtxt() {
+    //读取已存记录
+    var info = window.localStorage.getItem('digsavetxt');
+    var saveArray = JSON.parse(info);
+    $('#dig_text li textarea').val(saveArray);
 }
 function digcanvas() {
     var info = window.localStorage.getItem('digsaveData');
@@ -360,9 +392,9 @@ function digcanvas() {
                 mapb = maplist[1];
             }
             var n = 0;
-            for (var i = 0; i < 8; i++) {                
+            for (var i = 0; i < 8; i++) {
                 if (mapb == map[i]) {
-                    pos[n] = (posx[i]+","+posy[i]).split(",");
+                    pos[n] = (posx[i] + "," + posy[i]).split(",");
                     n++;
                 }
             }
@@ -372,23 +404,24 @@ function digcanvas() {
             img.onload = function () {
                 ctx.clearRect(0, 0, canvas.width, canvas.height); // 清空画布
                 ctx.drawImage(img, 0, 0, canvas.width, canvas.height); // 绘制大图片
-                if(order.length>1){
+                if (order.length > 1) {
                     ctx.strokeStyle = 'black';
-                        ctx.lineWidth = 2;
-                        ctx.beginPath();
-                        ctx.moveTo(pos[order[0]][0], pos[order[0]][1]);
-                    for (var i = 1; i < order.length; i++) {                        
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.moveTo(pos[order[0]][0], pos[order[0]][1]);
+                    for (var i = 1; i < order.length; i++) {
                         ctx.lineTo(pos[order[i]][0], pos[order[i]][1]);
                     }
                     ctx.stroke();
                 }
                 for (var i = 0; i < order.length; i++) {
                     const radius = 8; // 圆的半径
-                        ctx.beginPath();
-                        ctx.arc(pos[order[i]][0], pos[order[i]][1], radius, 0, Math.PI * 2);
-                        ctx.fillStyle = '#66ccff'; // 设置颜色
-                        ctx.fill(); // 填充颜色
+                    ctx.beginPath();
+                    ctx.arc(pos[order[i]][0], pos[order[i]][1], radius, 0, Math.PI * 2);
+                    ctx.fillStyle = '#66ccff'; // 设置颜色
+                    ctx.fill(); // 填充颜色
                 }
+                digsavetxt(order);
             }
         }
     });
@@ -473,7 +506,7 @@ function routing(arr) {
         for (var i = 0; i < arr.length - 2; i++) {
             order = findmd2(arr, num0, num1, order);
             num0 = order[0];
-            num1 = order[order.length-1];
+            num1 = order[order.length - 1];
         }
     }
     return order;
