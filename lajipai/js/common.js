@@ -46,6 +46,7 @@ function load() {
         // , '<li style="width: auto;height:auto;"><ins class="adsbygoogle"        style="display:block;min-height: 280px;min-width: 600px;"        data-ad-client="ca-pub-7347679321798304"        data-ad-slot="8881145961"        data-ad-format="auto"        data-full-width-responsive="true"></ins></li>'
         // , '<li style="width: 600px;height:40px;"></li>'
     );
+    $('#main').append('<div style="width: 100%; display: flex;justify-content: center;"><div style="width: 960px;"><div class="_ddiz2pn9ob8"></div></div></div>');
 
     setTimeout(function () {
         try {
