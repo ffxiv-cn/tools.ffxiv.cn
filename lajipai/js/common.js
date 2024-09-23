@@ -94,6 +94,6 @@ function Windowsclose(name) {
 }
 function guanggao(){
     if($('#main #gg_d').length==0){
-        $('#main').append('<div id="gg_d" style="width: 100%; position: relative;top: 77px;display: flex;justify-content: center;"><div style="width: 960px;"><div class="_ddiz2pn9ob8"></div></div></div>');
+        $('#main').append('<div id="gg_d" style="width: 100%; position: relative;top: 77px;left: 20px;display: flex;justify-content: center;"><div style="width: 960px;"><div class="_ddiz2pn9ob8"></div></div></div>');
     }    
 }
