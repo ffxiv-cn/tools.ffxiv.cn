@@ -30,7 +30,7 @@ function newdig() {
 
         $('#page_itemtop').append(
             '<li class="back"><a onclick="back()"><img src="image/返回.png"></a></li>'
-            , '<li style="width: 160px;"><a><img src="image/藏宝图.png"><div></div></a><p>路线规划</p></li>'
+            , '<li style="width: 198px;"><a><img src="image/Routing.png"><div></div></a><p>宝图路线规划</p></li>'
         );
         $.ajax({
             url: './csv/金毗罗鳄革.csv?' + window._ver,
@@ -39,7 +39,16 @@ function newdig() {
                 Page.setClickPageNum();
                 Page.allContent("null");
                 $('#pagenum a:first').click();
+                digcheck(1);
                 digloadcsdlist();
+                const canvas = document.getElementById('canvas');
+                const ctx = canvas.getContext('2d');
+                var img = new Image();
+                img.src = 'image/newdig/shuoming.png';
+                img.onload = function () {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height); // 清空画布
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height); // 绘制大图片
+                }
             }
         });
         Windowsopen("page");
@@ -79,7 +88,7 @@ function newdig() {
             var saveArray = [];
             for (var i = 0; i < 8; i++) {
                 saveArray[i] = "";
-            };            
+            };
             var G = $('#pagenum a.on').text();
             digloadmaplist(G);
             window.localStorage.setItem('digsaveData', JSON.stringify(saveArray));
@@ -301,7 +310,7 @@ function digcanvas() {
     var G = $('#pagenum a.on').text();
     var map = [];
     var maplist = JSON.parse(info2);
-    var order = [];    
+    var order = [];
     var mapb = "";
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
@@ -324,7 +333,7 @@ function digcanvas() {
     if (mapb == "") {
         mapb = maplist[1];
     }
-    order = routing(str, maplist);    
+    order = routing(str, maplist);
     var img = new Image();
     img.src = 'image/dig/' + G + '/' + mapb + '.jpg';
     img.onload = function () {
