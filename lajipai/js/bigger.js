@@ -7,11 +7,11 @@ function bigger(obj) {
 
     img.onload = function () {
         var t = window.innerWidth,
-            e = window.innerHeight,
+            e = window.innerHeight - 70,
             s = img.width,
             n = img.height,
             o = t > s ? (t - s) / 2 : 0,
-            i = e > n ? (e - n) / 2 : 0;
+            i = e > n ? (e - n) / 2 + 70 : 70;
 
         $("#bigger").css({
             left: o + "px"
@@ -32,11 +32,11 @@ function bigmap(str) {
     $("#bigger").append(insert1);
     $("#overlay").fadeIn();
     var t = window.innerWidth
-        , e = window.innerHeight
+        , e = window.innerHeight - 70
         , s = 570
         , n = 450
         , o = t > s ? (t - s) / 2 : 0
-        , i = e > n ? (e - n) / 2 : 0;
+        , i = e > n ? (e - n) / 2 + 70 : 70;
     $("#bigger").css({
         left: o + "px"
     }),

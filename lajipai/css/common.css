@@ -962,6 +962,13 @@ not supported by any browser */
 }
 #dig_text li a.zuobiao{
     width: 150px;
+    display: flex;
+}
+#dig_text li a.zuobiao p{
+    color: #fff;
+    text-decoration:solid;
+    font-size: 11px;
+    align-self: center;
 }
 #dig_text textarea{
     width:100%;
