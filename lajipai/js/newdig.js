@@ -183,6 +183,7 @@ function digzuobiao(obj) {
             $("#bigger").append(
                 '<ul id="aether" style="width:708px;"></ul>'
                 , '<ul id="down" style="width:708px;"></ul>'
+                , '<ul id="close" onclick="diginfoclose()" style="width:60px;height:30px;">关闭</ul>'
             );
             $("#bigger #aether").append(infolist[pg]);
             $("#overlay").fadeIn();
@@ -289,6 +290,11 @@ function diginfo(str, i) {
             digcanvas();
         }
     });
+}
+function diginfoclose(){
+    $("#overlay").on("click", function () {
+        $("#overlay").fadeOut();
+    }); // 重新添加点击事件
 }
 function digclear(i) {
     $('#dig_text li').eq(i - 1).empty();
