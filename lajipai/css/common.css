@@ -1025,6 +1025,7 @@ ul#dig_text {
     font-size: 10px;
     text-align: center;
     user-select: none;
+    overflow: hidden;
 }
 #dig_text #digitem .digitem.on{
     background-color: #66cc;
