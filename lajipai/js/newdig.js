@@ -38,6 +38,8 @@ function newdig() {
                 Page.setTotalPageNums();
                 Page.setClickPageNum();
                 Page.allContent("null");
+                $('#pagenum a:first').click();
+                digloadcsdlist();
             }
         });
         Windowsopen("page");
@@ -68,31 +70,18 @@ function newdig() {
             }
         },
         allContent: function (divb) {
-            var target = '#aether';
             //设置初始被选项
             if ("null" == divb) {
                 divb = document.getElementById('pagenum').children[0];
                 divb.className = "on";
             }
-            var pg = this.getClickPageNum(divb); // 1 2 3
-            if (pg == "迦迦纳革") { pg = "1"; }
-            else if (pg == "瞪羚革") { pg = "1"; }
-            else if (pg == "深层绿图") { pg = "2"; }
-            else if (pg == "缠尾蛟革") { pg = "3"; }
-            else if (pg == "绿飘龙革") { pg = "3"; }
-            else if (pg == "高鼻羚羊革") { pg = "4"; }
-            else if (pg == "金毗罗鳄革") { pg = "4"; }
-            else if (pg == "蛇牛革") { pg = "5"; }
-            // $("#page_item li").empty();
-            // $(target).empty();
-            // $(target).append(infolist[pg]);
-            // $('a.btn:first').click();
-            // $('a.btn:first').find('.bd').addClass('Selected');
             //数据初始化
             var saveArray = [];
             for (var i = 0; i < 8; i++) {
                 saveArray[i] = "";
-            };
+            };            
+            var G = $('#pagenum a.on').text();
+            digloadmaplist(G);
             window.localStorage.setItem('digsaveData', JSON.stringify(saveArray));
             window.localStorage.setItem('digsavetxt', JSON.stringify(""));
             if ($('#dig_check li').eq(1).hasClass('on')) {
@@ -111,7 +100,7 @@ function digcheck(i) {
         $('#dig_text').append(
             '<li><p>复制游戏内聊天框中的信息来自动识别</p></li>'
             , '<li><textarea style="height:300px;"></textarea></li>'
-            , '<li style="background-color: #555;" onclick="digtxtcheck"><p>识别</p></li>'
+            , '<li style="background-color: #555;" onclick="digtxtcheck()"><p>识别</p></li>'
         );
     }
     else if (i == 2) {
@@ -119,7 +108,7 @@ function digcheck(i) {
         $('#dig_check li').eq(i - 1).addClass("on");
         for (var i = 1; i < 9; i++) {
             $('#dig_text').append(
-                '<li><input onkeyup="value=value.replace(/[^0-9]/g,\'\')" onpaste="value=value.replace(/[^0-9]/g,\'\')" oncontextmenu = "value=value.replace(/[^0-9]/g,\'\')" type="text" id="txt-member' + i + '" placeholder="光之战士' + i + '" value=""><a class="zuobiao" onclick="digzuobiao(this)">坐标</a><a onclick="digclear(' + i + ')">清除</a></li>'
+                '<li><input onkeyup="value=value.replace(/[^0-9]/g,\'\')" onpaste="value=value.replace(/[^0-9]/g,\'\')" oncontextmenu = "value=value.replace(/[^0-9]/g,\'\')" type="text" placeholder="光之战士' + i + '" value=""><a class="zuobiao" onclick="digzuobiao(this)"><p>坐标</p></a><a onclick="digclear(' + i + ')">X</a></li>'
             );
         }
         $('#dig_text li').children('input').on('input propertychange', function () {
@@ -189,11 +178,11 @@ function digzuobiao(obj) {
             $("#bigger #aether").append(infolist[pg]);
             $("#overlay").fadeIn();
             var t = window.innerWidth
-                , e = window.innerHeight
+                , e = window.innerHeight - 70
                 , s = 708
                 , n = 784
                 , o = t > s ? (t - s) / 2 : 0
-                , i = e > n ? (e - n) / 2 : 0;
+                , i = e > n ? (e - n) / 2 + 70 : 70;
             $("#bigger").css({
                 left: o + "px"
             }),
@@ -273,17 +262,19 @@ function diginfo(str, i) {
                 }
             };
             var txt = $('#dig_text li').eq(tar).children('input').val();
+            var txt2 = "";
             if (txt == "") { txt = "光之战士" + (tar + 1); }
             for (var n = 1; n < csvList.length; n++) {
-                if (csvList[n][1] == str && csvList[n][2] == i && csvList[n][0] == 0) {
+                if (csvList[n][1] == str && csvList[n][2] == i) {
                     saveArray[tar] = txt + "," + csvList[n][1] + "," + csvList[n][2] + "," + csvList[n][3] + "," + csvList[n][4];
+                    txt2 = "(" + csvList[n][3].slice(0, -1) + "." + csvList[n][3].slice(-1) + ", " + csvList[n][4].slice(0, -1) + "." + csvList[n][4].slice(-1) + ")"
                 }
                 else if (csvList[n][1] == str && csvList[n][0] == 1) {
                     saveArray[c + 8] = "," + csvList[n][1] + "," + csvList[n][2] + "," + csvList[n][3] + "," + csvList[n][4];
                     c++;
                 }
             }
-            $("a.zuobiao.tar").text(str + i);
+            $("a.zuobiao.tar p").text(mapnamechange(str) + txt2);
             $("a.zuobiao.tar").removeClass("tar");
             digsaveData(saveArray);
             digcanvas();
@@ -293,7 +284,7 @@ function diginfo(str, i) {
 function digclear(i) {
     $('#dig_text li').eq(i - 1).empty();
     $('#dig_text li').eq(i - 1).append(
-        '<input type="text" onkeyup="value=value.replace(/[^0-9]/g,\'\')" onpaste="value=value.replace(/[^0-9]/g,\'\')" oncontextmenu = "value=value.replace(/[^0-9]/g,\'\')" id="txt-member' + i + '" placeholder="光之战士' + i + '"><a class="zuobiao" onclick="digzuobiao(this)">坐标</a><a onclick="digclear(' + i + ')">清除</a>'
+        '<input type="text" onkeyup="value=value.replace(/[^0-9]/g,\'\')" onpaste="value=value.replace(/[^0-9]/g,\'\')" oncontextmenu = "value=value.replace(/[^0-9]/g,\'\')" placeholder="光之战士' + i + '"><a class="zuobiao" onclick="digzuobiao(this)"><p>坐标</p></a><a onclick="digclear(' + i + ')">X</a>'
     );
     $('#dig_text li').eq(i - 1).children('input').on('input propertychange', function () {
         $(this).addClass("tar");
@@ -302,309 +293,64 @@ function digclear(i) {
     digclearData(i);
     digcanvas();
 }
-function txtchange() {
-    for (var n = 0; n < 8; n++) {
-        if ($('#dig_text li').eq(n).children('input').hasClass("tar")) {
-            if ($('#dig_text li').eq(n).children('a.zuobiao').text() != "坐标") {
-                var txt = $('#dig_text li').eq(n).children('input').val();
-                var info = window.localStorage.getItem('digsaveData');
-                var saveArray = JSON.parse(info);
-                var arr = [];
-                for (var i = 0; i < saveArray.length; i++) {
-                    arr[i] = saveArray[i].split(",");
-                }
-                saveArray[n] = txt + "," + arr[n][1] + "," + arr[n][2] + "," + arr[n][3] + "," + arr[n][4];
-                window.localStorage.setItem('digsaveData', JSON.stringify(saveArray));
-            }
-            $('#dig_text li').eq(n).children('input').removeClass("tar");
-        }
-    };
-}
-//保存记录
-function digsaveData(arr) {
-    //读取已存记录
-    var info = window.localStorage.getItem('digsaveData');
-    var saveArray = JSON.parse(info);
-    for (var i = 0; i < arr.length; i++) {
-        if (arr[i] != "") {
-            saveArray[i] = arr[i];
-        }
-    };
-    window.localStorage.setItem('digsaveData', JSON.stringify(saveArray));
-}
-function digsavetxt(arr) {
-    
-    var str = ""
-    for (var i = 0; i < arr.length; i++) {
-        str += "/p " + (i + 1) + "." + arr[i][0] + " " + arr[i][1] + " (" + arr[i][3].slice(0, -1) + "." + arr[i][3].slice(-1) + ", " + arr[i][4].slice(0, -1) + "." + arr[i][4].slice(-1) + ")\n"
-    };
-    window.localStorage.setItem('digsavetxt', JSON.stringify(str));
-}
-//清除记录
-function digclearData(i) {
-    //读取已存记录
-    var info = window.localStorage.getItem('digsaveData');
-    var saveArray = JSON.parse(info);
-    saveArray[i - 1] = "";
-    window.localStorage.setItem('digsaveData', JSON.stringify(saveArray));
-}
-//读取记录
-function digloadData() {
-    //读取已存记录
-    var info = window.localStorage.getItem('digsaveData');
-    var saveArray = JSON.parse(info);
-    var str = [];
-    for (var i = 0; i < 8; i++) {
-        if (saveArray[i] != "") {
-            str = saveArray[i].split(",");
-            if (str[0] == "光之战士" + (i + 1)) { $('#dig_text li').eq(i).children('input').val(""); }
-            else { $('#dig_text li').eq(i).children('input').val(str[0]); }
-            $('#dig_text li').eq(i).children('a.zuobiao').text(str[1] + str[2]);
-        };
-    };
-}
-function digloadtxt() {
-    //读取已存记录
-    var info = window.localStorage.getItem('digsavetxt');
-    var saveArray = JSON.parse(info);
-    $('#dig_text li textarea').val(saveArray);
-}
 function digcanvas() {
     var info = window.localStorage.getItem('digsaveData');
     var saveArray = JSON.parse(info);
+    var info2 = window.localStorage.getItem('digmaplist');
     var str = [];
     var G = $('#pagenum a.on').text();
     var map = [];
-    var maplist = [];    
-    var order = [];
+    var maplist = JSON.parse(info2);
+    var order = [];    
     var mapb = "";
-    var csvList;
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     for (var i = 0; i < saveArray.length; i++) {
         str[i] = saveArray[i].split(",");
     }
-    $.ajax({
-        url: './csv/' + G + '.csv?' + window._ver,
-        success: function (data) {
-            csvList = $.csv()(data);
-            for (var i = 1; i < csvList.length; i++) {
-                maplist[i] = csvList[i][0];
-            }
-            for (var i = 0; i < 8; i++) {
-                if (saveArray[i] != "") {
-                    map[i] = str[i][1];
-                }
-                else {
-                    map[i] = "";
-                };
-            };
-            for (var i = 1; i < csvList.length; i++) {
-                if (itemsame(map, maplist[i]) && mapb == "") {
-                    mapb = maplist[i];
-                }
-            }
-            if (mapb == "") {
-                mapb = maplist[1];
-            }            
-            order = routing(str, maplist);
-            var img = new Image();
-            img.src = 'image/dig/' + G + '/' + mapb + '.jpg';
-            img.onload = function () {
-                ctx.clearRect(0, 0, canvas.width, canvas.height); // 清空画布
-                ctx.drawImage(img, 0, 0, canvas.width, canvas.height); // 绘制大图片
-                if (order.length > 1) {
-                    ctx.strokeStyle = 'black';
-                    ctx.lineWidth = 2;
-                    ctx.beginPath();
-                    ctx.moveTo(numcal(order[0][3]), numcal(order[0][4]));
-                    for (var i = 1; i < order.length; i++) {
-                        if(order[i][1]==mapb){
-                            ctx.lineTo(numcal(order[i][3]), numcal(order[i][4]));
-                        }                        
-                    }
-                    ctx.stroke();
-                }
-                for (var i = 0; i < order.length; i++) {
-                    if(order[i][1]==mapb){
-                    const radius = 8; // 圆的半径
-                    ctx.beginPath();                    
-                    ctx.arc(numcal(order[i][3]), numcal(order[i][4]), radius, 0, Math.PI * 2);
-                    ctx.fillStyle = '#66ccff'; // 设置颜色
-                    ctx.fill(); // 填充颜色
-                    }
-                }
-            }
-        }
-    });
-}
-function itemsame(arr, str) {
-    var result = false;
-    $.each(arr, function (index, value) {
-        if (arr[index] == str) {
-            result = true;
-        }
-    });
-    return result;
-}
-function numcal(str) {
-    var result;
-    var num = parseInt(str, 10);
-    result = parseInt((num - 10) / 410 * 500);
-    return result;
-}
-function distance(x1, y1, x2, y2) {
-    var result = Math.hypot(
-        x1 - x2,
-        y1 - y2
-    );
-    return result;
-}
-function findmd(arr, num) {
-    var min = 250000;
-    var result = -1;
-    for (var i = 0; i < arr.length; i++) {
-        if (i != num) {
-            var d = distance(parseInt(arr[num][3]), parseInt(arr[num][4]), parseInt(arr[i][3]), parseInt(arr[num][4]));
-            if (d < min) { min = d; result = i; }
-        }
-    }
-    return result;
-}
-function findmd2(arr, num1, num2, arr2) {
-    var min = 250000;
-    var result = -1;
-    var num = -1
-    for (var i = 0; i < arr.length; i++) {
-        if (!arr2.includes(i)) {
-            var d1 = distance(arr[num1][3], arr[num1][4], arr[i][3], arr[i][4])
-            if (d1 < min) { min = d1; num = i; result = 0; }
-            var d2 = distance(arr[num2][3], arr[num2][4], arr[i][3], arr[i][4])
-            if (d2 < min) { min = d2; num = i; result = 1; }
-        }
-    }
-    if (result == 0) {
-        for (var i = arr2.length; i > 0; i--) {
-            arr2[i] = arr2[i - 1];
-        }
-        arr2[0] = num;
-    }
-    else if (result == 1) {
-        arr2[arr2.length] = num;
-    }
-    return arr2;
-}
-function maxnum(arr) {
-    var max = 0;
-    var num = -1;
-    for (var i = 0; i < arr.length; i++) {
-        if (max < arr[i]) { max = arr[i]; num = i }
-    }
-    return num;
-}
-function routing(arr, maplist) {
-    var order = [];
-    var map1 = [];
-    var map2 = [];
-    var map3 = [];
-    var map4 = [];
-    var map5 = [];
-    var n1 = 0;
-    var n2 = 0;
-    var n3 = 0;
-    var n4 = 0;
-    var n5 = 0;
     for (var i = 0; i < 8; i++) {
-
-        switch (arr[i][1]) {
-            case maplist[1]:
-                map1[n1] = arr[i];
-                n1++;
-                break;
-            case maplist[2]:
-                map2[n2] = arr[i];
-                n2++;
-                break;
-            case maplist[3]:
-                map3[n3] = arr[i];
-                n3++;
-                break;
-            case maplist[4]:
-                map4[n4] = arr[i];
-                n4++;
-                break;
-            case maplist[5]:
-                map5[n5] = arr[i];
-                n5++;
-                break;
-            default:
-                break;
+        if (saveArray[i] != "") {
+            map[i] = str[i][1];
+        }
+        else {
+            map[i] = "";
+        };
+    };
+    for (var i = 1; i < maplist.length; i++) {
+        if (itemsame(map, maplist[i]) && mapb == "") {
+            mapb = maplist[i];
         }
     }
-    if (map1.length != 0) {
-        map1 = posorder(map1);
+    if (mapb == "") {
+        mapb = maplist[1];
     }
-    if (map2.length != 0) {
-        map2 = posorder(map2);
-    }
-    if (map3.length != 0) {
-        map3 = posorder(map3);
-    }
-    if (map4.length != 0) {
-        map4 = posorder(map4);
-    }
-    if (map5.length != 0) {
-        map5 = posorder(map5);
-    }
-    var n=0;
-    for(var i=0;i<map1.length;i++){
-        order[n]=map1[i];
-        n++;
-    }
-    for(var i=0;i<map2.length;i++){
-        order[n]=map2[i];
-        n++;
-    }
-    for(var i=0;i<map3.length;i++){
-        order[n]=map3[i];
-        n++;
-    }
-    for(var i=0;i<map4.length;i++){
-        order[n]=map4[i];
-        n++;
-    }
-    for(var i=0;i<map5.length;i++){
-        order[n]=map5[i];
-        n++;
-    }    
-    digsavetxt(order);
-    return order;
-}
-function posorder(arr) {
-    var arry = [];
-    var order = [];
-    var sarr = [];
-    if (arr.length == 1) { order[0] = 0; }
-    else if (arr.length == 2) { order[0] = 0; order[1] = 1; }
-    else if (arr.length > 2) {
-        for (var i = 0; i < arr.length; i++) {
-            arry[i] = arr[i][4];
+    order = routing(str, maplist);    
+    var img = new Image();
+    img.src = 'image/dig/' + G + '/' + mapb + '.jpg';
+    img.onload = function () {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // 清空画布
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height); // 绘制大图片
+        if (order.length > 0) {
+            order = findmd4(order);
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(numcal(order[0][3]), numcal(order[0][4]));
+            for (var i = 1; i < order.length; i++) {
+                if (order[i][1] == mapb) {
+                    ctx.lineTo(numcal(order[i][3]), numcal(order[i][4]));
+                }
+            }
+            ctx.stroke();
         }
-        var num0 = maxnum(arry);
-        order[0] = num0;
-        var num1 = findmd(arr, num0);
-        order[1] = num1;
-        for (var i = 0; i < arr.length - 2; i++) {
-            order = findmd2(arr, num0, num1, order);
-            num0 = order[0];
-            num1 = order[order.length - 1];
+        for (var i = 0; i < order.length; i++) {
+            if (order[i][1] == mapb) {
+                const radius = 8; // 圆的半径
+                ctx.beginPath();
+                ctx.arc(numcal(order[i][3]), numcal(order[i][4]), radius, 0, Math.PI * 2);
+                ctx.fillStyle = '#66ccff'; // 设置颜色
+                ctx.fill(); // 填充颜色
+            }
         }
     }
-    for (var i = 0; i < order.length; i++) {
-        sarr[i] = arr[order[i]];
-    }
-    return sarr;
-}
-function digtxtcheck(){
-
 }
