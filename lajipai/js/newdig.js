@@ -30,7 +30,7 @@ function newdig() {
 
         $('#page_itemtop').append(
             '<li class="back"><a onclick="back()"><img src="image/返回.png"></a></li>'
-            , '<li style="width: 160px;"><a><img src="image/藏宝图.png"><div></div></a><p>新藏宝图</p></li>'
+            , '<li style="width: 160px;"><a><img src="image/藏宝图.png"><div></div></a><p>路线规划</p></li>'
         );
         $.ajax({
             url: './csv/金毗罗鳄革.csv?' + window._ver,
@@ -47,8 +47,8 @@ function newdig() {
         //每页内容数目   
         setTotalPageNums: function () {
             var insert = '';
-            insert += '<a style="float:left;width:100px;flex-shrink: 0;" class="off">金毗罗鳄革</a>';
-            insert += '<a style="float:left;width:100px;flex-shrink: 0;" class="off">高鼻羚羊革</a>';
+            insert += '<a style="float:left;width:100px;flex-shrink: 0;" class="off">狞豹革</a>';
+            // insert += '<a style="float:left;width:100px;flex-shrink: 0;" class="off">金毗罗鳄革</a>';
             $("#pagenum").append(insert);
             Page.setClickPageNum();
         },
@@ -104,7 +104,6 @@ function newdig() {
     };
 }
 function digcheck(i) {
-    if ($('#dig_check li').eq(1).hasClass('on')) { digsavename(); }
     $('#dig_text').empty();
     if (i == 1) {
         $('#dig_check li').removeClass("on");
@@ -112,7 +111,7 @@ function digcheck(i) {
         $('#dig_text').append(
             '<li><p>复制游戏内聊天框中的信息来自动识别</p></li>'
             , '<li><textarea style="height:300px;"></textarea></li>'
-            , '<li onclick=""><p>识别</p></li>'
+            , '<li style="background-color: #555;" onclick="digtxtcheck"><p>识别</p></li>'
         );
     }
     else if (i == 2) {
@@ -120,9 +119,13 @@ function digcheck(i) {
         $('#dig_check li').eq(i - 1).addClass("on");
         for (var i = 1; i < 9; i++) {
             $('#dig_text').append(
-                '<li><input type="text" id="txt-member' + i + '" placeholder="光之战士' + i + '" value=""><a class="zuobiao" onclick="digzuobiao(this)">坐标</a><a onclick="digclear(' + i + ')">清除</a></li>'
+                '<li><input onkeyup="value=value.replace(/[^0-9]/g,\'\')" onpaste="value=value.replace(/[^0-9]/g,\'\')" oncontextmenu = "value=value.replace(/[^0-9]/g,\'\')" type="text" id="txt-member' + i + '" placeholder="光之战士' + i + '" value=""><a class="zuobiao" onclick="digzuobiao(this)">坐标</a><a onclick="digclear(' + i + ')">清除</a></li>'
             );
         }
+        $('#dig_text li').children('input').on('input propertychange', function () {
+            $(this).addClass("tar");
+            txtchange();
+        });
         digloadData();
     }
     else if (i == 3) {
@@ -167,7 +170,7 @@ function digzuobiao(obj) {
             }
             infolist[5] += '<li><a class="btn" onclick="digzuobiaoexplain(this,1)" target="_blank"><img src="image/dig/23.png"><div style="background-image: url(""); class="bd"></div></a></li>';
             for (i = 1; i < 6; i++) {
-                infolist[6] += '<li><a class="btn" onclick="digzuobiaoexplain(this,' + i + ')" target="_blank"><img src="image/dig/' + (i + 24) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
+                infolist[6] += '<li><a class="btn" onclick="digzuobiaoexplain2(this,' + i + ')" target="_blank"><img src="image/dig/' + (i + 24) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
             }
             if (pg == "迦迦纳革") { pg = "1"; }
             else if (pg == "瞪羚革") { pg = "1"; }
@@ -177,6 +180,8 @@ function digzuobiao(obj) {
             else if (pg == "高鼻羚羊革") { pg = "4"; }
             else if (pg == "金毗罗鳄革") { pg = "4"; }
             else if (pg == "蛇牛革") { pg = "5"; }
+            else if (pg == "奥阔银狼革") { pg = "6"; }
+            else if (pg == "狞豹革") { pg = "6"; }
             $("#bigger").append(
                 '<ul id="aether" style="width:708px;"></ul>'
                 , '<ul id="down" style="width:708px;"></ul>'
@@ -223,6 +228,29 @@ function digzuobiaoexplain(obj, i) {
         }
     });
 }
+function digzuobiaoexplain2(obj, i) {
+    var csvList;
+    var pgn = $('#pagenum a.on').text();
+    var insert = '';
+    $('a.btn').click(function () {
+        $('a.btn').find('.bd').removeClass('Selected');
+        $(this).find('.bd').addClass('Selected');
+    });
+    $("#bigger #down").empty();
+    $.ajax({
+        url: './csv/' + pgn + '.csv?' + window._ver,
+        success: function (data) {
+
+            csvList = $.csv()(data);
+            $("#bigger #down").append('<img style="float:left;width:420px;"src="image/dig/' + pgn + '/' + csvList[i][0] + '.jpg" onerror=this.style="display:none;">');
+            for (var n = 1; n <= csvList[i][1]; n++) {
+                insert += '<div style="float:left;width:144px;height:110px;text-align:center;"><img onclick="diginfo(\'' + csvList[i][0] + '\',' + n + ')" style="width:110px;"src="image/dig/' + pgn + '/' + csvList[i][0] + n + '.jpg" onerror=this.style="display:none;">';
+                csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
+            }
+            $("#bigger #down").append(insert);
+        }
+    });
+}
 function diginfo(str, i) {
     var csvList;
     var G = $('#pagenum a.on').text();
@@ -245,6 +273,7 @@ function diginfo(str, i) {
                 }
             };
             var txt = $('#dig_text li').eq(tar).children('input').val();
+            if (txt == "") { txt = "光之战士" + (tar + 1); }
             for (var n = 1; n < csvList.length; n++) {
                 if (csvList[n][1] == str && csvList[n][2] == i && csvList[n][0] == 0) {
                     saveArray[tar] = txt + "," + csvList[n][1] + "," + csvList[n][2] + "," + csvList[n][3] + "," + csvList[n][4];
@@ -264,10 +293,32 @@ function diginfo(str, i) {
 function digclear(i) {
     $('#dig_text li').eq(i - 1).empty();
     $('#dig_text li').eq(i - 1).append(
-        '<input type="text" id="txt-member' + i + '" placeholder="光之战士' + i + '"><a class="zuobiao" onclick="digzuobiao(this)">坐标</a><a onclick="digclear(' + i + ')">清除</a>'
+        '<input type="text" onkeyup="value=value.replace(/[^0-9]/g,\'\')" onpaste="value=value.replace(/[^0-9]/g,\'\')" oncontextmenu = "value=value.replace(/[^0-9]/g,\'\')" id="txt-member' + i + '" placeholder="光之战士' + i + '"><a class="zuobiao" onclick="digzuobiao(this)">坐标</a><a onclick="digclear(' + i + ')">清除</a>'
     );
+    $('#dig_text li').eq(i - 1).children('input').on('input propertychange', function () {
+        $(this).addClass("tar");
+        txtchange();
+    });
     digclearData(i);
     digcanvas();
+}
+function txtchange() {
+    for (var n = 0; n < 8; n++) {
+        if ($('#dig_text li').eq(n).children('input').hasClass("tar")) {
+            if ($('#dig_text li').eq(n).children('a.zuobiao').text() != "坐标") {
+                var txt = $('#dig_text li').eq(n).children('input').val();
+                var info = window.localStorage.getItem('digsaveData');
+                var saveArray = JSON.parse(info);
+                var arr = [];
+                for (var i = 0; i < saveArray.length; i++) {
+                    arr[i] = saveArray[i].split(",");
+                }
+                saveArray[n] = txt + "," + arr[n][1] + "," + arr[n][2] + "," + arr[n][3] + "," + arr[n][4];
+                window.localStorage.setItem('digsaveData', JSON.stringify(saveArray));
+            }
+            $('#dig_text li').eq(n).children('input').removeClass("tar");
+        }
+    };
 }
 //保存记录
 function digsaveData(arr) {
@@ -282,43 +333,12 @@ function digsaveData(arr) {
     window.localStorage.setItem('digsaveData', JSON.stringify(saveArray));
 }
 function digsavetxt(arr) {
-    //读取已存记录
-    var info = window.localStorage.getItem('digsaveData');
-    var saveArray = JSON.parse(info);
-    var sarr = [];
-    var sarr2 = [];
-    for (var i = 0; i < saveArray.length; i++) {
-        sarr[i] = saveArray[i].split(",");
-    }
+    
     var str = ""
-    var n = 0;
-    for (var i = 0; i < 8; i++) {
-        if (sarr[i] == "") {
-            n++;
-        }
-        else {
-            sarr2[i - n] = sarr[i];
-            if (sarr[i][0] == "") { sarr2[i - n][0] = "光之战士" + (i + 1); }
-        }
-    }
     for (var i = 0; i < arr.length; i++) {
-        str += "/p " + (i + 1) + "." + sarr2[arr[i]][0] + " " + sarr2[arr[i]][1] + " (" + sarr2[arr[i]][3].slice(0, -1) + "." + sarr2[arr[i]][3].slice(-1) + ", " + sarr2[arr[i]][4].slice(0, -1) + "." + sarr2[arr[i]][4].slice(-1) + ")\n"
+        str += "/p " + (i + 1) + "." + arr[i][0] + " " + arr[i][1] + " (" + arr[i][3].slice(0, -1) + "." + arr[i][3].slice(-1) + ", " + arr[i][4].slice(0, -1) + "." + arr[i][4].slice(-1) + ")\n"
     };
     window.localStorage.setItem('digsavetxt', JSON.stringify(str));
-}
-function digsavename() {
-    //读取已存记录
-    var info = window.localStorage.getItem('digsaveData');
-    var saveArray = JSON.parse(info);
-    for (var i = 0; i < 8; i++) {
-        var txt = $('#dig_text li').eq(i).children('input').val();
-        if (txt != "") {
-            var str = [];
-            str = saveArray[i].split(",");
-            saveArray[i] = txt + "," + str[1] + "," + str[2] + "," + str[3] + "," + str[4];
-        }
-    };
-    window.localStorage.setItem('digsaveData', JSON.stringify(saveArray));
 }
 //清除记录
 function digclearData(i) {
@@ -337,7 +357,8 @@ function digloadData() {
     for (var i = 0; i < 8; i++) {
         if (saveArray[i] != "") {
             str = saveArray[i].split(",");
-            $('#dig_text li').eq(i).children('input').val(str[0]);
+            if (str[0] == "光之战士" + (i + 1)) { $('#dig_text li').eq(i).children('input').val(""); }
+            else { $('#dig_text li').eq(i).children('input').val(str[0]); }
             $('#dig_text li').eq(i).children('a.zuobiao').text(str[1] + str[2]);
         };
     };
@@ -354,10 +375,7 @@ function digcanvas() {
     var str = [];
     var G = $('#pagenum a.on').text();
     var map = [];
-    var maplist = [];
-    var posx = [];
-    var posy = [];
-    var pos = [];
+    var maplist = [];    
     var order = [];
     var mapb = "";
     var csvList;
@@ -376,11 +394,9 @@ function digcanvas() {
             for (var i = 0; i < 8; i++) {
                 if (saveArray[i] != "") {
                     map[i] = str[i][1];
-                    posx[i] = numcal(str[i][3]);
-                    posy[i] = numcal(str[i][4]);
                 }
                 else {
-                    map[i] = ""; posx[i] = ""; posy[i] = "";
+                    map[i] = "";
                 };
             };
             for (var i = 1; i < csvList.length; i++) {
@@ -390,17 +406,10 @@ function digcanvas() {
             }
             if (mapb == "") {
                 mapb = maplist[1];
-            }
-            var n = 0;
-            for (var i = 0; i < 8; i++) {
-                if (mapb == map[i]) {
-                    pos[n] = (posx[i] + "," + posy[i]).split(",");
-                    n++;
-                }
-            }
-            order = routing(pos);
+            }            
+            order = routing(str, maplist);
             var img = new Image();
-            img.src = 'image/newdig/' + G + '/' + mapb + '.jpeg';
+            img.src = 'image/dig/' + G + '/' + mapb + '.jpg';
             img.onload = function () {
                 ctx.clearRect(0, 0, canvas.width, canvas.height); // 清空画布
                 ctx.drawImage(img, 0, 0, canvas.width, canvas.height); // 绘制大图片
@@ -408,20 +417,23 @@ function digcanvas() {
                     ctx.strokeStyle = 'black';
                     ctx.lineWidth = 2;
                     ctx.beginPath();
-                    ctx.moveTo(pos[order[0]][0], pos[order[0]][1]);
+                    ctx.moveTo(numcal(order[0][3]), numcal(order[0][4]));
                     for (var i = 1; i < order.length; i++) {
-                        ctx.lineTo(pos[order[i]][0], pos[order[i]][1]);
+                        if(order[i][1]==mapb){
+                            ctx.lineTo(numcal(order[i][3]), numcal(order[i][4]));
+                        }                        
                     }
                     ctx.stroke();
                 }
                 for (var i = 0; i < order.length; i++) {
+                    if(order[i][1]==mapb){
                     const radius = 8; // 圆的半径
-                    ctx.beginPath();
-                    ctx.arc(pos[order[i]][0], pos[order[i]][1], radius, 0, Math.PI * 2);
+                    ctx.beginPath();                    
+                    ctx.arc(numcal(order[i][3]), numcal(order[i][4]), radius, 0, Math.PI * 2);
                     ctx.fillStyle = '#66ccff'; // 设置颜色
                     ctx.fill(); // 填充颜色
+                    }
                 }
-                digsavetxt(order);
             }
         }
     });
@@ -453,7 +465,7 @@ function findmd(arr, num) {
     var result = -1;
     for (var i = 0; i < arr.length; i++) {
         if (i != num) {
-            var d = distance(arr[num][0], arr[num][1], arr[i][0], arr[i][1])
+            var d = distance(parseInt(arr[num][3]), parseInt(arr[num][4]), parseInt(arr[i][3]), parseInt(arr[num][4]));
             if (d < min) { min = d; result = i; }
         }
     }
@@ -465,9 +477,9 @@ function findmd2(arr, num1, num2, arr2) {
     var num = -1
     for (var i = 0; i < arr.length; i++) {
         if (!arr2.includes(i)) {
-            var d1 = distance(arr[num1][0], arr[num1][1], arr[i][0], arr[i][1])
+            var d1 = distance(arr[num1][3], arr[num1][4], arr[i][3], arr[i][4])
             if (d1 < min) { min = d1; num = i; result = 0; }
-            var d2 = distance(arr[num2][0], arr[num2][1], arr[i][0], arr[i][1])
+            var d2 = distance(arr[num2][3], arr[num2][4], arr[i][3], arr[i][4])
             if (d2 < min) { min = d2; num = i; result = 1; }
         }
     }
@@ -490,14 +502,93 @@ function maxnum(arr) {
     }
     return num;
 }
-function routing(arr) {
+function routing(arr, maplist) {
+    var order = [];
+    var map1 = [];
+    var map2 = [];
+    var map3 = [];
+    var map4 = [];
+    var map5 = [];
+    var n1 = 0;
+    var n2 = 0;
+    var n3 = 0;
+    var n4 = 0;
+    var n5 = 0;
+    for (var i = 0; i < 8; i++) {
+
+        switch (arr[i][1]) {
+            case maplist[1]:
+                map1[n1] = arr[i];
+                n1++;
+                break;
+            case maplist[2]:
+                map2[n2] = arr[i];
+                n2++;
+                break;
+            case maplist[3]:
+                map3[n3] = arr[i];
+                n3++;
+                break;
+            case maplist[4]:
+                map4[n4] = arr[i];
+                n4++;
+                break;
+            case maplist[5]:
+                map5[n5] = arr[i];
+                n5++;
+                break;
+            default:
+                break;
+        }
+    }
+    if (map1.length != 0) {
+        map1 = posorder(map1);
+    }
+    if (map2.length != 0) {
+        map2 = posorder(map2);
+    }
+    if (map3.length != 0) {
+        map3 = posorder(map3);
+    }
+    if (map4.length != 0) {
+        map4 = posorder(map4);
+    }
+    if (map5.length != 0) {
+        map5 = posorder(map5);
+    }
+    var n=0;
+    for(var i=0;i<map1.length;i++){
+        order[n]=map1[i];
+        n++;
+    }
+    for(var i=0;i<map2.length;i++){
+        order[n]=map2[i];
+        n++;
+    }
+    for(var i=0;i<map3.length;i++){
+        order[n]=map3[i];
+        n++;
+    }
+    for(var i=0;i<map4.length;i++){
+        order[n]=map4[i];
+        n++;
+    }
+    for(var i=0;i<map5.length;i++){
+        order[n]=map5[i];
+        n++;
+    }    
+    digsavetxt(order);
+    return order;
+}
+function posorder(arr) {
     var arry = [];
     var order = [];
+    var sarr = [];
     if (arr.length == 1) { order[0] = 0; }
     else if (arr.length == 2) { order[0] = 0; order[1] = 1; }
     else if (arr.length > 2) {
         for (var i = 0; i < arr.length; i++) {
-            arry[i] = arr[i][1];
+            arry[i] = arr[i][4];
         }
         var num0 = maxnum(arry);
         order[0] = num0;
@@ -509,5 +600,11 @@ function routing(arr) {
             num1 = order[order.length - 1];
         }
     }
-    return order;
+    for (var i = 0; i < order.length; i++) {
+        sarr[i] = arr[order[i]];
+    }
+    return sarr;
+}
+function digtxtcheck(){
+
 }

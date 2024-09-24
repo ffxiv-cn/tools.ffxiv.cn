@@ -972,6 +972,9 @@ not supported by any browser */
     height: 30px;
     background-color: #555;
 }
+#bigger #aether,#bigger #down{    
+    background-color: #555;
+}
 
 
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
