@@ -117,7 +117,7 @@ function digcheck(i) {
         $('#dig_check li').eq(i - 1).addClass("on");
         for (var i = 1; i < 9; i++) {
             $('#dig_text').append(
-                '<li><input onkeyup="value=value.replace(/[^0-9]/g,\'\')" onpaste="value=value.replace(/[^0-9]/g,\'\')" oncontextmenu = "value=value.replace(/[^0-9]/g,\'\')" type="text" placeholder="光之战士' + i + '" value=""><a class="zuobiao" onclick="digzuobiao(this)"><p>坐标</p></a><a onclick="digclear(' + i + ')">X</a></li>'
+                '<li><input onkeyup="value=value.replace(/[\,\']/,\'\')" onpaste="value=value.replace(/[\,\']/,\'\')" oncontextmenu = "value=value.replace(/[\,\']/,\'\')" type="text" placeholder="光之战士' + i + '" value=""><a class="zuobiao" onclick="digzuobiao(this)"><p>坐标</p></a><a onclick="digclear(' + i + ')">X</a></li>'
             );
         }
         $('#dig_text li').children('input').on('input propertychange', function () {
@@ -130,8 +130,23 @@ function digcheck(i) {
         $('#dig_check li').removeClass("on");
         $('#dig_check li').eq(i - 1).addClass("on");
         $('#dig_text').append(
-            '<li><textarea style="height:400px;"></textarea></li>'
+            '<li id="digitem"></li>'
+            , '<li><textarea style="height:300px;"></textarea></li>'
         );
+        for (var i = 1; i < 9; i++) {
+            $('#digitem').append(
+                '<li class="digitem" onclick="digitemclear('+i+')"></li>'
+            );
+        }
+        var info = window.localStorage.getItem('digsaveData');
+        var saveArray = JSON.parse(info);                
+        for (var i = 0; i < 8; i++) {
+            if(saveArray[i]!=""){
+                var name = saveArray[i].split(",");
+                $("#digitem .digitem").eq(i).addClass("on");
+                $("#digitem .digitem").eq(i).text(name[0]);
+            }
+        }
         digloadtxt();
     }
 }
@@ -239,7 +254,6 @@ function digzuobiaoexplain2(obj, i) {
     $.ajax({
         url: './csv/' + pgn + '.csv?' + window._ver,
         success: function (data) {
-
             csvList = $.csv()(data);
             $("#bigger #down").append('<img style="float:left;width:420px;"src="image/dig/' + pgn + '/' + csvList[i][0] + '.jpg" onerror=this.style="display:none;">');
             for (var n = 1; n <= csvList[i][1]; n++) {
@@ -299,7 +313,7 @@ function diginfoclose(){
 function digclear(i) {
     $('#dig_text li').eq(i - 1).empty();
     $('#dig_text li').eq(i - 1).append(
-        '<input type="text" onkeyup="value=value.replace(/[^0-9]/g,\'\')" onpaste="value=value.replace(/[^0-9]/g,\'\')" oncontextmenu = "value=value.replace(/[^0-9]/g,\'\')" placeholder="光之战士' + i + '"><a class="zuobiao" onclick="digzuobiao(this)"><p>坐标</p></a><a onclick="digclear(' + i + ')">X</a>'
+        '<input type="text" onkeyup="value=value.replace(/[\,\']/,\'\')" onpaste="value=value.replace(/[\,\']/,\'\')" oncontextmenu = "value=value.replace(/[\,\']/,\'\')" placeholder="光之战士' + i + '"><a class="zuobiao" onclick="digzuobiao(this)"><p>坐标</p></a><a onclick="digclear(' + i + ')">X</a>'
     );
     $('#dig_text li').eq(i - 1).children('input').on('input propertychange', function () {
         $(this).addClass("tar");
@@ -307,6 +321,12 @@ function digclear(i) {
     });
     digclearData(i);
     digcanvas();
+}
+function digitemclear(i){
+    digclearData(i);
+    digcanvas();
+    $("#digitem .digitem").eq(i-1).removeClass("on");
+    $("#digitem .digitem").eq(i-1).text("");
 }
 function digcanvas() {
     var info = window.localStorage.getItem('digsaveData');

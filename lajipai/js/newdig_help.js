@@ -2,7 +2,7 @@ function txtchange() {
     for (var n = 0; n < 8; n++) {
         if ($('#dig_text li').eq(n).children('input').hasClass("tar")) {
             if ($('#dig_text li').eq(n).children('a.zuobiao').children('p').text() != "坐标") {
-                var txt = $('#dig_text li').eq(n).children('input').val();
+                var txt = $('#dig_text li').eq(n).children('input').val().replace(/[\,\']/, '');
                 var info = window.localStorage.getItem('digsaveData');
                 var saveArray = JSON.parse(info);
                 var arr = [];
