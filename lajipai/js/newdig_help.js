@@ -16,6 +16,10 @@ function txtchange() {
         }
     };
 }
+function txtchange2() {
+    var txt = $('#dig_text li').children('textarea').val();
+    window.localStorage.setItem('digshibietxt', JSON.stringify(txt));
+}
 //保存记录
 function digsaveData(arr) {
     //读取已存记录
@@ -47,7 +51,7 @@ function digloadcsdlist() {
     $.ajax({
         url: './csv/newdig/传送点位.csv?' + window._ver,
         success: function (data) {
-            csvList = $.csv()(data);            
+            csvList = $.csv()(data);
             window.localStorage.setItem('digcsdlist', JSON.stringify(csvList));
         }
     });
@@ -59,8 +63,8 @@ function digsavetxt(arr) {
         str1 += + (i + 1) + "." + arr[i][0] + "→";
         str2 += "/p " + (i + 1) + "." + arr[i][0] + " " + mapnamechange(arr[i][1]) + " (" + arr[i][3].slice(0, -1) + "." + arr[i][3].slice(-1) + ", " + arr[i][4].slice(0, -1) + "." + arr[i][4].slice(-1) + ")\n"
     };
-    str1=str1.slice(0,-1)+"\n";
-    window.localStorage.setItem('digsavetxt', JSON.stringify(str1+str2));
+    str1 = str1.slice(0, -1) + "\n";
+    window.localStorage.setItem('digsavetxt', JSON.stringify(str1 + str2));
 }
 //清除记录
 function digclearData(i) {
@@ -89,6 +93,12 @@ function digloadData() {
 function digloadtxt() {
     //读取已存记录
     var info = window.localStorage.getItem('digsavetxt');
+    var saveArray = JSON.parse(info);
+    $('#dig_text li textarea').val(saveArray);
+}
+function digloadtxt2() {
+    //读取已存记录
+    var info = window.localStorage.getItem('digshibietxt');
     var saveArray = JSON.parse(info);
     $('#dig_text li textarea').val(saveArray);
 }
@@ -231,14 +241,14 @@ function findmd3(arr) {
         arr2 = arr;
     }
     else if (result == 1) {
-        for(var i=0;i<arr.length;i++){
-            arr2[i] = arr[arr.length-i-1];
+        for (var i = 0; i < arr.length; i++) {
+            arr2[i] = arr[arr.length - i - 1];
         }
     }
     return arr2;
 }
 function findmd4(arr) {
-    var min = 250000;    
+    var min = 250000;
     var num = -1;
     var csd = [];
     var arr2 = [];
@@ -253,7 +263,7 @@ function findmd4(arr) {
     }
     for (var i = 0; i < csd.length; i++) {
         var d1 = distance(arr[0][3], arr[0][4], csd[i][3], csd[i][4])
-        if (d1 < min) { min = d1; num = i; }        
+        if (d1 < min) { min = d1; num = i; }
     }
     for (var i = arr.length; i > 0; i--) {
         arr2[i] = arr[i - 1];
@@ -371,7 +381,7 @@ function posorder(arr) {
     for (var i = 0; i < order.length; i++) {
         sarr[i] = arr[order[i]];
     }
-    sarr2 =findmd3(sarr);
+    sarr2 = findmd3(sarr);
     return sarr2;
 
 }

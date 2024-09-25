@@ -93,6 +93,7 @@ function newdig() {
             digloadmaplist(G);
             window.localStorage.setItem('digsaveData', JSON.stringify(saveArray));
             window.localStorage.setItem('digsavetxt', JSON.stringify(""));
+            window.localStorage.setItem('digshibietxt', JSON.stringify(""));
             if ($('#dig_check li').eq(1).hasClass('on')) {
                 for (var i = 1; i < 9; i++) {
                     digclear(i);
@@ -111,6 +112,10 @@ function digcheck(i) {
             , '<li><textarea style="height:300px;"></textarea></li>'
             , '<li style="background-color: #555;" onclick="digtxtcheck()"><p>识别</p></li>'
         );
+        $('#dig_text li').children('textarea').on('input propertychange', function () {
+            txtchange2();
+        });
+        digloadtxt2();
     }
     else if (i == 2) {
         $('#dig_check li').removeClass("on");
@@ -139,7 +144,7 @@ function digcheck(i) {
                 '<li class="digitem" onclick="digitemchange(' + i + ')"></li>'
             );
             $('#digitemnum').append(
-                '<li>'+i+'</li>'
+                '<li>' + i + '</li>'
             );
         }
         var order = digorder();
