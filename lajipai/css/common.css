@@ -1041,6 +1041,11 @@ ul#dig_text {
     background-color: #66cc;
     text-shadow: 0 0 0.5em #FFD700, -0 -0 0.5em #FFD700;
 }
+#dig_text #digitem .digitem:hover {
+    background-color: #aacc;
+    border-radius: 4px;
+    box-shadow: 0 0 1px 3px #FFFF77;
+}
 #bigger #aether,
 #bigger #down,
 #bigger #close {

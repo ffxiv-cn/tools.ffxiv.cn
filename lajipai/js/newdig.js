@@ -122,7 +122,7 @@ function digcheck(i) {
         $('#dig_check li').eq(i - 1).addClass("on");
         for (var i = 1; i < 9; i++) {
             $('#dig_text').append(
-                '<li><input onkeyup="value=value.replace(/[\,\']/,\'\')" onpaste="value=value.replace(/[\,\']/,\'\')" oncontextmenu = "value=value.replace(/[\,\']/,\'\')" type="text" placeholder="光之战士' + i + '" value=""><a class="zuobiao" onclick="digzuobiao(this)"><p>坐标</p></a><a onclick="digclear(' + i + ')">X</a></li>'
+                '<li><input onkeyup="value=value.replace(/[\,\']/,\'\')" onpaste="value=value.replace(/[\,\']/,\'\')" oncontextmenu = "value=value.replace(/[\,\']/,\'\')" type="text" placeholder="光之战士' + i + '" value="" maxlength="12"><a class="zuobiao" onclick="digzuobiao(this)"><p>坐标</p></a><a onclick="digclear(' + i + ')">X</a></li>'
             );
         }
         $('#dig_text li').children('input').on('input propertychange', function () {

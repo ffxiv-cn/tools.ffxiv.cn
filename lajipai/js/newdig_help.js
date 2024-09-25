@@ -156,7 +156,8 @@ function digtxtcheck() {
             //     }
             // };
             window.localStorage.setItem('digsaveData', JSON.stringify(list2));
-            digcanvas();
+            var order = digorder();
+            digcanvas2(order);
         }
     });
 }
