@@ -409,7 +409,7 @@ function digcanvas2(arr) {
             }
             ctx.stroke();
         }
-        for (var i = 1; i < order.length; i++) {
+        for (var i = 0; i < order.length; i++) {
             if (order[i][1] == order[0][1]) {
                 const radius = 8; // 圆的半径
                 ctx.beginPath();
