@@ -28,6 +28,7 @@ function hunt() {
                 infolist[2] = "";
                 infolist[3] = "";
                 infolist[4] = "";
+                infolist[5] = "";
                 for (i = 1; i < 7; i++) {
                     infolist[1] += '<li><a class="btn" onclick="huntexplain(this,' + i + ')" target="_blank"><img src="image/aether/' + i + '.png"><div style="background-image: url("");" class="bd"></div></a></li>';
                 }
@@ -39,6 +40,9 @@ function hunt() {
                 }
                 for (i = 19; i < 25; i++) {
                     infolist[4] += '<li><a class="btn" onclick="huntexplain(this,' + i + ')" target="_blank"><img src="image/aether/' + i + '.png"><div style="background-image: url("");" class="bd"></div></a></li>';
+                }
+                for (i = 25; i < 31; i++) {
+                    infolist[5] += '<li><a class="btn" onclick="huntexplain(this,' + i + ')" target="_blank"><img src="image/aether/' + i + '.png"><div style="background-image: url("");" class="bd"></div></a></li>';
                 }
                 Page.setTotalPageNums();
                 Page.setClickPageNum();
@@ -52,10 +56,11 @@ function hunt() {
         //每页内容数目    
         setTotalPageNums: function () {
             var insert = '';
-            insert += '<a style="float:left;width:50px;" class="off">3.0</a>';
-            insert += '<a style="float:left;width:50px;" class="off">4.0</a>';
-            insert += '<a style="float:left;width:50px;" class="off">5.0</a>';
+            insert += '<a style="float:left;width:50px;" class="off">7.0</a>';
             insert += '<a style="float:left;width:50px;" class="off">6.0</a>';
+            insert += '<a style="float:left;width:50px;" class="off">5.0</a>';
+            insert += '<a style="float:left;width:50px;" class="off">4.0</a>';
+            insert += '<a style="float:left;width:50px;" class="off">3.0</a>';
             $("#pagenum").append(insert);
             Page.setClickPageNum();
         },
@@ -77,7 +82,7 @@ function hunt() {
         allContent: function (divb) {
             var target = '#aether';
             if ("null" == divb) {
-                divb = document.getElementById('pagenum').children[3];
+                divb = document.getElementById('pagenum').children[0];
                 divb.className = "on";
             }
             var pg = this.getClickPageNum(divb); // 1 2 3
@@ -85,6 +90,7 @@ function hunt() {
             else if (pg == "4.0") { pg = "2"; }
             else if (pg == "5.0") { pg = "3"; }
             else if (pg == "6.0") { pg = "4"; }
+            else if (pg == "7.0") { pg = "5"; }
             $("#page_item li").empty();
             $(target).empty();
             $(target).append(infolist[pg]);
@@ -106,7 +112,7 @@ function huntexplain(obj, i) {
     $.ajax({
         url: './csv/aether.csv?' + window._ver,
         success: function (data) {
-            insert += '<img onclick="bigger(this)" style="width:390px;"src="image/hunt/' + i + '.jpg">';
+            insert += '<img onclick="bigger(this)" style="width:390px;"src="image/hunt/' + i + '.jpg" onerror=this.style="display:none;">';
             $(target).append(insert);
         }
     });

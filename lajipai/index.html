@@ -9,36 +9,43 @@
 
   <script type="text/javascript">
     window.navigator.cookieEnabled = false;
-    window._ver = '20240822';
+    window._ver = '20240927';
   </script>
-  <script src="js/jquery.min.js?ver=20240822"></script>
-  <script type="text/javascript" src="js/common.js?ver=20240822"></script>
-  <script type="text/javascript" src="js/position.js?ver=20240822"></script>
-  <script type="text/javascript" src="js/jquery.csv.js?ver=20240822"></script>
-  <script type="text/javascript" src="js/jquery.cookie.js?ver=20240822"></script>
-  <script type="text/javascript" src="js/bigger.js?ver=20240822"></script>
-  <script type="text/javascript" src="js/pets.js?ver=20240822"></script>
-  <script type="text/javascript" src="js/mounts.js?ver=20240822"></script>
-  <script type="text/javascript" src="js/music.js?ver=20240822"></script>
-  <script type="text/javascript" src="js/aether.js?ver=20240822"></script>
-  <script type="text/javascript" src="js/hunt.js?ver=20240822"></script>
-  <script type="text/javascript" src="js/dig.js?ver=20240822"></script>
-  <script type="text/javascript" src="js/emote.js?ver=20240822"></script>
-  <script type="text/javascript" src="js/explore.js?ver=20240822"></script>
-  <script type="text/javascript" src="js/bluemagic.js?ver=20240822"></script>
-  <script type="text/javascript" src="js/dye.js?ver=20240822"></script>
-  <script type="text/javascript" src="js/dungeons.js?ver=20240822"></script>
-  <script type="text/javascript" src="js/jobtask.js?ver=20240822"></script>
-  <script type="text/javascript" src="js/fateshop.js?ver=20240822"></script>
-  <script type="text/javascript" src="js/niaojia.js?ver=20240822"></script>
-  <script type="text/javascript" src="js/memo.js?ver=20240822"></script>
-  <script type="text/javascript" src="js/fashion.js?ver=20240822"></script>
-  <script type="text/javascript" src="js/dl&input.js?ver=20240822"></script>  
+  <script src="js/jquery.min.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/common.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/position.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/jquery.csv.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/jquery.cookie.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/bigger.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/pets.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/mounts.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/music.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/aether.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/hunt.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/dig.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/emote.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/explore.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/bluemagic.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/dye.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/dungeons.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/jobtask.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/fateshop.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/niaojia.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/memo.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/fashion.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/dl&input.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/newdig.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/newdig_help.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/check.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/yiwen.js?ver=20240927"></script>
+  <script type="text/javascript" src="js/map.js?ver=20240927"></script>
 
-  <link href="css/common.css?ver=20240822" rel="stylesheet" type="text/css" />
-  <link href="css/style.css?ver=20240822" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" type="text/css" href="css/normalize.css?ver=20240822" />
-  <link rel="stylesheet" href="https://www.ffxiv.cn/sideBar/assets/style.css?ver=20240822" />
+  <link href="css/common.css?ver=20240927" rel="stylesheet" type="text/css" />
+  <link href="css/style.css?ver=20240927" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="css/normalize.css?ver=20240927" />
+  <link rel="stylesheet" type="text/css" href="css/leaflet.css?ver=20240927" />
+  <link rel="stylesheet" type="text/css" href="css/map.css?ver=20240927" />
+  <link rel="stylesheet" href="https://www.ffxiv.cn/sideBar/assets/style.css?ver=20240927" />
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150677482-2"></script>
@@ -55,16 +62,16 @@
   <script>
     function moveCookieToLocalStorage() {
       var mountssaveData = $.cookie("mountssaveData");
-      if(mountssaveData !== undefined){
+      if (mountssaveData !== undefined) {
         window.localStorage.setItem('p&msaveData', JSON.stringify(mountssaveData));
-        $.cookie("mountssaveData","",{ expires:0 });
-        $.cookie("mountssaveData","",{ expires:0, path: '/' });
+        $.cookie("mountssaveData", "", { expires: 0 });
+        $.cookie("mountssaveData", "", { expires: 0, path: '/' });
       }
       var musicsaveData = $.cookie("musicsaveData");
-      if(musicsaveData !== undefined){
+      if (musicsaveData !== undefined) {
         window.localStorage.setItem('musicsaveData', JSON.stringify(musicsaveData));
-        $.cookie("musicsaveData","",{ expires:0 });
-        $.cookie("musicsaveData","",{ expires:0, path: '/'});
+        $.cookie("musicsaveData", "", { expires: 0 });
+        $.cookie("musicsaveData", "", { expires: 0, path: '/' });
       }
     }
     moveCookieToLocalStorage();
@@ -85,10 +92,45 @@
   </script>
 
   <div id="donation-side-bar"></div>
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/@thewakingsands/kit-tooltip/dist/bundle.js"></script>
+  <script type="text/javascript" src="js/bundle.js?ver=20240927"></script>
   <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@thewakingsands/kit-tooltip/dist/bundle.js"></script> -->
   <!-- 初始化悬浮窗 -->
   <script>CafeKitTooltip.initTooltip();</script>
+  <div id="gg_l" style="position: relative;top: 84px;float: left;">
+    <div class="_nly34zb62ah"></div>
+  </div>
+
+  <script type="text/javascript">
+    (window.slotbydup = window.slotbydup || []).push({
+      id: "u6986231",
+      container: "_nly34zb62ah",
+      async: true
+    });
+  </script>
+
+  <div id="gg_r" style="position: relative;top: 84px;float: right;">
+    <div class="_cipgxozrrt"></div>
+  </div>
+
+  <script type="text/javascript">
+    (window.slotbydup = window.slotbydup || []).push({
+      id: "u6985973",
+      container: "_cipgxozrrt",
+      async: true
+    });
+  </script>
+
+  <script type="text/javascript">
+    (window.slotbydup = window.slotbydup || []).push({
+      id: "u6985975",
+      container: "_ddiz2pn9ob8",
+      async: true
+    });
+  </script>
+
+  <!-- 多条广告如下脚本只需引入一次 -->
+  <script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/cm.js" async="async" defer="defer" >
+    </script>
 </body>
 
 </html>

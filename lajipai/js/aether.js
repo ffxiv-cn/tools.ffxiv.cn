@@ -5,22 +5,22 @@ function aether() {
         $('#left').remove();
         $('#right').remove();
         $('#main').append(
-        '<div id="page" style="opacity: 0;"></div>'
-    );
+            '<div id="page" style="opacity: 0;"></div>'
+        );
         if (document.documentElement.clientWidth - 1009 > 0) {
             $("#page").css("left", (document.documentElement.clientWidth - 1009) / 2);
         }
         else { $("#page").css("left", 0); }
         $("#page").empty();
         $('#page').append(
-        '<ul id="page_itemtop"></ul>'
-        , '<ul id="page_check" style="height:200px;"><div style="padding-left:80px;" id="pagenum"></div><ul style="top:0px;" id="aether"></ul></ul>'
-        , '<ul id="page_item"><li style="width:560px;" id="page_item_left"></li><li style="padding-left: 10px;padding-top: 10px;" id="page_item_right"></li></ul>'
+            '<ul id="page_itemtop"></ul>'
+            , '<ul id="page_check" style="height:200px;"><div style="padding-left:80px;" id="pagenum"></div><ul style="top:0px;" id="aether"></ul></ul>'
+            , '<ul id="page_item"><li style="width:560px;" id="page_item_left"></li><li style="padding-left: 10px;padding-top: 10px;" id="page_item_right"></li></ul>'
         );
         $('#page_itemtop').append(
-        '<li class="back"><a onclick="back()"><img src="image/返回.png"></a></li>'
-        , '<li><a><img src="image/风脉.png"><div></div></a><p>风脉</p></li>'
-    );
+            '<li class="back"><a onclick="back()"><img src="image/返回.png"></a></li>'
+            , '<li><a><img src="image/风脉.png"><div></div></a><p>风脉</p></li>'
+        );
         var insert2 = '';
         insert2 += '<p style="font-size: 19px;">使用说明</p><ul style="width:420px;height:480px;top: 0px;">';
         insert2 += '<img alt="" src="image/aether/nothing/shuoming.jpg" style="width: 193px; height: 59px;opacity: 1;" /><br />'
@@ -47,6 +47,7 @@ function aether() {
                 infolist[2] = "";
                 infolist[3] = "";
                 infolist[4] = "";
+                infolist[5] = "";
                 for (i = 1; i < 7; i++) {
                     infolist[1] += '<li><a class="btn" onclick="aetherexplain(this,' + i + ')" target="_blank"><img src="image/aether/' + i + '.png"><div style="background-image: url("");" class="bd"></div></a></li>';
                 }
@@ -57,7 +58,10 @@ function aether() {
                     infolist[3] += '<li><a class="btn" onclick="aetherexplain(this,' + i + ')" target="_blank"><img src="image/aether/' + i + '.png"><div style="background-image: url("");" class="bd"></div></a></li>';
                 }
                 for (i = 19; i < 25; i++) {
-                    infolist[4] += '<li><a class="btn" onclick="aetherexplain(this,' + i + ')" target="_blank"><img src="image/aether/' + i + '.png"><div style="background-image: url("");" class="bd"></div></a></li>';
+                    infolist[4] += '<li><a class="btn" onclick="aetherexplain3(this,' + i + ')" target="_blank"><img src="image/aether/' + i + '.png"><div style="background-image: url("");" class="bd"></div></a></li>';
+                }
+                for (i = 25; i < 31; i++) {
+                    infolist[5] += '<li><a class="btn" onclick="aetherexplain2(this,' + i + ')" target="_blank"><img src="image/aether/' + i + '.png"><div style="background-image: url("");" class="bd"></div></a></li>';
                 }
                 Page.setTotalPageNums();
                 Page.setClickPageNum();
@@ -72,10 +76,11 @@ function aether() {
         //每页内容数目    
         setTotalPageNums: function () {
             var insert = '';
-            insert += '<a style="float:left;width:50px;" class="off">3.0</a>';
-            insert += '<a style="float:left;width:50px;" class="off">4.0</a>';
-            insert += '<a style="float:left;width:50px;" class="off">5.0</a>';
+            insert += '<a style="float:left;width:50px;" class="off">7.0</a>';
             insert += '<a style="float:left;width:50px;" class="off">6.0</a>';
+            insert += '<a style="float:left;width:50px;" class="off">5.0</a>';
+            insert += '<a style="float:left;width:50px;" class="off">4.0</a>';
+            insert += '<a style="float:left;width:50px;" class="off">3.0</a>';
             $("#pagenum").append(insert);
             Page.setClickPageNum();
         },
@@ -97,7 +102,7 @@ function aether() {
         allContent: function (divb) {
             var target = '#aether';
             if ("null" == divb) {
-                divb = document.getElementById('pagenum').children[3];
+                divb = document.getElementById('pagenum').children[0];
                 divb.className = "on";
             }
             var pg = this.getClickPageNum(divb); // 1 2 3
@@ -105,18 +110,19 @@ function aether() {
             else if (pg == "4.0") { pg = "2"; }
             else if (pg == "5.0") { pg = "3"; }
             else if (pg == "6.0") { pg = "4"; }
+            else if (pg == "7.0") { pg = "5"; }
             $("#aether").empty();
             $(target).empty();
             $(target).append(infolist[pg]);
-            //            $('a.btn:first').click();
-            //            $('a.btn:first').find('.bd').addClass('Selected');
+            $('a.btn:first').click();
+            $('a.btn:first').find('.bd').addClass('Selected');
         }
     };
 }
 
 function aetherexplain(obj, i) {
     var csvList;
-    var insert = '';    
+    var insert = '';
     $('a.btn').click(function () {
         $('a.btn').find('.bd').removeClass('Selected');
         $(this).find('.bd').addClass('Selected');
@@ -129,16 +135,84 @@ function aetherexplain(obj, i) {
             csvList = $.csv()(data);
             csvList[i][0] == "" ? insert += '<p style="font-size: 19px;">全部由主线触发</p>' : insert += '<img onclick="bigger(this)" style="float:left;width:340px;"src="image/aether/' + csvList[i][0] + '.jpeg" onerror=this.style="display:none;">';
             insert += '<ul style="top:0px;">';
-            if (csvList[i][0] != ""&&i>=19){
+            if (csvList[i][0] != "" && i >= 25) {
                 for (var n = 1; n < 11; n++) {
-                insert += '<div style="float:left;width:100px;height:70px;text-align:center;"><img onclick="bigger(this)" style="width:80px;"src="image/aether/' + csvList[i][0] + n + '.jpg" onerror=this.style="display:none;">';
-                csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
+                    insert += '<div style="float:left;width:100px;height:70px;text-align:center;"><img onclick="bigger(this)" style="width:80px;"src="image/aether/' + csvList[i][0] + n + '.jpg" onerror=this.style="display:none;">';
+                    csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
                 }
             }
-            else if(csvList[i][0] != ""&&i<19){
+            else if (csvList[i][0] != "" && i < 25) {
                 for (var n = 1; n < 5; n++) {
+                    insert += '<div style="float:left;width:100px;height:70px;text-align:center;"><img onclick="bigger(this)" style="width:80px;"src="image/aether/' + csvList[i][0] + n + '.jpg" onerror=this.style="display:none;">';
+                    csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
+                }
+            }
+            insert += '</ul><ul>';
+            csvList[i][12] == "" ? insert += '' : insert += '<img style="float:left;width:20px;"src="image/logo/061419.tex.png"><p style="font-size: 15px;">' + csvList[i][12] + '</p>';
+            csvList[i][13] == "" ? insert += '' : insert += '<img style="float:left;width:20px;"src="image/logo/061419.tex.png"><p style="font-size: 15px;">' + csvList[i][13] + '</p>';
+            csvList[i][14] == "" ? insert += '' : insert += '<img style="float:left;width:20px;"src="image/logo/061419.tex.png"><p style="font-size: 15px;">' + csvList[i][14] + '</p>';
+            csvList[i][15] == "" ? insert += '' : insert += '<img style="float:left;width:20px;"src="image/logo/061419.tex.png"><p style="font-size: 15px;">' + csvList[i][15] + '</p>';
+            insert += '</ul>';
+            $('#page_item_left').append(insert);
+        }
+
+    });
+}
+function aetherexplain2(obj, i) {
+    var csvList;
+    var insert = '';
+    $('a.btn').click(function () {
+        $('a.btn').find('.bd').removeClass('Selected');
+        $(this).find('.bd').addClass('Selected');
+    });
+    $("#page_item_left").empty();
+    $.ajax({
+        url: './csv/aether.csv?' + window._ver,
+        success: function (data) {
+
+            csvList = $.csv()(data);
+            csvList[i][0] == "" ? insert += '<p style="font-size: 19px;">全部由主线触发</p>' : insert += '<img onclick="bigger(this)" style="float:left;width:340px;"src="image/aether/' + csvList[i][0] + '.jpg" onerror=this.style="display:none;">';
+            insert += '<ul style="top:0px;">';
+            for (var n = 1; n < 11; n++) {
                 insert += '<div style="float:left;width:100px;height:70px;text-align:center;"><img onclick="bigger(this)" style="width:80px;"src="image/aether/' + csvList[i][0] + n + '.jpg" onerror=this.style="display:none;">';
                 csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
+            }
+            insert += '</ul><ul>';
+            csvList[i][12] == "" ? insert += '' : insert += '<img style="float:left;width:20px;"src="image/logo/061419.tex.png"><p style="font-size: 15px;">' + csvList[i][12] + '</p>';
+            csvList[i][13] == "" ? insert += '' : insert += '<img style="float:left;width:20px;"src="image/logo/061419.tex.png"><p style="font-size: 15px;">' + csvList[i][13] + '</p>';
+            csvList[i][14] == "" ? insert += '' : insert += '<img style="float:left;width:20px;"src="image/logo/061419.tex.png"><p style="font-size: 15px;">' + csvList[i][14] + '</p>';
+            csvList[i][15] == "" ? insert += '' : insert += '<img style="float:left;width:20px;"src="image/logo/061419.tex.png"><p style="font-size: 15px;">' + csvList[i][15] + '</p>';
+            insert += '</ul>';
+            $('#page_item_left').append(insert);
+        }
+
+    });
+}
+function aetherexplain3(obj, i) {
+    var csvList;
+    var insert = '';
+    $('a.btn').click(function () {
+        $('a.btn').find('.bd').removeClass('Selected');
+        $(this).find('.bd').addClass('Selected');
+    });
+    $("#page_item_left").empty();
+    $.ajax({
+        url: './csv/aether.csv?' + window._ver,
+        success: function (data) {
+
+            csvList = $.csv()(data);
+            csvList[i][0] == "" ? insert += '<p style="font-size: 19px;">全部由主线触发</p>' : insert += '<img onclick="bigger(this)" style="float:left;width:340px;"src="image/aether/' + csvList[i][0] + '.jpg" onerror=this.style="display:none;">';
+            insert += '<ul style="top:0px;">';
+            if (csvList[i][0] != "" && i >= 25) {
+                for (var n = 1; n < 11; n++) {
+                    insert += '<div style="float:left;width:100px;height:70px;text-align:center;"><img onclick="bigger(this)" style="width:80px;"src="image/aether/' + csvList[i][0] + n + '.jpg" onerror=this.style="display:none;">';
+                    csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
+                }
+            }
+            else if (csvList[i][0] != "" && i < 25) {
+                for (var n = 1; n < 5; n++) {
+                    insert += '<div style="float:left;width:100px;height:70px;text-align:center;"><img onclick="bigger(this)" style="width:80px;"src="image/aether/' + csvList[i][0] + n + '.jpg" onerror=this.style="display:none;">';
+                    csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
                 }
             }
             insert += '</ul><ul>';

@@ -14,7 +14,7 @@ function niaojia() {
         $("#page").empty();
         $('#page').append(
         '<ul id="page_itemtop"></ul>'
-        , '<ul id="page_item"  style="min-height: 540px;"><li id="page_item_left" style="border-right: 1px solid rgba(42,42,41,1);box-shadow: 1px 1px 0px rgba(67,67,67,1);"><ul style="padding-left: 40px;top:0px;min-height: 400px;"></ul></li><li style="padding-top: 20px;float: left;padding-left: 0px;" id="page_item_right"><ul id="niaojiaexplain" style="top:7px;padding-left: 20px;"></ul></li></ul>'
+        , '<ul id="page_item"  style="min-height: 540px;"><li id="page_item_left" style="border-right: 1px solid rgba(42,42,41,1);box-shadow: 1px 1px 0px rgba(67,67,67,1);"><ul style="padding-left: 40px;top:0px;min-height: 400px;height: 600px;"></ul></li><li style="padding-top: 20px;float: left;padding-left: 0px;" id="page_item_right"><ul id="niaojiaexplain" style="top:7px;padding-left: 20px;"></ul></li></ul>'
         );
         $('#page_itemtop').append(
         '<li class="back"><a onclick="back()"><img src="image/返回.png"></a></li>'
