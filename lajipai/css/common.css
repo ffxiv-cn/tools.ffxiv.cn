@@ -946,7 +946,7 @@ not supported by any browser */
     transition: all 0.5s;
 }
 
-#dig_check li.on {
+#dig_check li.on,#dig_check li:hover {
     border: 1px solid #333;
     box-shadow: inset 0 0 5px 5px #ccc;
     text-shadow: 0 0 0.5em #FFD700, -0 -0 0.5em #FFD700;
@@ -957,7 +957,7 @@ not supported by any browser */
 #dig_text li a {
     width: 100%;
     font-size: 20px;
-    text-align: center;
+    text-align: center;    
 }
 
 ul#dig_text {
@@ -969,6 +969,9 @@ ul#dig_text {
     display: flex;
     margin: 5px 0px;
 }
+#shibie,#shibie p{
+    border-radius: 5px;    
+}
 
 #dig_text li a {
     width: 60px;
@@ -978,7 +981,7 @@ ul#dig_text {
     border-radius: 5px;
 }
 
-#dig_text li a:hover {
+#dig_text li a:hover,#shibie p:hover {
     border: 1px solid #333;
     box-shadow: inset 0 0 5px 5px #ccc;
     text-shadow: 0 0 0.5em #FFD700, -0 -0 0.5em #FFD700;
@@ -1002,6 +1005,7 @@ ul#dig_text {
 
 #dig_text textarea {
     width: 100%;
+    border-radius: 10px;
     background-color: #555;
 }
 

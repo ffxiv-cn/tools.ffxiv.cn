@@ -110,7 +110,7 @@ function digcheck(i) {
         $('#dig_text').append(
             '<li><p>复制游戏内聊天框中的信息来自动识别</p></li>'
             , '<li><textarea style="height:300px;"></textarea></li>'
-            , '<li style="background-color: #555;" onclick="digtxtcheck()"><p>识别</p></li>'
+            , '<li id="shibie"style="background-color: #555;" onclick="digtxtcheck()"><p>识别</p></li>'
         );
         $('#dig_text li').children('textarea').on('input propertychange', function () {
             txtchange2();
