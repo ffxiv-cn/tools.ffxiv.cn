@@ -130,12 +130,16 @@ function digcheck(i) {
         $('#dig_check li').removeClass("on");
         $('#dig_check li').eq(i - 1).addClass("on");
         $('#dig_text').append(
-            '<li id="digitem"></li>'
+            '<li id="digitemnum"></li>'
+            , '<li id="digitem"></li>'
             , '<li><textarea style="height:300px;"></textarea></li>'
         );
         for (var i = 1; i < 9; i++) {
             $('#digitem').append(
                 '<li class="digitem" onclick="digitemchange(' + i + ')"></li>'
+            );
+            $('#digitemnum').append(
+                '<li>'+i+'</li>'
             );
         }
         var order = digorder();
@@ -323,23 +327,23 @@ function digclear(i) {
     var order = digorder();
     digcanvas2(order);
 }
-function digitemchange(i){
-    if($("#digitem .digitem").eq(i - 1).text()!=""){
-        if($("#digitem .digitem").eq(i - 1).hasClass("on")){
+function digitemchange(i) {
+    if ($("#digitem .digitem").eq(i - 1).text() != "") {
+        if ($("#digitem .digitem").eq(i - 1).hasClass("on")) {
             $("#digitem .digitem").eq(i - 1).removeClass("on");
         }
-        else{$("#digitem .digitem").eq(i - 1).addClass("on");}
+        else { $("#digitem .digitem").eq(i - 1).addClass("on"); }
         var order = digorder();
-        var num=0;
+        var num = 0;
         var order2 = [];
-        for(var n=0;n<8;n++){
-            if($("#digitem .digitem").eq(n).hasClass("on")){
-                order2[num]=order[n];num++;
+        for (var n = 0; n < 8; n++) {
+            if ($("#digitem .digitem").eq(n).hasClass("on")) {
+                order2[num] = order[n]; num++;
             }
         }
         digcanvas2(order2);
     }
-    
+
 }
 function digitemclear(i) {
     digclearData(i);
@@ -387,12 +391,12 @@ function digcanvas2(arr) {
     var order = [];
     order = arr;
     var img = new Image();
-    if(arr.length>0){img.src = 'image/dig/' + G + '/' + order[0][1] + '.jpg';}
-    else{
+    if (arr.length > 0) { img.src = 'image/dig/' + G + '/' + order[0][1] + '.jpg'; }
+    else {
         var info2 = window.localStorage.getItem('digmaplist');
         var maplist = JSON.parse(info2);
         img.src = 'image/dig/' + G + '/' + maplist[1] + '.jpg';
-    }    
+    }
     img.onload = function () {
         ctx.clearRect(0, 0, canvas.width, canvas.height); // 清空画布
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height); // 绘制大图片
