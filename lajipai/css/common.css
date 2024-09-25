@@ -1011,6 +1011,7 @@ ul#dig_text {
     margin-right: 10px;
     background-color: #555;
     border-radius: 5px;
+    text-align: center;
 }
 
 #dig_text #digitem {

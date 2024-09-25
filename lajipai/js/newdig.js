@@ -135,18 +135,17 @@ function digcheck(i) {
         );
         for (var i = 1; i < 9; i++) {
             $('#digitem').append(
-                '<li class="digitem" onclick="digitemclear('+i+')"></li>'
+                '<li class="digitem" onclick="digitemchange(' + i + ')"></li>'
             );
         }
-        var info = window.localStorage.getItem('digsaveData');
-        var saveArray = JSON.parse(info);                
-        for (var i = 0; i < 8; i++) {
-            if(saveArray[i]!=""){
-                var name = saveArray[i].split(",");
+        var order = digorder();
+        if (order.length > 0) {
+            for (var i = 0; i < order.length; i++) {
                 $("#digitem .digitem").eq(i).addClass("on");
-                $("#digitem .digitem").eq(i).text(name[0]);
+                $("#digitem .digitem").eq(i).text(order[i][0]);
             }
         }
+        digcanvas2(order);
         digloadtxt();
     }
 }
@@ -301,11 +300,12 @@ function diginfo(str, i) {
             $("a.zuobiao.tar p").text(mapnamechange(str) + txt2);
             $("a.zuobiao.tar").removeClass("tar");
             digsaveData(saveArray);
-            digcanvas();
+            var order = digorder();
+            digcanvas2(order);
         }
     });
 }
-function diginfoclose(){
+function diginfoclose() {
     $("#overlay").on("click", function () {
         $("#overlay").fadeOut();
     }); // 重新添加点击事件
@@ -320,15 +320,35 @@ function digclear(i) {
         txtchange();
     });
     digclearData(i);
-    digcanvas();
+    var order = digorder();
+    digcanvas2(order);
 }
-function digitemclear(i){
+function digitemchange(i){
+    if($("#digitem .digitem").eq(i - 1).text()!=""){
+        if($("#digitem .digitem").eq(i - 1).hasClass("on")){
+            $("#digitem .digitem").eq(i - 1).removeClass("on");
+        }
+        else{$("#digitem .digitem").eq(i - 1).addClass("on");}
+        var order = digorder();
+        var num=0;
+        var order2 = [];
+        for(var n=0;n<8;n++){
+            if($("#digitem .digitem").eq(n).hasClass("on")){
+                order2[num]=order[n];num++;
+            }
+        }
+        digcanvas2(order2);
+    }
+    
+}
+function digitemclear(i) {
     digclearData(i);
-    digcanvas();
-    $("#digitem .digitem").eq(i-1).removeClass("on");
-    $("#digitem .digitem").eq(i-1).text("");
+    var order = digorder();
+    digcanvas2(order);
+    $("#digitem .digitem").eq(i - 1).removeClass("on");
+    $("#digitem .digitem").eq(i - 1).text("");
 }
-function digcanvas() {
+function digorder() {
     var info = window.localStorage.getItem('digsaveData');
     var saveArray = JSON.parse(info);
     var info2 = window.localStorage.getItem('digmaplist');
@@ -338,8 +358,6 @@ function digcanvas() {
     var maplist = JSON.parse(info2);
     var order = [];
     var mapb = "";
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
     for (var i = 0; i < saveArray.length; i++) {
         str[i] = saveArray[i].split(",");
     }
@@ -360,8 +378,21 @@ function digcanvas() {
         mapb = maplist[1];
     }
     order = routing(str, maplist);
+    return order;
+}
+function digcanvas2(arr) {
+    var G = $('#pagenum a.on').text();
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    var order = [];
+    order = arr;
     var img = new Image();
-    img.src = 'image/dig/' + G + '/' + mapb + '.jpg';
+    if(arr.length>0){img.src = 'image/dig/' + G + '/' + order[0][1] + '.jpg';}
+    else{
+        var info2 = window.localStorage.getItem('digmaplist');
+        var maplist = JSON.parse(info2);
+        img.src = 'image/dig/' + G + '/' + maplist[1] + '.jpg';
+    }    
     img.onload = function () {
         ctx.clearRect(0, 0, canvas.width, canvas.height); // 清空画布
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height); // 绘制大图片
@@ -372,14 +403,14 @@ function digcanvas() {
             ctx.beginPath();
             ctx.moveTo(numcal(order[0][3]), numcal(order[0][4]));
             for (var i = 1; i < order.length; i++) {
-                if (order[i][1] == mapb) {
+                if (order[i][1] == order[0][1]) {
                     ctx.lineTo(numcal(order[i][3]), numcal(order[i][4]));
                 }
             }
             ctx.stroke();
         }
-        for (var i = 0; i < order.length; i++) {
-            if (order[i][1] == mapb) {
+        for (var i = 1; i < order.length; i++) {
+            if (order[i][1] == order[0][1]) {
                 const radius = 8; // 圆的半径
                 ctx.beginPath();
                 ctx.arc(numcal(order[i][3]), numcal(order[i][4]), radius, 0, Math.PI * 2);
