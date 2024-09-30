@@ -47,7 +47,7 @@ function load() {
         // , '<li style="width: 600px;height:20px;"><p style="text-align:center">以下广告来自谷歌推荐。<a style="width: auto;height:auto;" href="https://www.ffxiv.cn/detail/article/534" target="_blank">广告屏蔽方法与说明♂(←点击)</a></p></li>'
         // , '<li style="width: auto;height:auto;"><ins class="adsbygoogle"        style="display:block;min-height: 280px;min-width: 600px;"        data-ad-client="ca-pub-7347679321798304"        data-ad-slot="8881145961"        data-ad-format="auto"        data-full-width-responsive="true"></ins></li>'
         // , '<li style="width: 600px;height:40px;"></li>'
-    );    
+    );
 
     setTimeout(function () {
         try {
@@ -94,8 +94,13 @@ function Windowsclose(name) {
     $('#' + name).css('animation', 'disappear 0.5s ease forwards');
     $('#' + name).empty();
 }
-function guanggao(){
-    if($('#main #gg_d').length==0){
-        $('#main').append('<div id="gg_d" style="width: 100%; position: relative;top: 77px;left: 20px;display: flex;justify-content: center;"><div style="width: 960px;"><div class="_ddiz2pn9ob8"></div></div></div>');
-    }    
+function guanggao() {
+    if ($('#main #gg_d').length == 0) {
+        $('#main').append('<div id="gg_d" style="width: 100%; position: relative;top: 77px;display: flex;justify-content: center;"><div style="width: 960px;"><div class="_ddiz2pn9ob8"></div></div></div>');
+    }
+}
+function testgg() {
+    // $('#main').append('<div style="height: 600px;" class="cpu-feeds-block" data-site-id="269266849" data-block-id="191019"></div>');
+    // $('#main').append('<div class="cpu-feeds-block" data-site-id="269266849" data-block-id="191376"></div>');
+    // $('#main').append('<div class="cpu-feeds-block" data-site-id="269266849" data-block-id="191377"></div>');
 }
