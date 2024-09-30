@@ -23,7 +23,7 @@ window.onload = function () {
         $("#left").css("left", 0);
         $(".top_left").css("left", 0);
     }
-    if ((document.documentElement.clientWidth - 1009) / 2 < 160) {
+    if ((document.documentElement.clientWidth - 1009) / 2 < 300) {
         $("#gg_l").css("display", "none");
         $("#gg_r").css("display", "none");
     }
@@ -73,7 +73,7 @@ $(window).resize(function () {
     if ($("#page_itemtop").children("li:last-child").children("p").text() == "更新速览") {
         $('#page_item').css("height", document.documentElement.clientHeight - 400);
     }
-    if ((document.documentElement.clientWidth - 1009) / 2 < 160) {
+    if ((document.documentElement.clientWidth - 1009) / 2 < 300) {
         $("#gg_l").css("display", "none");
         $("#gg_r").css("display", "none");
     }
@@ -89,6 +89,7 @@ function back() {
         '<div id="left" style="opacity: 0;height: auto;"><ul style="padding-top: 30px;" id="item"></ul></div>'
         , '<div id="right" style="opacity: 0;height: auto;"><ul id="notice_title"></ul><ul id="notice" style="height:203px;"></ul><ul id="update_title"></ul><ul id="update_log"></ul></div>'
     );
+    testgg();
     if (document.documentElement.clientWidth - 1004 > 40) {
         $("#right").css("width", 327);
         $("#right").css("visibility", "visible");
