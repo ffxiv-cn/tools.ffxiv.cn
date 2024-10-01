@@ -427,12 +427,12 @@ function digcanvas2(arr) {
                 const radius = 8; // 圆的半径
                 ctx.beginPath();
                 ctx.arc(numcal(order[i][3]), numcal(order[i][4]), radius, 0, Math.PI * 2);
-                ctx.fillStyle = '#66ccff'; // 设置颜色
+                ctx.fillStyle = '#af0000'; // 设置颜色
                 ctx.fill(); // 填充颜色
                 var txt =i+1;
-                ctx.font = '18px Arial'; // 设置字体和大小
+                ctx.font = '15px "Trebuchet MS", arial'; // 设置字体和大小
                 ctx.fillStyle = '#fff'; // 设置文字颜色
-                ctx.fillText(txt, numcal(order[i][3])-5, numcal(order[i][4])+6); // 在指定位置绘制文字
+                ctx.fillText(txt, numcal(order[i][3])-4, numcal(order[i][4])+5); // 在指定位置绘制文字
             }
         }
     }
