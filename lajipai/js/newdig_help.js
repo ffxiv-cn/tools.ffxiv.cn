@@ -179,13 +179,13 @@ function numcal(str) {
 function numcal1(str) {
     var result;
     var num = parseInt(str, 10);
-    result = parseInt(num - 10);
+    result = parseInt((num - 10) / 410 * 420 - 10);
     return result;
 }
 function numcal2(str) {
     var result;
     var num = parseInt(str, 10);
-    result = parseInt(num - 10 + 174);
+    result = parseInt((num - 10) / 410 * 420 + 174 - 10);
     return result;
 }
 function distance(x1, y1, x2, y2) {
