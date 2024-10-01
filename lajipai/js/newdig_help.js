@@ -176,6 +176,18 @@ function numcal(str) {
     result = parseInt((num - 10) / 410 * 500);
     return result;
 }
+function numcal1(str) {
+    var result;
+    var num = parseInt(str, 10);
+    result = parseInt(num - 10);
+    return result;
+}
+function numcal2(str) {
+    var result;
+    var num = parseInt(str, 10);
+    result = parseInt(num - 10 + 174);
+    return result;
+}
 function distance(x1, y1, x2, y2) {
     var result = Math.hypot(
         x1 - x2,

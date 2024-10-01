@@ -1073,6 +1073,23 @@ ul#dig_text {
     user-select: none;
 }
 
+#bigger .point {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    opacity: 0.5;
+}
+#bigger .point p{
+    float: left;
+    position: relative;
+    top: 0px;
+    width: 18px;
+    border-radius: 10px;
+    background-color: #66ccff;
+    text-align: center;
+    color: black;
+}
+
 
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
 ::-webkit-scrollbar {

@@ -237,14 +237,14 @@ function digzuobiaoexplain(obj, i) {
     });
     $("#bigger #down").empty();
     $.ajax({
-        url: './csv/' + pgn + '.csv?' + window._ver,
+        url: './csv/newdig/' + pgn + '.csv?' + window._ver,
         success: function (data) {
 
             csvList = $.csv()(data);
-            $("#bigger #down").append('<img style="float:left;width:420px;"src="image/dig/' + pgn + '/' + csvList[i][0] + '.jpeg" onerror=this.style="display:none;">');
-            for (var n = 1; n <= csvList[i][1]; n++) {
-                insert += '<div style="float:left;width:144px;height:110px;text-align:center;"><img onclick="diginfo(\'' + csvList[i][0] + '\',' + n + ')" style="width:110px;"src="image/dig/' + pgn + '/' + csvList[i][0] + n + '.jpeg" onerror=this.style="display:none;">';
-                csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
+            $("#bigger #down").append('<img style="float:left;width:420px;"src="image/dig/' + pgn + '/' + csvList[i * 8 - 7][1] + '.jpeg" onerror=this.style="display:none;">');
+            for (var n = 1; n <= 8; n++) {
+                insert += '<div style="float:left;width:144px;height:110px;text-align:center;"><img onclick="diginfo(\'' + csvList[i * 8 - 7 + n][1] + '\',' + n + ')" style="width:110px;"src="image/dig/' + pgn + '/' + csvList[i * 8 - 7 + n][1] + n + '.jpeg" onerror=this.style="display:none;">';
+                csvList[i * 8 - 7 + n][1] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
             }
             $("#bigger #down").append(insert);
         }
@@ -260,13 +260,17 @@ function digzuobiaoexplain2(obj, i) {
     });
     $("#bigger #down").empty();
     $.ajax({
-        url: './csv/' + pgn + '.csv?' + window._ver,
+        url: './csv/newdig/' + pgn + '.csv?' + window._ver,
         success: function (data) {
             csvList = $.csv()(data);
-            $("#bigger #down").append('<img style="float:left;width:420px;"src="image/dig/' + pgn + '/' + csvList[i][0] + '.jpg" onerror=this.style="display:none;">');
-            for (var n = 1; n <= csvList[i][1]; n++) {
-                insert += '<div style="float:left;width:144px;height:110px;text-align:center;"><img onclick="diginfo(\'' + csvList[i][0] + '\',' + n + ')" style="width:110px;"src="image/dig/' + pgn + '/' + csvList[i][0] + n + '.jpg" onerror=this.style="display:none;">';
-                csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
+            $("#bigger #down").append('<img style="float:left;width:420px;"src="image/dig/' + pgn + '/' + csvList[i * 8 - 7][1] + '.jpg" onerror=this.style="display:none;">');
+            for (var n = 1; n <= 8; n++) {
+                insert += '<div style="left:' + numcal1(csvList[i * 8 - 8 + n][3]) + 'px;top:' + numcal2(csvList[i * 8 - 8 + n][4]) + 'px;" class="point" onclick="diginfo(\'' + csvList[i * 8 - 8 + n][1] + '\',' + n + ')">';
+                insert +='<p style="">' + n + '</p></div>';
+            }
+            for (var n = 1; n <= 8; n++) {
+                insert += '<div style="float:left;width:144px;height:110px;text-align:center;"><img onclick="diginfo(\'' + csvList[i * 8 - 8 + n][1] + '\',' + n + ')" style="width:110px;"src="image/dig/' + pgn + '/' + csvList[i * 8 - 8 + n][1] + n + '.jpg" onerror=this.style="display:none;">';
+                csvList[i * 8 - 8 + n][1] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
             }
             $("#bigger #down").append(insert);
         }
