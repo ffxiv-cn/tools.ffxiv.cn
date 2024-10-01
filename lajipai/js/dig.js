@@ -15,7 +15,7 @@ function dig() {
         $('#page').append(
             '<ul id="page_itemtop"></ul>'
             , '<ul id="page_check" style="height:200px;"><div style="padding-left:50px;padding-top: 10px;" id="pagenum"></div><ul style="padding-left: 20px;padding-top: 10px;top:0px;" id="aether"></ul></ul>'
-            , '<ul id="page_item" style="min-height:560px;"><li style="padding-right: 160px; padding-left: 160px;position: relative;"></li></ul>'
+            , '<ul id="page_item" style="min-height:560px;"><li style="padding-right: 160px; padding-left: 160px;padding-top: 20px;position: relative;"></li></ul>'
         );
         $('#page_itemtop').append(
             '<li class="back"><a onclick="back()"><img src="image/返回.png"></a></li>'
@@ -62,7 +62,7 @@ function dig() {
         setTotalPageNums: function () {
             var insert = '';
             insert += '<a style="float:left;width:100px;" class="off">狞豹革</a>';
-            insert += '<a style="float:left;width:100px;" class="off">奥阔银狼革</a>';
+            insert += '<a style="float:left;width:100px;" class="off">银狼革</a>';
             insert += '<a style="float:left;width:100px;" class="off">蛇牛革</a>';
             insert += '<a style="float:left;width:100px;" class="off">金毗罗鳄革</a>';
             insert += '<a style="float:left;width:100px;" class="off">高鼻羚羊革</a>';
@@ -104,7 +104,7 @@ function dig() {
             else if (pg == "高鼻羚羊革") { pg = "4"; }
             else if (pg == "金毗罗鳄革") { pg = "4"; }
             else if (pg == "蛇牛革") { pg = "5"; }
-            else if (pg == "奥阔银狼革") { pg = "6"; }
+            else if (pg == "银狼革") { pg = "6"; }
             else if (pg == "狞豹革") { pg = "6"; }
             $("#page_item li").empty();
             $(target).empty();
@@ -133,7 +133,7 @@ function digexplain(obj, i) {
             insert += '<img onclick="bigger(this)" style="float:left;width:390px;"src="image/dig/' + pgn + '/' + csvList[i][0] + '.jpeg" onerror=this.style="display:none;">';
             for (var n = 1; n <= csvList[i][1]; n++) {
                 insert += '<div style="float:left;width:130px;height:110px;text-align:center;"><img onclick="bigger(this)" style="width:110px;"src="image/dig/' + pgn + '/' + csvList[i][0] + n + '.jpeg" onerror=this.style="display:none;">';
-                csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
+                csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: -2px;left: 114px;width: 18px;border-radius: 10px;background-color: #af0000;">' + n + '</p></div>';
             }
 
             $(target).append(insert);
@@ -159,7 +159,7 @@ function digexplain2(obj, i) {
             insert += '<img onclick="bigger(this)" style="float:left;width:390px;"src="image/dig/' + pgn + '/' + csvList[i][0] + '.jpg" onerror=this.style="display:none;">';
             for (var n = 1; n <= csvList[i][1]; n++) {
                 insert += '<div style="float:left;width:130px;height:110px;text-align:center;"><img onclick="bigger(this)" style="width:110px;"src="image/dig/' + pgn + '/' + csvList[i][0] + n + '.jpg" onerror=this.style="display:none;">';
-                csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
+                csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: -2px;left: 114px;width: 18px;border-radius: 10px;background-color: #af0000;">' + n + '</p></div>';
             }
 
             $(target).append(insert);
