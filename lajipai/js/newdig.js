@@ -241,7 +241,7 @@ function digzuobiaoexplain(obj, i) {
         success: function (data) {
 
             csvList = $.csv()(data);
-            $("#bigger #down").append('<img style="float:left;width:420px;"src="image/dig/' + pgn + '/' + csvList[i * 8 - 7][1] + '.jpeg" onerror=this.style="display:none;">');
+            $("#bigger #down").append('<img style="float:left;width:420px;"src="image/newdig/' + csvList[i * 8 - 7][1] + '100.jpeg" onerror=this.style="display:none;">');
             for (var n = 1; n <= 8; n++) {
                 insert += '<div style="float:left;width:144px;height:110px;text-align:center;"><img onclick="diginfo(\'' + csvList[i * 8 - 7 + n][1] + '\',' + n + ')" style="width:110px;"src="image/dig/' + pgn + '/' + csvList[i * 8 - 7 + n][1] + n + '.jpeg" onerror=this.style="display:none;">';
                 csvList[i * 8 - 7 + n][1] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: -2px;left: 121px;width: 18px;border-radius: 10px;background-color: #af0000;">' + n + '</p></div>';
@@ -263,7 +263,7 @@ function digzuobiaoexplain2(obj, i) {
         url: './csv/newdig/' + pgn + '.csv?' + window._ver,
         success: function (data) {
             csvList = $.csv()(data);
-            $("#bigger #down").append('<img style="float:left;width:420px;"src="image/dig/' + pgn + '/' + csvList[i * 8 - 7][1] + '.jpg" onerror=this.style="display:none;">');
+            $("#bigger #down").append('<img style="float:left;width:420px;"src="image/newdig/' + csvList[i * 8 - 7][1] + '100.jpg" onerror=this.style="display:none;">');
             for (var n = 1; n <= 8; n++) {
                 insert += '<div style="left:' + numcal1(csvList[i * 8 - 8 + n][3]) + 'px;top:' + numcal2(csvList[i * 8 - 8 + n][4]) + 'px;" class="point" onclick="diginfo(\'' + csvList[i * 8 - 8 + n][1] + '\',' + n + ')">';
                 insert += '<p style="">' + n + '</p></div>';
@@ -400,11 +400,11 @@ function digcanvas2(arr) {
     var order = [];
     order = arr;
     var img = new Image();
-    if (arr.length > 0) { img.src = 'image/dig/' + G + '/' + order[0][1] + '.jpg'; }
+    if (arr.length > 0) { img.src = 'image/newdig/' + order[0][1] + '100.jpg'; }
     else {
         var info2 = window.localStorage.getItem('digmaplist');
         var maplist = JSON.parse(info2);
-        img.src = 'image/dig/' + G + '/' + maplist[1] + '.jpg';
+        img.src = 'image/newdig/' + maplist[1] + '100.jpg';
     }
     img.onload = function () {
         ctx.clearRect(0, 0, canvas.width, canvas.height); // 清空画布
@@ -429,6 +429,10 @@ function digcanvas2(arr) {
                 ctx.arc(numcal(order[i][3]), numcal(order[i][4]), radius, 0, Math.PI * 2);
                 ctx.fillStyle = '#66ccff'; // 设置颜色
                 ctx.fill(); // 填充颜色
+                var txt =i+1;
+                ctx.font = '18px Arial'; // 设置字体和大小
+                ctx.fillStyle = '#fff'; // 设置文字颜色
+                ctx.fillText(txt, numcal(order[i][3])-5, numcal(order[i][4])+6); // 在指定位置绘制文字
             }
         }
     }
