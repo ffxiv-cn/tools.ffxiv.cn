@@ -237,14 +237,14 @@ function digzuobiaoexplain(obj, i) {
     });
     $("#bigger #down").empty();
     $.ajax({
-        url: './csv/' + pgn + '.csv?' + window._ver,
+        url: './csv/newdig/' + pgn + '.csv?' + window._ver,
         success: function (data) {
 
             csvList = $.csv()(data);
-            $("#bigger #down").append('<img style="float:left;width:420px;"src="image/dig/' + pgn + '/' + csvList[i][0] + '.jpeg" onerror=this.style="display:none;">');
-            for (var n = 1; n <= csvList[i][1]; n++) {
-                insert += '<div style="float:left;width:144px;height:110px;text-align:center;"><img onclick="diginfo(\'' + csvList[i][0] + '\',' + n + ')" style="width:110px;"src="image/dig/' + pgn + '/' + csvList[i][0] + n + '.jpeg" onerror=this.style="display:none;">';
-                csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
+            $("#bigger #down").append('<img style="float:left;width:420px;"src="image/newdig/' + csvList[i * 8 - 7][1] + '100.jpeg" onerror=this.style="display:none;">');
+            for (var n = 1; n <= 8; n++) {
+                insert += '<div style="float:left;width:144px;height:110px;text-align:center;"><img onclick="diginfo(\'' + csvList[i * 8 - 7 + n][1] + '\',' + n + ')" style="width:110px;"src="image/dig/' + pgn + '/' + csvList[i * 8 - 7 + n][1] + n + '.jpeg" onerror=this.style="display:none;">';
+                csvList[i * 8 - 7 + n][1] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: -2px;left: 121px;width: 18px;border-radius: 10px;background-color: #af0000;">' + n + '</p></div>';
             }
             $("#bigger #down").append(insert);
         }
@@ -260,13 +260,17 @@ function digzuobiaoexplain2(obj, i) {
     });
     $("#bigger #down").empty();
     $.ajax({
-        url: './csv/' + pgn + '.csv?' + window._ver,
+        url: './csv/newdig/' + pgn + '.csv?' + window._ver,
         success: function (data) {
             csvList = $.csv()(data);
-            $("#bigger #down").append('<img style="float:left;width:420px;"src="image/dig/' + pgn + '/' + csvList[i][0] + '.jpg" onerror=this.style="display:none;">');
-            for (var n = 1; n <= csvList[i][1]; n++) {
-                insert += '<div style="float:left;width:144px;height:110px;text-align:center;"><img onclick="diginfo(\'' + csvList[i][0] + '\',' + n + ')" style="width:110px;"src="image/dig/' + pgn + '/' + csvList[i][0] + n + '.jpg" onerror=this.style="display:none;">';
-                csvList[i][0] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: 0px;left: 20px;width: 18px;border-radius: 10px;background-color: #66ccff;">' + n + '</p></div>';
+            $("#bigger #down").append('<img style="float:left;width:420px;"src="image/newdig/' + csvList[i * 8 - 7][1] + '100.jpg" onerror=this.style="display:none;">');
+            for (var n = 1; n <= 8; n++) {
+                insert += '<div style="left:' + numcal1(csvList[i * 8 - 8 + n][3]) + 'px;top:' + numcal2(csvList[i * 8 - 8 + n][4]) + 'px;" class="point" onclick="diginfo(\'' + csvList[i * 8 - 8 + n][1] + '\',' + n + ')">';
+                insert += '<p style="">' + n + '</p></div>';
+            }
+            for (var n = 1; n <= 8; n++) {
+                insert += '<div style="float:left;width:144px;height:110px;text-align:center;"><img onclick="diginfo(\'' + csvList[i * 8 - 8 + n][1] + '\',' + n + ')" style="width:110px;"src="image/dig/' + pgn + '/' + csvList[i * 8 - 8 + n][1] + n + '.jpg" onerror=this.style="display:none;">';
+                csvList[i * 8 - 8 + n][1] == "" ? insert += '' : insert += '<p style="float: left;position: relative;top: -2px;left: 121px;width: 18px;border-radius: 10px;background-color: #af0000;">' + n + '</p></div>';
             }
             $("#bigger #down").append(insert);
         }
@@ -396,11 +400,11 @@ function digcanvas2(arr) {
     var order = [];
     order = arr;
     var img = new Image();
-    if (arr.length > 0) { img.src = 'image/dig/' + G + '/' + order[0][1] + '.jpg'; }
+    if (arr.length > 0) { img.src = 'image/newdig/' + order[0][1] + '100.jpg'; }
     else {
         var info2 = window.localStorage.getItem('digmaplist');
         var maplist = JSON.parse(info2);
-        img.src = 'image/dig/' + G + '/' + maplist[1] + '.jpg';
+        img.src = 'image/newdig/' + maplist[1] + '100.jpg';
     }
     img.onload = function () {
         ctx.clearRect(0, 0, canvas.width, canvas.height); // 清空画布
@@ -423,8 +427,12 @@ function digcanvas2(arr) {
                 const radius = 8; // 圆的半径
                 ctx.beginPath();
                 ctx.arc(numcal(order[i][3]), numcal(order[i][4]), radius, 0, Math.PI * 2);
-                ctx.fillStyle = '#66ccff'; // 设置颜色
+                ctx.fillStyle = '#af0000'; // 设置颜色
                 ctx.fill(); // 填充颜色
+                var txt =i+1;
+                ctx.font = '15px "Trebuchet MS", arial'; // 设置字体和大小
+                ctx.fillStyle = '#fff'; // 设置文字颜色
+                ctx.fillText(txt, numcal(order[i][3])-4, numcal(order[i][4])+5); // 在指定位置绘制文字
             }
         }
     }

@@ -933,7 +933,8 @@ not supported by any browser */
 #dig_check,
 #dig_text {
     display: flex;
-    margin: 10px 0px;
+    top: 0px;
+    margin-bottom: 10px;
 }
 
 #dig_check li {
@@ -1071,6 +1072,21 @@ ul#dig_text {
     left: 710px;
     text-align: center;
     user-select: none;
+}
+
+#bigger .point {
+    position: absolute;
+    width: 20px;
+    height: 20px;    
+}
+#bigger .point p{
+    float: left;
+    position: relative;
+    top: 0px;
+    width: 18px;
+    border-radius: 10px;
+    background-color: #af0000;
+    text-align: center;    
 }
 
 
