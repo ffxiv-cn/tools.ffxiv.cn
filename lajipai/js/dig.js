@@ -62,7 +62,7 @@ function dig() {
         setTotalPageNums: function () {
             var insert = '';
             insert += '<a style="float:left;width:100px;" class="off">狞豹革</a>';
-            insert += '<a style="float:left;width:100px;" class="off">奥阔银狼革</a>';
+            insert += '<a style="float:left;width:100px;" class="off">银狼革</a>';
             insert += '<a style="float:left;width:100px;" class="off">蛇牛革</a>';
             insert += '<a style="float:left;width:100px;" class="off">金毗罗鳄革</a>';
             insert += '<a style="float:left;width:100px;" class="off">高鼻羚羊革</a>';
@@ -104,7 +104,7 @@ function dig() {
             else if (pg == "高鼻羚羊革") { pg = "4"; }
             else if (pg == "金毗罗鳄革") { pg = "4"; }
             else if (pg == "蛇牛革") { pg = "5"; }
-            else if (pg == "奥阔银狼革") { pg = "6"; }
+            else if (pg == "银狼革") { pg = "6"; }
             else if (pg == "狞豹革") { pg = "6"; }
             $("#page_item li").empty();
             $(target).empty();
