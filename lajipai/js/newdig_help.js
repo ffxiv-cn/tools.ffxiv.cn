@@ -83,10 +83,10 @@ function digloadData() {
     for (var i = 0; i < 8; i++) {
         if (saveArray[i] != "") {
             str = saveArray[i].split(",");
-            if (str[0] == "光之战士" + (i + 1)) { $('#dig_text li').eq(i).children('input').val(""); }
-            else { $('#dig_text li').eq(i).children('input').val(str[0]); }
+            if (str[0] == "光之战士" + (i + 1)) { $('#shuru-r li').eq(i).children('input').val(""); }
+            else { $('#shuru-r li').eq(i).children('input').val(str[0]); }
             var txt = "(" + str[3].slice(0, -1) + "." + str[3].slice(-1) + ", " + str[4].slice(0, -1) + "." + str[4].slice(-1) + ")";
-            $('#dig_text li').eq(i).children('a.zuobiao').children('p').text(mapnamechange(str[1]) + txt);
+            $('#shuru-r li').eq(i).children('a.zuobiao').children('p').text(mapnamechange(str[1]) + txt);
         };
     };
 }
@@ -94,16 +94,16 @@ function digloadtxt() {
     //读取已存记录
     var info = window.localStorage.getItem('digsavetxt');
     var saveArray = JSON.parse(info);
-    $('#dig_text li textarea').val(saveArray);
+    $('#guihua li textarea').val(saveArray);
 }
 function digloadtxt2() {
     //读取已存记录
     var info = window.localStorage.getItem('digshibietxt');
     var saveArray = JSON.parse(info);
-    $('#dig_text li textarea').val(saveArray);
+    $('#shuru-l li textarea').val(saveArray);
 }
 function digtxtcheck() {
-    var txt = $("#dig_text li textarea").val();
+    var txt = $("#shuru-l li textarea").val();
     var list = [];
     var list0 = [];
     var list1 = [];
@@ -158,6 +158,10 @@ function digtxtcheck() {
             window.localStorage.setItem('digsaveData', JSON.stringify(list2));
             var order = digorder();
             digcanvas2(order);
+            digloadData();
+            digloadtxt();
+            digloadtxt2();
+            guihuaitem();
         }
     });
 }
