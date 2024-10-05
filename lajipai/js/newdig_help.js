@@ -1,8 +1,8 @@
 function txtchange() {
     for (var n = 0; n < 8; n++) {
-        if ($('#dig_text li').eq(n).children('input').hasClass("tar")) {
-            if ($('#dig_text li').eq(n).children('a.zuobiao').children('p').text() != "坐标") {
-                var txt = $('#dig_text li').eq(n).children('input').val().replace(/[\,\']/, '');
+        if ($('#shuru-r li').eq(n).children('input').hasClass("tar")) {
+            if ($('#shuru-r li').eq(n).children('a.zuobiao').children('p').text() != "坐标") {
+                var txt = $('#shuru-r li').eq(n).children('input').val().replace(/[\,\']/, '');
                 var info = window.localStorage.getItem('digsaveData');
                 var saveArray = JSON.parse(info);
                 var arr = [];
@@ -12,12 +12,15 @@ function txtchange() {
                 saveArray[n] = txt + "," + arr[n][1] + "," + arr[n][2] + "," + arr[n][3] + "," + arr[n][4];
                 window.localStorage.setItem('digsaveData', JSON.stringify(saveArray));
             }
-            $('#dig_text li').eq(n).children('input').removeClass("tar");
+            $('#shuru-r li').eq(n).children('input').removeClass("tar");
         }
     };
+    var order = digorder();
+    digloadtxt();    
+    guihuaitem();
 }
 function txtchange2() {
-    var txt = $('#dig_text li').children('textarea').val();
+    var txt = $('#shuru-l li').children('textarea').val();
     window.localStorage.setItem('digshibietxt', JSON.stringify(txt));
 }
 //保存记录

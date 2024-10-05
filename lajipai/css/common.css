@@ -1086,7 +1086,8 @@ ul#dig_text div ul {
     user-select: none;
     overflow: hidden;
     border-radius: 4px;
-    padding: 3px 2px;
+    padding: 6px 2px;
+    line-height: 12px;
 }
 
 #dig_text #digitem .digitem.on {
