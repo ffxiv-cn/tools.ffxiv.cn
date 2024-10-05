@@ -3,6 +3,7 @@ function txtchange() {
         if ($('#shuru-r li').eq(n).children('input').hasClass("tar")) {
             if ($('#shuru-r li').eq(n).children('a.zuobiao').children('p').text() != "坐标") {
                 var txt = $('#shuru-r li').eq(n).children('input').val().replace(/[\,\']/, '');
+                if (txt == "") { txt = "光之战士" + (n + 1); }
                 var info = window.localStorage.getItem('digsaveData');
                 var saveArray = JSON.parse(info);
                 var arr = [];
