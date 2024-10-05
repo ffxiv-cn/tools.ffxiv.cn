@@ -972,18 +972,21 @@ ul#dig_check {
 #dig_text li a {
     width: 100%;
     font-size: 20px;
+    font-weight: 600;
     text-align: center;
 }
 
 ul#dig_text {
-    flex-direction: column;    
+    flex-direction: column;
     overflow: hidden;
 }
-ul#dig_text #shuru{    
+
+ul#dig_text #shuru {
     width: 860px;
-    display: flex;    
+    display: flex;
 }
-ul#dig_text div ul{
+
+ul#dig_text div ul {
     width: 430px;
     top: 0px;
     left: 0px;
@@ -1000,12 +1003,16 @@ ul#dig_text div ul{
     border-radius: 5px;
 }
 
-#dig_text li a {
-    width: 60px;
+#dig_text li a,
+#dig_text li div {
+    width: 30px;
     height: 30px;
-    margin: 0px 10px;
+    margin: 0px 5px;
     background-color: #444;
     border-radius: 5px;
+}
+#dig_text li div {
+    background-color: #3C3C3C;
 }
 
 #dig_text li a:hover,
@@ -1035,6 +1042,8 @@ ul#dig_text div ul{
     width: 100%;
     border-radius: 10px;
     background-color: #444;
+    padding: 5px;
+    resize: none;
 }
 
 #dig_text textarea::placeholder {
@@ -1044,7 +1053,7 @@ ul#dig_text div ul{
 #dig_text input[type=text] {
     width: 180px;
     height: 30px;
-    margin-right: 10px;
+    margin: 0px 5px;
     background-color: #444;
     border-radius: 5px;
     text-align: center;
@@ -1053,6 +1062,7 @@ ul#dig_text div ul{
 #dig_text #digitem,
 #dig_text #digitemnum {
     width: 100%;
+    padding: 0px 15px;
 }
 
 #dig_text #digitemnum li {
@@ -1075,10 +1085,11 @@ ul#dig_text div ul{
     text-align: center;
     user-select: none;
     overflow: hidden;
+    border-radius: 4px;
 }
 
 #dig_text #digitem .digitem.on {
-    background-color: #66cc;
+    background-color: #9E832E;
     text-shadow: 0 0 0.5em #FFD700, -0 -0 0.5em #FFD700;
 }
 

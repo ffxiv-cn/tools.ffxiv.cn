@@ -139,7 +139,7 @@ function digguihua() {
     });
     for (var i = 1; i < 9; i++) {
         $('#dig_text #shuru-r').append(
-            '<li><input onkeyup="value=value.replace(/[\,\']/,\'\')" onpaste="value=value.replace(/[\,\']/,\'\')" oncontextmenu = "value=value.replace(/[\,\']/,\'\')" type="text" placeholder="光之战士' + i + '" value="" maxlength="12"><a class="zuobiao" onclick="digzuobiao(this)"><p>坐标</p></a><a onclick="digclear(' + i + ')">X</a></li>'
+            '<li><div><p>'+i+'</p></div><input onkeyup="value=value.replace(/[\,\']/,\'\')" onpaste="value=value.replace(/[\,\']/,\'\')" oncontextmenu = "value=value.replace(/[\,\']/,\'\')" type="text" placeholder="光之战士' + i + '" value="" maxlength="12"><a class="zuobiao" onclick="digzuobiao(this)"><p>坐标</p></a><a onclick="digclear(' + i + ')"><img src="image/newdig/lajitong.png"></a></li>'
         );
     }
     $('#dig_text #shuru-r li').children('input').on('input propertychange', function () {
@@ -344,7 +344,7 @@ function diginfoclose() {
 function digclear(i) {
     $('#shuru-r li').eq(i - 1).empty();
     $('#shuru-r li').eq(i - 1).append(
-        '<input type="text" onkeyup="value=value.replace(/[\,\']/,\'\')" onpaste="value=value.replace(/[\,\']/,\'\')" oncontextmenu = "value=value.replace(/[\,\']/,\'\')" placeholder="光之战士' + i + '"><a class="zuobiao" onclick="digzuobiao(this)"><p>坐标</p></a><a onclick="digclear(' + i + ')">X</a>'
+        '<div><p>'+i+'</p></div><input onkeyup="value=value.replace(/[\,\']/,\'\')" onpaste="value=value.replace(/[\,\']/,\'\')" oncontextmenu = "value=value.replace(/[\,\']/,\'\')" type="text" placeholder="光之战士' + i + '" value="" maxlength="12"><a class="zuobiao" onclick="digzuobiao(this)"><p>坐标</p></a><a onclick="digclear(' + i + ')"><img src="image/newdig/lajitong.png"></a>'
     );
     $('#shuru-r li').eq(i - 1).children('input').on('input propertychange', function () {
         $(this).addClass("tar");
