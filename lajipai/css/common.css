@@ -1088,11 +1088,12 @@ ul#dig_text div ul {
     border-radius: 4px;
     padding: 6px 2px;
     line-height: 12px;
+    display: block;
 }
 
 #dig_text #digitem .digitem.on {
     background-color: #9E832E;
-    text-shadow: 0 0 0.5em #FFD700, -0 -0 0.5em #FFD700;
+    /* text-shadow: 0 0 0.5em #FFD700, -0 -0 0.5em #FFD700; */
 }
 
 #dig_text #digitem .digitem:hover {
