@@ -3,6 +3,9 @@
 <p>※ 本工具推荐吃用chrome，不支持IE</p>
 <p>※ 请使用PC电脑端，无PE移动端自适应</p>
 <p><span style="color:#ff8c00;">※ 若更新记录增加新内容，请F5/Ctrl+F5/刷新</span></p>
-<p>使用过程中如遇数据问题，欢迎将问题发邮件至</p>susu@ffxiv.vip
-<p>如果对鸡排有希望的功能，也可以通过邮件提交</p>
-<p><span style="color:#ff8c00;">※ 服务器要没钱续费了，所以加了广告，但不影响整体使用，请多包涵</span></p>
+<p>※ 使用过程中如遇数据问题，欢迎将问题发邮件至</p>susu@ffxiv.vip
+<p>※ 如果对鸡排有希望的功能，也可以通过邮件提交</p>
+<p><span style="color:#DF2641;">※ 百度广告说站内数据异常清空收益并且被封号</span></p>
+<p><span style="color:#DF2641;">现将广告挪除啦</span></p>
+<br />
+<p><a href="https://ifdian.net/a/ffsusu" target="_blank" style="color: #282828;">爱发电</a>，←救站狗命</p>
