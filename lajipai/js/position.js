@@ -87,7 +87,7 @@ function back() {
     guanggao();
     $('#main').append(
         '<div id="left" style="opacity: 0;height: auto;"><ul style="padding-top: 30px;" id="item"></ul></div>'
-        , '<div id="right" style="opacity: 0;height: auto;"><ul id="notice_title"></ul><ul id="notice" style="height:203px;"></ul><ul id="update_title"></ul><ul id="update_log"></ul></div>'
+        , '<div id="right" style="opacity: 0;height: auto;"><ul id="notice_title"></ul><ul id="notice" style="height:276px;"></ul><ul id="update_title"></ul><ul id="update_log"></ul></div>'
     );
     testgg();
     if (document.documentElement.clientWidth - 1004 > 40) {
