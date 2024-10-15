@@ -127,7 +127,7 @@ function digcheck(i) {
 }
 function digguihua() {
     $('#dig_text #shuru-l').append(
-        '<li><textarea style="height:245px;" placeholder="复制粘贴游戏内聊天框中的信息来自动识别\n示例：\n[19:28](大妈) 高脚孤丘 ( 8.7  , 11.2 )\n[19:28](大妈) 遗产之地 ( 16.0  , 12.8 )\n[19:28](大妈) 奥阔帕恰山 (15.8, 30.6)"></textarea></li>'
+        '<li><textarea style="height:242px;" placeholder="复制粘贴游戏内聊天框中的信息来自动识别\n示例：\n[19:28](大妈) 高脚孤丘 ( 8.7  , 11.2 )\n[19:28](大妈) 遗产之地 ( 16.0  , 12.8 )\n[19:28](大妈) 奥阔帕恰山 (15.8, 30.6)"></textarea></li>'
         , '<li id="shibie"style="background-color: #444;" onclick="digtxtcheck()"><p>识别</p></li>'
     );
     $('#dig_text #shuru-l li').children('textarea').on('input propertychange', function () {
