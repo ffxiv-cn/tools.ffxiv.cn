@@ -39,10 +39,10 @@ function yiwen() {
         //每页内容数目    
         setTotalPageNums: function () {
             var insert = '';
-            insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/1.png);margin-right: 20px;margin-left: 20px;" class="off" onclick="yiweninfo(this,1)"><div class="bd"></div></a>';
-            insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/2.png);margin-right: 20px;margin-left: 20px;" class="off" onclick="yiweninfo(this,2)"><div class="bd"></div></a>';
-            insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/3.png);margin-right: 20px;margin-left: 20px;" class="off" onclick="yiweninfo(this,3)"><div class="bd"></div></a>';
-            insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/4.png);margin-right: 20px;margin-left: 20px;" class="off" onclick="yiweninfo(this,4)"><div class="bd"></div></a>';
+            insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/1.png);margin-right: 20px;margin-left: 20px;background-repeat: round;" class="off" onclick="yiweninfo(this,1)"><div class="bd"></div></a>';
+            insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/2.png);margin-right: 20px;margin-left: 20px;background-repeat: round;" class="off" onclick="yiweninfo(this,2)"><div class="bd"></div></a>';
+            insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/3.png);margin-right: 20px;margin-left: 20px;background-repeat: round;" class="off" onclick="yiweninfo(this,3)"><div class="bd"></div></a>';
+            insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/4.png);margin-right: 20px;margin-left: 20px;background-repeat: round;" class="off" onclick="yiweninfo(this,4)"><div class="bd"></div></a>';
             $("#pagenum").append(insert);
             $("#pagenum a:first").click();
             Page.setClickPageNum();
@@ -112,9 +112,7 @@ function yiweninfo(obj, i) {
                 }
                 else if ((csvList[i][0] == 4 && i == csvList.length - 1) || (csvList[i][0] == 4 && csvList[i + 1][0] != 5)) {
                     insert = "<li class='level4'><b class='mark4b'></b><img onerror=this.style='display:none;'>";
-                    if (csvList[i][4] != "") { insert += "<span data-ck-item-name='" + csvList[i][4] + "'>" + csvList[i][1] + "</span>"; }
-                    else if (csvList[i][5] != "") { insert += "<a href=" + csvList[i][5] + " target='_blank' onfocus='this.blur();'>" + csvList[i][1] + "</a>"; }
-                    else { insert += "<p>" + csvList[i][1] + "</p></li>"; }
+                    insert += "<p>" + csvList[i][1] + "</p></li>";
                     $('#page_item .level234 .level3:last div:first').append(insert);
                 }
                 else if (csvList[i][0] == 4) {
@@ -122,12 +120,20 @@ function yiweninfo(obj, i) {
                     insert += "<p>" + csvList[i][1] + "</p><b class='marka'></b><div></div></li>";
                     $('#page_item .level234 .level3:last div:first').append(insert);
                 }
+                else if ((csvList[i][0] == 5 && i == csvList.length - 1) || (csvList[i][0] == 5 && csvList[i + 1][0] != 6)) {
+                    insert = "<li class='level5'><b class='mark5b'></b><img onerror=this.style='display:none;'>";
+                    insert += "<p>" + csvList[i][1] + "</p></li>";
+                    $('#page_item .level234 .level4:last div:first').append(insert);
+                }
                 else if (csvList[i][0] == 5) {
                     insert = "<li class='level5'><b class='mark5b'></b><img onerror=this.style='display:none;'>";
-                    if (csvList[i][4] != "") { insert += "<span data-ck-item-name='" + csvList[i][4] + "'>" + csvList[i][1] + "</span>"; }
-                    else if (csvList[i][5] != "") { insert += "<a href=" + csvList[i][5] + " target='_blank' onfocus='this.blur();'>" + csvList[i][1] + "</a>"; }
-                    else { insert += "<p>" + csvList[i][1] + "</p></li>"; }
+                    insert += "<p>" + csvList[i][1] + "</p><b class='marka'></b><div></div></li>"; 
                     $('#page_item .level234 .level4:last div:first').append(insert);
+                }
+                else if (csvList[i][0] == 6) {
+                    insert = "<li class='level6'><b class='mark6b'></b><img onerror=this.style='display:none;'>";
+                    insert += "<p>" + csvList[i][1] + "</p></li>"; 
+                    $('#page_item .level234 .level5:last div:first').append(insert);
                 }
                 // if (csvList[i][2] != "") {
                 //     $('#page_item .level234 img:last').attr("src", "image/check/" + csvList[i][2]);
