@@ -1,8 +1,9 @@
 function txtchange() {
     for (var n = 0; n < 8; n++) {
-        if ($('#dig_text li').eq(n).children('input').hasClass("tar")) {
-            if ($('#dig_text li').eq(n).children('a.zuobiao').children('p').text() != "坐标") {
-                var txt = $('#dig_text li').eq(n).children('input').val().replace(/[\,\']/, '');
+        if ($('#shuru-r li').eq(n).children('input').hasClass("tar")) {
+            if ($('#shuru-r li').eq(n).children('a.zuobiao').children('p').text() != "坐标") {
+                var txt = $('#shuru-r li').eq(n).children('input').val().replace(/[\,\']/, '');
+                if (txt == "") { txt = "光之战士" + (n + 1); }
                 var info = window.localStorage.getItem('digsaveData');
                 var saveArray = JSON.parse(info);
                 var arr = [];
@@ -12,12 +13,15 @@ function txtchange() {
                 saveArray[n] = txt + "," + arr[n][1] + "," + arr[n][2] + "," + arr[n][3] + "," + arr[n][4];
                 window.localStorage.setItem('digsaveData', JSON.stringify(saveArray));
             }
-            $('#dig_text li').eq(n).children('input').removeClass("tar");
+            $('#shuru-r li').eq(n).children('input').removeClass("tar");
         }
     };
+    var order = digorder();
+    digloadtxt();
+    guihuaitem();
 }
 function txtchange2() {
-    var txt = $('#dig_text li').children('textarea').val();
+    var txt = $('#shuru-l li').children('textarea').val();
     window.localStorage.setItem('digshibietxt', JSON.stringify(txt));
 }
 //保存记录
@@ -83,10 +87,10 @@ function digloadData() {
     for (var i = 0; i < 8; i++) {
         if (saveArray[i] != "") {
             str = saveArray[i].split(",");
-            if (str[0] == "光之战士" + (i + 1)) { $('#dig_text li').eq(i).children('input').val(""); }
-            else { $('#dig_text li').eq(i).children('input').val(str[0]); }
+            if (str[0] == "光之战士" + (i + 1)) { $('#shuru-r li').eq(i).children('input').val(""); }
+            else { $('#shuru-r li').eq(i).children('input').val(str[0]); }
             var txt = "(" + str[3].slice(0, -1) + "." + str[3].slice(-1) + ", " + str[4].slice(0, -1) + "." + str[4].slice(-1) + ")";
-            $('#dig_text li').eq(i).children('a.zuobiao').children('p').text(mapnamechange(str[1]) + txt);
+            $('#shuru-r li').eq(i).children('a.zuobiao').children('p').text(mapnamechange(str[1]) + txt);
         };
     };
 }
@@ -94,72 +98,78 @@ function digloadtxt() {
     //读取已存记录
     var info = window.localStorage.getItem('digsavetxt');
     var saveArray = JSON.parse(info);
-    $('#dig_text li textarea').val(saveArray);
+    $('#guihua li textarea').val(saveArray);
 }
 function digloadtxt2() {
     //读取已存记录
     var info = window.localStorage.getItem('digshibietxt');
     var saveArray = JSON.parse(info);
-    $('#dig_text li textarea').val(saveArray);
+    $('#shuru-l li textarea').val(saveArray);
 }
 function digtxtcheck() {
-    var txt = $("#dig_text li textarea").val();
-    var list = [];
-    var list0 = [];
-    var list1 = [];
-    var list2 = [];
-    var info = window.localStorage.getItem('digmaplist');
-    var maplist = JSON.parse(info);
-    list = txt.split('\n');
-    for (var i = 0; i < list.length; i++) {
-        list0[i] = list[i].split(/[( ),]/).filter(Boolean);
-        var str = ""
-        for (var n = 0; n < list0[i].length; n++) {
-            if (list0[i][n].slice(0, 1) == "[" && list0[i][n].slice(-1) == "]") { }
-            else { str += "," + list0[i][n]; }
+    var txt = $("#shuru-l li textarea").val();
+    if (txt != "") {
+        var list = [];
+        var list0 = [];
+        var list1 = [];
+        var list2 = [];
+        var info = window.localStorage.getItem('digmaplist');
+        var maplist = JSON.parse(info);
+        list = txt.split('\n');
+        for (var i = 0; i < list.length; i++) {
+            list0[i] = list[i].split(/[( ),]/).filter(Boolean);
+            var str = ""
+            for (var n = 0; n < list0[i].length; n++) {
+                if (list0[i][n].slice(0, 1) == "[" && list0[i][n].slice(-1) == "]") { }
+                else { str += "," + list0[i][n]; }
+            }
+            list1[i] = str.split(',').filter(Boolean);
+            list1[i][1] = mapnamechange(list1[i][1]);
+            var str2 = list1[i][2].split('.');
+            list1[i][2] = str2[0] + str2[1];
+            str2 = list1[i][3].split('.');
+            list1[i][3] = str2[0] + str2[1];
         }
-        list1[i] = str.split(',').filter(Boolean);
-        list1[i][1] = mapnamechange(list1[i][1]);
-        var str2 = list1[i][2].split('.');
-        list1[i][2] = str2[0] + str2[1];
-        str2 = list1[i][3].split('.');
-        list1[i][3] = str2[0] + str2[1];
-    }
-    var csvList;
-    var G = $('#pagenum a.on').text();
-    $.ajax({
-        url: './csv/newdig/' + G + '.csv?' + window._ver,
-        success: function (data) {
-            csvList = $.csv()(data);
-            for (var i = 0; i < list1.length; i++) {
-                if (itemsame(maplist, list1[i][1])) {
-                    list2[i] = "";
-                    for (var n = 0; n < csvList.length; n++) {
-                        if (csvList[n][1] == list1[i][1] && Math.abs(csvList[n][3] - list1[i][2]) < 11 && Math.abs(csvList[n][4] - list1[i][3]) < 11) {
-                            list2[i] = list1[i][0] + "," + csvList[n][1] + "," + csvList[n][2] + "," + csvList[n][3] + "," + csvList[n][4];
+        var csvList;
+        var G = $('#pagenum a.on').text();
+        $.ajax({
+            url: './csv/newdig/' + G + '.csv?' + window._ver,
+            success: function (data) {
+                csvList = $.csv()(data);
+                for (var i = 0; i < list1.length; i++) {
+                    if (itemsame(maplist, list1[i][1])) {
+                        list2[i] = "";
+                        for (var n = 0; n < csvList.length; n++) {
+                            if (csvList[n][1] == list1[i][1] && Math.abs(csvList[n][3] - list1[i][2]) < 11 && Math.abs(csvList[n][4] - list1[i][3]) < 11) {
+                                list2[i] = list1[i][0] + "," + csvList[n][1] + "," + csvList[n][2] + "," + csvList[n][3] + "," + csvList[n][4];
+                            }
                         }
                     }
+                    else { list2[i] = ""; }
                 }
-                else { list2[i] = ""; }
-            }
-            if (list2.length < 8) {
-                for (var i = list2.length; i < 8; i++) {
-                    list2[i] = "";
+                if (list2.length < 8) {
+                    for (var i = list2.length; i < 8; i++) {
+                        list2[i] = "";
+                    }
                 }
+                // //读取已存记录
+                // var info = window.localStorage.getItem('digsaveData');
+                // var saveArray = JSON.parse(info);
+                // for (var i = 0; i < arr.length; i++) {
+                //     if (arr[i] != "") {
+                //         saveArray[i] = arr[i];
+                //     }
+                // };
+                window.localStorage.setItem('digsaveData', JSON.stringify(list2));
+                var order = digorder();
+                digcanvas2(order);
+                digloadData();
+                digloadtxt();
+                digloadtxt2();
+                guihuaitem();
             }
-            // //读取已存记录
-            // var info = window.localStorage.getItem('digsaveData');
-            // var saveArray = JSON.parse(info);
-            // for (var i = 0; i < arr.length; i++) {
-            //     if (arr[i] != "") {
-            //         saveArray[i] = arr[i];
-            //     }
-            // };
-            window.localStorage.setItem('digsaveData', JSON.stringify(list2));
-            var order = digorder();
-            digcanvas2(order);
-        }
-    });
+        });
+    }
 }
 function itemsame(arr, str) {
     var result = false;

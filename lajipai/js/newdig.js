@@ -14,10 +14,13 @@ function newdig() {
         $('#page').append(
             '<ul id="page_itemtop"></ul>'
             , '<ul id="page_check" style="height: 50px;"><div style="padding-left:50px;padding-top: 10px;display: flex;" id="pagenum"></div></ul>'
-            , '<ul id="page_item" style="min-height:560px;"><li style="width:450px;" id="page_item_left"></li><li id="page_item_right" style="padding-right: 0px; padding-left: 25px;position: relative;"></li></ul>'
+            , '<ul id="page_item" style="min-height:560px;"><li style="width:450px;" id="page_item_left"></li><li id="page_item_right" style="padding-right: 0px; padding-left: 25px;padding-top: 80px;position: relative;"></li></ul>'
+        );
+        $('#page_check').append(
+            '<div id="shuoming" class="off" onclick="shuomingswitch(this)">?</div>'
         );
         $('#page_item_left').append(
-            '<ul id="dig_check"></ul><ul id="dig_text"></ul>'
+            '<ul id="dig_check"></ul><ul id="dig_text"><div id="shuru"><ul id="shuru-l"></ul><ul id="shuru-r"></ul></div><div id="guihua"></div></ul>'
         );
         $('#page_item_right').append(
             '<canvas id="canvas" width="500" height="500"></canvas>'
@@ -25,7 +28,8 @@ function newdig() {
         $('#dig_check').append(
             '<li onclick="digcheck(1)"><p>自动识别</p></li>'
             , '<li onclick="digcheck(2)"><p>手动输入</p></li>'
-            , '<li onclick="digcheck(3)"><p>路线规划</p></li>'
+            // , '<li onclick="digcheck(3)"><p>路线规划</p></li>'
+            , '<li id="check-item"></li>'
         );
 
         $('#page_itemtop').append(
@@ -39,16 +43,10 @@ function newdig() {
                 Page.setClickPageNum();
                 Page.allContent("null");
                 $('#pagenum a:first').click();
-                digcheck(1);
+                digguihua();
+                // digcheck(1);
                 digloadcsdlist();
-                const canvas = document.getElementById('canvas');
-                const ctx = canvas.getContext('2d');
-                var img = new Image();
-                img.src = 'image/newdig/shuoming.png';
-                img.onload = function () {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height); // 清空画布
-                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height); // 绘制大图片
-                }
+                digcanvasshuoming();
             }
         });
         Windowsopen("page");
@@ -103,59 +101,75 @@ function newdig() {
     };
 }
 function digcheck(i) {
-    $('#dig_text').empty();
     if (i == 1) {
         $('#dig_check li').removeClass("on");
         $('#dig_check li').eq(i - 1).addClass("on");
-        $('#dig_text').append(
-            '<li><p>复制游戏内聊天框中的信息来自动识别</p></li>'
-            , '<li><textarea style="height:300px;"></textarea></li>'
-            , '<li id="shibie"style="background-color: #555;" onclick="digtxtcheck()"><p>识别</p></li>'
-        );
-        $('#dig_text li').children('textarea').on('input propertychange', function () {
-            txtchange2();
-        });
+        $("#shuru-l").css("left", "0px");
+        $("#shuru-r").css("left", "0px");
         digloadtxt2();
+        $("#check-item").css("left", "5px");
     }
     else if (i == 2) {
         $('#dig_check li').removeClass("on");
         $('#dig_check li').eq(i - 1).addClass("on");
-        for (var i = 1; i < 9; i++) {
-            $('#dig_text').append(
-                '<li><input onkeyup="value=value.replace(/[\,\']/,\'\')" onpaste="value=value.replace(/[\,\']/,\'\')" oncontextmenu = "value=value.replace(/[\,\']/,\'\')" type="text" placeholder="光之战士' + i + '" value="" maxlength="12"><a class="zuobiao" onclick="digzuobiao(this)"><p>坐标</p></a><a onclick="digclear(' + i + ')">X</a></li>'
-            );
-        }
-        $('#dig_text li').children('input').on('input propertychange', function () {
-            $(this).addClass("tar");
-            txtchange();
-        });
+        $("#shuru-l").css("left", "-430px");
+        $("#shuru-r").css("left", "-430px");
         digloadData();
+        $("#check-item").css("left", "145px");
     }
     else if (i == 3) {
         $('#dig_check li').removeClass("on");
         $('#dig_check li').eq(i - 1).addClass("on");
-        $('#dig_text').append(
-            '<li id="digitemnum"></li>'
-            , '<li id="digitem"></li>'
-            , '<li><textarea style="height:300px;"></textarea></li>'
-        );
-        for (var i = 1; i < 9; i++) {
-            $('#digitem').append(
-                '<li class="digitem" onclick="digitemchange(' + i + ')"></li>'
-            );
-            $('#digitemnum').append(
-                '<li>' + i + '</li>'
-            );
-        }
-        var order = digorder();
-        if (order.length > 0) {
-            for (var i = 0; i < order.length; i++) {
-                $("#digitem .digitem").eq(i).addClass("on");
-                $("#digitem .digitem").eq(i).text(order[i][0]);
-            }
-        }
         digcanvas2(order);
         digloadtxt();
+        $("#check-item").css("left", "285px");
+    }
+}
+function digguihua() {
+    $('#dig_text #shuru-l').append(
+        '<li><textarea style="height:245px;" placeholder="复制粘贴游戏内聊天框中的信息来自动识别\n示例：\n[19:28](大妈) 高脚孤丘 ( 8.7  , 11.2 )\n[19:28](大妈) 遗产之地 ( 16.0  , 12.8 )\n[19:28](大妈) 奥阔帕恰山 (15.8, 30.6)"></textarea></li>'
+        , '<li id="shibie"style="background-color: #444;" onclick="digtxtcheck()"><p>识别</p></li>'
+    );
+    $('#dig_text #shuru-l li').children('textarea').on('input propertychange', function () {
+        txtchange2();
+    });
+    for (var i = 1; i < 9; i++) {
+        $('#dig_text #shuru-r').append(
+            '<li><div><p>' + i + '</p></div><input onkeyup="value=value.replace(/[\,\']/,\'\')" onpaste="value=value.replace(/[\,\']/,\'\')" oncontextmenu = "value=value.replace(/[\,\']/,\'\')" type="text" placeholder="光之战士' + i + '" value="" maxlength="6"><a class="zuobiao" onclick="digzuobiao(this)"><p>坐标</p></a><a onclick="digclear(' + i + ')"><img src="image/newdig/lajitong.png"></a></li>'
+        );
+    }
+    $('#dig_text #shuru-r li').children('input').on('input propertychange', function () {
+        $(this).addClass("tar");
+        txtchange();
+    });
+    $('#dig_text #guihua').append(
+        '<li id="digitemnum"></li>'
+        , '<li id="digitem"></li>'
+        , '<li><textarea style="height:200px;"></textarea><div id="fuzhi" onclick="digfuzhi()"><img src="image/newdig/fuzhi.png"></div></li>'
+    );
+    for (var i = 1; i < 9; i++) {
+        $('#digitem').append(
+            '<li class="digitem" onclick="digitemchange(' + i + ')"><p>空</p></li>'
+        );
+        // $('#digitemnum').append(
+        //     '<li>' + i + '</li>'
+        // );
+    }
+    $('#digitem').append(
+        '<li class="guihuamark"><p>路线规划</p></li>'
+    );
+}
+function guihuaitem() {
+    for (var i = 0; i < 8; i++) {
+        $("#digitem .digitem").eq(i - 1).removeClass("on");
+        $("#digitem .digitem").eq(i - 1).children('p').text("空");
+    }
+    var order = digorder();
+    if (order.length > 0) {
+        for (var i = 0; i < order.length; i++) {
+            $("#digitem .digitem").eq(i).addClass("on");
+            $("#digitem .digitem").eq(i).children('p').text(order[i][0]);
+        }
     }
 }
 function digzuobiao(obj) {
@@ -290,14 +304,14 @@ function diginfo(str, i) {
             var c = 0;
             var tar = 0;
             for (var n = 0; n < 8; n++) {
-                if ($('#dig_text li').eq(n).children('a.zuobiao').hasClass("tar")) {
+                if ($('#shuru-r li').eq(n).children('a.zuobiao').hasClass("tar")) {
                     tar = n;
                 }
                 else {
                     saveArray[n] = "";
                 }
             };
-            var txt = $('#dig_text li').eq(tar).children('input').val();
+            var txt = $('#shuru-r li').eq(tar).children('input').val();
             var txt2 = "";
             if (txt == "") { txt = "光之战士" + (tar + 1); }
             for (var n = 1; n < csvList.length; n++) {
@@ -315,6 +329,9 @@ function diginfo(str, i) {
             digsaveData(saveArray);
             var order = digorder();
             digcanvas2(order);
+            digloadtxt();
+            digloadtxt2();
+            guihuaitem();
         }
     });
 }
@@ -324,20 +341,23 @@ function diginfoclose() {
     }); // 重新添加点击事件
 }
 function digclear(i) {
-    $('#dig_text li').eq(i - 1).empty();
-    $('#dig_text li').eq(i - 1).append(
-        '<input type="text" onkeyup="value=value.replace(/[\,\']/,\'\')" onpaste="value=value.replace(/[\,\']/,\'\')" oncontextmenu = "value=value.replace(/[\,\']/,\'\')" placeholder="光之战士' + i + '"><a class="zuobiao" onclick="digzuobiao(this)"><p>坐标</p></a><a onclick="digclear(' + i + ')">X</a>'
+    $('#shuru-r li').eq(i - 1).empty();
+    $('#shuru-r li').eq(i - 1).append(
+        '<div><p>' + i + '</p></div><input onkeyup="value=value.replace(/[\,\']/,\'\')" onpaste="value=value.replace(/[\,\']/,\'\')" oncontextmenu = "value=value.replace(/[\,\']/,\'\')" type="text" placeholder="光之战士' + i + '" value="" maxlength="12"><a class="zuobiao" onclick="digzuobiao(this)"><p>坐标</p></a><a onclick="digclear(' + i + ')"><img src="image/newdig/lajitong.png"></a>'
     );
-    $('#dig_text li').eq(i - 1).children('input').on('input propertychange', function () {
+    $('#shuru-r li').eq(i - 1).children('input').on('input propertychange', function () {
         $(this).addClass("tar");
         txtchange();
     });
     digclearData(i);
     var order = digorder();
     digcanvas2(order);
+    digloadtxt();
+    digloadtxt2();
+    guihuaitem();
 }
 function digitemchange(i) {
-    if ($("#digitem .digitem").eq(i - 1).text() != "") {
+    if ($("#digitem .digitem").eq(i - 1).children('p').text() != "空") {
         if ($("#digitem .digitem").eq(i - 1).hasClass("on")) {
             $("#digitem .digitem").eq(i - 1).removeClass("on");
         }
@@ -429,11 +449,44 @@ function digcanvas2(arr) {
                 ctx.arc(numcal(order[i][3]), numcal(order[i][4]), radius, 0, Math.PI * 2);
                 ctx.fillStyle = '#af0000'; // 设置颜色
                 ctx.fill(); // 填充颜色
-                var txt =i+1;
+                var txt = i + 1;
                 ctx.font = '15px "Trebuchet MS", arial'; // 设置字体和大小
                 ctx.fillStyle = '#fff'; // 设置文字颜色
-                ctx.fillText(txt, numcal(order[i][3])-4, numcal(order[i][4])+5); // 在指定位置绘制文字
+                ctx.fillText(txt, numcal(order[i][3]) - 4, numcal(order[i][4]) + 5); // 在指定位置绘制文字
             }
         }
     }
+}
+function digcanvasshuoming() {
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    var img = new Image();
+    img.src = 'image/newdig/shuoming.png';
+    img.onload = function () {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // 清空画布
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height); // 绘制大图片
+    }
+}
+function shuomingswitch(obj) {
+    if ($(obj).hasClass("off")) {
+        $(obj).removeClass("off");
+        $(obj).addClass("on");
+        digcanvasshuoming();
+    }
+    else if ($(obj).hasClass("on")) {
+        $(obj).removeClass("on");
+        $(obj).addClass("off");
+        var order = digorder();
+        digcanvas2(order);
+    }
+}
+function digfuzhi() {
+    var text = $('#guihua li textarea').val();
+    navigator.clipboard.writeText(text).then(function () {
+        console.log('Text copied to clipboard: ' + text);
+        alert("复制成功");
+    }, function (err) {
+        console.error('Error copying text to clipboard: ', err);
+        alert("复制失败");
+    });
 }
