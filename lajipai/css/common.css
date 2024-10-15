@@ -825,6 +825,10 @@ not supported by any browser */
     padding: 2px 0px;
 }
 
+.level6 p{
+    user-select: auto;
+}
+
 .level2 p,
 .level2 span,
 .level2 a {
