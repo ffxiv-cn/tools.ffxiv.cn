@@ -930,40 +930,87 @@ not supported by any browser */
     margin-right: 4px;
 }
 
-#dig_check,
-#dig_text {
+ul#page_check #shuoming {
+    position: fixed;
+    top: 90px;
+    right: 20px;
+    font-size: 13px;
+    font-weight: 400;
+    border: 1px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid #A8A8A8;
+    color: #A8A8A8;
+    user-select: none;
+}
+
+ul#page_check #shuoming:hover {
+    box-shadow: 0 0 0.5em #FFD700, -0 -0 0.3em #FFD700;
+}
+
+ul#dig_check,
+ul#dig_text {
     display: flex;
     top: 0px;
     margin-bottom: 10px;
 }
 
-#dig_check li {
-    width: 150px;
-    height: 30px;
-    margin: 0px 10px;
-    background-color: #555;
+ul#dig_check {
+    width: 290px;
+    background-color: #444;
+    padding: 0px 5px;
     border-radius: 5px;
     transition: all 0.5s;
 }
 
-#dig_check li.on,
+#dig_check li {
+    width: 140px;
+    height: 30px;
+    border-radius: 5px;
+    transition: all 0.5s;
+    z-index: 1;
+}
+
+#dig_check #check-item {
+    position: absolute;
+    left: 5px;
+    z-index: 0;
+    background: linear-gradient(93.87deg, #C09014 12.95%, #D9B865 57.76%, #796121 100%);
+}
+
+/* #dig_check li.on,
 #dig_check li:hover {
     border: 1px solid #333;
     box-shadow: inset 0 0 5px 5px #ccc;
     text-shadow: 0 0 0.5em #FFD700, -0 -0 0.5em #FFD700;
-}
+} */
 
 #dig_check li p,
 #dig_text li p,
 #dig_text li a {
     width: 100%;
     font-size: 20px;
+    font-weight: 600;
     text-align: center;
 }
 
 ul#dig_text {
     flex-direction: column;
-    padding: 0px 10px;
+    overflow: hidden;
+}
+
+ul#dig_text #shuru {
+    width: 860px;
+    display: flex;
+}
+
+ul#dig_text div ul {
+    width: 430px;
+    top: 0px;
+    left: 0px;
+    transition: all 0.5s;
 }
 
 #dig_text li {
@@ -976,17 +1023,23 @@ ul#dig_text {
     border-radius: 5px;
 }
 
-#dig_text li a {
-    width: 60px;
+#dig_text li a,
+#dig_text li div {
+    width: 30px;
     height: 30px;
-    margin: 0px 10px;
+    margin: 0px 5px;
     background-color: #444;
     border-radius: 5px;
 }
 
+#dig_text li div {
+    background-color: #3C3C3C;
+}
+
 #dig_text li a:hover,
-#shibie p:hover {
-    border: 1px solid #333;
+#shibie p:hover,
+#fuzhi:hover {
+    border: 0px solid #333;
     box-shadow: inset 0 0 5px 5px #ccc;
     text-shadow: 0 0 0.5em #FFD700, -0 -0 0.5em #FFD700;
 }
@@ -1010,14 +1063,32 @@ ul#dig_text {
 #dig_text textarea {
     width: 100%;
     border-radius: 10px;
-    background-color: #555;
+    background-color: #444;
+    padding: 5px;
+    resize: none;
+}
+
+#dig_text textarea::placeholder {
+    color: #A8A8A8;
+}
+
+#dig_text #fuzhi {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    left: 390px;
+    top: 490px;
+    padding: 7px;
+    user-select: none;
+    background-color: #565656;
 }
 
 #dig_text input[type=text] {
     width: 180px;
     height: 30px;
-    margin-right: 10px;
-    background-color: #555;
+    margin: 0px 5px;
+    background-color: #444;
     border-radius: 5px;
     text-align: center;
 }
@@ -1025,6 +1096,8 @@ ul#dig_text {
 #dig_text #digitem,
 #dig_text #digitemnum {
     width: 100%;
+    padding: 0px;
+    margin: 0px;
 }
 
 #dig_text #digitemnum li {
@@ -1039,19 +1112,33 @@ ul#dig_text {
 }
 
 #dig_text #digitem .digitem {
-    width: 30px;
-    height: 30px;
-    margin: 0px 10px;
-    background-color: #555;
+    width: 35px;
+    height: 35px;
+    margin: 0px 4px;
+    background-color: #444;
     font-size: 10px;
     text-align: center;
     user-select: none;
     overflow: hidden;
+    border-radius: 4px;
+    padding: 6px 2px;
+    line-height: 12px;
+    display: flex;
+}
+
+#dig_text #digitem .digitem p {
+    font-size: 10px;
+    text-align: center;
+    user-select: none;
+    overflow: hidden;
+    line-height: 12px;
+    display: block;
+    align-self: center;
 }
 
 #dig_text #digitem .digitem.on {
-    background-color: #66cc;
-    text-shadow: 0 0 0.5em #FFD700, -0 -0 0.5em #FFD700;
+    background-color: #9E832E;
+    /* text-shadow: 0 0 0.5em #FFD700, -0 -0 0.5em #FFD700; */
 }
 
 #dig_text #digitem .digitem:hover {
@@ -1060,10 +1147,34 @@ ul#dig_text {
     box-shadow: 0 0 1px 3px #FFFF77;
 }
 
+#dig_text #digitem .guihuamark {
+    width: 85px;
+    height: 35px;
+    margin: 0px;
+    margin-left: 8px;
+    background-color: #565656;
+    font-size: 16px;
+    text-align: center;
+    user-select: none;
+    overflow: hidden;
+    border-radius: 4px;
+    line-height: 12px;
+    display: block;
+}
+
+#dig_text #digitem .guihuamark p {
+    font-size: 16px;
+    text-align: center;
+    user-select: none;
+    overflow: hidden;
+    line-height: 35px;
+    display: block;
+}
+
 #bigger #aether,
 #bigger #down,
 #bigger #close {
-    background-color: #555;
+    background-color: #444;
 }
 
 #bigger #close {
@@ -1077,16 +1188,17 @@ ul#dig_text {
 #bigger .point {
     position: absolute;
     width: 20px;
-    height: 20px;    
+    height: 20px;
 }
-#bigger .point p{
+
+#bigger .point p {
     float: left;
     position: relative;
     top: 0px;
     width: 18px;
     border-radius: 10px;
     background-color: #af0000;
-    text-align: center;    
+    text-align: center;
 }
 
 
