@@ -17,7 +17,7 @@ function newdig() {
             , '<ul id="page_item" style="min-height:560px;"><li style="width:450px;" id="page_item_left"></li><li id="page_item_right" style="padding-right: 0px; padding-left: 25px;padding-top: 80px;position: relative;"></li></ul>'
         );
         $('#page_check').append(
-            '<div id="shuoming" class="off" onclick="shuomingswitch(this)">?</div>'
+            '<div id="shuoming" class="on" onclick="shuomingswitch()">?</div>'
         );
         $('#page_item_left').append(
             '<ul id="dig_check"></ul><ul id="dig_text"><div id="shuru"><ul id="shuru-l"></ul><ul id="shuru-r"></ul></div><div id="guihua"></div></ul>'
@@ -456,6 +456,10 @@ function digcanvas2(arr) {
             }
         }
     }
+    if ($("#shuoming").hasClass("on")) {
+        $("#shuoming").removeClass("on");
+        $("#shuoming").addClass("off");        
+    }
 }
 function digcanvasshuoming() {
     const canvas = document.getElementById('canvas');
@@ -466,16 +470,16 @@ function digcanvasshuoming() {
         ctx.clearRect(0, 0, canvas.width, canvas.height); // 清空画布
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height); // 绘制大图片
     }
+    if ($("#shuoming").hasClass("off")) {
+        $("#shuoming").removeClass("off");
+        $("#shuoming").addClass("on");        
+    }
 }
-function shuomingswitch(obj) {
-    if ($(obj).hasClass("off")) {
-        $(obj).removeClass("off");
-        $(obj).addClass("on");
+function shuomingswitch() {
+    if ($("#shuoming").hasClass("off")) {        
         digcanvasshuoming();
     }
-    else if ($(obj).hasClass("on")) {
-        $(obj).removeClass("on");
-        $(obj).addClass("off");
+    else if ($("#shuoming").hasClass("on")) {       
         var order = digorder();
         digcanvas2(order);
     }
