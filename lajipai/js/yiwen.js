@@ -91,14 +91,14 @@ function yiweninfo(obj, i) {
             csvList = $.csv()(data);
             $('#page_item').empty();
             // $('#page_item').append('<ul class="level1" style=""></ul><ul class="level234" style=""></ul>');
-            $('#page_item').append('<ul class="level234" style=""></ul>');
+            $('#page_item').append('<ul class="level234" style="display: flex;flex-direction: column;"></ul>');
             var insert = "";
             for (var i = 1; i < csvList.length; i++) {
                 /* if (csvList[i][0] == 1) {
                     $('#page_item .level1').append("<li><p>" + csvList[i][1] + "</p></li>");
                 }
                 else */ if (csvList[i][0] == 2) {
-                    $('#page_item .level234').append("<li class='level2 mc nosel'><p style=''>" + csvList[i][1] + "</p><b class='marka'></b><div></div></li>");
+                    $('#page_item .level234').append("<li class='level2 yiwen'><b class='mark2b'></b><p style=''>" + csvList[i][1] + "</p><b class='marka'></b><div></div></li>");
                 }
                 else if ((csvList[i][0] == 3 && i == csvList.length - 1) || (csvList[i][0] == 3 && csvList[i + 1][0] != 4)) {
                     insert = "<li class='level3'><b class='mark3b'></b><img onerror=this.style='display:none;'>";
