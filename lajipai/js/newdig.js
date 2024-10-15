@@ -465,7 +465,7 @@ function digcanvasshuoming() {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     var img = new Image();
-    img.src = 'image/newdig/shuoming.png';
+    img.src = 'image/newdig/shuoming.jpg';
     img.onload = function () {
         ctx.clearRect(0, 0, canvas.width, canvas.height); // 清空画布
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height); // 绘制大图片
