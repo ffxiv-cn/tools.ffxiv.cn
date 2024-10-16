@@ -22,7 +22,7 @@ function yiwen() {
         $('#page_item').css("height", document.documentElement.clientHeight - 400);
         $('#page_itemtop').append(
             '<li class="back"><a onclick="back()"><img src="image/返回.png"></a></li>'
-            , '<li style="width: 160px;"><a><img src="image/000091.tex.png"><div></div></a><p>异闻路线</p></li>'
+            , '<li style="width: 160px;"><a><img src="image/000091.tex.png"><div></div></a><p>多变迷宫路线</p></li>'
         );
         $.ajax({
             url: './csv/yiwen1.csv?' + window._ver,
