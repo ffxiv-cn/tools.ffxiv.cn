@@ -39,10 +39,10 @@ function yiwen() {
         //每页内容数目    
         setTotalPageNums: function () {
             var insert = '';
-            insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/1.png);margin-right: 20px;margin-left: 20px;background-repeat: round;" class="off" onclick="yiweninfo(this,1)"><div class="bd"></div></a>';
-            insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/2.png);margin-right: 20px;margin-left: 20px;background-repeat: round;" class="off" onclick="yiweninfo(this,2)"><div class="bd"></div></a>';
-            insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/3.png);margin-right: 20px;margin-left: 20px;background-repeat: round;" class="off" onclick="yiweninfo(this,3)"><div class="bd"></div></a>';
             insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/4.png);margin-right: 20px;margin-left: 20px;background-repeat: round;" class="off" onclick="yiweninfo(this,4)"><div class="bd"></div></a>';
+            insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/3.png);margin-right: 20px;margin-left: 20px;background-repeat: round;" class="off" onclick="yiweninfo(this,3)"><div class="bd"></div></a>';
+            insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/2.png);margin-right: 20px;margin-left: 20px;background-repeat: round;" class="off" onclick="yiweninfo(this,2)"><div class="bd"></div></a>';
+            insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/1.png);margin-right: 20px;margin-left: 20px;background-repeat: round;" class="off" onclick="yiweninfo(this,1)"><div class="bd"></div></a>';
             $("#pagenum").append(insert);
             $("#pagenum a:first").click();
             Page.setClickPageNum();
