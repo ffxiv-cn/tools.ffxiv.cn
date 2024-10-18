@@ -1,3 +1,3 @@
-<li><p>文字主要是精简路线，如果有细节方面不太明白，可以看视频<a href="https://www.bilibili.com/video/BV12r421x7Mn/" target="_blank" style="color: #ff8c00;">点我点我</a>，查看实机操作</p></li>
+<li><p>文字主要是精简路线，如果有细节方面不太明白，可以看视频<a href="https://www.bilibili.com/video/BV18c411Q7nt/" target="_blank" style="color: #ff8c00;">点我点我</a>，查看实机操作</p></li>
 <br />
 <li><p>~ </p></li>
