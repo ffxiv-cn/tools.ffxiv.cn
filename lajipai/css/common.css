@@ -815,17 +815,28 @@ not supported by any browser */
     margin-right: 4px;
 }
 
-.level2,
+.level2 {
+    display: flex;
+    padding: 2px 0px;
+}
+
+.yiwen {
+    border: 2px solid #FFD700;
+    border-style: none none none solid;
+}
+
 .level3,
 .level4,
 .level5,
 .level6 {
+    height: 100%;
     display: flex;
-    align-items: stretch;
     padding: 2px 0px;
+    border: 2px solid #FFD700;
+    border-style: none none none solid;
 }
 
-.level6 p{
+.level6 p {
     user-select: auto;
 }
 
@@ -833,7 +844,6 @@ not supported by any browser */
 .level2 span,
 .level2 a {
     flex-shrink: 0;
-    height: 20px;
 }
 
 .level2 div,
@@ -866,15 +876,6 @@ not supported by any browser */
     margin: auto 0;
     border-style: solid none none solid;
     margin-right: 4px;
-}
-
-.yiwen,
-.level3,
-.level4,
-.level5,
-.level6 {
-    border: 2px solid #FFD700;
-    border-style: none none none solid;
 }
 
 .zuobiao p,
