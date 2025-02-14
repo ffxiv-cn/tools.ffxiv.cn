@@ -825,7 +825,9 @@ not supported by any browser */
 .level9,
 .level10,
 .level11,
-.level12 {
+.level12,
+.level13,
+.level14 {
     display: flex;
     align-items: stretch;
     padding: 2px 0px;
@@ -846,14 +848,16 @@ not supported by any browser */
 .level8 div,
 .level9 div,
 .level10 div,
-.level11 div {
+.level11 div,
+.level12 div,
+.level13 div {
     display: flex;
     flex-direction: column;
 }
 
 .marka {
     border: 2px solid #FFD700;
-    width: 30px;
+    width: 20px;
     height: 0px;
     margin: auto 0;
     border-style: solid none none solid;
@@ -872,7 +876,9 @@ not supported by any browser */
 .mark9b,
 .mark10b,
 .mark11b,
-.mark12b {
+.mark12b,
+.mark13b,
+.mark14b {
     border: 2px solid #FFD700;
     width: 28px;
     height: 0px;
@@ -890,7 +896,9 @@ not supported by any browser */
 .level9,
 .level10,
 .level11,
-.level12 {
+.level12,
+.level13,
+.level14 {
     border: 2px solid #FFD700;
     height: 100%;
     border-style: none none none solid;
@@ -937,7 +945,11 @@ not supported by any browser */
 .level10 div .level11:first-child,
 .level10 div .level11:last-child,
 .level11 div .level12:first-child,
-.level11 div .level12:last-child {
+.level11 div .level12:last-child,
+.level12 div .level13:first-child,
+.level12 div .level13:last-child,
+.level13 div .level14:first-child,
+.level13 div .level14:last-child {
     border-style: none;
 }
 
@@ -950,9 +962,11 @@ not supported by any browser */
 .level8 div .level9:first-child .mark9b,
 .level9 div .level10:first-child .mark10b,
 .level10 div .level11:first-child .mark11b,
-.level11 div .level12:first-child .mark12b {
+.level11 div .level12:first-child .mark12b,
+.level12 div .level13:first-child .mark13b,
+.level13 div .level14:first-child .mark14b {
     height: calc(50% + 4px);
-    width: 30px;
+    width: 28px;
     position: relative;
     top: calc(50% - 4px);
     margin-top: 2px;
@@ -969,9 +983,11 @@ not supported by any browser */
 .level8 div .level9:last-child .mark9b,
 .level9 div .level10:last-child .mark10b,
 .level10 div .level11:last-child .mark11b,
-.level11 div .level12:last-child .mark12b {
+.level11 div .level12:last-child .mark12b,
+.level12 div .level13:last-child .mark13b,
+.level13 div .level14:last-child .mark14b {
     height: calc(50% + 4px);
-    width: 30px;
+    width: 28px;
     margin-top: -2px;
     border-style: none none solid solid;
     border-radius: 0px 0px 0px 8px;
@@ -986,7 +1002,9 @@ not supported by any browser */
 .level8 div .level9:only-child .mark9b,
 .level9 div .level10:only-child .mark10b,
 .level10 div .level11:only-child .mark11b,
-.level11 div .level12:only-child .mark12b {
+.level11 div .level12:only-child .mark12b,
+.level12 div .level13:only-child .mark13b,
+.level13 div .level14:only-child .mark14b {
     height: 0px;
     top: 0px;
     margin: auto 0;
