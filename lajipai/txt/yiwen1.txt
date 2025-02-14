@@ -1,1 +1,5 @@
-<li><img src="image/logo/lv1.png"><p>为国服当前版本实装</p></li><li><img src="image/logo/lv2.png"><p>为未来版本即将实装</p></li><li><img src="image/logo/lv3.png"><p>为未知</p></li>
+<br />
+　　<strong><span style="color:#ff8c00;">· 路线为简洁描述，详细可看下述视频</span></strong><br />
+　　<strong><a href="https://www.bilibili.com/video/BV12r421x7Mn/"target="_blank">·【FF14】阿罗岛更好的全12记录+Boss打法+隐藏房间</a></strong>
+<br />
+<br />
