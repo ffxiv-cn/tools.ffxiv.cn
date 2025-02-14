@@ -39,10 +39,10 @@ function yiwen() {
         //每页内容数目    
         setTotalPageNums: function () {
             var insert = '';
-            insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/1.png);margin-right: 20px;margin-left: 20px;" class="off" onclick="yiweninfo(this,1)"><div class="bd"></div></a>';
-            insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/2.png);margin-right: 20px;margin-left: 20px;" class="off" onclick="yiweninfo(this,2)"><div class="bd"></div></a>';
-            insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/3.png);margin-right: 20px;margin-left: 20px;" class="off" onclick="yiweninfo(this,3)"><div class="bd"></div></a>';
-            insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/4.png);margin-right: 20px;margin-left: 20px;" class="off" onclick="yiweninfo(this,4)"><div class="bd"></div></a>';
+            insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/1.png);margin-right: 20px;margin-left: 20px;" class="off" onclick="yiweninfo(this,1)"><p style="top: 60px;position: relative;">阿罗阿罗岛</p><div class="bd"></div></a>';
+            insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/2.png);margin-right: 20px;margin-left: 20px;" class="off" onclick="yiweninfo(this,2)"><p style="top: 60px;position: relative;">六根山</p><div class="bd"></div></a>';
+            insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/3.png);margin-right: 20px;margin-left: 20px;" class="off" onclick="yiweninfo(this,3)"><p style="top: 60px;position: relative;">希拉狄哈水道</p><div class="bd"></div></a>';
+            // insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/4.png);margin-right: 20px;margin-left: 20px;" class="off" onclick="yiweninfo(this,4)"><p style="top: 60px;position: relative;">你放上去</p><div class="bd"></div></a>';
             $("#pagenum").append(insert);
             $("#pagenum a:first").click();
             Page.setClickPageNum();
@@ -135,7 +135,7 @@ function yiweninfo(obj, i) {
                     $('#page_item .level234 .level4:last div:first').append(insert);
                 }
                 else if (csvList[i][0] == 6) {
-                    insert = "<li class='level6'><b class='mark6b'></b><img onerror=this.style='display:none;'>";
+                    insert = "<li class='level6'><b class='markb'></b><img onerror=this.style='display:none;'>";
                     if (csvList[i][4] != "") { insert += "<span data-ck-item-name='" + csvList[i][4] + "'>" + csvList[i][1] + "</span>"; }
                     else if (csvList[i][5] != "") { insert += "<a href=" + csvList[i][5] + " target='_blank' onfocus='this.blur();'>" + csvList[i][1] + "</a>"; }
                     else { insert += "<p>" + csvList[i][1] + "</p></li>"; }
