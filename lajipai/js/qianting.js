@@ -1,4 +1,4 @@
-function yiwen() {
+function qianting() {
     //读取
     var infolist = [];
     $(function () {
@@ -22,7 +22,7 @@ function yiwen() {
         $('#page_item').css("height", document.documentElement.clientHeight - 400);
         $('#page_itemtop').append(
             '<li class="back"><a onclick="back()"><img src="image/返回.png"></a></li>'
-            , '<li style="width: 160px;"><a><img src="image/000091.tex.png"><div></div></a><p>异闻路线</p></li>'
+            , '<li style="width: 160px;"><a><img src="image/000069.png"><div></div></a><p>潜艇路线</p></li>'
         );
         $.ajax({
             url: './csv/yiwen1.csv?' + window._ver,
@@ -40,8 +40,8 @@ function yiwen() {
         setTotalPageNums: function () {
             var insert = '';
             insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/1.png);margin-right: 20px;margin-left: 20px;" class="off" onclick="yiweninfo(this,1)"><p style="top: 60px;position: relative;">阿罗阿罗岛</p><div class="bd"></div></a>';
-            insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/2.png);margin-right: 20px;margin-left: 20px;" class="off" onclick="yiweninfo(this,2)"><p style="top: 60px;position: relative;">六根山</p><div class="bd"></div></a>';
-            insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/3.png);margin-right: 20px;margin-left: 20px;" class="off" onclick="yiweninfo(this,3)"><p style="top: 60px;position: relative;">希拉狄哈水道</p><div class="bd"></div></a>';
+            // insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/2.png);margin-right: 20px;margin-left: 20px;" class="off" onclick="yiweninfo(this,2)"><p style="top: 60px;position: relative;">六根山</p><div class="bd"></div></a>';
+            // insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/3.png);margin-right: 20px;margin-left: 20px;" class="off" onclick="yiweninfo(this,3)"><p style="top: 60px;position: relative;">希拉狄哈水道</p><div class="bd"></div></a>';
             // insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/4.png);margin-right: 20px;margin-left: 20px;" class="off" onclick="yiweninfo(this,4)"><p style="top: 60px;position: relative;">你放上去</p><div class="bd"></div></a>';
             $("#pagenum").append(insert);
             $("#pagenum a:first").click();
@@ -77,7 +77,7 @@ function yiweninfo(obj, i) {
     $(obj).addClass('on');
     var csvList;
     $.ajax({
-        url: './txt/yiwen' + i + '.txt?ver=' + window._ver,
+        url: './txt/qianting' + i + '.txt?ver=' + window._ver,
         dataType: 'text',
         success: function (data) {
             $('#page_explain').empty();
@@ -85,7 +85,7 @@ function yiweninfo(obj, i) {
         }
     });
     $.ajax({
-        url: './csv/yiwen' + i + '.csv?' + window._ver,
+        url: './csv/qianting' + i + '.csv?' + window._ver,
         success: function (data) {
 
             csvList = $.csv()(data);
