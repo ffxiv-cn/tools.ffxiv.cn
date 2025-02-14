@@ -930,14 +930,14 @@ not supported by any browser */
 .level6 div .level7:last-child,
 .level7 div .level8:first-child,
 .level7 div .level8:last-child,
-.level8 div .level5:first-child,
-.level8 div .level5:last-child,
-.level9 div .level6:first-child,
-.level9 div .level6:last-child,
-.level10 div .level7:first-child,
-.level10 div .level7:last-child,
-.level11 div .level8:first-child,
-.level11 div .level8:last-child {
+.level8 div .level9:first-child,
+.level8 div .level9:last-child,
+.level9 div .level10:first-child,
+.level9 div .level10:last-child,
+.level10 div .level11:first-child,
+.level10 div .level11:last-child,
+.level11 div .level12:first-child,
+.level11 div .level12:last-child {
     border-style: none;
 }
 
