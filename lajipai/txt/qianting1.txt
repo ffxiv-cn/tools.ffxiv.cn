@@ -1,5 +1,7 @@
 <br />
-　　<strong><span style="color:#ff8c00;">· 路线为简洁描述，详细可看下述视频</span></strong><br />
-　　<strong><a href="https://www.bilibili.com/video/BV12r421x7Mn/"target="_blank">·【FF14】阿罗岛更好的全12记录+Boss打法+隐藏房间</a></strong>
+　　<strong>· 带有※标记是换行，并非直接解锁目的地</strong><br />
+　　<strong><span style="color:#ff8c00;">· 路线为简洁描述，仅做≥7.0的路线掉落(非全掉落)</span></strong><br />
+　　<strong><span style="color:#ff8c00;">· 如需查询详细掉落和≤6.0路线掉落，可点击下方跳转wiki</span></strong><br />
+　　<strong><a href="https://ff14.huijiwiki.com/wiki/%E9%83%A8%E9%98%9F%E6%BD%9C%E6%B0%B4%E8%89%87#%E6%8E%89%E8%90%BD"target="_blank">· 关于掉落可以点我查看wiki</a></strong>
 <br />
 <br />
