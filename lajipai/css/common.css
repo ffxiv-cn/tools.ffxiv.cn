@@ -818,7 +818,8 @@ not supported by any browser */
 .level2,
 .level3,
 .level4,
-.level5 {
+.level5,
+.level6 {
     display: flex;
     align-items: stretch;
     padding: 2px 0px;
@@ -833,7 +834,8 @@ not supported by any browser */
 
 .level2 div,
 .level3 div,
-.level4 div {
+.level4 div,
+.level5 div {
     display: flex;
     flex-direction: column;
 }
@@ -851,7 +853,8 @@ not supported by any browser */
 
 .mark3b,
 .mark4b,
-.mark5b {
+.mark5b,
+.mark6b {
     border: 2px solid #FFD700;
     width: 28px;
     height: 0px;
@@ -862,7 +865,8 @@ not supported by any browser */
 
 .level3,
 .level4,
-.level5 {
+.level5,
+.level6 {
     border: 2px solid #FFD700;
     border-style: none none none solid;
 }
@@ -891,16 +895,19 @@ not supported by any browser */
 
 .level2 div .level3:first-child,
 .level2 div .level3:last-child,
-.level2 div .level3 div .level4:first-child,
-.level2 div .level3 div .level4:last-child,
-.level2 div .level3 div .level4 div .level5:first-child,
-.level2 div .level3 div .level4 div .level5:last-child {
+.level3 div .level4:first-child,
+.level3 div .level4:last-child,
+.level4 div .level5:first-child,
+.level4 div .level5:last-child,
+.level5 div .level6:first-child,
+.level5 div .level6:last-child {
     border-style: none;
 }
 
 .level2 div .level3:first-child .mark3b,
-.level2 div .level3 div .level4:first-child .mark4b,
-.level2 div .level3 div .level4 div .level5:first-child .mark5b {
+.level3 div .level4:first-child .mark4b,
+.level4 div .level5:first-child .mark5b,
+.level5 div .level6:first-child .mark6b {
     height: calc(50% + 4px);
     width: 30px;
     position: relative;
@@ -911,8 +918,9 @@ not supported by any browser */
 }
 
 .level2 div .level3:last-child .mark3b,
-.level2 div .level3 div .level4:last-child .mark4b,
-.level2 div .level3 div .level4 div .level5:last-child .mark5b {
+.level3 div .level4:last-child .mark4b,
+.level4 div .level5:last-child .mark5b,
+.level5 div .level6:last-child .mark6b {
     height: calc(50% + 4px);
     width: 30px;
     margin-top: -2px;
@@ -921,8 +929,9 @@ not supported by any browser */
 }
 
 .level2 div .level3:only-child .mark3b,
-.level2 div .level3 div .level4:only-child .mark4b,
-.level2 div .level3 div .level4 div .level5:only-child .mark5b {
+.level3 div .level4:only-child .mark4b,
+.level4 div .level5:only-child .mark5b,
+.level5 div .level6:only-child .mark6b {
     height: 0px;
     top: 0px;
     margin: auto 0;

@@ -122,12 +122,24 @@ function yiweninfo(obj, i) {
                     insert += "<p>" + csvList[i][1] + "</p><b class='marka'></b><div></div></li>";
                     $('#page_item .level234 .level3:last div:first').append(insert);
                 }
-                else if (csvList[i][0] == 5) {
+                else if ((csvList[i][0] == 5 && i == csvList.length - 1)|| (csvList[i][0] == 5 && csvList[i + 1][0] != 6)) {
                     insert = "<li class='level5'><b class='mark5b'></b><img onerror=this.style='display:none;'>";
                     if (csvList[i][4] != "") { insert += "<span data-ck-item-name='" + csvList[i][4] + "'>" + csvList[i][1] + "</span>"; }
                     else if (csvList[i][5] != "") { insert += "<a href=" + csvList[i][5] + " target='_blank' onfocus='this.blur();'>" + csvList[i][1] + "</a>"; }
                     else { insert += "<p>" + csvList[i][1] + "</p></li>"; }
                     $('#page_item .level234 .level4:last div:first').append(insert);
+                }
+                else if (csvList[i][0] == 5) {
+                    insert = "<li class='level5'><b class='mark5b'></b><img onerror=this.style='display:none;'>";
+                    insert += "<p>" + csvList[i][1] + "</p><b class='marka'></b><div></div></li>";
+                    $('#page_item .level234 .level4:last div:first').append(insert);
+                }
+                else if (csvList[i][0] == 6) {
+                    insert = "<li class='level6'><b class='mark6b'></b><img onerror=this.style='display:none;'>";
+                    if (csvList[i][4] != "") { insert += "<span data-ck-item-name='" + csvList[i][4] + "'>" + csvList[i][1] + "</span>"; }
+                    else if (csvList[i][5] != "") { insert += "<a href=" + csvList[i][5] + " target='_blank' onfocus='this.blur();'>" + csvList[i][1] + "</a>"; }
+                    else { insert += "<p>" + csvList[i][1] + "</p></li>"; }
+                    $('#page_item .level234 .level5:last div:first').append(insert);
                 }
                 // if (csvList[i][2] != "") {
                 //     $('#page_item .level234 img:last').attr("src", "image/check/" + csvList[i][2]);

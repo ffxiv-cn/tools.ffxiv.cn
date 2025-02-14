@@ -36,8 +36,8 @@ function load() {
         , '<li><a onclick="jobtask()"><img style="animation-delay:1.2s;" src="image/职业任务.png"><div><p class="buff" style="color: orange;"></p></div></a><p>职业任务</p></li>'
         , '<li style="margin-right: 100px;"><a onclick="dungeons()"><img style="animation-delay:1.3s;" src="image/副本开启.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>副本开启</p></li>'
         //   , '<li><a onclick="bluemagic()"><img style="animation-delay:0.9s;" src="image/青魔.png"><div></div></a><p>青魔法书</p></li>'
-        , '<li><a><img style="animation-delay:1.0s;filter: grayscale(100%)" src="image/000033.tex.png"><div></div></a><p>有待开发</p></li>'
-        //, '<li><a onclick="yiwen()"><img style="animation-delay:1.0s;" src="image/000091.tex.png"><div><p class="buff" style="color: white;">New!!</p></div></a><p>异闻路线</p></li>'
+        // , '<li><a><img style="animation-delay:1.0s;filter: grayscale(100%)" src="image/000033.tex.png"><div></div></a><p>有待开发</p></li>'
+        , '<li><a onclick="yiwen()"><img style="animation-delay:1.0s;" src="image/000091.tex.png"><div><p class="buff" style="color: white;">New!!</p></div></a><p>异闻路线</p></li>'
         , '<li><a onclick="dye()"><img style="animation-delay:1.1s;" src="image/染料一览.png"><div></div></a><p>染料一览</p></li>'
         //   蛮族兑换、蛮族兑换.png
         , '<li><a><img style="animation-delay:1.2s;filter: grayscale(100%)" src="image/000033.tex.png"><div></div></a><p>有待开发</p></li>'
