@@ -22,7 +22,7 @@ function dig() {
             , '<li style="width: 140px;"><a><img src="image/藏宝图.png"><div></div></a><p>藏宝图</p></li>'
         );
         $.ajax({
-            url: './csv/瞪羚革.csv?' + window._ver,
+            url: './csv/G10-瞪羚革.csv?' + window._ver,
             success: function (data) {
                 infolist[1] = "";
                 infolist[2] = "";
@@ -69,7 +69,7 @@ function dig() {
             insert += '<a style="float:left;width:140px;" class="off">G12-缠尾蛟革</a>';
             insert += '<a style="float:left;width:140px;" class="off">G11-绿飘龙革</a>';
             insert += '<a style="float:left;width:140px;" class="off">绿图-深层传送</a>';
-            insert += '<a style="float:left;width:140px;" class="off">G9-迦迦纳怪鸟革</a>';
+            insert += '<a style="float:left;width:140px;" class="off">G9-迦迦纳怪鸟</a>';
             insert += '<a style="float:left;width:140px;" class="off">G10-瞪羚革</a>';
             $("#pagenum").append(insert);
             Page.setClickPageNum();
@@ -96,7 +96,7 @@ function dig() {
                 divb.className = "on";
             }
             var pg = this.getClickPageNum(divb); // 1 2 3
-            if (pg == "G9-迦迦纳怪鸟革") { pg = "1"; }
+            if (pg == "G9-迦迦纳怪鸟") { pg = "1"; }
             else if (pg == "G10-瞪羚革") { pg = "1"; }
             else if (pg == "绿图-深层传送") { pg = "2"; }
             else if (pg == "G12-缠尾蛟革") { pg = "3"; }
