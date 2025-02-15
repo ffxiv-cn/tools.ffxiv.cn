@@ -39,11 +39,12 @@ function load() {
         // , '<li><a><img style="animation-delay:1.0s;filter: grayscale(100%)" src="image/000033.tex.png"><div></div></a><p>有待开发</p></li>'
         , '<li><a onclick="yiwen()"><img style="animation-delay:1.0s;" src="image/000091.tex.png"><div><p class="buff" style="color: white;">New!!</p></div></a><p>异闻路线</p></li>'
         , '<li><a onclick="qianting()"><img style="animation-delay:1.1s;" src="image/000069.png"><div><p class="buff" style="color: white;">New!!</p></div></a><p>潜艇路线</p></li>'
-        , '<li><a><img style="animation-delay:1.2s;filter: grayscale(100%)" src="image/000088.png"><div><p class="buff" style="color: white;">挖坑!!</p></div></a><p>铭牌一览</p></li>'
-        , '<li><a><img style="animation-delay:1.3s;filter: grayscale(100%)" src="image/000040.png"><div><p class="buff" style="color: white;">挖坑!!</p></div></a><p>招募黑话</p></li>'
-
+        // , '<li><a><img style="animation-delay:1.2s;filter: grayscale(100%)" src="image/000088.png"><div><p class="buff" style="color: white;">挖坑!!</p></div></a><p>铭牌一览</p></li>'
+        // , '<li><a><img style="animation-delay:1.3s;filter: grayscale(100%)" src="image/000040.png"><div><p class="buff" style="color: white;">挖坑!!</p></div></a><p>招募黑话</p></li>'
         //   蛮族兑换、蛮族兑换.png
-        , '<li><a onclick="dye()"><img style="animation-delay:1.4s;" src="image/染料一览.png"><div></div></a><p>染料一览</p></li>'
+        , '<li><a onclick="dye()"><img style="animation-delay:1.2s;" src="image/染料一览.png"><div></div></a><p>染料一览</p></li>'
+        , '<li style="margin-right: 0px;"><a><img style="animation-delay:1.3s;filter: grayscale(100%)" src="image/000033.tex.png"><div></div></a><p>有待开发</p></li>'
+        , '<li style="margin-right: 0px;"><a><img style="animation-delay:1.4s;filter: grayscale(100%)" src="image/000033.tex.png"><div></div></a><p>有待开发</p></li>'
         , '<li style="margin-right: 0px;"><a><img style="animation-delay:1.5s;filter: grayscale(100%)" src="image/000033.tex.png"><div></div></a><p>有待开发</p></li>'
         // , '<li style="width: 600px;height:20px;"><p style="text-align:center">以下广告来自谷歌推荐。<a style="width: auto;height:auto;" href="https://www.ffxiv.cn/detail/article/534" target="_blank">广告屏蔽方法与说明♂(←点击)</a></p></li>'
         // , '<li style="width: auto;height:auto;"><ins class="adsbygoogle"        style="display:block;min-height: 280px;min-width: 600px;"        data-ad-client="ca-pub-7347679321798304"        data-ad-slot="8881145961"        data-ad-format="auto"        data-full-width-responsive="true"></ins></li>'
