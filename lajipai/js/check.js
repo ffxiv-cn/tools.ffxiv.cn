@@ -61,10 +61,10 @@ function check() {
         },
         allContent: function (divb) {
             if ("null" == divb) {
-                divb = document.getElementById('pagenum').children[0];
+                /* divb = document.getElementById('pagenum').children[0];
                 divb.className = "on";
                 divb = document.getElementById('vernum').children[0];
-                divb.className = "on";
+                divb.className = "on"; */
             }
         }
     };
@@ -77,7 +77,7 @@ function checkver(obj, i) {
     var insert = '';
     if (i == 7) {
         insert += '<a style="float:left;width:50px;" class="off" onclick="checkinfo(this)">7.0</a>';
-        insert += '<a style="float:left;width:50px;" class="off" onclick="">7.1</a>';
+        insert += '<a style="float:left;width:50px;" class="off" onclick="checkinfo(this)">7.1</a>';
         insert += '<a style="float:left;width:50px;" class="off" onclick="">7.2</a>';
         insert += '<a style="float:left;width:50px;" class="off" onclick="">7.3</a>';
         insert += '<a style="float:left;width:50px;" class="off" onclick="">7.4</a>';
@@ -85,7 +85,7 @@ function checkver(obj, i) {
     }
     $('#vernum').empty();
     $('#vernum').append(insert);
-    $("#vernum a:first").click();    
+    $("#vernum a:nth-child(2)").click();    
 }
 function checkinfo(obj) {
     $("#vernum a").removeClass();

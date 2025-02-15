@@ -37,7 +37,7 @@ function newdig() {
             , '<li style="width: 198px;"><a><img src="image/Routing.png"><div></div></a><p>宝图路线规划</p></li>'
         );
         $.ajax({
-            url: './csv/金毗罗鳄革.csv?' + window._ver,
+            url: './csv/G14-金毗罗鳄革.csv?' + window._ver,
             success: function () {
                 Page.setTotalPageNums();
                 Page.setClickPageNum();
@@ -56,7 +56,7 @@ function newdig() {
         //每页内容数目   
         setTotalPageNums: function () {
             var insert = '';
-            insert += '<a style="float:left;width:100px;flex-shrink: 0;" class="off">狞豹革</a>';
+            insert += '<a style="float:left;width:140px;flex-shrink: 0;" class="off">G17-狞豹革</a>';
             // insert += '<a style="float:left;width:100px;flex-shrink: 0;" class="off">金毗罗鳄革</a>';
             $("#pagenum").append(insert);
             Page.setClickPageNum();
@@ -207,16 +207,16 @@ function digzuobiao(obj) {
             for (i = 1; i < 6; i++) {
                 infolist[6] += '<li><a class="btn" onclick="digzuobiaoexplain2(this,' + i + ')" target="_blank"><img src="image/dig/' + (i + 24) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
             }
-            if (pg == "迦迦纳革") { pg = "1"; }
-            else if (pg == "瞪羚革") { pg = "1"; }
-            else if (pg == "深层绿图") { pg = "2"; }
-            else if (pg == "缠尾蛟革") { pg = "3"; }
-            else if (pg == "绿飘龙革") { pg = "3"; }
-            else if (pg == "高鼻羚羊革") { pg = "4"; }
-            else if (pg == "金毗罗鳄革") { pg = "4"; }
-            else if (pg == "蛇牛革") { pg = "5"; }
-            else if (pg == "奥阔银狼革") { pg = "6"; }
-            else if (pg == "狞豹革") { pg = "6"; }
+            if (pg == "G9-迦迦纳怪鸟") { pg = "1"; }
+            else if (pg == "G10-瞪羚革") { pg = "1"; }
+            else if (pg == "绿图-深层传送") { pg = "2"; }
+            else if (pg == "G12-缠尾蛟革") { pg = "3"; }
+            else if (pg == "G11-绿飘龙革") { pg = "3"; }
+            else if (pg == "G13-赛加羚羊革") { pg = "4"; }
+            else if (pg == "G14-金毗罗鳄革") { pg = "4"; }
+            else if (pg == "G15-蛇牛革") { pg = "5"; }
+            else if (pg == "G16-银狼革") { pg = "6"; }
+            else if (pg == "G17-狞豹革") { pg = "6"; }
             $("#bigger").append(
                 '<ul id="aether" style="width:708px;"></ul>'
                 , '<ul id="down" style="width:708px;"></ul>'
@@ -292,10 +292,11 @@ function digzuobiaoexplain2(obj, i) {
 }
 function diginfo(str, i) {
     var csvList;
-    var G = $('#pagenum a.on').text();
+    var G = $('#pagenum a.on').text();    
     $("#overlay").on("click", function () {
         $("#overlay").fadeOut();
     }); // 重新添加点击事件
+    $("#bigger").empty();
     $.ajax({
         url: './csv/newdig/' + G + '.csv?' + window._ver,
         success: function (data) {
@@ -339,6 +340,7 @@ function diginfoclose() {
     $("#overlay").on("click", function () {
         $("#overlay").fadeOut();
     }); // 重新添加点击事件
+    $("#bigger").empty();
 }
 function digclear(i) {
     $('#shuru-r li').eq(i - 1).empty();

@@ -14,7 +14,7 @@ function dig() {
         $("#page").empty();
         $('#page').append(
             '<ul id="page_itemtop"></ul>'
-            , '<ul id="page_check" style="height:200px;"><div style="padding-left:50px;padding-top: 10px;" id="pagenum"></div><ul style="padding-left: 20px;padding-top: 10px;top:0px;" id="aether"></ul></ul>'
+            , '<ul id="page_check" style="height:200px;"><div style="padding-left:50px;padding-top: 10px;overflow: auto;height: 190px;position: relative;width: 200px;" id="pagenum"></div><ul style="padding-left: 20px;padding-top: 10px;top:0px;position: absolute;width: 797px;left: 190px;" id="aether"></ul></ul>'
             , '<ul id="page_item" style="min-height:560px;"><li style="padding-right: 160px; padding-left: 160px;padding-top: 20px;position: relative;"></li></ul>'
         );
         $('#page_itemtop').append(
@@ -22,7 +22,7 @@ function dig() {
             , '<li style="width: 140px;"><a><img src="image/藏宝图.png"><div></div></a><p>藏宝图</p></li>'
         );
         $.ajax({
-            url: './csv/瞪羚革.csv?' + window._ver,
+            url: './csv/G10-瞪羚革.csv?' + window._ver,
             success: function (data) {
                 infolist[1] = "";
                 infolist[2] = "";
@@ -61,16 +61,16 @@ function dig() {
         //每页内容数目   
         setTotalPageNums: function () {
             var insert = '';
-            insert += '<a style="float:left;width:100px;" class="off">狞豹革</a>';
-            insert += '<a style="float:left;width:100px;" class="off">银狼革</a>';
-            insert += '<a style="float:left;width:100px;" class="off">蛇牛革</a>';
-            insert += '<a style="float:left;width:100px;" class="off">金毗罗鳄革</a>';
-            insert += '<a style="float:left;width:100px;" class="off">高鼻羚羊革</a>';
-            insert += '<a style="float:left;width:100px;" class="off">缠尾蛟革</a>';
-            insert += '<a style="float:left;width:100px;" class="off">绿飘龙革</a>';
-            insert += '<a style="float:left;width:100px;" class="off">深层绿图</a>';
-            insert += '<a style="float:left;width:100px;" class="off">迦迦纳革</a>';
-            insert += '<a style="float:left;width:100px;" class="off">瞪羚革</a>';
+            insert += '<a style="float:left;width:140px;" class="off">G17-狞豹革</a>';
+            insert += '<a style="float:left;width:140px;" class="off">G16-银狼革</a>';
+            insert += '<a style="float:left;width:140px;" class="off">G15-蛇牛革</a>';
+            insert += '<a style="float:left;width:140px;" class="off">G14-金毗罗鳄革</a>';
+            insert += '<a style="float:left;width:140px;" class="off">G13-赛加羚羊革</a>';
+            insert += '<a style="float:left;width:140px;" class="off">G12-缠尾蛟革</a>';
+            insert += '<a style="float:left;width:140px;" class="off">G11-绿飘龙革</a>';
+            insert += '<a style="float:left;width:140px;" class="off">绿图-深层传送</a>';
+            insert += '<a style="float:left;width:140px;" class="off">G9-迦迦纳怪鸟</a>';
+            insert += '<a style="float:left;width:140px;" class="off">G10-瞪羚革</a>';
             $("#pagenum").append(insert);
             Page.setClickPageNum();
         },
@@ -96,16 +96,16 @@ function dig() {
                 divb.className = "on";
             }
             var pg = this.getClickPageNum(divb); // 1 2 3
-            if (pg == "迦迦纳革") { pg = "1"; }
-            else if (pg == "瞪羚革") { pg = "1"; }
-            else if (pg == "深层绿图") { pg = "2"; }
-            else if (pg == "缠尾蛟革") { pg = "3"; }
-            else if (pg == "绿飘龙革") { pg = "3"; }
-            else if (pg == "高鼻羚羊革") { pg = "4"; }
-            else if (pg == "金毗罗鳄革") { pg = "4"; }
-            else if (pg == "蛇牛革") { pg = "5"; }
-            else if (pg == "银狼革") { pg = "6"; }
-            else if (pg == "狞豹革") { pg = "6"; }
+            if (pg == "G9-迦迦纳怪鸟") { pg = "1"; }
+            else if (pg == "G10-瞪羚革") { pg = "1"; }
+            else if (pg == "绿图-深层传送") { pg = "2"; }
+            else if (pg == "G12-缠尾蛟革") { pg = "3"; }
+            else if (pg == "G11-绿飘龙革") { pg = "3"; }
+            else if (pg == "G13-赛加羚羊革") { pg = "4"; }
+            else if (pg == "G14-金毗罗鳄革") { pg = "4"; }
+            else if (pg == "G15-蛇牛革") { pg = "5"; }
+            else if (pg == "G16-银狼革") { pg = "6"; }
+            else if (pg == "G17-狞豹革") { pg = "6"; }
             $("#page_item li").empty();
             $(target).empty();
             $(target).append(infolist[pg]);
