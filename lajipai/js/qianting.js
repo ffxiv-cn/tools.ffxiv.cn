@@ -102,14 +102,19 @@ function qiantinginfo(obj, i) {
                 }
                 else if ((csvList[i][0] != 2 && i == csvList.length - 1) || (csvList[i][0] != 2 && csvList[i][0] != csvList[i+1][0] - 1)) {
                     insert = "<li class='level"+csvList[i][0]+"'><b class='mark"+csvList[i][0]+"b'></b><img onerror=this.style='display:none;'>";
-                    if (csvList[i][2] == "1") { insert += "<span'>" + csvList[i][1] + "</span>"; }
+                    if (csvList[i][4] != "") { insert += "<span data-ck-item-name='" + csvList[i][4] + "'>" + csvList[i][1] + "</span>"; }
+                    else if (csvList[i][2] == "1") { insert += "<span'>" + csvList[i][1] + "</span>"; }
                     // else if (csvList[i][2] == "2") { insert += "<a href=" + csvList[i][5] + " target='_blank' onfocus='this.blur();'>" + csvList[i][1] + "</a>"; }
                     else { insert += "<p>" + csvList[i][1] + "</p></li>"; }
                     $('#page_item .level234 .level'+(csvList[i][0]-1)+':last div:first').append(insert);
                 }
                 else if (csvList[i][0] != 2) {
                     insert = "<li class='level"+csvList[i][0]+"'><b class='mark"+csvList[i][0]+"b'></b><img onerror=this.style='display:none;'>";
-                    insert += "<p>" + csvList[i][1] + "</p><b class='marka'></b><div></div></li>";
+                    if (csvList[i][4] != "") { insert += "<span data-ck-item-name='" + csvList[i][4] + "'>" + csvList[i][1] + "</span><b class='marka'></b><div></div></li>"; }
+                    else if (csvList[i][2] == "1") { insert += "<span'>" + csvList[i][1] + "</span><b class='marka'></b><div></div></li>"; }
+                    // else if (csvList[i][2] == "2") { insert += "<a href=" + csvList[i][5] + " target='_blank' onfocus='this.blur();'>" + csvList[i][1] + "</a>"; }
+                    else { insert += "<p>" + csvList[i][1] + "</p><b class='marka'></b><div></div></li>"; }
+                    // insert += "<p>" + csvList[i][1] + "</p><b class='marka'></b><div></div></li>";
                     $('#page_item .level234 .level'+(csvList[i][0]-1)+':last div:first').append(insert);
                 }                
                 // if (csvList[i][2] != "") {

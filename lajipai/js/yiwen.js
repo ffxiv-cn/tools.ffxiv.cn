@@ -115,13 +115,13 @@ function yiweninfo(obj, i) {
                 // if (csvList[i][2] != "") {
                 //     $('#page_item .level234 img:last').attr("src", "image/check/" + csvList[i][2]);
                 // }
-                // if (csvList[i][2] == "" && csvList[i][0] != 2 && csvList[i][0] != 1) {
-                //     $('#page_item .level234 img:last').attr("src", "image/check/未选中.png");
-                //     $('#page_item .level234 img:last').bind('click', function () { checksel(this) });
-                //     csvList[i][4] == "" ? $('#page_item .level234 p:last').bind('click', function () { checkselp(this) }) : "";
-                //     $('#page_item .level234 img:last').parent().addClass("nosel");
-                //     $('#page_item .level234 img:last').parent().addClass("mc");
-                // }
+                if (csvList[i][2] == "" && csvList[i][0] != 2 && csvList[i][0] != 1) {
+                    $('#page_item .level234 img:last').attr("src", "image/check/未选中.png");
+                    $('#page_item .level234 img:last').bind('click', function () { checksel(this) });
+                    csvList[i][4] == "" ? $('#page_item .level234 p:last').bind('click', function () { checkselp(this) }) : "";
+                    $('#page_item .level234 img:last').parent().addClass("nosel");
+                    $('#page_item .level234 img:last').parent().addClass("mc");
+                }
                 // if (csvList[i][3] != "") {
                 //     $('#page_item .level234 p:last').addClass(csvList[i][3]);
                 //     $('#page_item .level234 p:last').parent().addClass("zuobiao");
