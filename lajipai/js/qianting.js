@@ -16,10 +16,10 @@ function qianting() {
         $('#page').append(
             '<ul id="page_itemtop"></ul>'
             , '<ul id="page_check" style="height:100px;"><div id="pagenum" class="pagenum" style="width: 900px;display: flex;"></div></ul>'
-            , '<ul id="page_explain" style="width: 900px;"></ul>'
+            , '<ul id="page_explain" style="width: 900px;height: 111px;"></ul>'
             , '<ul id="page_item" style="display: flex;overflow: hidden;"></ul>'
         );
-        $('#page_item').css("height", document.documentElement.clientHeight - 400);
+        $('#page_item').css("height", document.documentElement.clientHeight - 461);
         $('#page_itemtop').append(
             '<li class="back"><a onclick="back()"><img src="image/返回.png"></a></li>'
             , '<li style="width: 160px;"><a><img src="image/000069.png"><div></div></a><p>潜艇路线</p></li>'

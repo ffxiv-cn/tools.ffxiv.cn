@@ -16,10 +16,10 @@ function yiwen() {
         $('#page').append(
             '<ul id="page_itemtop"></ul>'
             , '<ul id="page_check" style="height:100px;"><div id="pagenum" class="pagenum" style="width: 900px;display: flex;"></div></ul>'
-            , '<ul id="page_explain" style="width: 900px;"></ul>'
+            , '<ul id="page_explain" style="width: 900px;height: 80px;"></ul>'
             , '<ul id="page_item" style="display: flex;overflow: hidden;"></ul>'
         );
-        $('#page_item').css("height", document.documentElement.clientHeight - 400);
+        $('#page_item').css("height", document.documentElement.clientHeight - 430);
         $('#page_itemtop').append(
             '<li class="back"><a onclick="back()"><img src="image/返回.png"></a></li>'
             , '<li style="width: 160px;"><a><img src="image/000091.tex.png"><div></div></a><p>异闻路线</p></li>'
@@ -102,7 +102,7 @@ function yiweninfo(obj, i) {
                 }
                 else if ((csvList[i][0] != 2 && i == csvList.length - 1) || (csvList[i][0] != 2 && csvList[i][0] != csvList[i+1][0] - 1)) {
                     insert = "<li class='level"+csvList[i][0]+"'><b class='mark"+csvList[i][0]+"b'></b><img onerror=this.style='display:none;'>";
-                    if (csvList[i][2] == "1") { insert += "<span'>" + csvList[i][1] + "</span>"; }
+                    if (csvList[i][2] == "1") { insert += "<span>" + csvList[i][1] + "</span>"; }
                     // else if (csvList[i][2] == "2") { insert += "<a href=" + csvList[i][5] + " target='_blank' onfocus='this.blur();'>" + csvList[i][1] + "</a>"; }
                     else { insert += "<p>" + csvList[i][1] + "</p></li>"; }
                     $('#page_item .level234 .level'+(csvList[i][0]-1)+':last div:first').append(insert);
@@ -130,7 +130,7 @@ function yiweninfo(obj, i) {
             }
             var w = $('#page_item .level234').width();
             $('#page_item .level234').css("padding", "0px "+(993-w)/2+ "px");
-            $('#page_item .level234').css("padding-top", "40px");
+            $('#page_item .level234').css("padding-top", "20px");
         }
     });
 }

@@ -292,10 +292,11 @@ function digzuobiaoexplain2(obj, i) {
 }
 function diginfo(str, i) {
     var csvList;
-    var G = $('#pagenum a.on').text();
+    var G = $('#pagenum a.on').text();    
     $("#overlay").on("click", function () {
         $("#overlay").fadeOut();
     }); // 重新添加点击事件
+    $("#bigger").empty();
     $.ajax({
         url: './csv/newdig/' + G + '.csv?' + window._ver,
         success: function (data) {
@@ -339,6 +340,7 @@ function diginfoclose() {
     $("#overlay").on("click", function () {
         $("#overlay").fadeOut();
     }); // 重新添加点击事件
+    $("#bigger").empty();
 }
 function digclear(i) {
     $('#shuru-r li').eq(i - 1).empty();
