@@ -210,7 +210,7 @@ function findmd(arr, num) {
     var result = -1;
     for (var i = 0; i < arr.length; i++) {
         if (i != num) {
-            var d = distance(parseInt(arr[num][3]), parseInt(arr[num][4]), parseInt(arr[i][3]), parseInt(arr[num][4]));
+            var d = distance(parseInt(arr[num][3]), parseInt(arr[num][4]), parseInt(arr[i][3]), parseInt(arr[i][4]));
             if (d < min) { min = d; result = i; }
         }
     }
@@ -298,7 +298,7 @@ function maxnum(arr) {
     var max = 0;
     var num = -1;
     for (var i = 0; i < arr.length; i++) {
-        if (max < arr[i]) { max = arr[i]; num = i }
+        if (parseInt(arr[i])>parseInt(max)) { max = arr[i]; num = i }        
     }
     return num;
 }
