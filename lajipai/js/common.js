@@ -31,7 +31,7 @@ function load() {
         // , '<li style="margin-right: 200px;"><a onclick=""><img style="animation-delay:1.1s;filter: grayscale(100%)" src="image/000033.tex.png"><div></div></a><p>有待开发</p></li>'
         , '<li style="margin-right: 200px;"><a onclick="newdig()"><img style="animation-delay:1.1s;" src="image/Routing.png"><div></div></a><p>宝图路线规划</p></li>'
         , '<li><a onclick="niaojia()"><img style="animation-delay:0.9s;" src="image/鸟甲.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>鸟甲一览</p></li>'
-        , '<li><a onclick="fateshop()"><img style="animation-delay:1.0s;" src="image/危命商人.png"><div><p class="buff" style="color: orange;"></p></div></a><p>危命商人</p></li>'
+        , '<li><a onclick="fateshop()"><img style="animation-delay:1.0s;" src="image/危命商人.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>危命商人</p></li>'
         , '<li><a onclick="hunt()"><img style="animation-delay:1.1s;" src="image/狩猎.png"><div><p class="buff" style="color: orange;"></p></div></a><p>狩猎</p></li>'
         , '<li><a onclick="jobtask()"><img style="animation-delay:1.2s;" src="image/职业任务.png"><div><p class="buff" style="color: orange;"></p></div></a><p>职业任务</p></li>'
         , '<li style="margin-right: 100px;"><a onclick="dungeons()"><img style="animation-delay:1.3s;" src="image/副本开启.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>副本开启</p></li>'
