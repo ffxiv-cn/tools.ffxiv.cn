@@ -30,6 +30,7 @@ function dig() {
                 infolist[4] = "";
                 infolist[5] = "";
                 infolist[6] = "";
+                infolist[7] = "";
                 for (i = 1; i < 7; i++) {
                     infolist[1] += '<li><a class="btn" onclick="digexplain(this,' + i + ')" target="_blank"><img src="image/dig/' + (i + 6) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
                 }
@@ -49,6 +50,7 @@ function dig() {
                 for (i = 1; i < 6; i++) {
                     infolist[6] += '<li><a class="btn" onclick="digexplain2(this,' + i + ')" target="_blank"><img src="image/dig/' + (i + 24) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
                 }
+                infolist[7] += '<li><a class="btn" onclick="digexplain2(this,1)" target="_blank"><img src="image/dig/30.png"><div style="background-image: url(""); class="bd"></div></a></li>';
                 Page.setTotalPageNums();
                 Page.setClickPageNum();
                 Page.allContent("null");
