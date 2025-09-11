@@ -37,18 +37,28 @@ function digsaveData(arr) {
     window.localStorage.setItem('digsaveData', JSON.stringify(saveArray));
 }
 function digloadmaplist(G) {
-    var csvList;
-    var maplist = [];
-    $.ajax({
-        url: './csv/' + G + '.csv?' + window._ver,
-        success: function (data) {
-            csvList = $.csv()(data);
-            for (var i = 1; i < csvList.length; i++) {
-                maplist[i] = csvList[i][0];
-            }
-            window.localStorage.setItem('digmaplist', JSON.stringify(maplist));
-        }
-    });
+    if(G=="G17-狞豹革"){
+        var info = window.localStorage.getItem('digmaplist17');
+        var maplist = JSON.parse(info);
+        window.localStorage.setItem('digmaplist', JSON.stringify(maplist));
+    }
+    else if(G=="G18-卡冈图亚革"){
+        var info = window.localStorage.getItem('digmaplist18');
+        var maplist = JSON.parse(info);
+        window.localStorage.setItem('digmaplist', JSON.stringify(maplist));
+    }
+    // var csvList;
+    // var maplist = [];
+    // $.ajax({
+    //     url: './csv/' + G + '.csv?' + window._ver,
+    //     success: function (data) {
+    //         csvList = $.csv()(data);
+    //         for (var i = 1; i < csvList.length; i++) {
+    //             maplist[i] = csvList[i][0];
+    //         }
+    //         window.localStorage.setItem('digmaplist', JSON.stringify(maplist));
+    //     }
+    // });
 }
 function digloadcsdlist() {
     var csvList;

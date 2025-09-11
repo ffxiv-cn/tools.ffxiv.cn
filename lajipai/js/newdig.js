@@ -49,6 +49,29 @@ function newdig() {
                 digcanvasshuoming();
             }
         });
+        var csvList;
+        var maplist1 = [];
+        var maplist2 = [];
+        $.ajax({
+            url: './csv/G17-狞豹革.csv?' + window._ver,
+            success: function (data) {
+                csvList = $.csv()(data);
+                for (var i = 1; i < csvList.length; i++) {
+                    maplist1[i] = csvList[i][0];
+                }
+                window.localStorage.setItem('digmaplist17', JSON.stringify(maplist1));
+            }
+        });
+        $.ajax({
+            url: './csv/G18-卡冈图亚革.csv?' + window._ver,
+            success: function (data) {
+                csvList = $.csv()(data);
+                for (var i = 1; i < csvList.length; i++) {
+                    maplist2[i] = csvList[i][0];
+                }
+                window.localStorage.setItem('digmaplist18', JSON.stringify(maplist2));
+            }
+        });
         Windowsopen("page");
     });
     //分页
