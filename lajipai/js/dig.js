@@ -30,6 +30,7 @@ function dig() {
                 infolist[4] = "";
                 infolist[5] = "";
                 infolist[6] = "";
+                infolist[7] = "";
                 for (i = 1; i < 7; i++) {
                     infolist[1] += '<li><a class="btn" onclick="digexplain(this,' + i + ')" target="_blank"><img src="image/dig/' + (i + 6) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
                 }
@@ -49,6 +50,7 @@ function dig() {
                 for (i = 1; i < 6; i++) {
                     infolist[6] += '<li><a class="btn" onclick="digexplain2(this,' + i + ')" target="_blank"><img src="image/dig/' + (i + 24) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
                 }
+                infolist[7] += '<li><a class="btn" onclick="digexplain2(this,1)" target="_blank"><img src="image/dig/30.png"><div style="background-image: url(""); class="bd"></div></a></li>';
                 Page.setTotalPageNums();
                 Page.setClickPageNum();
                 Page.allContent("null");
@@ -61,6 +63,7 @@ function dig() {
         //每页内容数目   
         setTotalPageNums: function () {
             var insert = '';
+            insert += '<a style="float:left;width:140px;" class="off">G18-卡冈图亚革</a>';
             insert += '<a style="float:left;width:140px;" class="off">G17-狞豹革</a>';
             insert += '<a style="float:left;width:140px;" class="off">G16-银狼革</a>';
             insert += '<a style="float:left;width:140px;" class="off">G15-蛇牛革</a>';
@@ -69,8 +72,8 @@ function dig() {
             insert += '<a style="float:left;width:140px;" class="off">G12-缠尾蛟革</a>';
             insert += '<a style="float:left;width:140px;" class="off">G11-绿飘龙革</a>';
             insert += '<a style="float:left;width:140px;" class="off">绿图-深层传送</a>';
-            insert += '<a style="float:left;width:140px;" class="off">G9-迦迦纳怪鸟</a>';
             insert += '<a style="float:left;width:140px;" class="off">G10-瞪羚革</a>';
+            insert += '<a style="float:left;width:140px;" class="off">G9-迦迦纳怪鸟</a>';
             $("#pagenum").append(insert);
             Page.setClickPageNum();
         },
@@ -106,6 +109,7 @@ function dig() {
             else if (pg == "G15-蛇牛革") { pg = "5"; }
             else if (pg == "G16-银狼革") { pg = "6"; }
             else if (pg == "G17-狞豹革") { pg = "6"; }
+            else if (pg == "G18-卡冈图亚革") { pg = "7"; }
             $("#page_item li").empty();
             $(target).empty();
             $(target).append(infolist[pg]);

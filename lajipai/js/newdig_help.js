@@ -37,18 +37,28 @@ function digsaveData(arr) {
     window.localStorage.setItem('digsaveData', JSON.stringify(saveArray));
 }
 function digloadmaplist(G) {
-    var csvList;
-    var maplist = [];
-    $.ajax({
-        url: './csv/' + G + '.csv?' + window._ver,
-        success: function (data) {
-            csvList = $.csv()(data);
-            for (var i = 1; i < csvList.length; i++) {
-                maplist[i] = csvList[i][0];
-            }
-            window.localStorage.setItem('digmaplist', JSON.stringify(maplist));
-        }
-    });
+    if(G=="G17-狞豹革"){
+        var info = window.localStorage.getItem('digmaplist17');
+        var maplist = JSON.parse(info);
+        window.localStorage.setItem('digmaplist', JSON.stringify(maplist));
+    }
+    else if(G=="G18-卡冈图亚革"){
+        var info = window.localStorage.getItem('digmaplist18');
+        var maplist = JSON.parse(info);
+        window.localStorage.setItem('digmaplist', JSON.stringify(maplist));
+    }
+    // var csvList;
+    // var maplist = [];
+    // $.ajax({
+    //     url: './csv/' + G + '.csv?' + window._ver,
+    //     success: function (data) {
+    //         csvList = $.csv()(data);
+    //         for (var i = 1; i < csvList.length; i++) {
+    //             maplist[i] = csvList[i][0];
+    //         }
+    //         window.localStorage.setItem('digmaplist', JSON.stringify(maplist));
+    //     }
+    // });
 }
 function digloadcsdlist() {
     var csvList;
@@ -192,10 +202,16 @@ function numcal1(str) {
     result = parseInt((num - 10) / 410 * 420 - 10);
     return result;
 }
-function numcal2(str) {
+function numcal2(str,i) {
     var result;
     var num = parseInt(str, 10);
-    result = parseInt((num - 10) / 410 * 420 + 174 - 10);
+    if(i>3){
+        result = parseInt((num - 10) / 410 * 420 + 174 - 10);
+    }
+    else{
+        result = parseInt((num - 10) / 410 * 420 + 87 - 10);
+    }
+    
     return result;
 }
 function distance(x1, y1, x2, y2) {
@@ -317,6 +333,8 @@ function routing(arr, maplist) {
     for (var i = 0; i < 8; i++) {
 
         switch (arr[i][1]) {
+            case undefined:
+                break;
             case maplist[1]:
                 map1[n1] = arr[i];
                 n1++;
@@ -336,7 +354,7 @@ function routing(arr, maplist) {
             case maplist[5]:
                 map5[n5] = arr[i];
                 n5++;
-                break;
+                break;            
             default:
                 break;
         }
@@ -425,6 +443,9 @@ function mapnamechange(str) {
         case "yichan":
             str = "遗产之地";
             break;
+        case "hzdjy":
+            str = "活着的记忆";
+            break;  
         case "奥阔帕恰山":
             str = "aokuo";
             break;
@@ -439,6 +460,9 @@ function mapnamechange(str) {
             break;
         case "遗产之地":
             str = "yichan";
+            break;
+        case "活着的记忆":
+            str = "hzdjy";
             break;
         default:
             break;

@@ -49,6 +49,29 @@ function newdig() {
                 digcanvasshuoming();
             }
         });
+        var csvList;
+        var maplist1 = [];
+        var maplist2 = [];
+        $.ajax({
+            url: './csv/G17-狞豹革.csv?' + window._ver,
+            success: function (data) {
+                csvList = $.csv()(data);
+                for (var i = 1; i < csvList.length; i++) {
+                    maplist1[i] = csvList[i][0];
+                }
+                window.localStorage.setItem('digmaplist17', JSON.stringify(maplist1));
+            }
+        });
+        $.ajax({
+            url: './csv/G18-卡冈图亚革.csv?' + window._ver,
+            success: function (data) {
+                csvList = $.csv()(data);
+                for (var i = 1; i < csvList.length; i++) {
+                    maplist2[i] = csvList[i][0];
+                }
+                window.localStorage.setItem('digmaplist18', JSON.stringify(maplist2));
+            }
+        });
         Windowsopen("page");
     });
     //分页
@@ -56,8 +79,8 @@ function newdig() {
         //每页内容数目   
         setTotalPageNums: function () {
             var insert = '';
+            insert += '<a style="float:left;width:170px;flex-shrink: 0;" class="off">G18-卡冈图亚革</a>';
             insert += '<a style="float:left;width:140px;flex-shrink: 0;" class="off">G17-狞豹革</a>';
-            // insert += '<a style="float:left;width:100px;flex-shrink: 0;" class="off">金毗罗鳄革</a>';
             $("#pagenum").append(insert);
             Page.setClickPageNum();
         },
@@ -97,6 +120,7 @@ function newdig() {
                     digclear(i);
                 }
             }
+            nishuomingswitch();
         }
     };
 }
@@ -188,6 +212,7 @@ function digzuobiao(obj) {
             infolist[4] = "";
             infolist[5] = "";
             infolist[6] = "";
+            infolist[7] = "";
             for (i = 1; i < 7; i++) {
                 infolist[1] += '<li><a class="btn" onclick="digzuobiaoexplain(this,' + i + ')" target="_blank"><img src="image/dig/' + (i + 6) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
             }
@@ -207,6 +232,7 @@ function digzuobiao(obj) {
             for (i = 1; i < 6; i++) {
                 infolist[6] += '<li><a class="btn" onclick="digzuobiaoexplain2(this,' + i + ')" target="_blank"><img src="image/dig/' + (i + 24) + '.png"><div style="background-image: url(""); class="bd"></div></a></li>';
             }
+            infolist[7] += '<li><a class="btn" onclick="digzuobiaoexplain2(this,1)" target="_blank"><img src="image/dig/30.png"><div style="background-image: url(""); class="bd"></div></a></li>';
             if (pg == "G9-迦迦纳怪鸟") { pg = "1"; }
             else if (pg == "G10-瞪羚革") { pg = "1"; }
             else if (pg == "绿图-深层传送") { pg = "2"; }
@@ -217,6 +243,7 @@ function digzuobiao(obj) {
             else if (pg == "G15-蛇牛革") { pg = "5"; }
             else if (pg == "G16-银狼革") { pg = "6"; }
             else if (pg == "G17-狞豹革") { pg = "6"; }
+            else if (pg == "G18-卡冈图亚革") { pg = "7"; }
             $("#bigger").append(
                 '<ul id="aether" style="width:708px;"></ul>'
                 , '<ul id="down" style="width:708px;"></ul>'
@@ -229,7 +256,7 @@ function digzuobiao(obj) {
                 , s = 708
                 , n = 784
                 , o = t > s ? (t - s) / 2 : 0
-                , i = e > n ? (e - n) / 2 + 70 : 70;
+                , i = e > n ? (e - n) / 2 + 70 : 70;            
             $("#bigger").css({
                 left: o + "px"
             }),
@@ -279,7 +306,7 @@ function digzuobiaoexplain2(obj, i) {
             csvList = $.csv()(data);
             $("#bigger #down").append('<img style="float:left;width:420px;"src="image/newdig/' + csvList[i * 8 - 7][1] + '100.jpg" onerror=this.style="display:none;">');
             for (var n = 1; n <= 8; n++) {
-                insert += '<div style="left:' + numcal1(csvList[i * 8 - 8 + n][3]) + 'px;top:' + numcal2(csvList[i * 8 - 8 + n][4]) + 'px;" class="point" onclick="diginfo(\'' + csvList[i * 8 - 8 + n][1] + '\',' + n + ')">';
+                insert += '<div style="left:' + numcal1(csvList[i * 8 - 8 + n][3]) + 'px;top:' + numcal2(csvList[i * 8 - 8 + n][4],i) + 'px;" class="point" onclick="diginfo(\'' + csvList[i * 8 - 8 + n][1] + '\',' + n + ')">';
                 insert += '<p style="">' + n + '</p></div>';
             }
             for (var n = 1; n <= 8; n++) {
@@ -484,6 +511,15 @@ function shuomingswitch() {
     else if ($("#shuoming").hasClass("on")) {       
         var order = digorder();
         digcanvas2(order);
+    }
+}
+function nishuomingswitch() {
+    if ($("#shuoming").hasClass("off")) {
+        var order = digorder();
+        digcanvas2(order);
+    }
+    else if ($("#shuoming").hasClass("on")) {
+        digcanvasshuoming();
     }
 }
 function digfuzhi() {
