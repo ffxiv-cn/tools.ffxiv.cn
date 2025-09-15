@@ -79,8 +79,8 @@ function newdig() {
         //每页内容数目   
         setTotalPageNums: function () {
             var insert = '';
-            insert += '<a style="float:left;width:140px;flex-shrink: 0;" class="off">G17-狞豹革</a>';
             insert += '<a style="float:left;width:170px;flex-shrink: 0;" class="off">G18-卡冈图亚革</a>';
+            insert += '<a style="float:left;width:140px;flex-shrink: 0;" class="off">G17-狞豹革</a>';
             $("#pagenum").append(insert);
             Page.setClickPageNum();
         },
