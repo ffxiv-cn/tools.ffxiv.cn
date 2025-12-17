@@ -38,7 +38,7 @@ function load() {
         //   , '<li><a onclick="bluemagic()"><img style="animation-delay:0.9s;" src="image/青魔.png"><div></div></a><p>青魔法书</p></li>'
         // , '<li><a><img style="animation-delay:1.0s;filter: grayscale(100%)" src="image/000033.tex.png"><div></div></a><p>有待开发</p></li>'
         , '<li><a onclick="yiwen()"><img style="animation-delay:1.0s;" src="image/000091.tex.png"><div></div></a><p>异闻路线</p></li>'
-        , '<li><a onclick="qianting()"><img style="animation-delay:1.1s;" src="image/000069.png"><div><p class="buff" style="color: orange;"></p></div></a><p>潜艇路线</p></li>'
+        , '<li><a onclick="qianting()"><img style="animation-delay:1.1s;" src="image/000069.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>潜艇路线</p></li>'
         // , '<li><a><img style="animation-delay:1.3s;filter: grayscale(100%)" src="image/000040.png"><div><p class="buff" style="color: white;">挖坑!!</p></div></a><p>招募黑话</p></li>'
         //   蛮族兑换、蛮族兑换.png
         , '<li><a onclick="dye()"><img style="animation-delay:1.2s;" src="image/染料一览.png"><div></div></a><p>染料一览</p></li>'
