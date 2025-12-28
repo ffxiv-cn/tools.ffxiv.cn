@@ -52,7 +52,7 @@ function music() {
                 var music = [];
                 for(var i=1;i<13;i++){
                     music[i]=[];
-                    for(var n=1;n<100;n++){
+                    for(var n=1;n<200;n++){
                         music[i][n]="";
                     }
                 }
@@ -64,7 +64,7 @@ function music() {
                     infonum[csvList[i][4]]++;
                 }
                 for(var i=1;i<13;i++){                    
-                    for(var n=1;n<100;n++){
+                    for(var n=1;n<200;n++){
                         music[i][n]!=""?infolist[i]+=music[i][n]:infolist[i]=infolist[i];
                     }
                 }
