@@ -42,7 +42,7 @@ function music() {
         });
         $("#musicplayer").empty();
         $.ajax({
-            url: './csv/music.csv?' + window._ver,
+            url: './csv/music-7.41.csv?' + window._ver,
             success: function (data) {
 
                 csvList = $.csv()(data);
@@ -187,7 +187,7 @@ function musicexplain(obj, i) {
     var target = '#musicplayer';
     $("#musicplayer").empty();
     $.ajax({
-        url: './csv/music.csv?' + window._ver,
+        url: './csv/music-7.41.csv?' + window._ver,
         success: function (data) {
 
             csvList = $.csv()(data);

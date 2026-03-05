@@ -41,7 +41,7 @@ function mounts() {
         var csvList;
         var insert = '';
         $.ajax({
-            url: './csv/mounts.csv?' + window._ver,
+            url: './csv/mounts-7.41.csv?' + window._ver,
             success: function (data) {
 
                 csvList = $.csv()(data);
@@ -180,7 +180,7 @@ function mountexplain(obj, i) {
     });
     $("#page_item_right").empty();
     $.ajax({
-        url: './csv/mounts.csv?' + window._ver,
+        url: './csv/mounts-7.41.csv?' + window._ver,
         success: function (data) {
 
             csvList = $.csv()(data);

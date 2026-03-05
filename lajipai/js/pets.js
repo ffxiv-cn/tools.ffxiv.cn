@@ -41,7 +41,7 @@ function pets() {
         var csvList;
         var insert = '';
         $.ajax({
-            url: './csv/pets.csv?' + window._ver,
+            url: './csv/pets-7.41.csv?' + window._ver,
             success: function (data) {
 
                 csvList = $.csv()(data);
@@ -185,7 +185,7 @@ function petexplain(obj, i) {
     });
     $("#page_item_right").empty();
     $.ajax({
-        url: './csv/pets.csv?' + window._ver,
+        url: './csv/pets-7.41.csv?' + window._ver,
         success: function (data) {
 
             csvList = $.csv()(data);
