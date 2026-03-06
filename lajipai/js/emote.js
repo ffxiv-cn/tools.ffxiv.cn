@@ -41,7 +41,7 @@ function emote() {
         var csvList;
         var insert = '';
         $.ajax({
-            url: './csv/Emote-7.41.csv?' + window._ver,
+            url: './csv/Emote.csv?' + window._ver,
             success: function (data) {
 
                 csvList = $.csv()(data);
@@ -129,7 +129,7 @@ function emoteexplain(i) {
     });
     $("#page_item_right").empty();
     $.ajax({
-        url: './csv/Emote-7.41.csv?' + window._ver,
+        url: './csv/Emote.csv?' + window._ver,
         success: function (data) {
 
             csvList = $.csv()(data);
