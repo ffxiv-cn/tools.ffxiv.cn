@@ -45,14 +45,43 @@ function mounts() {
             success: function (data) {
 
                 csvList = $.csv()(data);
+                var csvList2 = [];
+                var csvList3 = [];
                 for (var i = 1; i < csvList.length; i++) {
-                    if (i % 100 == 1) {
-                        insert = '<li><a id="' + csvList[i][1].slice(3,6).replace(/\b(0+)/gi,"") + '" class="btn" onclick="mountexplain(this,' + i + ')" target="_blank"><img src="image/chongwuzuoqi-ui/' + csvList[i][1] + '.png" onload="image(this)">';
-                        csvList[i][8] == "0" ? insert += '<div class="bd"></div></a></li>' : insert += '<div class="bd"><img src="image/logo/lv' + csvList[i][8] + '.png"></div></a></li>';
+                    if (csvList[i][5] == "未知") {                        
+                        csvList3[csvList3.length] = csvList[i];
+                        csvList3[csvList3.length-1][9] = i;
+                    }
+                    else if (i == 1) {
+                        csvList2[1] = csvList[i];
+                        csvList2[1][9] = i;
                     }
                     else {
-                        insert += '<li><a id="' + csvList[i][1].slice(3,6).replace(/\b(0+)/gi,"") + '" class="btn" onclick="mountexplain(this,' + i + ')" target="_blank"><img src="image/chongwuzuoqi-ui/' + csvList[i][1] + '.png" onload="image(this)">';
-                        csvList[i][8] == "0" ? insert += '<div class="bd"></div></a></li>' : insert += '<div class="bd"><img src="image/logo/lv' + csvList[i][8] + '.png"></div></a></li>';
+                        for (var n = csvList2.length-1; n > 0; n--) {
+                            if (csvList[i][2] <= csvList2[n][2]) {
+                                csvList2.splice(n, 0, csvList[i]);
+                                csvList2[n][9] = i;
+                                break;
+                            }
+                            else if (n == 1 && csvList[i][2] > csvList2[n][2]) {
+                                csvList2.splice(1, 0, csvList[i]);
+                                csvList2[1][9] = i;
+                                break;
+                            }
+                        }
+                    }                    
+                }
+                if(csvList3.length!=0){
+                    csvList2.splice(1,0,...csvList3);
+                }                
+                for (var i = 1; i < csvList.length; i++) {
+                    if (i % 100 == 1) {
+                        insert = '<li><a id="' + csvList2[i][1].slice(3, 6).replace(/\b(0+)/gi, "") + '" class="btn" onclick="mountexplain(this,' + String(csvList2[i][9]) + ')" target="_blank"><img src="image/chongwuzuoqi-ui/' + csvList2[i][1] + '.png" onload="image(this)">';
+                        csvList2[i][8] == "0" ? insert += '<div class="bd"></div></a></li>' : insert += '<div class="bd"><img src="image/logo/lv' + csvList2[i][8] + '.png"></div></a></li>';
+                    }
+                    else {
+                        insert += '<li><a id="' + csvList2[i][1].slice(3, 6).replace(/\b(0+)/gi, "") + '" class="btn" onclick="mountexplain(this,' + String(csvList2[i][9]) + ')" target="_blank"><img src="image/chongwuzuoqi-ui/' + csvList2[i][1] + '.png" onload="image(this)">';
+                        csvList2[i][8] == "0" ? insert += '<div class="bd"></div></a></li>' : insert += '<div class="bd"><img src="image/logo/lv' + csvList2[i][8] + '.png"></div></a></li>';
                     }
                     if (i % 100 == 0) { infolist[i / 100] = insert; }
                     else if (i == csvList.length - 1) { infolist[Math.ceil(i / 100)] = insert; }
@@ -67,22 +96,22 @@ function mounts() {
                 //无数据时制作空的cookie                
                 if (info3 == null) {
                     var saveArray = [];
-                    for (var i = 1; i < 1000; i++) { saveArray.push(0); }                    
+                    for (var i = 1; i < 1000; i++) { saveArray.push(0); }
                     window.localStorage.setItem('p&msaveData', JSON.stringify(saveArray));
-                    info3 = '"'+saveArray+'"';
-                }               
+                    info3 = '"' + saveArray + '"';
+                }
                 //给saveArray赋值
                 if (info3 !== null) {
                     var saveArray = JSON.parse(info3);
                     //统计已获得数目
                     //新方法
-                    for (var i = 0; i < 400; i++) {                    
+                    for (var i = 0; i < 400; i++) {
                         if (saveArray[i] == '1') {
                             countData++;
                         };
                     };
                     //刷新计数统计的数据
-                    $('#pagenum').find('li').find('p').eq(1).text("/" + (csvList.length-1));
+                    $('#pagenum').find('li').find('p').eq(1).text("/" + (csvList.length - 1));
                 }
                 $('#pagenum').find('li').find('b').eq(0).text(countData);
             }
@@ -140,60 +169,60 @@ function mounts() {
             //            $('a.btn:first').find('.bd').addClass('Selected');
             //保存クッキーの展開
             //新方法的判断            
-            if (window.localStorage.getItem("p&msaveData")) {                
+            if (window.localStorage.getItem("p&msaveData")) {
                 //新方法按编号来存的数组
                 var saveArray = JSON.parse(window.localStorage.getItem('p&msaveData'));
                 for (var i = 1; i < saveArray.length + 1; i++) {
                     //新方法按编号来
-                    if(saveArray[i]=="1"){
-                        $('#'+i+'').addClass('completed')
-                    } 
+                    if (saveArray[i] == "1") {
+                        $('#' + i + '').addClass('completed')
+                    }
                 };
             }
         }
     };
 }
 function mountexplain(obj, i) {
-    var info=document.getElementById("info").checked;
-    if(info==true){
-    //点击时变更状态
-    var num = $(obj).attr('id');
-    var saveArray = JSON.parse(window.localStorage.getItem('p&msaveData'));    
-    if ($(obj).hasClass('completed')) { $(obj).removeClass('completed'); saveArray[num] = 0; }
-    else { $(obj).addClass('completed'); saveArray[num] = 1; }    
-    window.localStorage.setItem('p&msaveData', JSON.stringify(saveArray))
-    //统计已获得数目
-    var countData = 0;
-    for (var n = 0; n < 400; n++) {
-        if (saveArray[n] == '1') { countData++; };
-    };
-    //更新计数统计
-    $('#pagenum').find('li').find('b').eq(0).text(countData);
+    var info = document.getElementById("info").checked;
+    if (info == true) {
+        //点击时变更状态
+        var num = $(obj).attr('id');
+        var saveArray = JSON.parse(window.localStorage.getItem('p&msaveData'));
+        if ($(obj).hasClass('completed')) { $(obj).removeClass('completed'); saveArray[num] = 0; }
+        else { $(obj).addClass('completed'); saveArray[num] = 1; }
+        window.localStorage.setItem('p&msaveData', JSON.stringify(saveArray))
+        //统计已获得数目
+        var countData = 0;
+        for (var n = 0; n < 400; n++) {
+            if (saveArray[n] == '1') { countData++; };
+        };
+        //更新计数统计
+        $('#pagenum').find('li').find('b').eq(0).text(countData);
     }
-    else{
-    var csvList;
-    var insert = '';
-    var target = '#page_item_right';
-    $('a.btn').click(function () {
-        $('a.btn').find('.bd').removeClass('Selected');
-        $(this).find('.bd').addClass('Selected');
-    });
-    $("#page_item_right").empty();
-    $.ajax({
-        url: './csv/mounts.csv?' + window._ver,
-        success: function (data) {
+    else {
+        var csvList;
+        var insert = '';
+        var target = '#page_item_right';
+        $('a.btn').click(function () {
+            $('a.btn').find('.bd').removeClass('Selected');
+            $(this).find('.bd').addClass('Selected');
+        });
+        $("#page_item_right").empty();
+        $.ajax({
+            url: './csv/mounts.csv?' + window._ver,
+            success: function (data) {
 
-            csvList = $.csv()(data);
-            insert += '<img style="float:left;width:192px;height:192px;margin-right: 210px;" src=image/chongwuzuoqi/' + csvList[i][0] + '.png onerror=this.src="image/chongwuzuoqi/068400.tex.png" onload="image(this)">';
-            insert += '<p style="font-size: 19px;float:left;">' + csvList[i][4] + '</p>';
-            csvList[i][3] == "1" ? insert += '<img style="float:left;width:24px;height:25px;opacity:1;" src=image/logo/飞行.png>' : insert += "";
-            insert += '<p style="margin: 4px 0px 0px 0px;">Patch' + csvList[i][2] + '</p><br>';
-            csvList[i][5] == "" ? insert += '<p>目前不明</p><br>' : insert += '<p>' + csvList[i][5] + '</p><br>';
-            csvList[i][7] == "" ? insert += '<p>目前不明</p>' : insert += '<p style="color:#696969;font-size: 15px;">' + csvList[i][7] + '</p>';
-            $(target).append(insert);
-        }
+                csvList = $.csv()(data);
+                insert += '<img style="float:left;width:192px;height:192px;margin-right: 210px;" src=image/chongwuzuoqi/' + csvList[i][0] + '.png onerror=this.src="image/chongwuzuoqi/068400.tex.png" onload="image(this)">';
+                insert += '<p style="font-size: 19px;float:left;">' + csvList[i][4] + '</p>';
+                csvList[i][3] == "1" ? insert += '<img style="float:left;width:24px;height:25px;opacity:1;" src=image/logo/飞行.png>' : insert += "";
+                insert += '<p style="margin: 4px 0px 0px 0px;">Patch' + csvList[i][2] + '</p><br>';
+                csvList[i][5] == "" ? insert += '<p>目前不明</p><br>' : insert += '<p>' + csvList[i][5] + '</p><br>';
+                csvList[i][7] == "" ? insert += '<p>目前不明</p>' : insert += '<p style="color:#696969;font-size: 15px;">' + csvList[i][7] + '</p>';
+                $(target).append(insert);
+            }
 
-    });
+        });
     }
-    
+
 }
