@@ -59,8 +59,8 @@ function mounts() {
                     else {
                         for (var n = csvList2.length-1; n > 0; n--) {
                             if (csvList[i][2] <= csvList2[n][2]) {
-                                csvList2.splice(n, 0, csvList[i]);
-                                csvList2[n][9] = i;
+                                csvList2.splice(n+1, 0, csvList[i]);
+                                csvList2[n+1][9] = i;
                                 break;
                             }
                             else if (n == 1 && csvList[i][2] > csvList2[n][2]) {
