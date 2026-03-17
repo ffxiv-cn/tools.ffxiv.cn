@@ -50,37 +50,37 @@ function mounts() {
                 for (var i = 1; i < csvList.length; i++) {
                     if (csvList[i][5] == "未知") {                        
                         csvList3[csvList3.length] = csvList[i];
-                        csvList3[csvList3.length-1][9] = i;
+                        csvList3[csvList3.length-1][10] = i;
                     }
-                    else if (i == 1) {
+                    else if (csvList2.length == 0) {
                         csvList2[1] = csvList[i];
-                        csvList2[1][9] = i;
+                        csvList2[1][10] = i;
                     }
                     else {
                         for (var n = csvList2.length-1; n > 0; n--) {
                             if (csvList[i][2] <= csvList2[n][2]) {
                                 csvList2.splice(n+1, 0, csvList[i]);
-                                csvList2[n+1][9] = i;
+                                csvList2[n+1][10] = i;
                                 break;
                             }
                             else if (n == 1 && csvList[i][2] > csvList2[n][2]) {
                                 csvList2.splice(1, 0, csvList[i]);
-                                csvList2[1][9] = i;
+                                csvList2[1][10] = i;
                                 break;
                             }
                         }
-                    }                    
+                    }
                 }
                 if(csvList3.length!=0){
                     csvList2.splice(1,0,...csvList3);
-                }                
+                }
                 for (var i = 1; i < csvList.length; i++) {
                     if (i % 100 == 1) {
-                        insert = '<li><a id="' + csvList2[i][1].slice(3, 6).replace(/\b(0+)/gi, "") + '" class="btn" onclick="mountexplain(this,' + String(csvList2[i][9]) + ')" target="_blank"><img src="image/chongwuzuoqi-ui/' + csvList2[i][1] + '.png" onload="image(this)">';
+                        insert = '<li><a id="' + csvList2[i][1].slice(3, 6).replace(/\b(0+)/gi, "") + '" class="btn" onclick="mountexplain(this,' + String(csvList2[i][10]) + ')" target="_blank"><img src="image/chongwuzuoqi-ui/' + csvList2[i][1] + '.png" onload="image(this)">';
                         csvList2[i][8] == "0" ? insert += '<div class="bd"></div></a></li>' : insert += '<div class="bd"><img src="image/logo/lv' + csvList2[i][8] + '.png"></div></a></li>';
                     }
                     else {
-                        insert += '<li><a id="' + csvList2[i][1].slice(3, 6).replace(/\b(0+)/gi, "") + '" class="btn" onclick="mountexplain(this,' + String(csvList2[i][9]) + ')" target="_blank"><img src="image/chongwuzuoqi-ui/' + csvList2[i][1] + '.png" onload="image(this)">';
+                        insert += '<li><a id="' + csvList2[i][1].slice(3, 6).replace(/\b(0+)/gi, "") + '" class="btn" onclick="mountexplain(this,' + String(csvList2[i][10]) + ')" target="_blank"><img src="image/chongwuzuoqi-ui/' + csvList2[i][1] + '.png" onload="image(this)">';
                         csvList2[i][8] == "0" ? insert += '<div class="bd"></div></a></li>' : insert += '<div class="bd"><img src="image/logo/lv' + csvList2[i][8] + '.png"></div></a></li>';
                     }
                     if (i % 100 == 0) { infolist[i / 100] = insert; }

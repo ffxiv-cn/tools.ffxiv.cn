@@ -45,18 +45,47 @@ function emote() {
             success: function (data) {
 
                 csvList = $.csv()(data);
+                var csvList2 = [];
+                var csvList3 = [];
+                for (var i = 1; i < csvList.length; i++) {
+                    if (csvList[i][4] == "未知") {                        
+                        csvList3[csvList3.length] = csvList[i];
+                        csvList3[csvList3.length-1][10] = i;
+                    }
+                    else if (csvList2.length == 0) {
+                        csvList2[1] = csvList[i];
+                        csvList2[1][10] = i;
+                    }
+                    else {
+                        for (var n = csvList2.length-1; n > 0; n--) {
+                            if (csvList[i][0] <= csvList2[n][0]) {
+                                csvList2.splice(n+1, 0, csvList[i]);
+                                csvList2[n+1][10] = i;
+                                break;
+                            }
+                            else if (n == 1 && csvList[i][0] > csvList2[n][0]) {
+                                csvList2.splice(1, 0, csvList[i]);
+                                csvList2[1][10] = i;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if(csvList3.length!=0){
+                    csvList2.splice(1,0,...csvList3);
+                }
                 var n = (csvList.length - 1) / 100 > parseInt((csvList.length - 1) / 100) ? parseInt((csvList.length - 1) / 100) + 1 : ((csvList.length - 1) / 100);
                 for (var i = 1; i < n; i++) {
                     infolist[i] = "";
                 }
                 for (var i = 1; i < csvList.length; i++) {
                     if (i % 100 == 1) {
-                        insert = '<li><a class="btn" onclick="emoteexplain(' + i + ')" target="_blank"><img src="image/emote/' + csvList[i][6] + '.png" onload="image(this)">';
-                        csvList[i][9] == "0" ? insert += '<div class="bd"></div></a></li>' : insert += '<div class="bd"><img src="image/logo/lv' + csvList[i][9] + '.png"></div></a></li>';
+                        insert = '<li><a class="btn" onclick="emoteexplain(' + csvList2[i][10] + ')" target="_blank"><img src="image/emote/' + csvList2[i][6] + '.png" onload="image(this)">';
+                        csvList2[i][9] == "0" ? insert += '<div class="bd"></div></a></li>' : insert += '<div class="bd"><img src="image/logo/lv' + csvList2[i][9] + '.png"></div></a></li>';
                     }
                     else {
-                        insert += '<li><a class="btn" onclick="emoteexplain(' + i + ')" target="_blank"><img src="image/emote/' + csvList[i][6] + '.png" onload="image(this)">'
-                        csvList[i][9] == "0" ? insert += '<div class="bd"></div></a></li>' : insert += '<div class="bd"><img src="image/logo/lv' + csvList[i][9] + '.png"></div></a></li>';
+                        insert += '<li><a class="btn" onclick="emoteexplain(' + csvList2[i][10] + ')" target="_blank"><img src="image/emote/' + csvList2[i][6] + '.png" onload="image(this)">'
+                        csvList2[i][9] == "0" ? insert += '<div class="bd"></div></a></li>' : insert += '<div class="bd"><img src="image/logo/lv' + csvList2[i][9] + '.png"></div></a></li>';
                     }
                     if (i % 100 == 0)
                     { infolist[i / 100] = insert; }

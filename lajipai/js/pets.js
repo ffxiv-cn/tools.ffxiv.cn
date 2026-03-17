@@ -45,18 +45,47 @@ function pets() {
             success: function (data) {
 
                 csvList = $.csv()(data);
+                var csvList2 = [];
+                var csvList3 = [];
+                for (var i = 1; i < csvList.length; i++) {
+                    if (csvList[i][4] == "未知") {                        
+                        csvList3[csvList3.length] = csvList[i];
+                        csvList3[csvList3.length-1][9] = i;
+                    }
+                    else if (csvList2.length == 0) {
+                        csvList2[1] = csvList[i];
+                        csvList2[1][9] = i;
+                    }
+                    else {
+                        for (var n = csvList2.length-1; n > 0; n--) {
+                            if (csvList[i][2] <= csvList2[n][2]) {
+                                csvList2.splice(n+1, 0, csvList[i]);
+                                csvList2[n+1][9] = i;
+                                break;
+                            }
+                            else if (n == 1 && csvList[i][2] > csvList2[n][2]) {
+                                csvList2.splice(1, 0, csvList[i]);
+                                csvList2[1][9] = i;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if(csvList3.length!=0){
+                    csvList2.splice(1,0,...csvList3);
+                }
                 var n = (csvList.length - 1) / 100 > parseInt((csvList.length - 1) / 100) ? parseInt((csvList.length - 1) / 100) + 1 : ((csvList.length - 1) / 100);
                 for (var i = 1; i < n; i++) {
                     infolist[i] = "";
                 }
                 for (var i = 1; i < csvList.length; i++) {
                     if (i % 100 == 1) {
-                        insert = '<li><a id="' + csvList[i][1].slice(3,6) + '" class="btn" onclick="petexplain(this,' + i + ')" target="_blank"><img src="image/chongwuzuoqi-ui/' + csvList[i][1] + '.png" onload="image(this)">';
-                        csvList[i][7] == "0" ? insert += '<div class="bd"></div></a></li>' : insert += '<div class="bd"><img src="image/logo/lv' + csvList[i][7] + '.png"></div></a></li>';
+                        insert = '<li><a id="' + csvList2[i][1].slice(3,6) + '" class="btn" onclick="petexplain(this,' + String(csvList2[i][9]) + ')" target="_blank"><img src="image/chongwuzuoqi-ui/' + csvList2[i][1] + '.png" onload="image(this)">';
+                        csvList2[i][7] == "0" ? insert += '<div class="bd"></div></a></li>' : insert += '<div class="bd"><img src="image/logo/lv' + csvList2[i][7] + '.png"></div></a></li>';
                     }
                     else {
-                        insert += '<li><a id="' + csvList[i][1].slice(3,6) + '" class="btn" onclick="petexplain(this,' + i + ')" target="_blank"><img src="image/chongwuzuoqi-ui/' + csvList[i][1] + '.png" onload="image(this)">';
-                        csvList[i][7] == "0" ? insert += '<div class="bd"></div></a></li>' : insert += '<div class="bd"><img src="image/logo/lv' + csvList[i][7] + '.png"></div></a></li>';
+                        insert += '<li><a id="' + csvList2[i][1].slice(3,6) + '" class="btn" onclick="petexplain(this,' + String(csvList2[i][9]) + ')" target="_blank"><img src="image/chongwuzuoqi-ui/' + csvList2[i][1] + '.png" onload="image(this)">';
+                        csvList2[i][7] == "0" ? insert += '<div class="bd"></div></a></li>' : insert += '<div class="bd"><img src="image/logo/lv' + csvList2[i][7] + '.png"></div></a></li>';
                     }
                     if (i % 100 == 0) { infolist[i / 100] = insert; }
                     else if (i == csvList.length - 1) { infolist[Math.ceil(i / 100)] = insert; }
