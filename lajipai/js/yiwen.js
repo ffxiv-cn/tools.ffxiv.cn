@@ -39,10 +39,10 @@ function yiwen() {
         //每页内容数目    
         setTotalPageNums: function () {
             var insert = '';
+            insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/4.png);margin-right: 20px;margin-left: 20px;" class="off" onclick="yiweninfo(this,4)"><p style="top: 60px;position: relative;">商客奇谭</p><div class="bd"></div></a>';
             insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/1.png);margin-right: 20px;margin-left: 20px;" class="off" onclick="yiweninfo(this,1)"><p style="top: 60px;position: relative;">阿罗阿罗岛</p><div class="bd"></div></a>';
             insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/2.png);margin-right: 20px;margin-left: 20px;" class="off" onclick="yiweninfo(this,2)"><p style="top: 60px;position: relative;">六根山</p><div class="bd"></div></a>';
             insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/3.png);margin-right: 20px;margin-left: 20px;" class="off" onclick="yiweninfo(this,3)"><p style="top: 60px;position: relative;">希拉狄哈水道</p><div class="bd"></div></a>';
-            // insert += '<a style="float:left;width:188px;height: 60px;background-image: url(image/yiwen/4.png);margin-right: 20px;margin-left: 20px;" class="off" onclick="yiweninfo(this,4)"><p style="top: 60px;position: relative;">你放上去</p><div class="bd"></div></a>';
             $("#pagenum").append(insert);
             $("#pagenum a:first").click();
             Page.setClickPageNum();
