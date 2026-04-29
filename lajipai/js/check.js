@@ -81,11 +81,11 @@ function checkver(obj, i) {
         insert += '<a style="float:left;width:50px;" class="off" onclick="checkinfo(this)">7.2</a>';
         insert += '<a style="float:left;width:50px;" class="off" onclick="checkinfo(this)">7.3</a>';
         insert += '<a style="float:left;width:50px;" class="off" onclick="checkinfo(this)">7.4</a>';
-        insert += '<a style="float:left;width:50px;" class="off" onclick="">7.5</a>';
+        insert += '<a style="float:left;width:50px;" class="off" onclick="checkinfo(this)">7.5</a>';
     }
     $('#vernum').empty();
     $('#vernum').append(insert);
-    $("#vernum a:nth-child(5)").click();    
+    $("#vernum a:nth-child(6)").click();    
 }
 function checkinfo(obj) {
     $("#vernum a").removeClass();
