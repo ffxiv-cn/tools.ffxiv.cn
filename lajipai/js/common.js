@@ -18,8 +18,8 @@ $(function () {
 
 function load() {
     $('#item').append(
-        '<li style="margin-right: 500px;"><a onclick="check()"><img src="image/更新速览.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>更新速览</p></li>'
-        , '<li><a onclick="aether()"><img style="animation-delay:0.6s;" src="image/风脉.png"><div><p class="buff" style="color: orange;"></p></div></a><p>风脉</p></li>'
+        //,'<li style="margin-right: 500px;"><a onclick="check()"><img src="image/更新速览.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>更新速览</p></li>'
+        '<li><a onclick="aether()"><img style="animation-delay:0.6s;" src="image/风脉.png"><div><p class="buff" style="color: orange;"></p></div></a><p>风脉</p></li>'
         , '<li style="margin-right: 400px;"><a onclick="explore()"><img style="animation-delay:0.7s;" src="image/探索笔记.png"><div><p class="buff" style="color: orange;"></p></div></a><p>探索笔记</p></li>'
         , '<li><a onclick="pets()"><img style="animation-delay:0.7s;" src="image/宠物.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>宠物一览</p></li>'
         , '<li><a onclick="mounts()"><img style="animation-delay:0.8s;" src="image/坐骑.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>坐骑一览</p></li>'
@@ -43,7 +43,7 @@ function load() {
         //   蛮族兑换、蛮族兑换.png
         , '<li><a onclick="dye()"><img style="animation-delay:1.2s;" src="image/染料一览.png"><div></div></a><p>染料一览</p></li>'
         // , '<li><a><img style="animation-delay:1.3s;filter: grayscale(100%)" src="image/000088.png"><div><p class="buff" style="color: white;">挖坑!!</p></div></a><p>铭牌一览</p></li>'
-        , '<li style="margin-right: 0px;"><a><img style="animation-delay:1.3s;filter: grayscale(100%)" src="image/000033.tex.png"><div></div></a><p>有待开发</p></li>'
+        , '<li style="margin-right: 0px;"><a onclick="()"><img style="animation-delay:1.3s;" src="image/蛮族兑换.png"><div></div></a><p>蛮族兑换</p></li>'
         , '<li style="margin-right: 0px;"><a><img style="animation-delay:1.4s;filter: grayscale(100%)" src="image/000033.tex.png"><div></div></a><p>有待开发</p></li>'
         , '<li style="margin-right: 0px;"><a><img style="animation-delay:1.5s;filter: grayscale(100%)" src="image/000033.tex.png"><div></div></a><p>有待开发</p></li>'
         // , '<li style="width: 600px;height:20px;"><p style="text-align:center">以下广告来自谷歌推荐。<a style="width: auto;height:auto;" href="https://www.ffxiv.cn/detail/article/534" target="_blank">广告屏蔽方法与说明♂(←点击)</a></p></li>'

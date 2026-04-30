@@ -97,6 +97,7 @@ function dungeons() {
         else if (pg == "3.0") { pg = "3"; }
         else if (pg == "2.0") { pg = "2"; }
         if(pg == "6"){$("#dungeonstype li:nth-child(4)").css("display", "inline-block");}
+        else if(pg == "7"){$("#dungeonstype li:nth-child(4)").css("display", "inline-block");}
         else{$("#dungeonstype li:nth-child(4)").css("display", "none");}
         var num = pg + i;
         var sel = i - 1;
