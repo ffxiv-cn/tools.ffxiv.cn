@@ -1,0 +1,31 @@
+#manzu * {
+    transition: all 0.5s;
+}
+#manzu li {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+}
+#manzu li a {
+    position: relative;
+    display: inline-block;
+}
+#manzu li a img{
+    width: 40px;    
+}
+#manzu li a div{
+    width: 42px;
+    left: 0px;
+    height: 42px;
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    background-image: url("");
+}
+
+#manzu li a div.Selected,
+#manzu li a div:hover {
+    border-radius: 4px;
+    outline: none;
+    box-shadow: 0 0 1px 3px #FFFF77 inset;
+}

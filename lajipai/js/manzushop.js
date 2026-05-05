@@ -14,7 +14,7 @@ function manzushop() {
         $("#page").empty();
         $('#page').append(
         '<ul id="page_itemtop"></ul>'
-        , '<ul id="page_check" style="height:200px;"><div id="pagenum"></div><ul style="top:0px;" id="aether"></ul></ul>'
+        , '<ul id="page_check" style="height:150px;"><div id="pagenum"></div><ul style="top:0px;padding:0px 70px;" id="manzu"></ul></ul>'
          , '<ul id="page_item"  style="min-height: 540px;"><li id="page_item_left" style="width: 670px;"><ul style="top:0px;min-height: 400px;padding-left: 65px;" id="fateitem"></ul></li><li style="padding-top: 20px;float: left;padding-left: 0px;" id="page_item_right"><ul  id="fateshop"></ul></li></ul>'
         );
         $('#page_itemtop').append(
@@ -24,29 +24,11 @@ function manzushop() {
         $.ajax({
             url: './csv/SpecialShop.csv?' + window._ver,
             success: function (data) {
-                infolist[1] = "";//2.0
-                infolist[2] = "";//3.0
-                infolist[3] = "";//4.0
-                infolist[4] = "";//5.0
-                infolist[5] = "";//6.0
-                infolist[6] = "";//7.0
-                for (i = 1; i < 6; i++) {
-                    infolist[1] += '<li style="width:180px;text-align: center;"><a class="btn" onclick="fateshopexplain(' + i + ')" target="_blank"><img style="width:74px;" src="image/manzu/' + i + '.png"><div style="width:76px;left: 0px;background-image: url("");" class="bd"></div></a></li>';
-                }
-                for (i = 6; i < 9; i++) {
-                    infolist[2] += '<li style="width:180px;text-align: center;"><a class="btn" onclick="fateshopexplain(' + i + ')" target="_blank"><img style="width:74px;" src="image/manzu/' + i + '.png"><div style="width:76px;left: 0px;background-image: url("");" class="bd"></div></a></li>';
-                }
-                for (i = 9; i < 12; i++) {
-                    infolist[3] += '<li style="width:180px;text-align: center;"><a class="btn" onclick="fateshopexplain(' + i + ')" target="_blank"><img style="width:74px;" src="image/manzu/' + i + '.png"><div style="width:76px;left: 0px;background-image: url("");" class="bd"></div></a></li>';
-                }
-                for (i = 12; i < 15; i++) {
-                    infolist[4] += '<li style="width:180px;text-align: center;"><a class="btn" onclick="fateshopexplain(' + i + ')" target="_blank"><img style="width:74px;" src="image/manzu/' + i + '.png"><div style="width:76px;left: 0px;background-image: url("");" class="bd"></div></a></li>';
-                }
-                for (i = 15; i < 18; i++) {
-                    infolist[5] += '<li style="width:180px;text-align: center;"><a class="btn" onclick="fateshopexplain(' + i + ')" target="_blank"><img style="width:74px;" src="image/manzu/' + i + '.png"><div style="width:76px;left: 0px;background-image: url("");" class="bd"></div></a></li>';
-                }
-                for (i = 18; i < 21; i++) {
-                    infolist[6] += '<li style="width:180px;text-align: center;"><a class="btn" onclick="fateshopexplain(' + i + ')" target="_blank"><img style="width:74px;" src="image/manzu/' + i + '.png"><div style="width:76px;left: 0px;background-image: url("");" class="bd"></div></a></li>';
+                infolist[1] = "";//2.0                
+                for (i = 20; i > 0; i--) {
+                    if([17,14,11,8,5].includes(i)){infolist[1] +='<li style="height:40px;"></li>';}
+                    if(i==11){infolist[1] +='<li style="width:120px;height:40px;"></li>';}
+                    infolist[1] += '<li><a class="btn" onclick="manzuexplain(' + i + ')" target="_blank"><img src="image/manzu/' + i + '.png"><div class="bd"></div></a></li>';
                 }
                 Page.setTotalPageNums();
                 Page.setClickPageNum();
@@ -60,20 +42,12 @@ function manzushop() {
         //每页内容数目    
         setTotalPageNums: function () {
             var insert = '';
-            insert += '<a style="float:left;width:50px;" class="off">7.0</a>';
-            insert += '<a style="float:left;width:50px;" class="off">6.0</a>';
-            insert += '<a style="float:left;width:50px;" class="off">5.0</a>';
-            insert += '<a style="float:left;width:50px;" class="off">4.0</a>';
-            insert += '<a style="float:left;width:50px;" class="off">3.0</a>';
-            insert += '<a style="float:left;width:50px;" class="off">2.0</a>';
-            /* insert += '<a style="width:150px;" class="off">雷克兰德</a>';
-            insert += '<a style="width:150px;" class="off">安穆·艾兰</a>';
-            insert += '<a style="width:150px;" class="off">伊尔美格</a>';
-            insert += '<a style="width:150px;" class="off">拉凯提卡大森林</a>';
-            insert += '<a style="width:150px;" class="off">珂露西亚岛</a>';
-            insert += '<a style="width:150px;" class="off">黑风海</a>';
-            insert += '<a style="width:150px;" class="off">水晶都</a>';
-            insert += '<a style="width:150px;" class="off">游末邦</a>'; */
+            // insert += '<a style="float:left;width:50px;" class="off">7.0</a>';
+            // insert += '<a style="float:left;width:50px;" class="off">6.0</a>';
+            // insert += '<a style="float:left;width:50px;" class="off">5.0</a>';
+            // insert += '<a style="float:left;width:50px;" class="off">4.0</a>';
+            // insert += '<a style="float:left;width:50px;" class="off">3.0</a>';
+            // insert += '<a style="float:left;width:50px;" class="off">2.0</a>';
             $("#pagenum").append(insert);
             Page.setClickPageNum();
         },
@@ -93,21 +67,21 @@ function manzushop() {
             }
         },
         allContent: function (divb) {
-            var target = '#aether';
-            if ("null" == divb) {
-                divb = document.getElementById('pagenum').children[0];
-                divb.className = "on";
-            }
-            var pg = this.getClickPageNum(divb); // 1 2 3
-            if (pg == "2.0") { pg = "1"; }            
-            else if (pg == "3.0") { pg = "2"; }
-            else if (pg == "4.0") { pg = "3"; }
-            else if (pg == "5.0") { pg = "4"; }            
-            else if (pg == "6.0") { pg = "5"; }
-            else if (pg == "7.0") { pg = "6"; }
-            $("#aether").empty();
+            var target = '#manzu';
+            // if ("null" == divb) {
+            //     divb = document.getElementById('pagenum').children[0];
+            //     divb.className = "on";
+            // }
+            // var pg = this.getClickPageNum(divb); // 1 2 3
+            // if (pg == "2.0") { pg = "1"; }            
+            // else if (pg == "3.0") { pg = "2"; }
+            // else if (pg == "4.0") { pg = "3"; }
+            // else if (pg == "5.0") { pg = "4"; }            
+            // else if (pg == "6.0") { pg = "5"; }
+            // else if (pg == "7.0") { pg = "6"; }
+            $("#manzu").empty();
             $(target).empty();
-            $(target).append(infolist[pg]);
+            $(target).append(infolist[1]);
             $("#fateshop").empty();
             $("#fateitem").empty();
             $('a.btn:first').click();
@@ -115,7 +89,7 @@ function manzushop() {
         }
     };
 }
-function fateshopexplain(num) {
+function manzuexplain(num) {
     var name="";
     if(num==1){name="65054";}
     else if (num==2){name="65050";}
