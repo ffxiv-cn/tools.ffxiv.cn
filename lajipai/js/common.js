@@ -23,7 +23,7 @@ function load() {
         , '<li style="margin-right: 400px;"><a onclick="explore()"><img style="animation-delay:0.7s;" src="image/探索笔记.png"><div><p class="buff" style="color: orange;"></p></div></a><p>探索笔记</p></li>'
         , '<li><a onclick="pets()"><img style="animation-delay:0.7s;" src="image/宠物.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>宠物一览</p></li>'
         , '<li><a onclick="mounts()"><img style="animation-delay:0.8s;" src="image/坐骑.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>坐骑一览</p></li>'
-        , '<li style="margin-right: 300px;"><a onclick="emote()"><img style="animation-delay:0.9s;" src="image/表情一览.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>情感动作</p></li>'
+        , '<li style="margin-right: 300px;"><a onclick="emote()"><img style="animation-delay:0.9s;" src="image/表情一览.png"><div><p class="buff" style="color: orange;"></p></div></a><p>情感动作</p></li>'
         , '<li><a onclick="music()"><img style="animation-delay:0.8s;" src="image/乐谱.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>乐谱</p></li>'
         , '<li ><a onclick="fashion()"><img style="animation-delay:0.9s;" src="image/时尚配件.png"><div><p class="buff" style="color: orange;">Update</p></div></a><p>时尚配饰</p></li>'
         , '<li><a onclick="dig()"><img style="animation-delay:1.0s;" src="image/藏宝图.png"><div><p class="buff" style="color: orange;"></p></div></a><p>藏宝图</p></li>'
